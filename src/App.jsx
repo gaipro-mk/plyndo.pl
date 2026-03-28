@@ -434,9 +434,6 @@ function App() {
           </div>
         </section>
 
-        <footer className="py-8 text-center text-sm leading-7 text-[var(--muted)]">
-          {t.footer}
-        </footer>
       </main>
 
       <footer className="section-shell pb-10">
