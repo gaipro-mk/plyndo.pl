@@ -2,7 +2,7 @@
 
 ## Project
 - Name: `plyndo.pl`
-- Purpose: premium landing page and product documentation for a Polish D2C household chemistry subscription concept.
+- Purpose: premium landing page and product documentation for a Polish D2C household chemistry subscription concept grounded primarily in NotebookLM strategy materials.
 
 ## Stack
 - React

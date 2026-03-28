@@ -1,139 +1,634 @@
-# Plyndo.pl PRD
+# PRD: Plyndo.pl / Puendo Platform
 
-## Overview
-Plyndo.pl is the landing and validation layer for a premium D2C household chemistry subscription brand for Poland. The product strategy positions household chemistry as a home operating system rather than a reactive supermarket purchase. The MVP is designed to validate demand, capture early access leads, and prepare for a subscription ecommerce launch built around curated chemistry bundles, configurable delivery cadence, and future AI-assisted plan fitting.
+## 1. Product Summary
 
-## Product Vision
-- Turn household chemistry from ad hoc purchasing into a predictable subscription routine.
-- Offer premium, performance-first household liquids in a cleaner, more structured buying model.
-- Build a Polish-market-first direct-to-consumer brand with strong delivery and replenishment logic.
+`plyndo.pl` is the digital channel for **Puendo**, a Polish direct-to-consumer household chemistry brand built on a recurring replenishment model. The platform is not meant to behave like a generic online store. Its job is to package recurring household chemistry as a managed service: the customer gets the right products, in the right quantities, at the right cadence, without having to remember what to buy.
 
-## MVP Goals
-- Validate category resonance and waitlist demand.
-- Test positioning for premium household chemistry subscription in Poland.
-- Prepare the content and UX foundation for future ecommerce and subscription flows.
-- Support a pilot launch for a limited early cohort, initially family-and-friends scale.
+The business case from the source materials is consistent:
 
-## Target Audience
-- Busy Polish households that value control, convenience, and product quality.
-- Families with children or pets who consume cleaning products more predictably and at higher volume.
-- Households frustrated by reactive store runs, cluttered cabinets, and unclear product selection.
-- Secondary long-term segment: small business or office supply needs, but not primary MVP focus.
+- the manufacturer already has formulations, production capability, and category know-how,
+- household chemistry has predictable, low-emotion repeat demand,
+- direct distribution removes intermediary margin,
+- a subscription model creates more stable revenue and stronger customer retention than one-off basket ecommerce,
+- product fit improves when the system knows the household profile and learns usage over time.
 
-## Core User Problems
-- Essentials run out at inconvenient times.
-- Households overbuy or accumulate the wrong products.
-- It is difficult to map product choice to actual household usage.
-- Existing buying flows are reactive, inconsistent, and operationally noisy.
+For implementation purposes, the product should be treated as a **phased platform**:
 
-## Value Proposition
-- Premium household chemistry delivered before you run out.
-- Curated product logic instead of supermarket overwhelm.
-- Delivery cadence that can adapt to real usage.
-- A future AI-assisted fitting layer for quantity, bundle composition, and replenishment frequency.
+- **Phase 0: landing and demand validation**
+- **Phase 1: MVP commerce for Family & Friends**
+- **Phase 2: full subscription platform**
 
-## MVP Scope
+The current delivery target is **only the landing page**, but this PRD defines the full platform so design and content decisions support later rollout instead of creating throwaway marketing pages.
 
-### In Scope
-- Marketing landing page for early access and waitlist capture.
-- Brand and offer articulation for the Polish market.
-- Presentation of package logic: Mini, Midi, Maxi.
-- Explanation of replenishment cadence: every 1, 2, or 3 months.
-- UX framing for AI-assisted household-fit questionnaire.
-- Messaging for future customer account controls: pause, change cadence, change plan.
-- Polish logistics framing including InPost and courier delivery.
+## 2. Business Context
 
-### Future Product Scope
-- Full ecommerce storefront.
-- AI questionnaire backed by OpenAI API.
-- Stripe subscriptions and recurring billing.
-- Customer account with subscription management.
-- Product catalog and operational product data.
-- InPost GeoWidget and shipment-label generation.
-- Subscription-lite flow with prefilled reorder and BLIK-compatible payment path.
-- Fakturownia integration and invoice automation.
+Puendo is positioned as a modern D2C layer on top of a mature production base. The platform must express three strategic advantages from the source documents:
 
-### Out of Scope for This Build
-- Live checkout.
-- Live subscription billing.
-- Customer authentication.
-- Real CRM or email workflow.
-- Real product database.
-- Real logistics integration.
-- Real AI questionnaire backend.
+- **Quality**: proprietary or inherited proven formulations, real production experience, control over ingredients, concentration, and fragrance.
+- **Price efficiency**: fewer intermediaries than wholesale and retail, allowing competitive pricing without lowering quality.
+- **Premium aesthetics**: packaging, tone, and fragrance profile that feel contemporary and display-worthy, not industrial or cheap.
 
-## Product Model
-- Core assortment: 8 household chemistry product categories.
-- Offer structure: curated package tiers with personalization.
-- Subscription frequency: 1, 2, or 3 month cycles.
-- Market: Poland only in MVP.
-- Currency and delivery assumptions: PLN, domestic logistics, InPost and courier.
+The platform must present household chemistry not as “8 random liquids” but as a **home maintenance operating system**:
 
-## User Journey
-1. User lands on Plyndo.pl and understands the category thesis.
-2. User sees why household chemistry should be treated as a managed home system.
-3. User explores package logic and replenishment model.
-4. User understands the future household-fit and cadence logic.
-5. User joins the waitlist for early access.
-6. In later phases, user would move into AI questionnaire, plan recommendation, order, and subscription management.
+- always stocked,
+- simpler than supermarket shopping,
+- personalized to the household,
+- adjustable over time,
+- operationally calm and premium.
 
-## Key Experience Principles
-- Premium rather than discount retail.
-- Structured rather than SKU-heavy.
-- Calm, operational, and credible rather than loud or gimmicky.
-- Polish-market relevance rather than global-generic D2C language.
+## 3. Problem Statement
 
-## Landing Page Requirements
-- Strong premium hero with clear value proposition.
-- Explanation of the core problem and category tension.
-- Pillars: always stocked, performance-first, adaptive by design.
-- Clear process section.
-- Offer architecture section for Mini, Midi, Maxi.
-- Comparison framing against supermarket and generic ecommerce behavior.
-- Trust and FAQ sections.
-- Single primary conversion path: waitlist / early access.
+Current category behavior is broken for the intended customer:
 
-## Metrics
-- Waitlist signups.
-- Waitlist-to-pilot conversion.
-- Active subscription count in later phases.
-- AOV target around 100 PLN.
-- Churn once subscriptions launch.
-- MRR in post-MVP scale phases.
+- customers buy reactively when a product runs out,
+- households overbuy some items and underbuy others,
+- retail forces too much choice for a low-interest category,
+- no traditional channel knows the actual home profile,
+- existing products rarely combine trusted performance, fair price, and premium presentation.
 
-## Growth Levers
-- Educational content and usage guides.
-- Referral loops during early pilot.
-- Seasonal chemistry bundles.
-- Clear category education around performance and replenishment logic.
+The platform must solve for continuity first, not novelty.
 
-## Retention Levers
-- Auto-replenishment convenience.
-- Better fit over time through usage-informed adjustment.
-- Clear customer controls for pause, change, and modify.
-- Post-purchase education and replenishment reminders.
+## 4. Product Vision
 
-## Dependencies
-- Product specs, packaging, and label data from the business side.
-- Future integrations: Stripe, OpenAI, InPost, customer account system, invoicing stack.
-- Delivery and packaging viability for heavy liquids.
-- Subscription operations and support readiness.
+Create the default Polish D2C platform for recurring household chemistry by combining:
 
-## Risks
-- Shipping damage and logistics complexity for liquid products.
-- Compliance constraints for chemical products and transport.
-- Limited B2C operational experience.
-- Cost volatility in logistics, energy, and packaging.
-- Need to balance premium positioning with understandable mass-market value.
+- curated bundled product logic,
+- household-profile-based replenishment,
+- future AI-assisted recommendation and adjustment,
+- premium brand presentation,
+- logistics and payments adapted to Polish expectations.
 
-## Open Questions
-- How much of the first launch should be waitlist-first vs pilot commerce enabled?
-- What exact products and pack sizes belong in each initial package?
-- When should full recurring billing go live versus reminder-based reorders?
-- How much AI fitting is truly needed in MVP versus post-MVP?
-- Should the home/business split appear in the first public version or be deferred?
+## 5. Product Principles
 
-## Current Implementation
-- Premium landing page built with React, Vite, and Tailwind.
-- Static waitlist interaction for prototype validation.
-- No backend or live integrations yet.
+- **Service over catalog**: lead with continuity and household fit, not SKU overload.
+- **Operational trust over hype**: prove competence through clarity, not exaggerated claims.
+- **Personalization without friction**: collect only the minimum information needed at each step.
+- **Polish-market native**: language, delivery, payments, and trust patterns must feel local.
+- **Upgrade path by design**: the landing page must already reflect the eventual subscription platform structure.
+- **Retention over extraction**: the business wins through long-term fit and low churn, not overconsumption.
+
+## 6. Target Users
+
+### Primary segment
+
+Busy Polish households buying household chemistry regularly and wanting fewer shopping decisions.
+
+Characteristics:
+
+- buy online or are comfortable doing so,
+- value convenience and predictability,
+- respond to quality and clean design,
+- dislike supermarket overload,
+- are likely to appreciate recurring delivery.
+
+### Core high-value segment
+
+Families with children and/or pets.
+
+Why this segment matters:
+
+- most predictable and highest recurring consumption,
+- strongest pain from running out,
+- strongest fit for the `MIDI / Family` offer, which source materials define as the commercial core.
+
+### Secondary segment
+
+Small offices and companies needing regular supply.
+
+Important:
+
+- this segment exists in source materials,
+- it should be represented in platform architecture,
+- it should not dominate the initial landing page unless explicitly tested,
+- it may be a separate acquisition path later.
+
+## 7. Product Offer
+
+### Initial product line
+
+The source documents consistently define a launch assortment of 8 core 1-liter products:
+
+- floor cleaner,
+- glass cleaner,
+- bathroom cleaner,
+- hand wash,
+- laundry detergent,
+- fabric softener,
+- dishwashing liquid,
+- dishwasher liquid/product.
+
+The product model assumes shipment in recurring bundles and, in later phases, the ability to top up individual items.
+
+### Package tiers
+
+Normalized product architecture for the platform:
+
+- **MINI**: 1-2 people, lower consumption, longer cycle
+- **MIDI**: family household, default/high-volume segment, monthly cycle
+- **MAXI**: large household or business/high-convenience segment
+
+Source naming differs slightly between documents (`Basic/Family/Max` vs `Mini/Midi/Maxi` and `Single/Rodzina/Firma`). For platform consistency:
+
+- public-facing naming should standardize on **MINI / MIDI / MAXI**
+- copy can explain audience fit in plain language
+- internal data model should support audience tags: `single`, `family`, `business`
+
+### Subscription cadence
+
+The platform must support:
+
+- every 1 month,
+- every 2 months,
+- every 3 months.
+
+For MVP recommendation logic:
+
+- `MINI` defaults to every 2 months,
+- `MIDI` defaults to every 1 month,
+- `MAXI` defaults to every 1 month,
+- recommended cadence may be adjusted by household profile and later by usage feedback.
+
+## 8. Core Value Proposition
+
+The user promise should be expressed as:
+
+“Puendo keeps your home stocked with the right chemistry, matched to how your household actually lives.”
+
+Supporting claims:
+
+- fewer shopping decisions,
+- no emergency restocks,
+- manufacturer-grade quality,
+- premium look and fragrance,
+- predictable delivery,
+- flexible subscription management.
+
+## 9. Scope by Phase
+
+### Phase 0: landing and validation
+
+Goal:
+
+- validate demand and brand/message fit,
+- explain the offer structure,
+- prepare users for the full platform model,
+- capture leads and early-access intent.
+
+In scope:
+
+- premium landing page,
+- positioning and category education,
+- package tier explanation,
+- “how it works” flow,
+- early access / lead capture,
+- FAQ,
+- placeholders for personalization, subscription control, and delivery model.
+
+Out of scope:
+
+- live checkout,
+- payments,
+- account creation,
+- real subscription engine,
+- working AI personalization,
+- real logistics integrations.
+
+### Phase 1: MVP commerce for Family & Friends
+
+Goal:
+
+- validate order flow and operational readiness on a controlled cohort.
+
+In scope:
+
+- responsive ecommerce site,
+- product and package presentation,
+- simple purchase flow,
+- package selection,
+- limited personalization flow,
+- order capture,
+- delivery option selection,
+- basic payment,
+- basic customer communication.
+
+The MVP may start with:
+
+- one featured package,
+- limited cohort,
+- limited shipping days,
+- tighter operational control.
+
+### Phase 2: full subscription platform
+
+Goal:
+
+- deliver full recurring D2C model with learning system and subscription management.
+
+In scope:
+
+- recurring billing,
+- subscription management,
+- AI-assisted recommendation,
+- household profile persistence,
+- reorder adjustments,
+- account dashboard,
+- invoice automation,
+- logistics automation,
+- analytics and retention tooling.
+
+## 10. Landing Page Requirements
+
+This is the only implementation target right now, so requirements here are stricter.
+
+### Landing page objectives
+
+- communicate what Puendo is in under 5 seconds,
+- frame the category problem clearly,
+- make the subscription model feel practical and premium,
+- build trust through production credibility,
+- show the future personalization and delivery model without overselling fake functionality,
+- capture early access intent.
+
+### Required sections
+
+1. **Hero**
+- clear value proposition,
+- premium visual tone,
+- primary CTA,
+- optional secondary CTA to learn how it works.
+
+2. **Why this exists**
+- explain pain of reactive household chemistry shopping,
+- emphasize continuity, predictability, and reduced decision fatigue.
+
+3. **Why Puendo**
+- quality,
+- direct price efficiency,
+- premium aesthetics and fragrance,
+- family production heritage / manufacturing credibility.
+
+4. **How it works**
+- choose household profile,
+- get package recommendation,
+- receive recurring deliveries,
+- adjust anytime.
+
+5. **Package logic**
+- MINI / MIDI / MAXI,
+- who each package is for,
+- indicative replenishment rhythm,
+- flexibility of upgrades, downgrades, pauses.
+
+6. **Household-fit personalization**
+- show the inputs the system uses:
+  - household size,
+  - number of bathrooms,
+  - children,
+  - pets,
+  - cleaning frequency / lifestyle.
+- communicate that AI is used to simplify decisions, not to create complexity.
+
+7. **Product universe**
+- present the 8 core categories,
+- frame them as a complete home-care system.
+
+8. **Logistics and convenience**
+- InPost and courier expectations,
+- one-box operational simplicity,
+- predictable deliveries.
+
+9. **Trust / credibility**
+- manufacturing background,
+- practical quality claims,
+- polish-market suitability,
+- no hype-based greenwashing.
+
+10. **FAQ**
+- what is in a package,
+- how often deliveries arrive,
+- can I pause or change,
+- is it a regular shop,
+- when does commerce launch,
+- how pricing works.
+
+11. **Lead capture / early access**
+- one clear conversion action,
+- no cluttered multi-goal CTA setup.
+
+### Landing page content rules
+
+- tone must be adult, premium, calm, and operational,
+- copy must avoid “startup AI magic” language,
+- copy must not present unavailable commerce features as if they are live,
+- visual system must support later migration to full product flows.
+
+## 11. Platform Functional Requirements
+
+These define the full product target beyond the current landing page.
+
+### 11.1 Product catalog
+
+The system must support:
+
+- 8 core products at launch,
+- package composition by tier,
+- single-product top-ups,
+- product metadata:
+  - name,
+  - category,
+  - description,
+  - usage,
+  - volume,
+  - fragrance,
+  - imagery,
+  - ingredient/compliance content.
+
+### 11.2 Package and recommendation engine
+
+The system must:
+
+- model package tiers,
+- store household profile inputs,
+- generate recommended package size and cadence,
+- offer 3 output variants:
+  - minimal,
+  - optimal,
+  - extended.
+
+Version 1 of the engine should be rule-based.
+
+Later versions may use AI to:
+
+- interpret user responses,
+- refine recommendations,
+- explain recommendations conversationally,
+- suggest corrections based on historical usage.
+
+### 11.3 Subscription management
+
+The platform must eventually support:
+
+- create subscription,
+- set cadence,
+- pause,
+- resume,
+- upgrade,
+- downgrade,
+- skip shipment,
+- cancel,
+- manage payment method,
+- notify before dispatch,
+- download invoices,
+- view order history.
+
+### 11.4 Customer account
+
+The account area must support:
+
+- profile and household configuration,
+- current subscription state,
+- next delivery date,
+- product composition,
+- order history,
+- billing and delivery data,
+- support entry points.
+
+### 11.5 Admin and operations
+
+The internal system must support:
+
+- product management,
+- package rules,
+- order monitoring,
+- subscription monitoring,
+- customer records,
+- invoice generation,
+- shipment tracking,
+- basic reporting:
+  - MRR,
+  - active subscriptions,
+  - churn,
+  - AOV,
+  - top products,
+  - conversion.
+
+## 12. User Journeys
+
+### Journey A: landing page lead capture
+
+1. User lands on `plyndo.pl`.
+2. Understands the category reframing and value proposition.
+3. Sees package logic and personalization model.
+4. Builds trust in quality, pricing logic, and logistics.
+5. Joins early access or waitlist.
+
+### Journey B: future package selection
+
+1. User explores package tiers.
+2. Chooses household segment or starts recommendation flow.
+3. Completes short household-fit questionnaire.
+4. Receives recommended package and cadence.
+5. Adjusts package if needed.
+6. Proceeds to checkout.
+
+### Journey C: subscription management
+
+1. User enters account.
+2. Sees next shipment and current package.
+3. Pauses, skips, upgrades, downgrades, or tops up a product.
+4. Receives confirmation.
+
+## 13. AI Personalization Requirements
+
+AI is an internal enabler, not the headline product.
+
+### Must do
+
+- reduce decision load,
+- recommend package fit,
+- recommend cadence,
+- explain why a recommendation fits,
+- support later refinement from usage feedback.
+
+### Must not do
+
+- feel gimmicky,
+- appear before the user understands the offer,
+- force a long questionnaire at first contact,
+- become a blocker in the landing-page experience.
+
+### Input signals
+
+- home size,
+- number of rooms / bathrooms,
+- number of adults,
+- number of children,
+- pets,
+- cleaning habits,
+- laundry frequency,
+- dishwashing habits where relevant.
+
+### Output
+
+- package recommendation,
+- cadence recommendation,
+- explanation of fit,
+- optional add-on suggestions in later phases.
+
+## 14. Payments and Logistics Requirements
+
+### Payments
+
+Source materials indicate Polish-local payment support is strategically important.
+
+Priority order:
+
+1. **Przelewy24 or Paynow** for local payment expectations and margin efficiency
+2. **BLIK** as a critical local payment option
+3. **Stripe** where needed for automated recurring card billing
+
+Implication:
+
+- local one-off and local checkout flows matter,
+- recurring card logic may still require Stripe or equivalent subscription support,
+- the product should not assume a Stripe-only worldview.
+
+### Logistics
+
+The platform must support:
+
+- InPost as the primary consumer delivery option,
+- courier as a secondary option,
+- shipment data integration,
+- carton/gabaryt logic for liquid products,
+- one-box operational simplicity where possible.
+
+Operational principle from source documents:
+
+- better slower and correct than fast and chaotic.
+
+## 15. Content and Growth Requirements
+
+The growth model is not only paid acquisition.
+
+The platform should support a long-term educational content strategy around:
+
+- “jaki płyn do...”
+- dosing,
+- usage best practices,
+- household problem/solution pages,
+- seasonal cleaning use cases,
+- authority-building content.
+
+This content strategy serves:
+
+- SEO,
+- trust,
+- lower CAC,
+- stronger retention,
+- better product comprehension.
+
+Referral support should be planned for later phases because source materials identify recommendation loops as category-natural.
+
+## 16. Metrics and Success Criteria
+
+### Landing page phase
+
+- lead conversion rate,
+- waitlist count,
+- package section engagement,
+- scroll depth,
+- CTA click-through rate,
+- qualitative signal from Family & Friends testing.
+
+### MVP commerce phase
+
+- completed orders,
+- repeat purchase / subscription opt-in,
+- average order value,
+- household-fit completion rate,
+- payment completion rate,
+- delivery success rate.
+
+### Platform phase
+
+- active subscriptions,
+- MRR,
+- churn,
+- pause-to-reactivation rate,
+- downgrade-to-retention rate,
+- LTV,
+- CAC payback,
+- recommendation accuracy proxies,
+- top-up rate for single items.
+
+Commercial targets explicitly referenced in source materials:
+
+- indicative AOV: around `100 PLN`,
+- directional long-term objective: `1,000` active subscriptions,
+- directional MRR target: `100,000 PLN`.
+
+## 17. Non-Functional Requirements
+
+- mobile-first responsive experience,
+- premium visual quality,
+- fast page load,
+- accessible reading hierarchy,
+- clear legal/commercial disclosures,
+- scalable information architecture,
+- architecture prepared for future ecommerce migration.
+
+## 18. Risks and Constraints
+
+### Business risks
+
+- premature scale before operations are stable,
+- weak product-market message despite strong production base,
+- confusion between one-off ecommerce and service model,
+- too much complexity too early.
+
+### Operational risks
+
+- liquid shipping damage,
+- packaging and weight constraints,
+- delivery cost pressure,
+- poor cadence recommendations causing oversupply or stockouts.
+
+### Product risks
+
+- overexposing AI in early messaging,
+- forcing long onboarding too early,
+- presenting too many package/product choices at first touch,
+- landing page feeling generic rather than category-specific.
+
+### Strategic constraint
+
+The D2C channel must complement rather than cannibalize wholesale logic.
+
+## 19. Open Decisions
+
+- whether public brand language should prioritize `Puendo` or `Plyndo/Płyn do` at launch,
+- whether `MAXI` is publicly framed as “large household” first and “business” second,
+- whether Family & Friends should include live checkout in the first external release,
+- when to expose single-product top-ups,
+- whether early checkout should be subscription-first or order-first with subscription upgrade later,
+- exact price architecture by package,
+- exact package composition by segment,
+- what level of AI explanation is visible in the UX.
+
+## 20. Current Delivery Focus
+
+The current implementation scope is:
+
+- **fully featured premium landing page only**
+
+That landing page must already encode the future platform model:
+
+- package architecture,
+- personalization logic,
+- subscription flexibility,
+- Polish logistics and payment expectations,
+- operational credibility,
+- lead capture for early launch.
+
+It must not behave like a disconnected marketing shell. It should function as the first layer of the eventual Puendo platform.
