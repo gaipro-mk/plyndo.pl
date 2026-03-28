@@ -1,67 +1,67 @@
 import { useMemo, useState } from 'react'
 
 const proofItems = [
-  '8-category household chemistry system',
-  'Flexible delivery every 1, 2, or 3 months',
-  'Designed for Polish households and delivery logic',
-  'Built around premium performance and calmer routines',
+  '8 kluczowych kategorii chemii domowej',
+  'Dostawy co 1, 2 lub 3 miesiące',
+  'Model zaprojektowany dla polskich gospodarstw domowych',
+  'Premium skuteczność i spokojniejsza codzienność',
 ]
 
 const operatingPains = [
   {
-    title: 'Reactive purchasing',
+    title: 'Zakupy w trybie awaryjnym',
     copy:
       'Essentials run out exactly when they are needed most, forcing rushed supermarket decisions and inconsistent results.',
   },
   {
-    title: 'Cabinet sprawl',
+    title: 'Chaos w szafkach',
     copy:
       'Households accumulate random bottles with unclear purpose, duplicated function, and no replenishment logic.',
   },
   {
-    title: 'No usage intelligence',
+    title: 'Brak dopasowania do realnego zużycia',
     copy:
-      'Most cleaning purchases ignore home size, household rhythm, children, pets, and actual consumption patterns.',
+      'Większość zakupów ignoruje metraż, rytm domu, dzieci, zwierzęta i realne wzorce zużycia.',
   },
 ]
 
 const pillars = [
   {
-    eyebrow: 'Always stocked',
-    title: 'Recurring supply without emergency store runs',
+    eyebrow: 'Zawsze pod ręką',
+    title: 'Regularne uzupełnianie bez awaryjnych wizyt w sklepie',
     copy:
-      'Plyndo is built to keep core household chemistry in rotation before your cabinets hit zero.',
+      'Plyndo ma utrzymywać kluczową chemię domową w obiegu, zanim Twoje szafki się wyzerują.',
   },
   {
-    eyebrow: 'Performance first',
-    title: 'A curated product system instead of bottle chaos',
+    eyebrow: 'Najpierw skuteczność',
+    title: 'Przemyślany system produktów zamiast przypadkowych butelek',
     copy:
-      'The offer focuses on essential household jobs with a clean operating model, not infinite SKU noise.',
+      'Oferta koncentruje się na najważniejszych zadaniach domowych, a nie na nieskończonym chaosie SKU.',
   },
   {
-    eyebrow: 'Adaptive by design',
-    title: 'Cadence and bundle logic matched to real usage',
+    eyebrow: 'Elastyczny model',
+    title: 'Częstotliwość i zestaw dopasowane do realnego rytmu domu',
     copy:
-      'The model is designed around configurable cycles, adjustable plans, and AI-assisted household fitting.',
+      'Model opiera się na konfigurowalnych cyklach, elastycznych planach i dopasowaniu wspieranym przez AI.',
   },
 ]
 
 const journeySteps = [
   {
     step: '01',
-    title: 'Choose your household profile',
+    title: 'Porozmawiaj z doradcą AI',
     copy:
-      'Start with a home profile and define how your household actually functions: size, rhythm, children, pets, and intensity of use.',
+      'Zacznij od profilu domu i określ, jak naprawdę funkcjonuje Twoje gospodarstwo: metraż, rytm, dzieci, zwierzęta i intensywność użycia.',
   },
   {
     step: '02',
-    title: 'Receive a chemistry set built for routine',
+    title: 'Odbierz swój zestaw',
     copy:
-      'Plyndo packages core liquids into a considered subscription offer with room for personalization and future AI fit.',
+      'Plyndo układa kluczowe płyny w przemyślaną ofertę subskrypcyjną z miejscem na personalizację i przyszłe dopasowanie AI.',
   },
   {
     step: '03',
-    title: 'Refine delivery as your usage becomes clear',
+    title: 'Zautomatyzuj porządek',
     copy:
       'Adjust cadence, pause, switch plan size, and evolve the set as your real-home consumption data becomes visible.',
   },
@@ -70,107 +70,107 @@ const journeySteps = [
 const plans = [
   {
     name: 'Mini',
-    audience: 'For compact households',
-    cadence: 'Best for lighter weekly usage and lower storage footprint.',
+    audience: 'Dla singli i par',
+    cadence: 'Skoncentrowany na podstawowych potrzebach przy mniejszym metrażu.',
     includes: [
-      'Core chemistry starter selection',
-      'Suggested 2- or 3-month cadence',
-      'Waitlist priority for AI matching',
+      'Podstawowy zestaw chemii domowej',
+      'Cykl dostaw co 2 lub 3 miesiące',
+      'Pierwszeństwo do dopasowania AI',
     ],
   },
   {
     name: 'Midi',
-    audience: 'For active everyday homes',
-    cadence: 'Balanced volume for steady family routines and mixed surfaces.',
+    audience: 'Dla rodziny',
+    cadence: 'Pełen wachlarz 8 kluczowych produktów dla domów z dziećmi.',
     includes: [
-      'Expanded cross-room essentials',
-      'Recommended 1- or 2-month cadence',
-      'Bundle personalization pathway',
+      'Pełniejszy zestaw do wielu stref domu',
+      'Standardowe dostawy co miesiąc',
+      'Możliwość personalizacji zestawu',
     ],
   },
   {
     name: 'Maxi',
-    audience: 'For larger or high-usage households',
-    cadence: 'Built for households that need operational consistency at scale.',
+    audience: 'Dla firm',
+    cadence: 'Duże pojemności i regularne dostawy dla biur i małych firm.',
     includes: [
-      'Full-home replenishment framing',
-      'Priority delivery planning logic',
-      'Future subscription management upgrades',
+      'Rozwiązanie dla wysokiego standardu higieny',
+      'Priorytetowa logika dostaw',
+      'Gotowość pod rozbudowaną obsługę subskrypcji',
     ],
   },
 ]
 
 const systemModules = [
-  'Kitchen care',
-  'Bathroom care',
-  'Floor and surface care',
-  'Laundry support',
-  'Dishwashing essentials',
-  'Refill and replenishment logic',
-  'Delivery orchestration across Poland',
-  'Subscription-lite fallback for lower-friction reorders',
+  'Pielęgnacja kuchni',
+  'Pielęgnacja łazienki',
+  'Podłogi i powierzchnie',
+  'Wsparcie prania',
+  'Zmywanie',
+  'Logika uzupełniania zapasów',
+  'Dostawy na terenie Polski',
+  'Subskrypcja Lite dla szybkich ponowień',
 ]
 
 const comparisonRows = [
   {
-    label: 'Buying pattern',
-    plyndo: 'Planned replenishment matched to household rhythm',
-    alt: 'Reactive top-ups when something runs out',
+    label: 'Sposób kupowania',
+    plyndo: 'Planowane uzupełnianie dopasowane do rytmu domu',
+    alt: 'Reaktywne dokupywanie po wyczerpaniu zapasu',
   },
   {
-    label: 'Product logic',
-    plyndo: 'Curated system with role clarity',
-    alt: 'Overwhelming shelf choice and duplicated functions',
+    label: 'Logika produktów',
+    plyndo: 'Kuratorski system z jasną rolą każdego środka',
+    alt: 'Przeładowane półki i dublujące się funkcje',
   },
   {
-    label: 'Operational fit',
-    plyndo: 'Cadence flexibility and future AI fit',
-    alt: 'Static purchases with no usage memory',
+    label: 'Dopasowanie operacyjne',
+    plyndo: 'Elastyczna częstotliwość i przyszłe dopasowanie AI',
+    alt: 'Statyczne zakupy bez pamięci zużycia',
   },
   {
-    label: 'Home experience',
-    plyndo: 'Cleaner, calmer, more controlled',
-    alt: 'Ad hoc, cluttered, and purchase-heavy',
+    label: 'Doświadczenie domu',
+    plyndo: 'Czyściej, spokojniej i pod większą kontrolą',
+    alt: 'Chaotycznie, doraźnie i zakupowo',
   },
 ]
 
 const trustPoints = [
-  'Transparent subscription and pause logic',
-  'Polish delivery context with InPost and courier flows in scope',
-  'Premium brand standard over discount-market positioning',
-  'Customer account model for plan and cadence management',
+  'Przejrzyste zasady subskrypcji, pauzy i zmian',
+  'Polski kontekst dostaw z InPost i kurierem',
+  'Standard premium zamiast pozycjonowania dyskontowego',
+  'Panel klienta do zarządzania planem i częstotliwością',
 ]
 
 const faqs = [
   {
-    question: 'What exactly is Plyndo?',
+    question: 'Czym dokładnie jest Plyndo?',
     answer:
-      'Plyndo is a premium D2C household chemistry subscription concept for Poland, designed to simplify recurring cleaning-product purchasing through curated plans and delivery cadence control.',
+      'Plyndo to premium koncept subskrypcji chemii domowej dla Polski, który upraszcza regularne zakupy dzięki kuratorskim pakietom i kontroli częstotliwości dostaw.',
   },
   {
-    question: 'What would be included in the MVP offer?',
+    question: 'Co obejmuje oferta MVP?',
     answer:
-      'The MVP strategy centers on an 8-product household chemistry system, package tiers such as Mini, Midi, and Maxi, and a waitlist-first path into recurring replenishment.',
+      'Strategia MVP opiera się na 8-kluczowym systemie chemii domowej, pakietach Mini, Midi i Maxi oraz ścieżce waitlist-first prowadzącej do modelu cyklicznego uzupełniania.',
   },
   {
-    question: 'Can customers change delivery timing?',
+    question: 'Czy można zmieniać częstotliwość dostaw?',
     answer:
-      'Yes. The operating model assumes configurable delivery cycles every 1, 2, or 3 months, with pause and change controls in the customer account.',
+      'Tak. Model zakłada dostawy co 1, 2 lub 3 miesiące oraz możliwość pauzy i zmian z poziomu konta klienta.',
   },
   {
-    question: 'Is this already live for purchase?',
+    question: 'Czy usługę można już normalnie kupić?',
     answer:
-      'This landing page is built as the launch and validation layer for the MVP. The primary conversion is early access and waitlist enrollment, not broad public checkout.',
+      'Ta strona działa jako warstwa startowa i walidacyjna dla MVP. Główną konwersją jest zapis na wczesny dostęp, a nie pełny publiczny checkout.',
   },
   {
-    question: 'Will the product be tailored to different households?',
+    question: 'Czy zestaw będzie dopasowany do rodzaju gospodarstwa?',
     answer:
-      'Yes. The strategy includes an AI-assisted questionnaire to fit set composition and replenishment frequency based on home size, household makeup, and lifestyle.',
+      'Tak. Strategia zakłada ankietę wspieraną przez AI, która dopasowuje skład zestawu i częstotliwość uzupełniania do metrażu, domowników i stylu życia.',
   },
   {
-    question: 'Do you deliver across Poland?',
+    question: 'Czy dostarczacie w całej Polsce?',
     answer:
-      'The strategy is built for the Polish market, including PLN payments and local delivery expectations, with InPost and courier logistics in scope.',
+      'Tak. Strategia jest tworzona z myślą o polskim rynku, płatnościach w PLN oraz lokalnych oczekiwaniach logistycznych, w tym InPost i kurierze.',
   },
 ]
 
@@ -191,7 +191,7 @@ function App() {
   const stats = useMemo(
     () => [
       { value: '8', label: 'core chemistry categories in MVP scope' },
-      { value: '1-3', label: 'month delivery cycles planned' },
+      { value: '1-3', label: 'miesięczne cykle dostaw w planie MVP' },
       { value: 'PL', label: 'market focus and logistics context' },
       { value: 'AI', label: 'assisted fitting model in product plan' },
     ],
@@ -218,8 +218,7 @@ function App() {
               plyndo.pl
             </div>
             <p className="mt-2 max-w-xl text-sm text-charcoal/70">
-              Premium household chemistry subscription strategy for modern homes
-              in Poland.
+              Premium subskrypcja chemii domowej dla nowoczesnych gospodarstw w Polsce.
             </p>
           </div>
           <nav className="flex flex-wrap items-center gap-5 text-sm text-charcoal/70">
@@ -227,10 +226,10 @@ function App() {
               System
             </a>
             <a className="transition hover:text-charcoal" href="#plans">
-              Plans
+              Pakiety
             </a>
             <a className="transition hover:text-charcoal" href="#difference">
-              Differentiation
+              Różnice
             </a>
             <a className="transition hover:text-charcoal" href="#faq">
               FAQ
@@ -240,14 +239,13 @@ function App() {
 
         <section className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div className="max-w-3xl">
-            <SectionLabel>Clinical clarity meets elevated home care</SectionLabel>
+            <SectionLabel>Profesjonalna skuteczność w domowej cenie</SectionLabel>
             <h1 className="max-w-4xl font-display text-5xl leading-[0.95] tracking-[-0.04em] text-charcoal sm:text-6xl lg:text-8xl">
-              Home chemistry, rebuilt as a premium operating system.
+              Twoje zapasy środków czystości mogą uzupełniać się same.
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-charcoal/75 sm:text-xl">
-              Plyndo turns household chemistry from reactive shopping into a
-              performance-led subscription model: curated liquids, flexible
-              replenishment, calmer cabinets, and fewer emergency store runs.
+              Odkryj Plyndo: profesjonalną skuteczność, kuratorskie pakiety,
+              dopasowanie AI i wygodę dostaw prosto od polskiego producenta.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -255,13 +253,13 @@ function App() {
                 href="#waitlist"
                 className="inline-flex items-center justify-center rounded-xl bg-mineral px-6 py-3.5 text-sm font-semibold text-porcelain transition hover:bg-mineral/90"
               >
-                Join the waitlist
+                Dołącz do listy oczekujących
               </a>
               <a
                 href="#journey"
                 className="inline-flex items-center justify-center rounded-xl border border-charcoal/15 bg-white/60 px-6 py-3.5 text-sm font-semibold text-charcoal transition hover:border-charcoal/30 hover:bg-white"
               >
-                See how it works
+                Zobacz, jak to działa
               </a>
             </div>
 
@@ -297,20 +295,20 @@ function App() {
 
               <div className="mt-5 rounded-[1.75rem] bg-charcoal px-6 py-6 text-porcelain">
                 <div className="text-xs font-semibold uppercase tracking-[0.3em] text-porcelain/60">
-                  Launch logic
+                  Logika startu
                 </div>
                 <div className="mt-4 grid gap-4 border-t border-white/10 pt-4 text-sm text-porcelain/80">
                   <div className="flex items-start justify-between gap-4">
-                    <span>Offer architecture</span>
+                    <span>Architektura oferty</span>
                     <span className="text-right">Mini / Midi / Maxi</span>
                   </div>
                   <div className="flex items-start justify-between gap-4">
-                    <span>Delivery model</span>
-                    <span className="text-right">InPost + courier</span>
+                    <span>Model dostawy</span>
+                    <span className="text-right">InPost + kurier</span>
                   </div>
                   <div className="flex items-start justify-between gap-4">
-                    <span>Retention hook</span>
-                    <span className="text-right">automated replenishment</span>
+                    <span>Mechanizm retencji</span>
+                    <span className="text-right">automatyczne uzupełnianie</span>
                   </div>
                 </div>
               </div>
@@ -318,12 +316,12 @@ function App() {
 
             <div className="absolute -bottom-6 -left-6 hidden max-w-xs rounded-[1.5rem] border border-copper/20 bg-copper/10 p-5 text-sm leading-6 text-charcoal/75 lg:block">
               <div className="font-semibold uppercase tracking-[0.22em] text-copper">
-                Positioning
+                Pozycjonowanie
               </div>
               <p className="mt-3">
-                Not another cleaning-products store. A premium domestic brand
-                built around replenishment logic, confidence, and home
-                operations.
+                To nie kolejny sklep z chemią. To premium marka domowa
+                zbudowana wokół logiki uzupełniania zapasów, pewności wyboru
+                i spokojniejszych domowych operacji.
               </p>
             </div>
           </div>
@@ -331,9 +329,9 @@ function App() {
 
         <section className="mt-24 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <SectionLabel>Category tension</SectionLabel>
+            <SectionLabel>Napięcie kategorii</SectionLabel>
             <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-charcoal sm:text-5xl">
-              Household chemistry is still managed like a chore.
+              Chemia domowa nadal jest kupowana jak uciążliwy obowiązek.
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
@@ -357,11 +355,11 @@ function App() {
           id="system"
           className="mt-24 rounded-[2rem] border border-charcoal/10 bg-mineral px-6 py-10 text-porcelain sm:px-10"
         >
-          <SectionLabel>Core promise</SectionLabel>
+            <SectionLabel>Główna obietnica</SectionLabel>
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-porcelain sm:text-5xl">
-                One system for a cleaner, better-run home.
+              Jeden system dla czystszego i lepiej działającego domu.
               </h2>
               <p className="mt-6 max-w-xl text-base leading-8 text-porcelain/75">
                 The strategy is built around turning essential chemistry into a
@@ -395,9 +393,9 @@ function App() {
           className="mt-24 grid gap-10 lg:grid-cols-[0.75fr_1.25fr]"
         >
           <div>
-            <SectionLabel>How it works</SectionLabel>
+            <SectionLabel>Jak to działa</SectionLabel>
             <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-charcoal sm:text-5xl">
-              Built around real household routines, not generic bundles.
+              Zbudowane wokół realnych domowych rytmów, a nie przypadkowych pakietów.
             </h2>
             <p className="mt-6 max-w-lg text-base leading-8 text-charcoal/72">
               The NotebookLM strategy points to a simple MVP flow: understand the
@@ -433,9 +431,9 @@ function App() {
         >
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <SectionLabel>Offer architecture</SectionLabel>
-              <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-charcoal sm:text-5xl">
-                Subscription packages designed as operating formats.
+            <SectionLabel>Architektura oferty</SectionLabel>
+            <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-charcoal sm:text-5xl">
+              Pakiety subskrypcyjne zaprojektowane jak formaty działania domu.
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-7 text-charcoal/72">
@@ -505,12 +503,12 @@ function App() {
           className="mt-24 grid gap-10 lg:grid-cols-[0.82fr_1.18fr]"
         >
           <div>
-            <SectionLabel>Differentiation</SectionLabel>
+            <SectionLabel>Co nas wyróżnia</SectionLabel>
             <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-charcoal sm:text-5xl">
-              Why Plyndo is not another cleaning-products store.
+              Dlaczego Plyndo nie jest kolejnym sklepem z chemią.
             </h2>
             <p className="mt-6 text-base leading-8 text-charcoal/72">
-              The model positions chemistry as household infrastructure:
+              Model pozycjonuje chemię domową jako infrastrukturę gospodarstwa:
               predictable, performance-driven, and managed with the same
               intentionality as any other critical home system.
             </p>
@@ -518,9 +516,9 @@ function App() {
 
           <div className="overflow-hidden rounded-[2rem] border border-charcoal/10 bg-white/75">
             <div className="grid grid-cols-[1.2fr_1fr_1fr] gap-4 border-b border-charcoal/10 px-6 py-5 text-xs font-semibold uppercase tracking-[0.24em] text-charcoal/55">
-              <div>Dimension</div>
+              <div>Wymiar</div>
               <div>Plyndo</div>
-              <div>Typical buying</div>
+              <div>Typowy zakup</div>
             </div>
             {comparisonRows.map((row) => (
               <div
@@ -537,9 +535,9 @@ function App() {
 
         <section className="mt-24 grid gap-8 lg:grid-cols-[1fr_1fr]">
           <article className="rounded-[2rem] border border-charcoal/10 bg-copper/10 p-8">
-            <SectionLabel>Trust architecture</SectionLabel>
+            <SectionLabel>Architektura zaufania</SectionLabel>
             <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-charcoal">
-              Built for households that value standards, not noise.
+              Zbudowane dla gospodarstw, które cenią standardy, a nie chaos.
             </h2>
             <div className="mt-8 grid gap-3">
               {trustPoints.map((point) => (
@@ -554,15 +552,15 @@ function App() {
           </article>
 
           <article className="rounded-[2rem] border border-charcoal/10 bg-charcoal p-8 text-porcelain">
-            <SectionLabel>Launch thesis</SectionLabel>
+            <SectionLabel>Teza startowa</SectionLabel>
             <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-porcelain">
-              A sharper start than generic ecommerce expansion.
+              Lepszy start niż generyczne rozszerzenie ecommerce.
             </h2>
             <div className="mt-8 grid gap-5 text-sm leading-7 text-porcelain/76">
               <p>
                 The NotebookLM strategy frames the MVP as a focused Polish pilot:
-                premium household chemistry, direct-to-consumer economics, a
-                waitlist-led launch, and room for AI-assisted fit.
+                premium chemię domową, ekonomię direct-to-consumer, start oparty
+                na liście oczekujących oraz przestrzeń na dopasowanie wspierane przez AI.
               </p>
               <p>
                 Growth is expected to come from educational content, referrals,
@@ -584,7 +582,7 @@ function App() {
           <div>
             <SectionLabel>FAQ</SectionLabel>
             <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-charcoal sm:text-5xl">
-              Operational clarity for early customers.
+              Operacyjna jasność dla pierwszych klientów.
             </h2>
           </div>
           <div className="grid gap-3">
@@ -622,15 +620,13 @@ function App() {
         >
           <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end">
             <div>
-              <SectionLabel>Early access</SectionLabel>
-              <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-porcelain sm:text-6xl">
-                Stop managing chemistry bottle by bottle.
+            <SectionLabel>Wczesny dostęp</SectionLabel>
+            <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-porcelain sm:text-6xl">
+              Przestań zarządzać chemią butelka po butelce.
               </h2>
               <p className="mt-6 max-w-2xl text-base leading-8 text-porcelain/74">
-                Join the first wave of Polish households following the Plyndo
-                launch. This page is designed as the MVP landing layer: one
-                clear conversion path, strong value framing, and room for the
-                subscription engine behind it.
+                Dołącz do pierwszej fali polskich gospodarstw, które chcą kupować
+                chemię domową mądrzej, spokojniej i bez awaryjnych wizyt w sklepie.
               </p>
             </div>
 
@@ -639,7 +635,7 @@ function App() {
               className="rounded-[1.75rem] border border-white/10 bg-white/8 p-6 backdrop-blur"
             >
               <label className="block text-xs font-semibold uppercase tracking-[0.24em] text-sage">
-                Pilot waitlist
+                Lista pilotażowa
               </label>
               <input
                 type="email"
@@ -652,12 +648,12 @@ function App() {
                 type="submit"
                 className="mt-4 w-full rounded-xl bg-porcelain px-5 py-3.5 text-sm font-semibold text-mineral transition hover:bg-white"
               >
-                Get early access
+                Poproś o dostęp
               </button>
               <p className="mt-4 text-sm leading-7 text-porcelain/66">
                 {submitted
-                  ? `Thanks. ${email} is marked for launch updates in this prototype flow.`
-                  : 'Current prototype conversion captures launch intent, package interest, and future subscription-fit demand.'}
+                  ? `Dziękujemy. ${email} zostało zapisane do aktualizacji o starcie w tym prototypowym przepływie.`
+                  : 'Ten prototypowy formularz zbiera zainteresowanie startem, pakietami i przyszłym modelem subskrypcyjnym.'}
               </p>
             </form>
           </div>
