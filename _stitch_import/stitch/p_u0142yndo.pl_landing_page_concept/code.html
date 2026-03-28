@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="pl"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Płyndo.pl | Profesjonalna czystość w Twojej subskrypcji</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#717786",
+              "inverse-on-surface": "#f0f1f2",
+              "primary": "#0058bc",
+              "primary-container": "#0070eb",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#c1c6d7",
+              "tertiary-fixed-dim": "#cecd00",
+              "tertiary-container": "#b2b000",
+              "surface-container": "#edeeef",
+              "surface-container-high": "#e7e8e9",
+              "on-surface-variant": "#414755",
+              "background": "#f8f9fa",
+              "tertiary": "#626100",
+              "inverse-surface": "#2e3132",
+              "secondary-fixed": "#e2e2e5",
+              "primary-fixed": "#d8e2ff",
+              "on-primary-fixed-variant": "#004493",
+              "surface-tint": "#005bc1",
+              "surface-container-highest": "#e1e3e4",
+              "error": "#ba1a1a",
+              "surface": "#f8f9fa",
+              "on-background": "#191c1d",
+              "tertiary-fixed": "#ebea00",
+              "secondary-container": "#e2e2e5",
+              "on-secondary-fixed": "#1a1c1e",
+              "on-secondary-container": "#636467",
+              "on-primary-container": "#fefcff",
+              "on-primary-fixed": "#001a41",
+              "secondary-fixed-dim": "#c6c6c9",
+              "on-tertiary-container": "#424200",
+              "surface-container-low": "#f3f4f5",
+              "surface-variant": "#e1e3e4",
+              "on-surface": "#191c1d",
+              "on-secondary-fixed-variant": "#454749",
+              "on-tertiary-fixed": "#1d1d00",
+              "on-primary": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#adc6ff",
+              "surface-dim": "#d9dadb",
+              "secondary": "#5d5e61",
+              "on-tertiary": "#ffffff",
+              "inverse-primary": "#adc6ff",
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed-variant": "#4a4900",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .text-balance {
+        text-wrap: balance;
+      }
+      .asymmetric-clip {
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-extrabold tracking-tighter text-blue-700 dark:text-blue-400 font-['Plus_Jakarta_Sans']">
+                Płyndo.pl
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-600 pb-1 font-['Plus_Jakarta_Sans'] font-bold tracking-tight" href="#">Produkty</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors" href="#">Pakiety AI</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-300 transition-colors" href="#">Subskrypcja</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-600 px-4 py-2 transition-all active:scale-95 duration-200">Strefa Klienta</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-primary-container transition-all active:scale-95 duration-200">Wybierz Pakiet</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 overflow-hidden min-h-[921px] flex items-center">
+<div class="absolute inset-0 z-0">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-widest mb-6">
+                    Digital-First Cleaning
+                </span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[1.1] mb-8 text-balance">
+                    Profesjonalna czystość w Twojej subskrypcji.
+                </h1>
+<p class="text-xl md:text-2xl text-on-surface-variant font-light mb-10 max-w-xl leading-relaxed">
+                    Skuteczność JAX Professional, wygoda Płyndo.pl. Poznaj pakiety dobrane przez AI dla Twojego domu.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-tertiary-fixed text-on-tertiary-fixed px-10 py-5 rounded-lg font-extrabold text-lg shadow-xl shadow-tertiary-fixed/20 hover:scale-105 transition-transform active:scale-95 flex items-center gap-2">
+                        Wybierz swój pakiet
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-surface-container-lowest text-primary px-10 py-5 rounded-lg font-bold text-lg border border-outline-variant/15 hover:bg-surface-container-low transition-colors">
+                        Zobacz ofertę
+                    </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="relative w-full aspect-square flex items-center justify-center">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl opacity-50 animate-pulse"></div>
+<img alt="Minimalist cleaning bottles" class="relative z-10 w-full h-auto drop-shadow-2xl rounded-2xl transform rotate-3" data-alt="Minimalist translucent cleaning product bottles arranged on a white marble surface with soft clinical lighting and water droplets" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb0vDEh2Woo2A4uvXfb3yw1vif2McuZwaFdwwf4rviO9_dV2Mv4yIgRpybjbuXZ4orT_gjV-geTgcDyVVZ0lQ6F1L_8J7AJ5IFq2926Jxj-Bf9uFiwK3AXVibs6WfiUjAua8pcKxfduHTKjYglCaLem6Vwq25Fb3NDqZCblEzCU8pC7_aX1v7paqShRdeYU6RD1YyS-Gf5tt8nnMIr8lCtKTBlX0AtAbRtqRIExSiod486UqT6pBKCL8ognv8km_2WijfVYK2EQk6i"/>
+<div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-2xl z-20 max-w-[200px] border border-outline-variant/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" data-weight="fill">verified</span>
+<span class="text-xs font-bold uppercase tracking-tight">JAX Certified</span>
+</div>
+<p class="text-[10px] text-on-surface-variant leading-tight">Zaufane przez profesjonalistów od 1994 roku.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Heritage/Trust Section -->
+<section class="bg-primary py-16 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex-1">
+<h2 class="text-white font-headline text-3xl md:text-4xl font-bold tracking-tight">
+                    30 lat tradycji JAX Professional. <span class="text-tertiary-fixed italic">Teraz w Twoim domu.</span>
+</h2>
+</div>
+<div class="flex items-center gap-12 opacity-60 grayscale brightness-200">
+<img alt="Partner Logo" class="h-10" data-alt="Abstract minimalist line-art logo symbol for professional hygiene standards" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkzCWqlrBU-np5FNtoPYHJOSHsl8xS9p6TnVtbiCGs0UfKYgqAWwjLXptlELSbod0ilxo0Hjdqt94Zo8z7tArGXacwUc_-FbP9YNIaK5iRdTD2E1wj7o-NdacPsXR1AxaTL4D_s0IiVaUAE0x6PKpuPJ3hx1avNGQpzyH8m2a-HVUQb2Bm-HG2zBrz_w0KoGgOlpROdAQBC9YrRSL3V7vTxGvMJKybx9wGbEETx-suzKT1YFfERHXXlyZARhufFP8HhUl1kATfvp41"/>
+<img alt="Partner Logo" class="h-10" data-alt="Minimalist professional cleaning industry certification badge graphic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW6SqENjSEpAK90i3h-oYYgQxwxWj944u1IdB9I8dA4dd-KU81yMeWn_IryNVmDjOU_g5S9bHgDjl1wzFGE6sXk-EvyEDDM1TDDXhJw3m3caH31eajlQqjp5IsjQVTI1wcCwDSI-E8Vt5lIMLKfkaUjC2qYmztKdApCqbAAFzykD2yEJbUR3jmdOZQzMUR006QwPvlS9QlTWlWIAcNV7nQFHfqFki9GyWCweV7R1WCKPe4PadBmng7xjasv-yzhcX-2OIh5FTXGQVd"/>
+</div>
+</div>
+</section>
+<!-- AI Assistant Interface -->
+<section class="py-24 bg-surface-container-low relative">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16 text-center max-w-3xl mx-auto">
+<h2 class="font-headline text-4xl font-bold mb-4 tracking-tight">Doradca Czystości AI</h2>
+<p class="text-on-surface-variant text-lg">Skonfiguruj swój pakiet w 30 sekund. Nasz algorytm dobierze idealną ilość chemii do Twoich potrzeb.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-3xl p-8 md:p-12 shadow-sm border border-outline-variant/10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+<div class="space-y-10">
+<div>
+<label class="block text-sm font-bold text-primary uppercase tracking-widest mb-6">Wielkość Twojego Domu</label>
+<div class="grid grid-cols-3 gap-4">
+<button class="flex flex-col items-center p-4 rounded-xl border-2 border-primary bg-primary/5 transition-all">
+<span class="material-symbols-outlined mb-2 text-primary">apartment</span>
+<span class="text-xs font-bold">MINI</span>
+<span class="text-[10px] opacity-60">&lt; 50m²</span>
+</button>
+<button class="flex flex-col items-center p-4 rounded-xl border-2 border-transparent bg-surface-container-low hover:border-outline-variant transition-all">
+<span class="material-symbols-outlined mb-2">home</span>
+<span class="text-xs font-bold">MIDI</span>
+<span class="text-[10px] opacity-60">50-100m²</span>
+</button>
+<button class="flex flex-col items-center p-4 rounded-xl border-2 border-transparent bg-surface-container-low hover:border-outline-variant transition-all">
+<span class="material-symbols-outlined mb-2">domain</span>
+<span class="text-xs font-bold">MAXI</span>
+<span class="text-[10px] opacity-60">100m²+</span>
+</button>
+</div>
+</div>
+<div>
+<label class="block text-sm font-bold text-primary uppercase tracking-widest mb-6">Mieszkańcy i zwierzęta</label>
+<div class="flex flex-wrap gap-4">
+<button class="px-6 py-3 rounded-full bg-surface-container-low border border-transparent hover:border-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">pets</span>
+<span class="text-sm font-medium">Posiadam zwierzęta</span>
+</button>
+<button class="px-6 py-3 rounded-full bg-primary text-white transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">child_care</span>
+<span class="text-sm font-medium">Małe dzieci</span>
+</button>
+<button class="px-6 py-3 rounded-full bg-surface-container-low border border-transparent hover:border-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">allergy</span>
+<span class="text-sm font-medium">Alergicy</span>
+</button>
+</div>
+</div>
+<div class="pt-6">
+<div class="p-6 rounded-2xl bg-primary/5 border border-primary/10">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<p class="font-bold text-sm">Rekomendacja AI</p>
+<p class="text-xs text-on-surface-variant italic">Na podstawie Twoich odpowiedzi</p>
+</div>
+</div>
+<h3 class="text-2xl font-extrabold mb-2">Pakiet MINI Clean+</h3>
+<p class="text-sm text-on-surface-variant mb-4 leading-relaxed">Optymalny dla małych mieszkań ze zwierzętami. Zwiększona dawka neutralizatora zapachów.</p>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black text-primary">89,00 zł<span class="text-sm font-normal text-on-surface-variant">/m-c</span></span>
+<button class="bg-tertiary-fixed text-on-tertiary-fixed px-6 py-3 rounded-lg font-bold text-sm">Wybierz ten pakiet</button>
+</div>
+</div>
+</div>
+</div>
+<div class="relative h-full min-h-[400px]">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl overflow-hidden">
+<img alt="Cleaning kit visualization" class="w-full h-full object-cover mix-blend-overlay" data-alt="Overhead view of a perfectly organized cleaning kit with white minimalist bottles and blue microfiber cloths in a clinical setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwQZ7F6R_H9nBPYRwONdawYGyTn3lpilJYn162PpmyzL2BAJrNdMw2oddosBfTpVV-FUtOx1LXoOoYAd7hrOJgjh-7EtBlruwFRQ3fWU1npZgxFNCNtxrQIcDySh6Go8dsxWNqLDT2AS42v2kfglvzH0WKplrc5T_dtBHyNTQnI1u_er2iixLwxvtAJ97FlxhhszPwnlcptz6WvLQMw1PycnXmO8HqmhmPGbEX7Q8J7OiI7ZsealoVzmGwdmvzymnVFcNTspaS7Gvq"/>
+</div>
+<div class="relative h-full flex flex-col justify-end p-8">
+<div class="bg-white/90 backdrop-blur p-6 rounded-2xl shadow-xl">
+<div class="flex justify-between items-center mb-4">
+<span class="text-xs font-bold text-primary tracking-widest">W TWOIM PAKIECIE:</span>
+<span class="text-xs font-bold px-2 py-1 bg-primary/10 rounded">6 PRODUKTÓW</span>
+</div>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-sm">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+<span>JAX 01 - Powierzchnie Szklane</span>
+</li>
+<li class="flex items-center gap-2 text-sm">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span>JAX 14 - Podłogi Drewniane</span>
+</li>
+<li class="flex items-center gap-2 text-sm">
+<span class="w-2 h-2 rounded-full bg-red-400"></span>
+<span>JAX 07 - Sanitariaty (Aktywny chlor)</span>
+</li>
+<li class="text-xs text-primary font-bold mt-2">+ 3 inne profesjonalne produkty</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Grid -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-xl">
+<h2 class="font-headline text-4xl font-bold mb-4 tracking-tight">Katalog Czystości</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed">Nasza gama produktów JAX Professional to 30 lat doświadczenia zamknięte w minimalistycznej formie. Skuteczność bez kompromisów.</p>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:translate-x-1 transition-transform">
+                    Zobacz pełną specyfikację techniczną
+                    <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
+<!-- Product 1 -->
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-low rounded-2xl mb-4 overflow-hidden relative border border-outline-variant/5">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded tracking-tighter">GLASS</span>
+</div>
+<img alt="JAX Glass Cleaner" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A clinical white bottle of window cleaner with a blue cap against a stark white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbcHMWq4Mk037bqBO_1ptRffUY9rmubRV1wf3Ynn59SkRZv_4CXGwtMS911_TXqoSbIz0XdMblqMkTfmdh6v_Ae-BOUTsx2tSjFkShPRnV4JysGrQyRGOrJVJ3ZaFV24G8wFaQVHbX2CudBf8DuqtmzXRd-UV0sV0d163BMec_zJYElpZZrtEUi5rXgSZBLTIy-Bb8KalYxVKN06GHZQHMvmH8uWARkYKDbkILqUeSvNnh4C-YENaTO6vOEn5yvQBaWFUrS0HuqhNh"/>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1 tracking-tight">JAX 01 Glass</h3>
+<p class="text-xs text-on-surface-variant mb-3">Krystaliczna czystość bez smug</p>
+<div class="flex items-center gap-2">
+<span class="bg-surface-variant text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">pH 7.0</span>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-low rounded-2xl mb-4 overflow-hidden relative border border-outline-variant/5">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-amber-500 text-white text-[10px] font-bold px-2 py-1 rounded tracking-tighter">FLOOR</span>
+</div>
+<img alt="JAX Floor Cleaner" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Minimalist floor cleaning product bottle with golden amber liquid and white labeling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfT-fSNucWAX9zxs87bcEpgV6fLrX7mBg6igspdY01q8LHSDtV2K5_YBwuEoihV5TB9y4iQVvlFILJUiQ1NcPJ69f-SQ_wU7KocUU96pPU4mHq4fnRetDJMLlvg_YRTziHqruLh0cDpABUl82palQKkjwUSiZrJbZrdjQwyVRNxB87gY1lTEKdrkSW0uIwN_V6x_MjSBVvgm57pnqEwfek7qC0p9yyEBMQl1o2RlExosGUoZ5ptnPswpGCGva9gPUTUQ7sFCcCkHa9"/>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1 tracking-tight">JAX 14 Floor</h3>
+<p class="text-xs text-on-surface-variant mb-3">Ochrona i blask twardych podłóg</p>
+<div class="flex items-center gap-2">
+<span class="bg-surface-variant text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">pH 8.5</span>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-low rounded-2xl mb-4 overflow-hidden relative border border-outline-variant/5">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded tracking-tighter">BATHROOM</span>
+</div>
+<img alt="JAX Bathroom" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Strong professional bathroom descaler bottle with red accents in a clean white setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC3Nj1FpsxDH4UDoq4ImySdNOCwaYGeJfVkPlJhS2o7xZ1uXtD2WqLh1n1dAdsfGUf30lU6b5mwYY_wFCUrIPFY-9HJItMBcQuerhnLjpDOlHKGxy3_fPmcxIiNkt3UprzSg6Eco1hXrURLA78Iy86d41tvxPKMgO4-LWOmILf6K0SovYmCzV_YxGBoYKvhXHh20r9k9VkKpsVrVczJhz5m96UPw5si7lhvoVJpE9oOxuOSDV_9wKpM_YJJMGQp1rJbA3xO3FFRq83"/>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1 tracking-tight">JAX 07 Bath</h3>
+<p class="text-xs text-on-surface-variant mb-3">Skuteczny przeciw osadom</p>
+<div class="flex items-center gap-2">
+<span class="bg-surface-variant text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">pH 2.0</span>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-low rounded-2xl mb-4 overflow-hidden relative border border-outline-variant/5">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded tracking-tighter">DISHES</span>
+</div>
+<img alt="JAX Dish Soap" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Concentrated professional dishwashing liquid in a slim clear bottle showing emerald green liquid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXIIyuJl3ln8R42T9DKu6s9JCpT8KlCQtTn_Z4B47oMrT4D_ZyfZveTOI0xRLiFyN2UnJDZwDFtWafHKZbL_-o6zBDrBOHr3B_3Yk08qZacJKoKU8Keo7Yy1JhgucGzJIhfCnzmC_zmL2Gi5QJXmu8zFOmT2THX7fF-JSePBaWbpTSo8AEhFEQIdpVhdZjFExlPIDgCCQTdJcIHx54-Y0HI5LQ-kvOPUUuysGDLhRmKU2V0IYgfzbasjUmO-y3V0h1buODUd_QpYqR"/>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1 tracking-tight">JAX 22 Dish</h3>
+<p class="text-xs text-on-surface-variant mb-3">Ultra-koncentrat do naczyń</p>
+<div class="flex items-center gap-2">
+<span class="bg-surface-variant text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">pH 7.0</span>
+</div>
+</div>
+<!-- Product 5-8 repeated layout with different info -->
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-low rounded-2xl mb-4 overflow-hidden relative border border-outline-variant/5">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-indigo-500 text-white text-[10px] font-bold px-2 py-1 rounded tracking-tighter">LAUNDRY</span>
+</div>
+<img alt="Laundry Detergent" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Professional grade laundry detergent bottle with deep indigo liquid inside" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1Orzt8_DVEFeB-_TjEN7ONz1qJa82E1yNXK77s4xHkTwtaZDEe4rkgG5vmMKTzPkohfrg-s8g-KPNBVCuhb17SRmNusWVUokAdqbTcJCPeCqfWSBQ2CFqqZ7fxDZnqpHze8OvIlNxC1d1ICe8bmoL7YWKNxeMA0JswcCgjz--jK0lHKi8eNxSCB4BDTBDYUqrOdrGgclmiFnBDBjzOtTY6WKMT5hsRaboVJuAYZ72hDmpBdayPPNDgRhLEiB8ChfXBSz5W7NACGAR"/>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1 tracking-tight">JAX 41 Laundry</h3>
+<p class="text-xs text-on-surface-variant mb-3">Głębokie oczyszczanie tkanin</p>
+<div class="flex items-center gap-2">
+<span class="bg-surface-variant text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">pH 9.0</span>
+</div>
+</div>
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-low rounded-2xl mb-4 overflow-hidden relative border border-outline-variant/5">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-pink-400 text-white text-[10px] font-bold px-2 py-1 rounded tracking-tighter">RINSE</span>
+</div>
+<img alt="Fabric Softener" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Soft pink professional fabric softener bottle in a light airy bathroom setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLKVsvl75IuEa3XYBqGVstHL9v6_Jle3kPpZvV8sH9o14mU8hDopEaZVddZhuQUfTuQ_fbW0ex5xKuarwUFYvBcOhXUlyZsD8vAeXDS5ff8mNCHS3CVf3LBoMSDXnLbX_Dl2HU3945iGLQqWHEsnT6wcunbFrsGL6naOtQNQD4489SJxVei1QNkgNLYmHwGJuhpw2GpQYWRRciYm4JPtpMbcREGvn2-ffP2PxAoNnE4xzumbOACm8M66_kz1WBGOq8SmqSPW3LbrRH"/>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1 tracking-tight">JAX 45 Softener</h3>
+<p class="text-xs text-on-surface-variant mb-3">Długotrwała miękkość</p>
+<div class="flex items-center gap-2">
+<span class="bg-surface-variant text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">pH 4.5</span>
+</div>
+</div>
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-low rounded-2xl mb-4 overflow-hidden relative border border-outline-variant/5">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-slate-500 text-white text-[10px] font-bold px-2 py-1 rounded tracking-tighter">DISHWASHER</span>
+</div>
+<img alt="Dishwasher Gel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Heavy-duty dishwasher gel bottle with gray industrial labeling on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6YVfB3PabNUQxqV5HhRfexgIEuhCxrUxcTTg0qr5P3L57kiCZKWk2dwvCfgcOZHeNuIXFe3B2r4jVPQQ7f68jEy8oxMrrLNsCvnNaCFtH0CPvi4ZsoKoc4ENi-KmNkMm0fwp0aIMu79CouTrP3Xr_17RyjFv3iJ8MPVSXWzdq7cdLTfC5rRrb_k3yoTjEg8iBiwR1nKFzi0udeNYa1eJlu_07wGHEiv4cWwj8hwYHx_kSpnPIW70BwFnfnjocNURDUsjU8537YZDi"/>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1 tracking-tight">JAX 31 DW-Gel</h3>
+<p class="text-xs text-on-surface-variant mb-3">Skoncentrowana moc zmywania</p>
+<div class="flex items-center gap-2">
+<span class="bg-surface-variant text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">pH 11.0</span>
+</div>
+</div>
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-low rounded-2xl mb-4 overflow-hidden relative border border-outline-variant/5">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-teal-500 text-white text-[10px] font-bold px-2 py-1 rounded tracking-tighter">SOAP</span>
+</div>
+<img alt="Hand Soap" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Elegant hand soap dispenser with turquoise liquid and minimalist branding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgfkATUCXzFy68crPhF9pkDFbmbcx-lVNraClyX3vZHc8yxnWLcz-BvhhwnijpKQoEFYmfTBMSYcieDxiMgrFCztAPo8IH4FO9ye_Xomn8HNXynWSsH9s_tfUtIDXFSaGZgiOu6Oh-SgjeKEfUv-eOmtOpc-tw2Z9zOsbT-BQbUW1dBQeou-g1ohiDms9u3BJhN6Or77TeDBVp2IHrTqa1T97zMMTnepB64PUhC5UkMBG6mjfTGgRr9wCeHF4-ByqunTYBnjtqwQod"/>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1 tracking-tight">JAX 19 Silk Hand</h3>
+<p class="text-xs text-on-surface-variant mb-3">Delikatne mydło pielęgnacyjne</p>
+<div class="flex items-center gap-2">
+<span class="bg-surface-variant text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">pH 5.5</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Subscription Lite Guide -->
+<section class="py-24 bg-surface-container-lowest overflow-hidden">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-outline-variant/15 rounded-3xl overflow-hidden shadow-sm">
+<div class="p-12 border-r border-outline-variant/15 relative">
+<span class="text-5xl font-black text-primary/10 absolute top-8 right-8">01</span>
+<div class="relative z-10">
+<div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white mb-8">
+<span class="material-symbols-outlined text-3xl">shopping_cart_checkout</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 tracking-tight">Zamawiasz</h3>
+<p class="text-on-surface-variant leading-relaxed">Wybierasz pakiet dostosowany do Twojego domu. Bez zbędnych produktów, bez dźwigania.</p>
+</div>
+</div>
+<div class="p-12 border-r border-outline-variant/15 bg-primary/5 relative">
+<span class="text-5xl font-black text-primary/10 absolute top-8 right-8">02</span>
+<div class="relative z-10">
+<div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white mb-8">
+<span class="material-symbols-outlined text-3xl">notifications_active</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 tracking-tight">Przypominamy</h3>
+<p class="text-on-surface-variant leading-relaxed">Gdy środki się kończą, otrzymujesz powiadomienie. Możesz zmienić termin lub skład paczki jednym kliknięciem.</p>
+</div>
+</div>
+<div class="p-12 relative">
+<span class="text-5xl font-black text-primary/10 absolute top-8 right-8">03</span>
+<div class="relative z-10">
+<div class="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white mb-8">
+<span class="material-symbols-outlined text-3xl">qr_code_2</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 tracking-tight">Płacisz BLIKIEM</h3>
+<p class="text-on-surface-variant leading-relaxed">Szybko i bezpiecznie. Żadnych ukrytych kosztów ani podpiętych kart, jeśli tego nie chcesz.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-900 w-full py-12 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="text-lg font-bold text-slate-900 dark:text-white font-['Plus_Jakarta_Sans']">Płyndo.pl</div>
+<p class="font-['Inter'] text-sm text-slate-500 max-w-sm">Dostarczamy profesjonalną jakość chemii JAX Professional bezpośrednio do Twoich drzwi w inteligentnym modelu subskrypcyjnym.</p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-slate-400 hover:text-blue-600 transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<h4 class="font-bold text-xs uppercase tracking-widest text-slate-900 dark:text-white mb-6">Informacje</h4>
+<ul class="space-y-4">
+<li><a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 transition-all hover:underline" href="#">Regulamin</a></li>
+<li><a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 transition-all hover:underline" href="#">Polityka Prywatności</a></li>
+<li><a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 transition-all hover:underline" href="#">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-xs uppercase tracking-widest text-slate-900 dark:text-white mb-6">Wsparcie</h4>
+<ul class="space-y-4">
+<li><a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 transition-all hover:underline" href="#">Kontakt</a></li>
+<li><a class="font-['Inter'] text-sm text-slate-500 hover:text-blue-600 transition-all hover:underline text-blue-600 font-semibold" href="#">Strefa Klienta</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<p class="font-['Inter'] text-sm text-slate-500 opacity-80 hover:opacity-100 transition-opacity">© 2024 Płyndo.pl. Powered by JAX Professional.</p>
+<div class="flex items-center gap-2 grayscale opacity-50">
+<span class="text-[10px] font-bold uppercase tracking-tight">Payment partners:</span>
+<span class="text-xs font-bold px-2 py-1 bg-slate-200 rounded">BLIK</span>
+<span class="text-xs font-bold px-2 py-1 bg-slate-200 rounded">VISA</span>
+</div>
+</div>
+</footer>
+</body></html>
