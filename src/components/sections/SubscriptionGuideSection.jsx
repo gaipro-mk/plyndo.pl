@@ -16,7 +16,7 @@ export default function SubscriptionGuideSection({ lang }) {
   return (
     <section className="py-24 bg-surface-container-lowest overflow-hidden" id="subscription">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-outline-variant/15 rounded-3xl overflow-hidden shadow-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, idx) => {
             const Icon = iconMap[step.icon];
             const isMiddle = idx === 1;
@@ -28,16 +28,16 @@ export default function SubscriptionGuideSection({ lang }) {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.15, duration: 0.6 }}
                 className={cn(
-                  "p-12 relative border-b md:border-b-0 md:border-r border-outline-variant/15 last:border-0",
-                  isMiddle && "bg-primary/5"
+                  "p-10 relative border border-outline-variant/20 rounded-3xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/5 cursor-default group overflow-hidden",
+                  isMiddle ? "bg-primary/5 shadow-md" : "bg-surface shadow-sm"
                 )}
               >
-                <span className="text-5xl font-black text-primary/10 absolute top-8 right-8">{step.step}</span>
+                <span className="text-6xl font-black text-primary/5 absolute -bottom-4 -right-4 transition-transform duration-500 group-hover:scale-110 group-hover:text-primary/10">{step.step}</span>
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-white mb-8 shadow-md">
+                  <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center text-on-primary mb-8 shadow-md">
                     {Icon && <Icon className="w-7 h-7" />}
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 tracking-tight font-headline">{step.title}</h3>
+                  <h3 className="text-2xl font-bold mb-4 tracking-tight font-headline text-on-surface group-hover:text-primary transition-colors">{step.title}</h3>
                   <p className="text-on-surface-variant leading-relaxed">
                     {step.desc}
                   </p>

@@ -76,18 +76,30 @@
   --font-scale: 1.08;
 }
 
-/* Dark mode variations (fallback to inversion for untested tokens, can refine later) */
+/* Dark mode variations (expanded for full semantic token support) */
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --color-surface: #0f1311;
-  --color-surface-container-low: #141b18;
-  --color-surface-container-lowest: #181f1c;
-  --color-on-surface: #edf2ed;
-  --color-on-surface-variant: #b8c5be;
-  --color-primary: #9bc2b5;
-  --color-primary-fixed: #436158;
+  --color-surface: #0a0f12;
+  --color-surface-container-lowest: #050809;
+  --color-surface-container-low: #101518;
+  --color-surface-container: #14191c;
+  --color-surface-container-high: #1a2024;
+  --color-surface-container-highest: #20262b;
+  --color-on-surface: #e6ebf0;
+  --color-on-surface-variant: #a9b1b7;
+  --color-background: #0a0f12;
+  --color-on-background: #e6ebf0;
+  --color-primary: #86b1ff;
+  --color-on-primary: #002967;
+  --color-primary-container: #00409a;
+  --color-on-primary-container: #d8e2ff;
+  --color-primary-fixed: #d8e2ff;
+  --color-on-primary-fixed: #001a41;
+  --color-outline: #8d959d;
+  --color-outline-variant: #42484e;
+  --color-secondary: #c0c6cf;
+  --color-on-secondary: #2a3138;
   --color-tertiary-fixed: #d89d65;
-  --color-background: #121614;
 }
 
 html {

@@ -72,19 +72,24 @@ export const copy = {
       lead: 'Skonfiguruj swój pakiet w 30 sekund. Nasz algorytm dobierze idealną ilość chemii do Twoich potrzeb.',
       step1: {
         title: 'Wielkość Twojego Domu',
-        options: [
-          { label: 'MINI', desc: '< 50m²', icon: 'apartment' },
-          { label: 'MIDI', desc: '50-100m²', icon: 'home' },
-          { label: 'MAXI', desc: '100m²+', icon: 'domain' }
-        ]
+        unit: 'm²',
+        help: 'Przesuń suwak, aby wybrać dokładny metraż'
       },
       step2: {
-        title: 'Mieszkańcy i zwierzęta',
+        title: 'Dodatkowe uwarunkowania',
         options: [
-          { label: 'Posiadam zwierzęta', icon: 'pets' },
-          { label: 'Małe dzieci', icon: 'child_care' },
+          { label: 'Zwierzęta', icon: 'pets' },
+          { label: 'Dzieci', icon: 'child_care' },
           { label: 'Alergicy', icon: 'allergy' }
         ]
+      },
+      step3: {
+        title: 'Jakie powierzchnie dominują?',
+        options: ['Podłogi drewniane', 'Płytki / Terakota', 'Duże przeszklenia', 'Trudne zabrudzenia']
+      },
+      step4: {
+        title: 'Częstotliwość dostaw',
+        options: ['Co miesiąc', 'Co 2 miesiące', 'Co 3 miesiące']
       },
       result: {
         badge: 'Rekomendacja AI',
@@ -441,19 +446,24 @@ export const copy = {
       lead: 'Configure your package in 30 seconds. Our algorithm will match the ideal amount of chemistry to your needs.',
       step1: {
         title: 'Size of Your Home',
-        options: [
-          { label: 'MINI', desc: '< 50m²', icon: 'apartment' },
-          { label: 'MIDI', desc: '50-100m²', icon: 'home' },
-          { label: 'MAXI', desc: '100m²+', icon: 'domain' }
-        ]
+        unit: 'm²',
+        help: 'Drag the slider to select exact area'
       },
       step2: {
-        title: 'Housemates and pets',
+        title: 'Additional conditions',
         options: [
-          { label: 'I have pets', icon: 'pets' },
-          { label: 'Small children', icon: 'child_care' },
+          { label: 'Pets', icon: 'pets' },
+          { label: 'Children', icon: 'child_care' },
           { label: 'Allergies', icon: 'allergy' }
         ]
+      },
+      step3: {
+        title: 'What surfaces dominate?',
+        options: ['Wood floors', 'Tiles / Ceramics', 'Large windows', 'Tough dirt']
+      },
+      step4: {
+        title: 'Delivery frequency',
+        options: ['Monthly', 'Every 2 months', 'Every 3 months']
       },
       result: {
         badge: 'AI Recommendation',

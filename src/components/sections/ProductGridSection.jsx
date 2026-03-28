@@ -40,23 +40,23 @@ export default function ProductGridSection({ lang }) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 md:grid md:grid-cols-4 md:gap-y-12 md:pb-0 no-scrollbar"
         >
           {content.products.map((product, idx) => (
-            <motion.div variants={item} key={idx} className="group cursor-pointer">
-              <div className="aspect-3/4 bg-surface-container-low rounded-2xl mb-4 overflow-hidden relative border border-outline-variant/5">
+            <motion.div variants={item} key={idx} className="group cursor-pointer min-w-[260px] md:min-w-0 snap-start">
+              <div className="aspect-3/4 bg-surface-container-low rounded-2xl mb-4 overflow-hidden relative border border-outline-variant/20 shadow-sm transition-shadow duration-500 group-hover:shadow-2xl group-hover:shadow-primary/10">
                 <div className="absolute top-4 left-4 z-20">
-                  <span className={`${product.color} text-white text-[10px] font-bold px-2 py-1 rounded tracking-tighter shadow-sm`}>
+                  <span className={`${product.color} text-white text-[10px] font-bold px-2 py-1 rounded tracking-tighter shadow-md`}>
                     {product.tag}
                   </span>
                 </div>
                 <img 
                   alt={product.name} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" 
                   src={product.img}
                 />
               </div>
-              <h3 className="font-headline font-bold text-lg mb-1 tracking-tight group-hover:text-primary transition-colors">{product.name}</h3>
+              <h3 className="font-headline font-bold text-lg mb-1 tracking-tight text-on-surface group-hover:text-primary transition-colors">{product.name}</h3>
               <p className="text-xs text-on-surface-variant mb-3">{product.tagline}</p>
               <div className="flex items-center gap-2">
                 <span className="bg-surface-variant text-on-surface-variant text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">

@@ -23,7 +23,7 @@ export default function HeroSection({ lang }) {
           <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-widest mb-6">
             {content.tag}
           </span>
-          <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[1.1] mb-8 text-balance">
+          <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[1.1] mb-8 text-balance">
             {content.title}
           </h1>
           <p className="text-xl md:text-2xl text-on-surface-variant font-light mb-10 max-w-xl leading-relaxed">
@@ -58,7 +58,7 @@ export default function HeroSection({ lang }) {
             />
             
             <motion.div 
-              className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-2xl z-20 max-w-[200px] border border-outline-variant/10"
+              className="absolute -bottom-6 -left-2 sm:-left-6 bg-surface p-4 sm:p-6 rounded-xl shadow-2xl z-20 max-w-[170px] sm:max-w-[200px] border border-outline-variant/20 text-on-surface"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.5 }}
