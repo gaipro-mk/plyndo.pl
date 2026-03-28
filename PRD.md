@@ -1,149 +1,139 @@
 # Plyndo.pl PRD
 
 ## Overview
-Plyndo.pl is the landing and launch surface for a Polish D2C household chemistry brand built on top of 30+ years of family production know-how associated with JAX Professional. The commercial wedge is simple: deliver professional-grade cleaning chemistry to households and small offices without retail markups, with replenishment logic that feels automated rather than transactional.
+Plyndo.pl is the landing and validation layer for a premium D2C household chemistry subscription brand for Poland. The product strategy positions household chemistry as a home operating system rather than a reactive supermarket purchase. The MVP is designed to validate demand, capture early access leads, and prepare for a subscription ecommerce launch built around curated chemistry bundles, configurable delivery cadence, and future AI-assisted plan fitting.
 
-The product strategy combines:
-- professional effectiveness validated in industrial, gastronomy, and healthcare contexts
-- direct-to-consumer economics
-- AI-guided package selection
-- Polish-native convenience through BLIK and InPost
+## Product Vision
+- Turn household chemistry from ad hoc purchasing into a predictable subscription routine.
+- Offer premium, performance-first household liquids in a cleaner, more structured buying model.
+- Build a Polish-market-first direct-to-consumer brand with strong delivery and replenishment logic.
 
-## Problem
-Consumers in Poland are dealing with:
-- rising prices in household chemistry
-- low confidence that supermarket products are truly efficient
-- friction from carrying, storing, and remembering heavy cleaning supplies
-- poor product fit for real household situations such as pets, children, or higher wash frequency
+## MVP Goals
+- Validate category resonance and waitlist demand.
+- Test positioning for premium household chemistry subscription in Poland.
+- Prepare the content and UX foundation for future ecommerce and subscription flows.
+- Support a pilot launch for a limited early cohort, initially family-and-friends scale.
 
-Small offices and local businesses face a related operational problem:
-- they need predictable hygiene supply, refill quantities, and invoice-friendly ordering without overbuying
+## Target Audience
+- Busy Polish households that value control, convenience, and product quality.
+- Families with children or pets who consume cleaning products more predictably and at higher volume.
+- Households frustrated by reactive store runs, cluttered cabinets, and unclear product selection.
+- Secondary long-term segment: small business or office supply needs, but not primary MVP focus.
 
-## Market Wedge
-The initial wedge is not "eco brand" and not "premium fragrance lifestyle." It is:
-- professional chemistry for home and small office
-- sold directly, with better economics than traditional retail
-- wrapped in a simpler, more intelligent buying experience
-
-## Core Audience
-### MINI
-- singles and couples
-- smaller apartments
-- lower volume consumption
-- value convenience and design clarity
-
-### MIDI
-- families with children
-- households with pets
-- highest wash and cleaning frequency
-- strongest expected retention and AOV potential
-
-### MAXI
-- small offices
-- large homes
-- heavy-use households
-- refill and invoice-oriented buyers
-
-### Smart Shoppers
-- consumers optimizing cost per wash / cost per clean
-- inflation-sensitive
-- skeptical of brand markup without real performance
+## Core User Problems
+- Essentials run out at inconvenient times.
+- Households overbuy or accumulate the wrong products.
+- It is difficult to map product choice to actual household usage.
+- Existing buying flows are reactive, inconsistent, and operationally noisy.
 
 ## Value Proposition
-- Professional cleaning performance at a consumer-accessible price point
-- Better economics by removing retailer and distributor margin
-- Automated replenishment before stock-outs occur
-- AI-supported package matching based on household profile
-- Lower friction through BLIK and InPost-first logistics
-
-## Product Pillars
-1. Professional effectiveness
-2. Direct economics
-3. AI-supported personalization
-4. Polish-native convenience
-5. Transparent dosing and safety communication
+- Premium household chemistry delivered before you run out.
+- Curated product logic instead of supermarket overwhelm.
+- Delivery cadence that can adapt to real usage.
+- A future AI-assisted fitting layer for quantity, bundle composition, and replenishment frequency.
 
 ## MVP Scope
-### Included
-- landing page and acquisition surface
-- 8-product core catalog story
-- package logic: MINI, MIDI, MAXI
-- AI advisor narrative and estimator
-- subscription logic communication
-- trust and proof system
-- FAQ and objection handling
 
-### Future Product Scope Referenced By Strategy
-- AI Cleanliness Advisor
-- customer panel
-- recurring subscription engine
-- Subskrypcja Lite with reminder + BLIK flow
-- InPost delivery selection
-- finance / invoice integrations
+### In Scope
+- Marketing landing page for early access and waitlist capture.
+- Brand and offer articulation for the Polish market.
+- Presentation of package logic: Mini, Midi, Maxi.
+- Explanation of replenishment cadence: every 1, 2, or 3 months.
+- UX framing for AI-assisted household-fit questionnaire.
+- Messaging for future customer account controls: pause, change cadence, change plan.
+- Polish logistics framing including InPost and courier delivery.
 
-## Non-goals
-- full e-commerce checkout in this phase
-- native mobile app
-- internationalization
-- broad marketplace catalog
-- loyalty program complexity
+### Future Product Scope
+- Full ecommerce storefront.
+- AI questionnaire backed by OpenAI API.
+- Stripe subscriptions and recurring billing.
+- Customer account with subscription management.
+- Product catalog and operational product data.
+- InPost GeoWidget and shipment-label generation.
+- Subscription-lite flow with prefilled reorder and BLIK-compatible payment path.
+- Fakturownia integration and invoice automation.
 
-## User Flows
-### Consumer acquisition
-1. user lands on plyndo.pl
-2. understands category shift: industrial-grade chemistry for home
-3. self-identifies with MINI / MIDI / MAXI profile
-4. engages with advisor framing
-5. reaches primary CTA for next-step conversion
+### Out of Scope for This Build
+- Live checkout.
+- Live subscription billing.
+- Customer authentication.
+- Real CRM or email workflow.
+- Real product database.
+- Real logistics integration.
+- Real AI questionnaire backend.
 
-### Office / B2B-light acquisition
-1. user lands on page
-2. sees MAXI and invoice/logistics relevance
-3. validates predictable replenishment story
-4. moves toward high-intent contact or product selection
+## Product Model
+- Core assortment: 8 household chemistry product categories.
+- Offer structure: curated package tiers with personalization.
+- Subscription frequency: 1, 2, or 3 month cycles.
+- Market: Poland only in MVP.
+- Currency and delivery assumptions: PLN, domestic logistics, InPost and courier.
 
-## Conversion Strategy
-### Primary CTA
-- launch or begin the AI cleanliness advisor
+## User Journey
+1. User lands on Plyndo.pl and understands the category thesis.
+2. User sees why household chemistry should be treated as a managed home system.
+3. User explores package logic and replenishment model.
+4. User understands the future household-fit and cadence logic.
+5. User joins the waitlist for early access.
+6. In later phases, user would move into AI questionnaire, plan recommendation, order, and subscription management.
 
-### Secondary CTA
-- inspect package architecture / catalog structure
-
-### Supporting Conversion Levers
-- 30 years of production heritage
-- hospital / gastronomy / industry proof
-- 8-product clarity instead of overwhelming catalog sprawl
-- control over pause/edit/cancel
-
-## Success Metrics
-- qualified landing page conversion rate
-- package selection interaction rate
-- advisor engagement rate
-- CTA click-through rate
-- waitlist / lead generation rate
-- future AOV target: ~100 PLN
-- future MRR target: 100,000 PLN
-- future target: 1,000 active subscriptions
-
-## Risks
-- over-positioning as "premium" without proving economic advantage
-- logistics risk for heavy liquid shipments
-- regulatory constraints for specific chemical transport cases
-- low consumer trust in a new B2C brand despite industrial heritage
-- suboptimal subscription framing if users perceive lock-in
-
-## Open Questions
-- exact final branding: Plyndo vs Puendo naming hierarchy
-- how aggressively to lead with industrial heritage versus home friendliness
-- whether Subskrypcja Lite should be primary or secondary in launch comms
-- which package receives strongest CTA emphasis on the live site
-- how deeply pricing should be exposed before full commerce is live
+## Key Experience Principles
+- Premium rather than discount retail.
+- Structured rather than SKU-heavy.
+- Calm, operational, and credible rather than loud or gimmicky.
+- Polish-market relevance rather than global-generic D2C language.
 
 ## Landing Page Requirements
-- enterprise-grade visual quality
-- strong differentiation from generic SaaS and commodity e-commerce design
-- Polish-language copy
-- clear package and audience segmentation
-- interactive recommendation element
-- explicit trust architecture
-- no fake metrics or invented testimonials
+- Strong premium hero with clear value proposition.
+- Explanation of the core problem and category tension.
+- Pillars: always stocked, performance-first, adaptive by design.
+- Clear process section.
+- Offer architecture section for Mini, Midi, Maxi.
+- Comparison framing against supermarket and generic ecommerce behavior.
+- Trust and FAQ sections.
+- Single primary conversion path: waitlist / early access.
+
+## Metrics
+- Waitlist signups.
+- Waitlist-to-pilot conversion.
+- Active subscription count in later phases.
+- AOV target around 100 PLN.
+- Churn once subscriptions launch.
+- MRR in post-MVP scale phases.
+
+## Growth Levers
+- Educational content and usage guides.
+- Referral loops during early pilot.
+- Seasonal chemistry bundles.
+- Clear category education around performance and replenishment logic.
+
+## Retention Levers
+- Auto-replenishment convenience.
+- Better fit over time through usage-informed adjustment.
+- Clear customer controls for pause, change, and modify.
+- Post-purchase education and replenishment reminders.
+
+## Dependencies
+- Product specs, packaging, and label data from the business side.
+- Future integrations: Stripe, OpenAI, InPost, customer account system, invoicing stack.
+- Delivery and packaging viability for heavy liquids.
+- Subscription operations and support readiness.
+
+## Risks
+- Shipping damage and logistics complexity for liquid products.
+- Compliance constraints for chemical products and transport.
+- Limited B2C operational experience.
+- Cost volatility in logistics, energy, and packaging.
+- Need to balance premium positioning with understandable mass-market value.
+
+## Open Questions
+- How much of the first launch should be waitlist-first vs pilot commerce enabled?
+- What exact products and pack sizes belong in each initial package?
+- When should full recurring billing go live versus reminder-based reorders?
+- How much AI fitting is truly needed in MVP versus post-MVP?
+- Should the home/business split appear in the first public version or be deferred?
+
+## Current Implementation
+- Premium landing page built with React, Vite, and Tailwind.
+- Static waitlist interaction for prototype validation.
+- No backend or live integrations yet.

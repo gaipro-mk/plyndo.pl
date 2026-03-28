@@ -1,31 +1,26 @@
 # CODEX.md
 
-## Repository Guidance
-- Main app entry: `src/App.jsx`
-- Global styling and Tailwind import: `src/index.css`
-- Vite config: `vite.config.js`
-- Product strategy reference: `PRD.md`
+## Context
+This repository contains the public landing page and core planning docs for Plyndo.pl, a premium D2C household chemistry subscription concept for Poland.
 
-## Design Intent
-- premium consumer brand, not SaaS
-- Polish-market first
-- calm, precise, expensive-looking UI
-- serif display + restrained sans body
-- muted mineral palette, not bright eco green
+## What Matters Most
+- Protect the premium brand tone.
+- Keep messaging grounded in the strategy: control, consistency, replenishment, confidence.
+- Do not turn the page into a generic software landing page.
+- Do not introduce fake proof claims or unsupported product claims.
+
+## Design Direction
+- Warm porcelain background, mineral green anchor, muted copper accents.
+- Editorial serif headlines with restrained sans body copy.
+- Structured panels, asymmetry, and calm motion.
+
+## Product Constraints
+- Current implementation is landing-page only.
+- No backend, no live checkout, no live subscription engine.
+- Waitlist interaction is prototype-only unless explicitly upgraded.
 
 ## Editing Guidance
-- keep sections content-rich and conversion-focused
-- prefer refining structure and typography over adding more generic cards
-- preserve one primary conversion goal per page state
-- avoid introducing unused dependencies
-- use Tailwind utilities plus a small number of shared CSS classes in `src/index.css`
-
-## Deployment Intent
-- intended target domain: `plyndo.64bit.site`
-- Vercel is the expected hosting platform
-
-## Known Gaps
-- no live waitlist backend
-- no analytics wiring
-- no product detail or account pages yet
-- brand naming may still need confirmation between `Plyndo` and `Puendo`
+- Prefer concise content changes with high signal.
+- Keep sections conversion-oriented and strategy-aligned.
+- When changing copy, keep Poland-market relevance visible.
+- When adding features, update `PRD.md` if the scope changes.

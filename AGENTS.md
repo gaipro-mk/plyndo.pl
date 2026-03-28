@@ -1,37 +1,35 @@
 # AGENTS.md
 
-## Project Intent
-Plyndo.pl is currently a premium landing page for a Polish D2C household chemistry concept sourced from NotebookLM and the project Drive folder. This repo is not the full commerce system yet. The immediate goal is to communicate strategy, trust, package logic, and AI-guided replenishment clearly enough to validate demand.
+## Project
+- Name: `plyndo.pl`
+- Purpose: premium landing page and product documentation for a Polish D2C household chemistry subscription concept.
 
-## Product Positioning
-- Professional-grade household chemistry
-- Direct-to-consumer economics
-- AI-guided package fit
-- Poland-first payment and delivery expectations
-
-## Guardrails
-- Do not invent customer testimonials, certifications, or operating metrics.
-- Do not drift into generic SaaS styling.
-- Keep copy grounded in the strategy docs: industrial heritage, direct economics, 8-product system, BLIK, InPost, AI advisor, and subscription flexibility.
-- Preserve Polish-market context in UX and wording.
-
-## Current Tech
+## Stack
 - React
 - Vite
 - Tailwind CSS v4 via `@tailwindcss/vite`
 
-## Common Commands
-- `npm install`
-- `npm run dev`
-- `npm run build`
+## Commands
+- Install: `npm install`
+- Dev: `npm run dev`
+- Build: `npm run build`
+- Preview: `npm run preview`
+- Lint: `npm run lint`
 
-## Implementation Notes
-- The current scope is landing page only.
-- PRD lives in `PRD.md`.
-- Repo guidance for Codex lives in `CODEX.md`.
-- Favor simple components and data-driven sections over premature abstraction.
+## Working Rules
+- Keep the current visual direction: premium, editorial, lab-grade domestic brand.
+- Avoid generic SaaS UI patterns and loud eco clichés.
+- Treat the current page as a waitlist-first MVP landing page, not a checkout flow.
+- Preserve the single primary CTA strategy unless product requirements change.
 
-## Deployment Notes
-- GitHub repo: `gaipro-mk/plyndo.pl`
-- Preferred deployment target: Vercel
-- Desired domain: `plyndo.64bit.site`
+## File Ownership Notes
+- App UI: `src/App.jsx`
+- Global theme and Tailwind tokens: `src/index.css`
+- Build config: `vite.config.js`
+- Product documentation: `PRD.md`
+
+## Expected Future Work
+- Add real waitlist backend or CRM integration.
+- Add analytics and event tracking.
+- Add bilingual Polish/English content strategy if needed.
+- Add ecommerce and subscription backend only after product validation.
