@@ -5,9 +5,11 @@ export default function TopNav({
   lang, setLang,
   theme, setTheme,
   fontScale, setFontScale,
-  resolution, setResolution
+  resolution, setResolution,
+  activeTheme
 }) {
   const content = copy[lang];
+  const logoSrc = activeTheme === 'dark' ? '/logo-dark.svg' : '/logo-light.svg';
 
   const cycleTheme = () => {
     if (theme === 'system') setTheme('light');
@@ -30,9 +32,9 @@ export default function TopNav({
   return (
     <nav className="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant/10">
       <div className="flex flex-wrap md:flex-nowrap justify-between items-center px-4 sm:px-6 py-4 max-w-7xl mx-auto gap-y-4">
-        <div className="text-xl sm:text-2xl font-headline font-extrabold tracking-tighter text-primary">
-          {content.brand}
-        </div>
+        <a className="shrink-0" href="#top" aria-label={content.brand}>
+          <img src={logoSrc} alt={content.brand} className="h-8 sm:h-9 w-auto" />
+        </a>
         <div className="hidden md:flex items-center gap-8">
           <a className="text-primary border-b-2 border-primary pb-1 font-headline font-bold tracking-tight" href="#products">
             {content.nav.product}

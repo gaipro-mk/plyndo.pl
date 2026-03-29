@@ -1,16 +1,17 @@
 import { copy } from '../../content';
 import { Globe, Mail } from 'lucide-react';
 
-export default function Footer({ lang }) {
+export default function Footer({ lang, activeTheme }) {
   const content = copy[lang];
+  const logoSrc = activeTheme === 'dark' ? '/logo-dark.svg' : '/logo-light.svg';
 
   return (
     <footer className="bg-surface-container-high w-full py-16 px-6 border-t border-outline-variant/10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8">
         <div className="space-y-6 md:col-span-1">
-          <div className="text-2xl font-extrabold tracking-tighter text-primary font-headline">
-            {content.brand}
-          </div>
+          <a className="inline-block" href="#top" aria-label={content.brand}>
+            <img src={logoSrc} alt={content.brand} className="h-10 w-auto" />
+          </a>
           <p className="font-body text-sm text-on-surface-variant max-w-sm leading-relaxed">
             {content.footerDesc}
           </p>

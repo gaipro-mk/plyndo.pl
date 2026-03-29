@@ -19,20 +19,32 @@ function App() {
   const [fontScale, setFontScale] = useState('md'); // 'sm', 'md', 'lg'
   const [resolution, setResolution] = useState('desktop'); // 'mobile', 'tablet', 'desktop'
 
+  const getActiveTheme = () => {
+    if (theme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return theme;
+  };
+
   // Apply root configurations based on state
   useEffect(() => {
     document.documentElement.lang = lang;
     
     // Theme application
-    let activeTheme = theme;
-    if (theme === 'system') {
-      activeTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
+    const activeTheme = getActiveTheme();
     document.documentElement.setAttribute('data-theme', activeTheme);
+
+    // Favicon follows active in-app theme for browser tab/address bar contrast.
+    const favicon = document.getElementById('app-favicon');
+    if (favicon) {
+      favicon.setAttribute('href', activeTheme === 'dark' ? '/favicon-dark.svg' : '/favicon-light.svg');
+    }
     
     // Font scale application
     document.documentElement.setAttribute('data-font-scale', fontScale);
   }, [lang, theme, fontScale]);
+
+  const activeTheme = getActiveTheme();
 
   // Handle constraints for the resolution switcher
   const getContainerStyles = () => {
@@ -54,12 +66,13 @@ function App() {
   };
 
   return (
-    <div className={getWrapperStyles()}>
+    <div id="top" className={getWrapperStyles()}>
       <TopNav 
         lang={lang} setLang={setLang}
         theme={theme} setTheme={setTheme}
         fontScale={fontScale} setFontScale={setFontScale}
         resolution={resolution} setResolution={setResolution}
+        activeTheme={activeTheme}
       />
       
       <div className={`bg-background transition-all duration-300 ${getContainerStyles()}`}>
@@ -75,7 +88,7 @@ function App() {
           <FaqSection lang={lang} />
           <WaitlistSection lang={lang} />
         </main>
-        <Footer lang={lang} />
+        <Footer lang={lang} activeTheme={activeTheme} />
       </div>
     </div>
   );
