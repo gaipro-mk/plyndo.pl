@@ -1,35 +1,24 @@
-# AGENTS.md
+# AGENTS.md (Plyndo.pl Rules Index)
 
-## Project
-- Name: `plyndo.pl`
-- Purpose: premium landing page and product documentation for a Polish D2C household chemistry subscription concept grounded primarily in NotebookLM strategy materials.
+CEL PROJEKTU: Premium landing page i dokumentacja dla koncepcji subskrypcji chemii gospodarczej w Polsce.
 
-## Stack
-- React
-- Vite
-- Tailwind CSS v4 via `@tailwindcss/vite`
+## Stack & Commands
+- Stack: React, Vite, Tailwind CSS v4 (`@tailwindcss/vite`)
+- `npm install` | `npm run dev` | `npm run build` | `npm run preview` | `npm run lint`
 
-## Commands
-- Install: `npm install`
-- Dev: `npm run dev`
-- Build: `npm run build`
-- Preview: `npm run preview`
-- Lint: `npm run lint`
+## Hierarchia Modeli
+- Domyślny model: `low-pro` (Gemini 3 Pro ze standardowym / low reasoning) - używaj rutynowo do niższych kosztów.
+- Profil `orchestrator`: Gemini Pro 3.1 High (high reasoning) - używaj WYŁĄCZNIE do zaawansowanego planowania, złożonych problemów architektonicznych i delegowania prac.
+- Profil `advisor`: Gemini Pro 3.1 High - czysty doradca, ma wyłączony profil modyfikacji kodu. Służy tylko i wyłącznie do głębokiej analizy i recenzji (audytowania) bez tworzenia zmian w zasobach.
+- Profil `flash-worker`: Gemini 3 Flash - uderzaj, jeśli trzeba wykonać szybki zestaw powtarzalnych tasków.
 
-## Working Rules
-- Keep the current visual direction: premium, editorial, lab-grade domestic brand.
-- Avoid generic SaaS UI patterns and loud eco clichés.
-- Treat the current page as a waitlist-first MVP landing page, not a checkout flow.
-- Preserve the single primary CTA strategy unless product requirements change.
+---
+> [!IMPORTANT]
+> **PLANNING RULE:** Nie wprowadzaj żadnych zmian w kodzie, dopóki nie poznasz kodu i wymagań na tyle, aby mieć co najmniej 95% pewności, co trzeba zbudować. Zawsze zadawaj pytania doprecyzowujące i kilkukrotnie weryfikuj swoje założenia, zanim przejdziesz z trybu planowania do implementacji. Ta zasada jest krytyczna zwłaszcza dla modelu Pro 3.1 High (`orchestrator` / `advisor`).
+---
 
-## File Ownership Notes
-- App UI: `src/App.jsx`
-- Global theme and Tailwind tokens: `src/index.css`
-- Build config: `vite.config.js`
-- Product documentation: `PRD.md`
-
-## Expected Future Work
-- Add real waitlist backend or CRM integration.
-- Add analytics and event tracking.
-- Add bilingual Polish/English content strategy if needed.
-- Add ecommerce and subscription backend only after product validation.
+## Dokumentacja / Zasady Szczegółowe (Progressive Disclosure)
+Przeczytaj poniższe pliki podrzędne TYLKO, gdy potrzebujesz konkretnych wytycznych wykonawczych, by redukować objętość promptu:
+- @docs/agents/style_guide.md - wizualna strona wizytówki, paleta barw, brand tone
+- @docs/agents/product_constraints.md - granice prac dev, ograniczenia backendu/waitlisty, ownershps plików
+- @docs/agents/handoff.md - reguły zarządzania rozmiarem kontekstu, co logować, a czego unikać
