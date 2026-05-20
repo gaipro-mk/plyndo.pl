@@ -1,70 +1,47 @@
-import { copy } from '../../content';
-import { Globe, Mail } from 'lucide-react';
-
-export default function Footer({ lang, activeTheme }) {
-  const content = copy[lang];
-  const logoSrc = activeTheme === 'dark' ? '/logo-dark.svg' : '/logo-light.svg';
+export default function Footer() {
+  const cols = [
+    { h: "Informacje", l: ["Regulamin", "Polityka Prywatności", "Reklamacje"] },
+    { h: "Wsparcie",   l: ["Kontakt", "FAQ", "Strefa Klienta"] },
+    { h: "Marka",      l: ["O nas", "Producent", "Prasa"] },
+  ];
 
   return (
-    <footer className="bg-surface-container-high w-full py-16 px-6 border-t border-outline-variant/10">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8">
-        <div className="space-y-6 md:col-span-1">
-          <a className="inline-block" href="#top" aria-label={content.brand}>
-            <img src={logoSrc} alt={content.brand} className="h-10 w-auto" />
-          </a>
-          <p className="font-body text-sm text-on-surface-variant max-w-sm leading-relaxed">
-            {content.footerDesc}
-          </p>
-          <div className="flex gap-4">
-            <a className="text-on-surface-variant hover:text-primary transition-colors" href="#">
-              <Globe className="w-5 h-5" />
-            </a>
-            <a className="text-on-surface-variant hover:text-primary transition-colors" href="#">
-              <Mail className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-2 gap-8 md:col-span-2 lg:ml-auto lg:w-2/3">
+    <footer id="footer" className="bg-surface-variant border-t border-border mt-20 pt-16 pb-8 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-widest text-on-surface mb-6">
-              {content.footerCol1.title}
-            </h4>
-            <ul className="space-y-4">
-              {content.footerCol1.links.map((link, idx) => (
-                <li key={idx}>
-                  <a className="font-body text-sm text-on-surface-variant hover:text-primary transition-all hover:underline" href="#">
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <img src="/logo-black.svg" alt="Płyndo" className="h-9" />
+            <p className="mt-4.5 text-fg-muted text-[13.5px] leading-relaxed max-w-[320px]">
+              Dostarczamy profesjonalną jakość chemii bezpośrednio do Twoich drzwi w inteligentnym modelu subskrypcyjnym.
+            </p>
           </div>
-          <div>
-            <h4 className="font-bold text-xs uppercase tracking-widest text-on-surface mb-6">
-              {content.footerCol2.title}
-            </h4>
-            <ul className="space-y-4">
-              {content.footerCol2.links.map((link, idx) => (
-                <li key={idx}>
-                  <a className="font-body text-sm text-on-surface-variant hover:text-primary transition-all hover:underline" href="#">
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {cols.map(col => (
+            <div key={col.h}>
+              <div className="t-eyebrow mb-4.5">{col.h}</div>
+              <ul className="list-none p-0 m-0 grid gap-3">
+                {col.l.map(l => (
+                  <li key={l}>
+                    <a href="#" className="text-fg-muted text-[13.5px] no-underline hover:text-fg-base transition-colors">{l}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="font-body text-xs text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity">
-          {content.footerCopyright}
-        </p>
-        <div className="flex items-center gap-3 grayscale opacity-60">
-          <span className="text-[10px] font-bold uppercase tracking-tight text-on-surface-variant">Payment partners:</span>
-          <span className="text-xs font-bold px-2 py-1 bg-surface-container-highest rounded border border-outline-variant/20 tracking-widest">BLIK</span>
-          <span className="text-xs font-bold px-2 py-1 bg-surface-container-highest rounded border border-outline-variant/20 tracking-widest">VISA</span>
+        <div className="mt-14 pt-6 border-t border-border flex justify-between items-center gap-4 flex-wrap">
+          <span className="text-[11.5px] text-fg-subtle">
+            © 2026 Płyndo.pl · Powered by EmiChem · Made in Poland
+          </span>
+          <div className="flex gap-1.5">
+            {["BLIK", "PRZELEWY24", "PAYNOW", "VISA"].map(p => (
+              <span 
+                key={p} 
+                className="text-[10px] font-bold px-2.5 py-1.5 bg-white border border-border rounded text-fg-muted tracking-[0.12em]"
+              >
+                {p}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

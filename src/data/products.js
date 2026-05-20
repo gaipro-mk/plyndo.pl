@@ -12,7 +12,8 @@ export const products = [
     scent: 'O zapachu arbuza',
     color: { bg: '#2B5A40', fg: '#133021', text: '#FFFFFF', pattern: '#1B402D' },
     iconType: 'naczynia',
-    bgPattern: 'monstera'
+    bgPattern: 'monstera',
+    image: '/labels/front-01-naczyn.png'
   },
   {
     id: 2,
@@ -27,7 +28,8 @@ export const products = [
     scent: 'Nabłyszczacz',
     color: { bg: '#A63C45', fg: '#72242B', text: '#FFFFFF', pattern: '#B24750' },
     iconType: 'zmywarka',
-    bgPattern: 'geometry'
+    bgPattern: 'geometry',
+    image: '/labels/front-02-zmywarki.png'
   },
   {
     id: 3,
@@ -42,7 +44,8 @@ export const products = [
     scent: 'O zapachu świeżości',
     color: { bg: '#9ECBE8', fg: '#60A5D8', text: '#1E4C7A', pattern: '#B6DBF1' },
     iconType: 'pranie',
-    bgPattern: 'brush'
+    bgPattern: 'brush',
+    image: '/labels/front-03-prania.png'
   },
   {
     id: 4,
@@ -57,7 +60,8 @@ export const products = [
     scent: 'O zapachu Wooly Blizz',
     color: { bg: '#A692C6', fg: '#725CA6', text: '#FFFFFF', pattern: '#8F7BB5' },
     iconType: 'plukanie',
-    bgPattern: 'flowers'
+    bgPattern: 'flowers',
+    image: '/labels/front-04-plukania.png'
   },
   {
     id: 5,
@@ -72,7 +76,8 @@ export const products = [
     scent: 'O zapachu pomarańczy',
     color: { bg: '#784638', fg: '#542E24', text: '#FFFFFF', pattern: '#8E5A4B' },
     iconType: 'podlogi',
-    bgPattern: 'wood'
+    bgPattern: 'wood',
+    image: '/labels/front-05-podlog.png'
   },
   {
     id: 6,
@@ -87,7 +92,8 @@ export const products = [
     scent: 'O zapachu cytryny',
     color: { bg: '#E0E0E0', fg: '#A3A3A3', text: '#1A1A1A', pattern: '#D1D1D1' },
     iconType: 'wc',
-    bgPattern: 'waves'
+    bgPattern: 'waves',
+    image: '/labels/front-06-wc.png'
   },
   {
     id: 7,
@@ -102,7 +108,8 @@ export const products = [
     scent: 'O zapachu Oud Wood',
     color: { bg: '#E4C969', fg: '#B3912E', text: '#3E341B', pattern: '#F0D577' },
     iconType: 'rece',
-    bgPattern: 'topo'
+    bgPattern: 'topo',
+    image: '/labels/front-07-rece.png'
   },
   {
     id: 8,
@@ -117,7 +124,8 @@ export const products = [
     scent: 'O zapachu cytryny',
     color: { bg: '#A7CFEA', fg: '#2A7F96', text: '#114455', pattern: '#BDE0F5' },
     iconType: 'szyby',
-    bgPattern: 'floral'
+    bgPattern: 'floral',
+    image: '/labels/front-08-szyby.png'
   },
   {
     id: 9,
@@ -132,7 +140,8 @@ export const products = [
     scent: 'O zapachu cytryny',
     color: { bg: '#2550A4', fg: '#14316A', text: '#FFFFFF', pattern: '#3662B7' },
     iconType: 'lazienka',
-    bgPattern: 'blobs'
+    bgPattern: 'blobs',
+    image: '/labels/front-09-lazienki.png'
   },
   {
     id: 10,
@@ -147,6 +156,7 @@ export const products = [
     scent: 'Bez zapachu',
     color: { bg: '#EBEBEB', fg: '#C7C7C7', text: '#1A1A1A', pattern: '#FFFFFF' },
     iconType: 'dezynfekcja',
-    bgPattern: 'confetti'
+    bgPattern: 'confetti',
+    image: '/labels/front-10-dezynfekcji.png'
   }
 ];

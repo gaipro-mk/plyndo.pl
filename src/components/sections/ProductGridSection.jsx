@@ -1,71 +1,68 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { products } from '../../data/products';
-import BottlePlaceholder from '../BottlePlaceholder';
+import { copy } from '../../content';
 
-export default function ProductGridSection() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
-  };
+export default function ProductGridSection({ lang = 'pl' }) {
+  const content = copy[lang].productGrid;
+  const [hovered, setHovered] = useState(null);
 
   return (
-    <section className="py-24 bg-surface" id="products">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div className="max-w-xl">
-            <h2 className="font-headline text-4xl font-bold mb-4 tracking-tight">Odkryj nasze produkty</h2>
-            <p className="text-on-surface-variant text-lg leading-relaxed">Stworzone z myślą o czystości, skuteczności i niesamowitych zapachach. Wybierz płyn idealny dla Ciebie.</p>
+    <section id="products" className="py-24 bg-surface px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-between items-end mb-12 gap-6 flex-wrap">
+          <div className="max-w-[560px]">
+            <span className="t-eyebrow">{content.title}</span>
+            <h2 className="t-h1 mt-3">10 płynów, jeden dom.</h2>
+            <p className="t-lead mt-3.5">
+              {content.lead}
+            </p>
           </div>
-          <button className="text-primary font-bold flex items-center gap-2 hover:translate-x-1 transition-transform group">
-            Złóż zamówienie
-            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <button className="bg-transparent text-primary border-none font-bold text-sm cursor-pointer inline-flex items-center gap-1.5 hover:text-primary-hover transition-colors">
+            {content.cta} <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
-        <motion.div 
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-y-12 md:pb-0 no-scrollbar"
-        >
-          {products.map((product) => (
-            <motion.div variants={item} key={product.id} className="group min-w-[260px] md:min-w-0 snap-start">
-              <Link to={`/product/${product.slug}`} className="block">
-                <div 
-                  className="aspect-3/4 rounded-2xl mb-4 overflow-hidden relative border border-outline-variant/20 shadow-sm transition-shadow duration-500 group-hover:shadow-2xl group-hover:shadow-primary/20 flex items-center justify-center p-8"
-                  style={{ backgroundColor: product.color.bg }}
-                >
-                  <div className="absolute top-4 left-4 z-20">
-                    <span 
-                      className="text-[10px] font-bold px-2 py-1 rounded tracking-tighter shadow-md"
-                      style={{ backgroundColor: product.color.text, color: product.color.bg }}
-                    >
-                      {product.scent}
-                    </span>
-                  </div>
-                  <div className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                    <BottlePlaceholder color={product.color} />
-                  </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4.5">
+          {products.map(p => (
+            <Link 
+              key={p.id} 
+              to={`/product/${p.slug}`}
+              onMouseEnter={() => setHovered(p.id)} 
+              onMouseLeave={() => setHovered(null)}
+              className="no-underline text-inherit block cursor-pointer transition-transform duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+              style={{
+                transform: hovered === p.id ? 'translateY(-6px)' : 'translateY(0)',
+              }}
+            >
+              <div 
+                className="rounded-[14px] overflow-hidden transition-shadow duration-[380ms]"
+                style={{
+                  boxShadow: hovered === p.id ? 'var(--shadow-lg)' : 'var(--shadow-sm)',
+                  background: p.color.bg,
+                }}
+              >
+                <img 
+                  src={p.image} 
+                  alt={p.name}
+                  className="w-[115%] max-w-none h-auto block transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] -ml-[7.5%] -mt-[2%]"
+                  style={{
+                    transform: hovered === p.id ? 'scale(1.05)' : 'scale(1)'
+                  }}
+                />
+              </div>
+              <div className="mt-3">
+                <div className="t-label-tagline !text-lg !leading-[1.1] !tracking-[-0.005em]">
+                  {p.name}
                 </div>
-                <h3 className="font-headline font-bold text-lg mb-1 tracking-tight text-on-surface group-hover:text-primary transition-colors">{product.name}</h3>
-                <p className="text-sm text-on-surface-variant line-clamp-2">{product.subtitle}</p>
-              </Link>
-            </motion.div>
+                <div className="text-xs text-fg-muted mt-1 uppercase tracking-wider">
+                  {p.slug} · 1 L
+                </div>
+              </div>
+            </Link>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

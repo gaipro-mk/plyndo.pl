@@ -1,48 +1,42 @@
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
 import { copy } from '../../content';
-import { CheckCircle2, ChevronRight } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
-export default function ValueSection({ lang }) {
+export default function ValueSection({ lang = 'pl' }) {
   const content = copy[lang].value;
 
   if (!content) return null;
 
   return (
-    <section className="py-24 bg-surface" id="value">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-primary font-bold tracking-widest uppercase text-xs mb-4 inline-block">
+    <section className="py-24 bg-surface px-6" id="value">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-[720px] mx-auto mb-16">
+          <span className="t-eyebrow">
             {content.eyebrow}
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold font-headline text-on-surface tracking-tight mb-6 text-balance">
+          <h2 className="t-h1 mt-3">
             {content.title}
           </h2>
-          <p className="text-lg text-on-surface-variant font-light leading-relaxed">
+          <p className="t-lead mt-3.5">
             {content.lead}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {content.items.map((item, idx) => (
-            <motion.div
+            <div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.15, duration: 0.6 }}
-              className="bg-surface-container-low border border-outline-variant/20 p-10 rounded-3xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/30 group"
+              className="bg-white border border-border p-8 rounded-[24px]"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-8 text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center mb-6 text-white">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold font-headline text-on-surface mb-4 group-hover:text-primary transition-colors">
+              <h3 className="t-h4 mb-3">
                 {item.title}
               </h3>
-              <p className="text-on-surface-variant leading-relaxed">
+              <p className="text-[13.5px] leading-[1.6] text-fg-muted">
                 {item.copy}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

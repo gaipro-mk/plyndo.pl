@@ -1,115 +1,77 @@
-import { Moon, Sun, Monitor, Smartphone, Tablet, Type } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, Globe, ArrowRight } from 'lucide-react';
 import { copy } from '../../content';
 
-export default function TopNav({ 
-  lang, setLang,
-  theme, setTheme,
-  fontScale, setFontScale,
-  resolution, setResolution,
-  activeTheme
-}) {
-  const content = copy[lang];
-  const logoSrc = activeTheme === 'dark' ? '/logo-dark.svg' : '/logo-light.svg';
+export default function TopNav({ lang, setLang }) {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const NAV = [
+    { href: "#products", label: "Katalog Czystości" },
+    { href: "#plans", label: "Pakiety AI" },
+    { href: "#operations", label: "Jak działa" },
+    { href: "#faq", label: "FAQ" }
+  ];
 
-  const cycleTheme = () => {
-    if (theme === 'system') setTheme('light');
-    else if (theme === 'light') setTheme('dark');
-    else setTheme('system');
-  };
-
-  const cycleFontScale = () => {
-    if (fontScale === 'sm') setFontScale('md');
-    else if (fontScale === 'md') setFontScale('lg');
-    else setFontScale('sm');
-  };
-
-  const cycleResolution = () => {
-    if (resolution === 'desktop') setResolution('mobile');
-    else if (resolution === 'mobile') setResolution('tablet');
-    else setResolution('desktop');
-  };
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 8);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant/10">
-      <div className="flex flex-wrap md:flex-nowrap justify-between items-center px-4 sm:px-6 py-4 max-w-7xl mx-auto gap-y-4">
-        <a className="shrink-0" href="#top" aria-label={content.brand}>
-          <img src={logoSrc} alt={content.brand} className="h-8 sm:h-9 w-auto" />
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-180 border-b ${scrolled ? 'bg-white/80 border-border' : 'bg-white/60 border-transparent'} backdrop-blur-[18px]`}>
+      <div className="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between gap-6">
+        <a href="#top" className="flex items-center">
+          <img src="/logo-black.svg" alt="Płyndo" className="h-[30px] w-auto" />
         </a>
-        <div className="hidden md:flex items-center gap-8">
-          <a className="text-primary border-b-2 border-primary pb-1 font-headline font-bold tracking-tight" href="#products">
-            {content.nav.product}
-          </a>
-          <a className="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#plans">
-            {content.nav.plans}
-          </a>
-          <a className="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#subscription">
-            {content.nav.standard}
-          </a>
+        <div className="hidden md:flex gap-7 items-center">
+          {NAV.map((n, i) => (
+            <a 
+              key={n.href} 
+              href={n.href}
+              className={`text-[13.5px] no-underline pb-0.5 ${i === 0 ? 'text-fg-base font-bold border-b-2 border-fg-base' : 'text-fg-muted font-medium border-b-2 border-transparent hover:text-fg-base transition-colors'}`}
+            >
+              {n.label}
+            </a>
+          ))}
         </div>
-        
-        {/* Switchers & CTA */}
-        <div className="flex items-center gap-2 md:gap-4 w-full md:w-auto justify-between md:justify-end">
-          
-          <div className="flex items-center bg-surface-container-low rounded-full p-1 border border-outline-variant/10 shadow-sm mr-0 md:mr-2">
-            {/* Resolution Switcher */}
-            <button 
-              onClick={cycleResolution} 
-              className="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-full transition-colors relative group"
-              title="Toggle Resolution"
-            >
-              {resolution === 'desktop' && <Monitor size={16} strokeWidth={2.5}/>}
-              {resolution === 'tablet' && <Tablet size={16} strokeWidth={2.5}/>}
-              {resolution === 'mobile' && <Smartphone size={16} strokeWidth={2.5}/>}
-            </button>
-
-            {/* Font Switcher */}
-            <button 
-              onClick={cycleFontScale} 
-              className="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-full transition-colors relative group"
-              title={`Font Size: ${fontScale}`}
-            >
-              <Type size={16} strokeWidth={2.5}/>
-              {fontScale !== 'md' && (
-                <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                  <span className="animate-ping bg-primary absolute inline-flex h-full w-full rounded-full opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-primary text-[8px] text-white items-center justify-center font-bold">
-                    {fontScale === 'sm' ? '-' : '+'}
-                  </span>
-                </span>
-              )}
-            </button>
-
-            {/* Theme Switcher */}
-            <button 
-              onClick={cycleTheme} 
-              className="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-full transition-colors relative group"
-              title={`Theme: ${theme}`}
-            >
-              {theme === 'light' ? <Sun size={16} strokeWidth={2.5}/> : <Moon size={16} strokeWidth={2.5}/>}
-              {theme === 'system' && (
-                <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-primary text-[8px] text-white items-center justify-center font-bold">A</span>
-                </span>
-              )}
-            </button>
-
-            {/* Lang Toggle */}
-            <button 
-              onClick={() => setLang(lang === 'pl' ? 'en' : 'pl')}
-              className="px-2 py-1 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors border-l border-outline-variant/10 ml-1"
-            >
-              {lang === 'pl' ? 'EN' : 'PL'}
-            </button>
-          </div>
-
-          <button className="hidden xl:block text-on-surface-variant font-medium hover:text-primary px-4 py-2 transition-all active:scale-95 duration-200">
-            {content.topNav.clientZone}
+        <div className="flex items-center gap-2.5">
+          <button 
+            onClick={() => setLang(lang === 'pl' ? 'en' : 'pl')}
+            aria-label="Język"
+            className="bg-transparent border border-border text-fg-muted px-2.5 py-1.5 rounded-full text-[11px] font-bold tracking-[0.12em] cursor-pointer flex items-center gap-1.5 hover:text-fg-base transition-colors"
+          >
+            <Globe size={13} />{lang.toUpperCase()}
           </button>
-          <button className="bg-primary text-on-primary px-5 md:px-6 py-2 md:py-2.5 rounded-lg font-bold text-sm hover:bg-primary-container shadow-md shadow-primary/20 transition-all active:scale-95 duration-200">
-            {content.topNav.choosePackage}
+          <button 
+            onClick={() => document.getElementById("plans")?.scrollIntoView({ behavior: "smooth" })}
+            className="bg-fg-base text-white border-none px-[18px] py-[10px] rounded-[10px] font-bold text-[13px] cursor-pointer shadow-cta inline-flex items-center gap-1.5 hover:bg-black transition-colors"
+          >
+            Wybierz pakiet <ArrowRight size={14} />
+          </button>
+          <button 
+            className="md:hidden bg-transparent border-none p-1.5 cursor-pointer text-fg-base"
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
+      {open && (
+        <div className="bg-white border-t border-border px-6 py-3 md:hidden shadow-lg">
+          {NAV.map(n => (
+            <a 
+              key={n.href} 
+              href={n.href} 
+              onClick={() => setOpen(false)}
+              className="block py-3 text-fg-base font-semibold no-underline"
+            >
+              {n.label}
+            </a>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }

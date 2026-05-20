@@ -1,66 +1,39 @@
 import { useState } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from 'framer-motion';
 import { copy } from '../../content';
 import { Plus, Minus } from 'lucide-react';
 
-export default function FaqSection({ lang }) {
+export default function FaqSection({ lang = 'pl' }) {
   const content = copy[lang].faq;
   const [openIdx, setOpenIdx] = useState(0);
 
   if (!content) return null;
 
   return (
-    <section className="py-24 bg-surface" id="faq">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="text-primary font-bold tracking-widest uppercase text-xs mb-4 inline-block">
-            {content.eyebrow}
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold font-headline text-on-surface tracking-tight mb-6">
-            {content.title}
-          </h2>
+    <section id="faq" className="py-24 bg-surface-variant px-6">
+      <div className="max-w-[880px] mx-auto">
+        <div className="mb-10">
+          <span className="t-eyebrow">{content.eyebrow}</span>
+          <h2 className="t-h1 mt-3">{content.title}</h2>
         </div>
-
-        <div className="space-y-4">
-          {content.items.map((item, idx) => {
-            const isOpen = openIdx === idx;
+        <div className="bg-white border border-border rounded-[24px] overflow-hidden">
+          {content.items.map((item, i) => {
+            const open = openIdx === i;
             return (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className={`border rounded-2xl overflow-hidden transition-colors duration-300 ${isOpen ? 'border-primary/30 bg-primary/5' : 'border-outline-variant/20 bg-surface-container-lowest hover:border-outline-variant/40'}`}
-              >
-                <button
-                  onClick={() => setOpenIdx(isOpen ? -1 : idx)}
-                  className="w-full text-left px-8 py-6 flex items-center justify-between gap-4"
+              <div key={item.question} className={`${i ? 'border-t border-border' : 'border-none'}`}>
+                <button 
+                  onClick={() => setOpenIdx(open ? -1 : i)} 
+                  className="w-full bg-transparent border-none text-left py-6 px-7 cursor-pointer flex justify-between items-center gap-4 hover:bg-black/[0.02] transition-colors"
                 >
-                  <span className="font-headline font-bold text-lg text-on-surface pr-8">
-                    {item.question}
-                  </span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${isOpen ? 'bg-primary text-on-primary' : 'bg-surface border border-outline-variant/30 text-on-surface-variant'}`}>
-                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                  </div>
+                  <span className="font-bold text-base tracking-[-0.01em]">{item.question}</span>
+                  {open ? <Minus size={18} className="shrink-0"/> : <Plus size={18} className="shrink-0"/>}
                 </button>
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    >
-                      <div className="px-8 pb-6 text-on-surface-variant leading-relaxed">
-                        {item.answer}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            )
+                {open && (
+                  <div className="px-7 pb-6 text-fg-muted text-[14px] leading-[1.6]">
+                    {item.answer}
+                  </div>
+                )}
+              </div>
+            );
           })}
         </div>
       </div>

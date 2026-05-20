@@ -1,134 +1,370 @@
-@import url('https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@200,300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,400;1,500;1,600;1,700&display=swap');
 @import "tailwindcss";
+@config "../tailwind.config.js";
 
-@theme {
-  --color-outline: #717786;
-  --color-inverse-on-surface: #f0f1f2;
-  --color-primary: #000000;
-  --color-primary-container: #111111;
-  --color-on-secondary: #ffffff;
-  --color-outline-variant: #c1c6d7;
-  --color-tertiary-fixed-dim: #cecd00;
-  --color-tertiary-container: #b2b000;
-  --color-surface-container: #edeeef;
-  --color-surface-container-high: #e7e8e9;
-  --color-on-surface-variant: #414755;
-  --color-background: #ffffff;
-  --color-tertiary: #626100;
-  --color-inverse-surface: #2e3132;
-  --color-secondary-fixed: #e2e2e5;
-  --color-primary-fixed: #000000;
-  --color-on-primary-fixed-variant: #ffffff;
-  --color-surface-tint: #000000;
-  --color-surface-container-highest: #e1e3e4;
-  --color-error: #ba1a1a;
-  --color-surface: #ffffff;
-  --color-on-background: #000000;
-  --color-tertiary-fixed: #ebea00;
-  --color-secondary-container: #e2e2e5;
-  --color-on-secondary-fixed: #1a1c1e;
-  --color-on-secondary-container: #636467;
-  --color-on-primary-container: #ffffff;
-  --color-on-primary-fixed: #ffffff;
-  --color-secondary-fixed-dim: #c6c6c9;
-  --color-on-tertiary-container: #424200;
-  --color-surface-container-low: #f3f4f5;
-  --color-surface-variant: #e1e3e4;
-  --color-on-surface: #000000;
-  --color-on-secondary-fixed-variant: #454749;
-  --color-on-tertiary-fixed: #1d1d00;
-  --color-on-primary: #ffffff;
-  --color-surface-bright: #ffffff;
-  --color-on-error: #ffffff;
-  --color-primary-fixed-dim: #333333;
-  --color-surface-dim: #d9dadb;
-  --color-secondary: #5d5e61;
-  --color-on-tertiary: #ffffff;
-  --color-inverse-primary: #ffffff;
-  --color-on-error-container: #93000a;
-  --color-surface-container-lowest: #ffffff;
-  --color-on-tertiary-fixed-variant: #4a4900;
-  --color-error-container: #ffdad6;
+/* ============================================================
+   Płyndo Design System — Colors & Type tokens
+   Source: 10 product labels (materialy/2. Etykiety) +
+           plyndo.pl codebase (Material You-style semantic tokens)
+   ============================================================ */
 
-  --font-headline: 'Switzer', sans-serif;
-  --font-body: 'Switzer', sans-serif;
-  --font-label: 'Switzer', sans-serif;
-  --font-sans: 'Switzer', sans-serif;
-
-  --border-radius-DEFAULT: 0.25rem;
-  --border-radius-lg: 0.5rem;
-  --border-radius-xl: 0.75rem;
-  --border-radius-full: 9999px;
-}
+/* Web fonts — Switzer (Fontshare) for chrome + Lora Italic (Google) for label-style display copy. */
 
 :root {
-  --font-scale: 1;
+  /* ---------- BRAND CORE ----------
+     The księga znaku locks the main theme to BLACK + WHITE.
+     Every accent below is promoted from the 10 label palette —
+     never invented. */
+  --plyndo-black:      #000000;  /* book-defined primary               */
+  --plyndo-white:      #ffffff;  /* book-defined surface                */
+  --plyndo-ink:        #231f20;  /* logo file ink (a hair off pure black) */
+  --plyndo-bone:       #f6f4ef;  /* warm off-white “paper” alt           */
+  --plyndo-paper:      #ffffff;  /* alias for legacy refs               */
+
+  /* System accents — both lifted directly from labels */
+  --plyndo-cobalt:     #2550a4;  /* = --label-bath-bg   · focus / info / link */
+  --plyndo-cobalt-ink: #14316a;  /* = --label-bath-deep                       */
+  --plyndo-citron:     #e4c969;  /* = --label-hand-bg   · CTA / highlight     */
+  --plyndo-citron-deep:#b3912e;  /* = --label-hand-deep                       */
+
+  /* ---------- LABEL PALETTE (the 8+2 SKUs)
+     These ARE the brand. Use as surfaces for product cards,
+     section dividers, plan tiles, hero panels, etc.        */
+
+  /* 1. Naczynia / Dish        — deep green     */
+  --label-dish-bg:     #2b5a40;
+  --label-dish-deep:   #133021;
+  --label-dish-pat:    #1b402d;
+  --label-dish-on:     #ffffff;
+
+  /* 2. Zmywarka / Dishwasher  — terracotta red */
+  --label-dw-bg:       #a63c45;
+  --label-dw-deep:     #72242b;
+  --label-dw-pat:      #b24750;
+  --label-dw-on:       #ffffff;
+
+  /* 3. Pranie / Laundry       — sky blue       */
+  --label-laundry-bg:  #9ecbe8;
+  --label-laundry-deep:#60a5d8;
+  --label-laundry-pat: #b6dbf1;
+  --label-laundry-on:  #1e4c7a;
+
+  /* 4. Płukanie / Softener    — lilac          */
+  --label-rinse-bg:    #a692c6;
+  --label-rinse-deep:  #725ca6;
+  --label-rinse-pat:   #8f7bb5;
+  --label-rinse-on:    #ffffff;
+
+  /* 5. Podłogi / Floor        — espresso brown */
+  --label-floor-bg:    #784638;
+  --label-floor-deep:  #542e24;
+  --label-floor-pat:   #8e5a4b;
+  --label-floor-on:    #ffffff;
+
+  /* 6. WC                     — pearl grey     */
+  --label-wc-bg:       #e0e0e0;
+  --label-wc-deep:     #a3a3a3;
+  --label-wc-pat:      #d1d1d1;
+  --label-wc-on:       #1a1a1a;
+
+  /* 7. Ręce / Hand            — saffron        */
+  --label-hand-bg:     #e4c969;
+  --label-hand-deep:   #b3912e;
+  --label-hand-pat:    #f0d577;
+  --label-hand-on:     #3e341b;
+
+  /* 8. Szyby / Glass          — pale aqua      */
+  --label-glass-bg:    #a7cfea;
+  --label-glass-deep:  #2a7f96;
+  --label-glass-pat:   #bde0f5;
+  --label-glass-on:    #114455;
+
+  /* 9. Łazienka / Bathroom    — royal blue     */
+  --label-bath-bg:     #2550a4;
+  --label-bath-deep:   #14316a;
+  --label-bath-pat:    #3662b7;
+  --label-bath-on:     #ffffff;
+
+  /* 10. Dezynfekcja / Sanitize — chalk white   */
+  --label-sani-bg:     #ebebeb;
+  --label-sani-deep:   #c7c7c7;
+  --label-sani-pat:    #ffffff;
+  --label-sani-on:     #1a1a1a;
+
+  /* ---------- NEUTRAL RAMP (M3-derived) ---------- */
+  --n-0:   #ffffff;
+  --n-50:  #f6f4ef;   /* bone */
+  --n-100: #f3f4f5;   /* surface-container-low  */
+  --n-150: #edeeef;   /* surface-container      */
+  --n-200: #e7e8e9;   /* surface-container-high */
+  --n-300: #e1e3e4;   /* surface-container-highest / variant */
+  --n-400: #c1c6d7;   /* outline-variant        */
+  --n-500: #717786;   /* outline                */
+  --n-700: #414755;   /* on-surface-variant     */
+  --n-800: #2e3132;   /* inverse-surface        */
+  --n-900: #111111;   /* primary-container      */
+  --n-1000:#000000;   /* primary / on-surface   */
+
+  /* ---------- SEMANTIC TOKENS ---------- */
+  --color-bg:                var(--n-0);
+  --color-bg-muted:          var(--n-100);
+  --color-bg-sunken:         var(--n-150);
+  --color-bg-raised:         var(--n-0);
+  --color-bg-inverse:        var(--n-1000);
+
+  --color-fg:                var(--n-1000);          /* fg1: headings, primary body */
+  --color-fg-muted:          var(--n-700);           /* fg2: secondary copy        */
+  --color-fg-subtle:         var(--n-500);           /* fg3: meta, captions        */
+  --color-fg-onDark:         var(--n-0);
+
+  --color-border:            color-mix(in oklab, var(--n-400) 60%, transparent);
+  --color-border-strong:     var(--n-400);
+  --color-border-focus:      var(--plyndo-cobalt);
+
+  --color-primary:           var(--plyndo-black);     /* the brand IS black-on-white */
+  --color-primary-on:        var(--plyndo-white);
+  --color-primary-hover:     var(--n-900);
+
+  --color-accent:            var(--plyndo-cobalt);
+  --color-accent-on:         var(--n-0);
+  --color-accent-tint:       color-mix(in oklab, var(--plyndo-cobalt) 8%, var(--n-0));
+
+  --color-cta:               var(--plyndo-citron);   /* "Wybierz pakiet" yellow */
+  --color-cta-on:            var(--n-1000);
+  --color-cta-hover:         var(--plyndo-citron-deep);
+
+  --color-success:           #2b5a40;                /* reuse dish-green */
+  --color-warning:           #b3912e;                /* reuse hand-deep  */
+  --color-danger:            #ba1a1a;
+  --color-info:              var(--plyndo-cobalt);
+
+  /* ---------- RADII ---------- */
+  --radius-xs:  4px;
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  16px;     /* default card        */
+  --radius-xl:  24px;     /* feature card        */
+  --radius-2xl: 32px;     /* hero panel          */
+  --radius-pill: 9999px;
+
+  /* ---------- SHADOWS / ELEVATION ---------- */
+  --shadow-xs: 0 1px 2px rgba(17, 17, 17, .06);
+  --shadow-sm: 0 2px 6px rgba(17, 17, 17, .08);
+  --shadow-md: 0 8px 24px rgba(17, 17, 17, .10);
+  --shadow-lg: 0 18px 48px rgba(17, 17, 17, .14);
+  --shadow-cta:0 10px 26px rgba(0, 0, 0, .22);     /* Primary action lift — neutral, no colour tint */
+  --shadow-inset: inset 0 0 0 1px var(--color-border);
+
+  /* ---------- SPACING (4px grid) ---------- */
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32: 128px;
+
+  /* ---------- LAYOUT ---------- */
+  --container-max: 1280px;
+  --container-pad: clamp(20px, 4vw, 48px);
+  --gutter:       24px;
+
+  /* ---------- TYPOGRAPHY — base ---------- */
+  --font-sans:    'Switzer', ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-display: 'Switzer', ui-sans-serif, system-ui, sans-serif;   /* same family, heavier weights */
+  --font-serif:   'Lora', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;   /* product-name italic, taglines */
+  --font-mono:    ui-monospace, SFMono-Regular, "JetBrains Mono", Consolas, monospace;
+
+  /* Weights pulled from the labels' bold sans + UI */
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   900;
+
+  /* Type ramp (1.250 minor-third) */
+  --t-xs:   12px;   /* caption / micro */
+  --t-sm:   14px;   /* small body / UI */
+  --t-base: 16px;   /* default body    */
+  --t-md:   18px;
+  --t-lg:   20px;
+  --t-xl:   24px;
+  --t-2xl:  30px;
+  --t-3xl:  36px;
+  --t-4xl:  48px;
+  --t-5xl:  64px;
+  --t-6xl:  88px;   /* hero display     */
+
+  /* Tracking — labels use slight negative track on display, wide on micro caps */
+  --tk-tight:  -0.025em;
+  --tk-snug:   -0.015em;
+  --tk-normal: 0em;
+  --tk-wide:   0.05em;
+  --tk-wider:  0.12em;    /* eyebrow / micro-cap labels */
+
+  --lh-tight: 1.05;
+  --lh-snug:  1.2;
+  --lh-body:  1.55;
+  --lh-loose: 1.7;
 }
 
-:root[data-font-scale='sm'] {
-  --font-scale: 0.94;
-}
-
-:root[data-font-scale='md'] {
-  --font-scale: 1;
-}
-
-:root[data-font-scale='lg'] {
-  --font-scale: 1.08;
-}
-
-/* Dark mode variations (expanded for full semantic token support) */
+/* Dark theme override (matches plyndo.pl) */
 :root[data-theme='dark'] {
-  color-scheme: dark;
-  --color-surface: #0a0f12;
-  --color-surface-container-lowest: #050809;
-  --color-surface-container-low: #101518;
-  --color-surface-container: #14191c;
-  --color-surface-container-high: #1a2024;
-  --color-surface-container-highest: #20262b;
-  --color-on-surface: #e6ebf0;
-  --color-on-surface-variant: #a9b1b7;
-  --color-background: #0a0f12;
-  --color-on-background: #e6ebf0;
-  --color-primary: #86b1ff;
-  --color-on-primary: #002967;
-  --color-primary-container: #00409a;
-  --color-on-primary-container: #d8e2ff;
-  --color-primary-fixed: #d8e2ff;
-  --color-on-primary-fixed: #001a41;
-  --color-outline: #8d959d;
-  --color-outline-variant: #42484e;
-  --color-secondary: #c0c6cf;
-  --color-on-secondary: #2a3138;
-  --color-tertiary-fixed: #d89d65;
+  --color-bg:           #0a0f12;
+  --color-bg-muted:     #101518;
+  --color-bg-sunken:    #14191c;
+  --color-bg-raised:    #1a2024;
+  --color-fg:           #e6ebf0;
+  --color-fg-muted:     #a9b1b7;
+  --color-fg-subtle:    #8d959d;
+  --color-border:       #2a3138;
+  --color-border-strong:#42484e;
+  --color-primary:      #ffffff;
+  --color-primary-on:   #0a0f12;
 }
 
-html {
-  font-size: calc(16px * var(--font-scale));
-  scroll-behavior: smooth;
-}
+/* ============================================================
+   SEMANTIC ELEMENT STYLES
+   Apply these classes directly, or use them as a reference
+   for component-level CSS.
+   ============================================================ */
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
 
 body {
-  margin: 0;
-  @apply bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition:
-    background-color 180ms ease,
-    color 180ms ease;
+  font-family: var(--font-sans);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  font-size: var(--t-base);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-regular);
+  letter-spacing: var(--tk-snug);
 }
 
-/* Utilities used in _stitch_import code.html */
-@utility text-balance {
+/* Display — hero titles, big numbers on labels */
+.t-display-1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  font-size: clamp(48px, 7vw, var(--t-6xl));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tk-tight);
   text-wrap: balance;
 }
-
-@utility asymmetric-clip {
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+.t-display-2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  font-size: clamp(36px, 5vw, var(--t-5xl));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tk-tight);
 }
 
-@utility glass-nav {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+/* Headings */
+.t-h1, h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(32px, 4.2vw, var(--t-4xl));
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tk-tight);
+  text-wrap: balance;
+  margin: 0;
 }
+.t-h2, h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(26px, 3vw, var(--t-3xl));
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tk-tight);
+  text-wrap: balance;
+  margin: 0;
+}
+.t-h3, h3 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semi);
+  font-size: var(--t-2xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tk-snug);
+  margin: 0;
+}
+.t-h4, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semi);
+  font-size: var(--t-xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tk-snug);
+  margin: 0;
+}
+
+/* Body */
+.t-lead {
+  font-size: var(--t-lg);
+  line-height: var(--lh-body);
+  color: var(--color-fg-muted);
+  font-weight: var(--fw-regular);
+}
+.t-body { font-size: var(--t-base); line-height: var(--lh-body); }
+.t-small { font-size: var(--t-sm); line-height: var(--lh-body); color: var(--color-fg-muted); }
+.t-caption {
+  font-size: var(--t-xs);
+  line-height: 1.4;
+  color: var(--color-fg-subtle);
+}
+
+/* Eyebrows / micro-cap labels — used heavily on plans + sections */
+.t-eyebrow {
+  display: inline-block;
+  font-size: var(--t-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tk-wider);
+  color: var(--color-primary);
+}
+
+/* "PŁYN DO" lockup — the brand's signature text element */
+.t-lockup {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  font-size: var(--t-4xl);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.t-lockup-sub {
+  display: block;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+}
+
+/* Label-derived display — italic serif, used for SKU names and brand taglines on every label. */
+.t-label-display {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.t-label-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.25;
+}
+
+code, pre, .t-mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+::selection { background: var(--plyndo-black); color: var(--plyndo-white); }
+

@@ -1,109 +1,121 @@
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { copy } from '../../content';
-import { Check, Info } from 'lucide-react';
-import { cn } from '../../lib/utils';
+import { Check, ArrowRight, Info } from 'lucide-react';
 
-export default function PlansSection({ lang }) {
+const TIER_SKINS = {
+  MINI: { bg: "#9ecbe8", fg: "#1e4c7a", subtle: "rgba(30,76,122,.75)", line: "color-mix(in oklab, #1e4c7a 18%, transparent)",
+          btnBg: "rgba(255,255,255,.55)", btnFg: "#1e4c7a", btnBorder: "1px solid #1e4c7a" },
+  MIDI: { bg: "#2550a4", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)",
+          btnBg: "#ffffff", btnFg: "#2550a4", btnBorder: "none" },
+  MAXI: { bg: "#2b5a40", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)",
+          btnBg: "transparent", btnFg: "#ffffff", btnBorder: "1px solid #ffffff" },
+};
+
+export default function PlansSection({ lang = 'pl' }) {
   const content = copy[lang].plans;
+  const [focusedTier, setFocusedTier] = useState("MIDI");
 
   if (!content) return null;
 
   return (
-    <section className="py-24 bg-surface-container-lowest" id="plans">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="max-w-3xl mx-auto mb-16 text-center">
-          <span className="text-primary font-bold tracking-widest uppercase text-xs mb-4 inline-block">
-            {content.eyebrow}
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold font-headline text-on-surface tracking-tight mb-6 text-balance">
+    <section id="plans" className="py-24 bg-surface px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-[720px] mx-auto mb-16">
+          <span className="t-eyebrow">{content.eyebrow}</span>
+          <h2 className="t-h1 mt-3">
             {content.title}
           </h2>
-          <p className="text-lg text-on-surface-variant font-light leading-relaxed">
+          <p className="t-lead mt-4">
             {content.lead}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-          {content.cards.map((plan, idx) => {
-            const isMiddle = plan.name === 'MIDI';
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.08fr_1fr] gap-5.5 items-stretch">
+          {content.cards.map((plan) => {
+            const isHero = plan.name === focusedTier;
+            const skin = TIER_SKINS[plan.name] || TIER_SKINS.MIDI;
+            
             return (
-              <motion.div
-                key={plan.name}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className={cn(
-                  "relative rounded-3xl p-8 border transition-all duration-500 hover:-translate-y-2 group",
-                  isMiddle 
-                    ? "bg-primary border-primary text-on-primary shadow-2xl shadow-primary/20 scale-105 z-10" 
-                    : "bg-surface border-outline-variant/30 text-on-surface hover:shadow-xl hover:border-primary/30"
-                )}
+              <div 
+                key={plan.name} 
+                onClick={() => setFocusedTier(plan.name)}
+                className={`relative rounded-[28px] p-8 pb-7 cursor-pointer transition-all duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)]`}
+                style={{
+                  background: skin.bg, 
+                  color: skin.fg,
+                  border: `1px solid ${skin.line}`,
+                  boxShadow: isHero ? "var(--shadow-lg)" : "var(--shadow-sm)",
+                  transform: isHero ? "translateY(-6px)" : "none",
+                }}
               >
-                {isMiddle && (
-                  <div className="absolute -top-4 inset-x-0 flex justify-center">
-                    <span className="bg-on-primary text-primary text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md">
-                      Najczęściej wybierany
-                    </span>
-                  </div>
+                {isHero && (
+                  <span 
+                    className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full text-[10px] font-extrabold tracking-[0.12em] uppercase whitespace-nowrap"
+                    style={{ color: skin.bg }}
+                  >
+                    Najczęściej wybierany
+                  </span>
                 )}
-                
-                <h3 className="text-3xl font-black font-headline tracking-tighter mb-2">{plan.name}</h3>
-                <p className={cn(
-                  "text-sm font-bold uppercase tracking-widest mb-6",
-                  isMiddle ? "text-on-primary/70" : "text-primary"
-                )}>
+                <div className="font-display font-black text-4xl tracking-[-0.04em] leading-none">
+                  {plan.name}
+                </div>
+                <div 
+                  className="mt-1.5 text-[11px] font-extrabold tracking-[0.12em] uppercase"
+                  style={{ color: skin.subtle }}
+                >
                   {plan.audience}
-                </p>
-                <p className={cn(
-                  "text-sm leading-relaxed mb-8 h-12",
-                  isMiddle ? "text-on-primary/90" : "text-on-surface-variant"
-                )}>
+                </div>
+
+                <p 
+                  className="mt-4 font-serif italic font-medium text-[17px] leading-[1.3] min-h-[44px]"
+                  style={{ color: skin.fg }}
+                >
                   {plan.cadence}
                 </p>
-                
-                <ul className="space-y-4 mb-8">
-                  {plan.bullets.map((bullet, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <Check className={cn(
-                        "w-5 h-5 shrink-0 mt-0.5",
-                        isMiddle ? "text-on-primary" : "text-primary"
-                      )} />
-                      <span className={cn(
-                        "text-sm leading-snug",
-                        isMiddle ? "text-on-primary/90" : "text-on-surface-variant"
-                      )}>
-                        {bullet}
-                      </span>
+
+                <ul className="list-none p-0 m-0 my-5 grid gap-3">
+                  {plan.bullets.map(b => (
+                    <li key={b} className="flex gap-2.5 items-start">
+                      <Check size={18} className="shrink-0 mt-px" style={{ color: skin.fg }}/>
+                      <span className="text-[13px] leading-[1.5]" style={{ color: skin.subtle }}>{b}</span>
                     </li>
                   ))}
                 </ul>
-                
-                <button className={cn(
-                  "w-full py-4 rounded-xl font-bold transition-transform active:scale-95",
-                  isMiddle 
-                    ? "bg-on-primary text-primary hover:bg-white" 
-                    : "bg-surface-container-low text-on-surface hover:bg-primary/10 hover:text-primary"
-                )}>
-                  Skomponuj {plan.name}
+
+                <button 
+                  className="w-full mt-auto py-3.5 rounded-xl font-extrabold text-sm cursor-pointer inline-flex items-center justify-center gap-2 font-sans transition-shadow"
+                  style={{
+                    background: skin.btnBg, 
+                    color: skin.btnFg, 
+                    border: skin.btnBorder,
+                    boxShadow: isHero ? "var(--shadow-cta)" : "none",
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    document.getElementById("advisor")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  Skomponuj {plan.name} <ArrowRight size={16}/>
                 </button>
-              </motion.div>
-            )
+              </div>
+            );
           })}
         </div>
-        
-        <div className="bg-surface-container-low rounded-3xl p-8 md:p-10 border border-outline-variant/20 flex flex-col md:flex-row items-center gap-8">
-          <div className="md:w-1/3">
-            <h4 className="font-headline font-bold text-2xl text-on-surface mb-2">{content.modulesTitle}</h4>
-            <p className="text-on-surface-variant text-sm flex items-center gap-2">
-              <Info className="w-4 h-4" /> 8 niezawodnych formuł
-            </p>
+
+        <div className="mt-16 bg-white border border-border rounded-[24px] px-8 py-7 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 items-center">
+          <div>
+            <h3 className="t-h4 m-0">{content.modulesTitle}</h3>
+            <div className="flex items-center gap-1.5 mt-1.5 text-[13px] text-fg-muted">
+              <Info size={14}/> 8 niezawodnych formuł + 2 specjalistyczne
+            </div>
           </div>
-          <div className="md:w-2/3 flex flex-wrap gap-3">
-            {content.modules.map(mod => (
-              <span key={mod} className="bg-surface border border-outline-variant/30 text-on-surface-variant px-4 py-2 rounded-lg text-sm font-medium hover:border-primary/30 transition-colors">
-                {mod}
+          <div className="flex gap-2 flex-wrap">
+            {["Podłogi", "Szyby", "Łazienka", "Mydło", "Pranie", "Płukanie", "Naczynia", "Zmywarka", "WC", "Dezynfekcja"].map(m => (
+              <span 
+                key={m} 
+                className="bg-surface border border-border text-fg-muted px-3.5 py-2 rounded-[10px] text-[13px] font-medium"
+              >
+                {m}
               </span>
             ))}
           </div>
