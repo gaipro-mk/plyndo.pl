@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Monitor, Smartphone, Tablet } from 'lucide-react';
+import { Routes, Route } from 'react-router-dom';
 import TopNav from './components/layout/TopNav';
 import Footer from './components/layout/Footer';
 import HeroSection from './components/sections/HeroSection';
@@ -12,6 +12,24 @@ import OperationsSection from './components/sections/OperationsSection';
 import SubscriptionGuideSection from './components/sections/SubscriptionGuideSection';
 import FaqSection from './components/sections/FaqSection';
 import WaitlistSection from './components/sections/WaitlistSection';
+import ProductPage from './pages/ProductPage';
+
+function HomePage({ lang }) {
+  return (
+    <main>
+      <HeroSection lang={lang} />
+      <TrustSection lang={lang} />
+      <AiAssistantSection lang={lang} />
+      <ProductGridSection lang={lang} />
+      <ValueSection lang={lang} />
+      <PlansSection lang={lang} />
+      <OperationsSection lang={lang} />
+      <SubscriptionGuideSection lang={lang} />
+      <FaqSection lang={lang} />
+      <WaitlistSection lang={lang} />
+    </main>
+  );
+}
 
 function App() {
   const [lang, setLang] = useState('pl');
@@ -26,27 +44,19 @@ function App() {
     return theme;
   };
 
-  // Apply root configurations based on state
   useEffect(() => {
     document.documentElement.lang = lang;
-    
-    // Theme application
     const activeTheme = getActiveTheme();
     document.documentElement.setAttribute('data-theme', activeTheme);
-
-    // Favicon follows active in-app theme for browser tab/address bar contrast.
     const favicon = document.getElementById('app-favicon');
     if (favicon) {
       favicon.setAttribute('href', activeTheme === 'dark' ? '/favicon-dark.svg' : '/favicon-light.svg');
     }
-    
-    // Font scale application
     document.documentElement.setAttribute('data-font-scale', fontScale);
   }, [lang, theme, fontScale]);
 
   const activeTheme = getActiveTheme();
 
-  // Handle constraints for the resolution switcher
   const getContainerStyles = () => {
     switch(resolution) {
       case 'mobile':
@@ -61,7 +71,6 @@ function App() {
 
   const getWrapperStyles = () => {
     if (resolution === 'desktop') return 'min-h-screen bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed';
-    
     return 'min-h-screen bg-surface-container-lowest text-on-background font-body flex items-start justify-center pt-8 pb-8 !px-4 selection:bg-primary-fixed selection:text-on-primary-fixed';
   };
 
@@ -76,18 +85,10 @@ function App() {
       />
       
       <div className={`bg-background transition-all duration-300 ${getContainerStyles()}`}>
-        <main>
-          <HeroSection lang={lang} />
-          <TrustSection lang={lang} />
-          <AiAssistantSection lang={lang} />
-          <ProductGridSection lang={lang} />
-          <ValueSection lang={lang} />
-          <PlansSection lang={lang} />
-          <OperationsSection lang={lang} />
-          <SubscriptionGuideSection lang={lang} />
-          <FaqSection lang={lang} />
-          <WaitlistSection lang={lang} />
-        </main>
+        <Routes>
+          <Route path="/" element={<HomePage lang={lang} />} />
+          <Route path="/product/:slug" element={<ProductPage />} />
+        </Routes>
         <Footer lang={lang} activeTheme={activeTheme} />
       </div>
     </div>
