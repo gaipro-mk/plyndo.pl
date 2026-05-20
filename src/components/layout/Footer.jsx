@@ -1,16 +1,18 @@
-export default function Footer() {
+export default function Footer({ activeTheme }) {
   const cols = [
     { h: "Informacje", l: ["Regulamin", "Polityka Prywatności", "Reklamacje"] },
     { h: "Wsparcie",   l: ["Kontakt", "FAQ", "Strefa Klienta"] },
     { h: "Marka",      l: ["O nas", "Producent", "Prasa"] },
   ];
 
+  const isDark = activeTheme === 'dark';
+
   return (
     <footer id="footer" className="bg-surface-variant border-t border-border mt-20 pt-16 pb-8 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
           <div>
-            <img src="/logo-black.svg" alt="Płyndo" className="h-9" />
+            <img src={isDark ? '/logo-white.svg' : '/logo-black.svg'} alt="Płyndo" className="h-9" />
             <p className="mt-4.5 text-fg-muted text-[13.5px] leading-relaxed max-w-[320px]">
               Dostarczamy profesjonalną jakość chemii bezpośrednio do Twoich drzwi w wygodnym modelu pakietowym.
             </p>

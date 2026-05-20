@@ -223,14 +223,50 @@
   --color-bg-muted:     #101518;
   --color-bg-sunken:    #14191c;
   --color-bg-raised:    #1a2024;
+  --color-bg-inverse:   #e6ebf0;
   --color-fg:           #e6ebf0;
   --color-fg-muted:     #a9b1b7;
   --color-fg-subtle:    #8d959d;
+  --color-fg-onDark:    #0a0f12;
   --color-border:       #2a3138;
   --color-border-strong:#42484e;
+  --color-border-focus: #6b9dd6;
   --color-primary:      #ffffff;
   --color-primary-on:   #0a0f12;
+  --color-primary-hover:#e6ebf0;
+  --color-accent:       #6b9dd6;
+  --color-accent-on:    #0a0f12;
+  --color-accent-tint:  color-mix(in oklab, #6b9dd6 12%, #0a0f12);
+  --color-cta:          var(--plyndo-citron);
+  --color-cta-on:       #0a0f12;
+  --color-cta-hover:    var(--plyndo-citron-deep);
+  --color-success:      #4a8c65;
+  --color-warning:      #d4a944;
+  --color-danger:       #e0534b;
+  --color-info:         #6b9dd6;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, .25);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, .30);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, .35);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, .45);
+  --shadow-cta:0 10px 26px rgba(0, 0, 0, .50);
 }
+
+/* Dark theme component-level overrides */
+:root[data-theme='dark'] .bg-surface,
+:root[data-theme='dark'] .bg-background { background: var(--color-bg) !important; }
+:root[data-theme='dark'] .bg-white { background: var(--color-bg-raised) !important; }
+:root[data-theme='dark'] .bg-surface-variant { background: var(--color-bg-muted) !important; }
+:root[data-theme='dark'] .bg-surface-container-low { background: var(--color-bg-sunken) !important; }
+:root[data-theme='dark'] .border-border { border-color: var(--color-border) !important; }
+:root[data-theme='dark'] .text-fg-base { color: var(--color-fg) !important; }
+:root[data-theme='dark'] .text-fg-muted { color: var(--color-fg-muted) !important; }
+:root[data-theme='dark'] .text-fg-subtle { color: var(--color-fg-subtle) !important; }
+:root[data-theme='dark'] .text-primary { color: var(--color-primary) !important; }
+
+/* Font scale */
+:root[data-font-scale='sm'] { font-size: 14px; }
+:root[data-font-scale='md'] { font-size: 16px; }
+:root[data-font-scale='lg'] { font-size: 18px; }
 
 /* ============================================================
    SEMANTIC ELEMENT STYLES
