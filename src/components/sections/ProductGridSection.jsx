@@ -53,8 +53,9 @@ export default function ProductGridSection({ lang = 'pl' }) {
                 />
               </div>
               <div className="mt-3">
-                <div className="t-label-tagline !text-lg !leading-[1.1] !tracking-[-0.005em]">
-                  {p.name}
+                <div className="text-[10px] uppercase tracking-[0.12em] font-bold opacity-50 mb-0.5">Płyn do</div>
+                <div className="font-serif italic text-[17px] leading-[1.1] tracking-[-0.005em] font-medium">
+                  {p.name.replace(/^PŁYN DO\s*/i, '')}
                 </div>
                 <div className="text-xs text-fg-muted mt-1 uppercase tracking-wider">
                   {p.slug} · 1 L

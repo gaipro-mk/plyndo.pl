@@ -64,7 +64,7 @@ export const copy = {
         'Plyndo nie sprzedaje jednej butelki. Sprzedaje spokój, ciągłość i dobrze ustawiony dom.',
     },
     heritage: {
-      text: '30 lat tradycji Płyndo.',
+      text: '30 lat tradycji.',
       highlight: 'Teraz w Twoim domu.'
     },
     aiAssistant: {
