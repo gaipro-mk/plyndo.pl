@@ -4,7 +4,6 @@ import TopNav from './components/layout/TopNav';
 import Footer from './components/layout/Footer';
 import HeroSection from './components/sections/HeroSection';
 import TrustSection from './components/sections/TrustSection';
-import AiAssistantSection from './components/sections/AiAssistantSection';
 import ProductGridSection from './components/sections/ProductGridSection';
 import ValueSection from './components/sections/ValueSection';
 import PlansSection from './components/sections/PlansSection';
@@ -19,7 +18,6 @@ function HomePage({ lang }) {
     <main>
       <HeroSection lang={lang} />
       <TrustSection lang={lang} />
-      <AiAssistantSection lang={lang} />
       <ProductGridSection lang={lang} />
       <ValueSection lang={lang} />
       <PlansSection lang={lang} />

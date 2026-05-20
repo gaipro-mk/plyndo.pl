@@ -37,7 +37,7 @@ export default function ProductGridSection({ lang = 'pl' }) {
               }}
             >
               <div 
-                className="rounded-[14px] overflow-hidden transition-shadow duration-[380ms]"
+                className="rounded-[14px] overflow-hidden transition-shadow duration-[380ms] flex items-center justify-center aspect-[4/5]"
                 style={{
                   boxShadow: hovered === p.id ? 'var(--shadow-lg)' : 'var(--shadow-sm)',
                   background: p.color.bg,
@@ -46,7 +46,7 @@ export default function ProductGridSection({ lang = 'pl' }) {
                 <img 
                   src={p.image} 
                   alt={p.name}
-                  className="w-[115%] max-w-none h-auto block transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] -ml-[7.5%] -mt-[2%]"
+                  className="w-full h-[85%] object-cover object-center block transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] mix-blend-normal"
                   style={{
                     transform: hovered === p.id ? 'scale(1.05)' : 'scale(1)'
                   }}

@@ -1,15 +1,15 @@
 export const copy = {
   pl: {
     htmlLang: 'pl',
-    title: 'Płyndo.pl | Profesjonalna czystość w Twojej subskrypcji',
+    title: 'Płyndo.pl | Profesjonalna czystość dla Twojego domu',
     description:
-      'Plyndo.pl porządkuje chemię domową w Polsce: 8 kluczowych produktów, pakiety MINI / MIDI / MAXI, personalizacja AI, InPost, kurier i subskrypcja lite z BLIK.',
+      'Plyndo.pl porządkuje chemię domową w Polsce: 10 kluczowych produktów, pakiety po 4 i 8 sztuk, InPost, kurier i wygodne płatności BLIK.',
     brand: 'Płyndo.pl',
     nav: {
       product: 'Katalog Czystości',
-      plans: 'Pakiety AI',
+      plans: 'Pakiety',
       operations: 'Jak działa',
-      standard: 'Subskrypcja',
+      standard: 'Pakiety',
       faq: 'FAQ',
       waitlist: 'Wczesny dostęp',
       menu: 'Menu',
@@ -33,38 +33,38 @@ export const copy = {
     hero: {
       tag: 'Digital-First Cleaning',
       eyebrow: '40+ lat zaplecza produkcyjnego. Nowy model dla nowoczesnego domu.',
-      title: 'Profesjonalna czystość w Twojej subskrypcji.',
+      title: 'Profesjonalna czystość\nw pakietach dla Ciebie.',
       lead:
-        'Skuteczność JAX Professional, wygoda Płyndo.pl. Poznaj pakiety dobrane przez AI dla Twojego domu.',
+        'Skuteczność producenta, wygoda Płyndo.pl. Wybierz pakiet 4 lub 8 produktów i zapomnij o dźwiganiu z marketu.',
       primary: 'Wybierz swój pakiet',
       secondary: 'Zobacz ofertę',
       proof: [
-        '8 produktów bazowych do codziennego utrzymania domu',
-        'Pakiety MINI / MIDI / MAXI z możliwością rozbudowy',
-        'InPost, kurier i ścieżka subskrypcji lite pod polski rynek',
-        'AI dopasowujące zestaw do metrażu, dzieci, zwierząt i stylu życia',
+        '10 produktów do codziennego utrzymania domu',
+        'Pakiety po 4 i 8 sztuk z oszczędnością do 50%',
+        'InPost, kurier i wygodne płatności pod polski rynek',
+        'Gotowe zestawy lub skomponuj własny pakiet',
       ],
       trust: {
-        badge: 'JAX Certified',
+        badge: 'Płyndo Certified',
         caption: 'Zaufane przez profesjonalistów od 1994 roku.'
       },
       metrics: [
         { value: '40+', label: 'lat doświadczenia produkcyjnego w tle marki' },
-        { value: '8', label: 'produktów MVP zamiast przeładowanego katalogu' },
+        { value: '10', label: 'produktów MVP zamiast przeładowanego katalogu' },
         { value: '1-3', label: 'miesiące jako bazowe cykle dostaw' },
         { value: 'PL', label: 'logistyka i płatności projektowane dla Polski' },
       ],
       panelTitle: 'Model MVP',
       panelRows: [
-        ['Oferta', 'MINI / MIDI / MAXI + produkty pojedyncze'],
-        ['Płatności', 'Przelewy24, Paynow, BLIK-lite, Stripe dla automatyki'],
-        ['Dostawa', 'InPost jako domyślny kanał + kurier dla większych zamówień'],
+        ['Oferta', 'Pakiety 4 i 8 sztuk + zestawy tematyczne'],
+        ['Płatności', 'Przelewy24, Paynow, BLIK, Stripe'],
+        ['Dostawa', 'InPost + kurier dla większych zamówień'],
       ],
       sideNote:
         'Plyndo nie sprzedaje jednej butelki. Sprzedaje spokój, ciągłość i dobrze ustawiony dom.',
     },
     heritage: {
-      text: '30 lat tradycji JAX Professional.',
+      text: '30 lat tradycji Płyndo.',
       highlight: 'Teraz w Twoim domu.'
     },
     aiAssistant: {
@@ -104,29 +104,29 @@ export const copy = {
         title: 'W TWOIM PAKIECIE:',
         count: '6 PRODUKTÓW',
         items: [
-          'JAX 01 - Powierzchnie Szklane',
-          'JAX 14 - Podłogi Drewniane',
-          'JAX 07 - Sanitariaty (Aktywny chlor)'
+          '01 - Powierzchnie Szklane',
+          '14 - Podłogi Drewniane',
+          '07 - Sanitariaty (Aktywny chlor)'
         ],
         more: '+ 3 inne profesjonalne produkty'
       }
     },
     productGrid: {
       title: 'Katalog Czystości',
-      lead: 'Nasza gama produktów JAX Professional to 30 lat doświadczenia zamknięte w minimalistycznej formie. Skuteczność bez kompromisów.',
+      lead: 'Nasza gama produktów Płyndo to 30 lat doświadczenia zamknięte w minimalistycznej formie. Skuteczność bez kompromisów.',
       cta: 'Zobacz pełną specyfikację techniczną',
       products: [
-        { name: 'JAX 01 Glass', tagline: 'Krystaliczna czystość bez smug', tag: 'GLASS', color: 'bg-blue-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBb0vDEh2Woo2A4uvXfb3yw1vif2McuZwaFdwwf4rviO9_dV2Mv4yIgRpybjbuXZ4orT_gjV-geTgcDyVVZ0lQ6F1L_8J7AJ5IFq2926Jxj-Bf9uFiwK3AXVibs6WfiUjAua8pcKxfduHTKjYglCaLem6Vwq25Fb3NDqZCblEzCU8pC7_aX1v7paqShRdeYU6RD1YyS-Gf5tt8nnMIr8lCtKTBlX0AtAbRtqRIExSiod486UqT6pBKCL8ognv8km_2WijfVYK2EQk6i' },
-        { name: 'JAX 14 Floor', tagline: 'Ochrona i blask twardych podłóg', tag: 'FLOOR', color: 'bg-amber-500', ph: '8.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAfT-fSNucWAX9zxs87bcEpgV6fLrX7mBg6igspdY01q8LHSDtV2K5_YBwuEoihV5TB9y4iQVvlFILJUiQ1NcPJ69f-SQ_wU7KocUU96pPU4mHq4fnRetDJMLlvg_YRTziHqruLh0cDpABUl82palQKkjwUSiZrJbZrdjQwyVRNxB87gY1lTEKdrkSW0uIwN_V6x_MjSBVvgm57pnqEwfek7qC0p9yyEBMQl1o2RlExosGUoZ5ptnPswpGCGva9gPUTUQ7sFCcCkHa9' },
-        { name: 'JAX 07 Bath', tagline: 'Skuteczny przeciw osadom', tag: 'BATHROOM', color: 'bg-red-500', ph: '2.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBC3Nj1FpsxDH4UDoq4ImySdNOCwaYGeJfVkPlJhS2o7xZ1uXtD2WqLh1n1dAdsfGUf30lU6b5mwYY_wFCUrIPFY-9HJItMBcQuerhnLjpDOlHKGxy3_fPmcxIiNkt3UprzSg6Eco1hXrURLA78Iy86d41tvxPKMgO4-LWOmILf6K0SovYmCzV_YxGBoYKvhXHh20r9k9VkKpsVrVczJhz5m96UPw5si7lhvoVJpE9oOxuOSDV_9wKpM_YJJMGQp1rJbA3xO3FFRq83' },
-        { name: 'JAX 22 Dish', tagline: 'Ultra-koncentrat do naczyń', tag: 'DISHES', color: 'bg-emerald-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDXIIyuJl3ln8R42T9DKu6s9JCpT8KlCQtTn_Z4B47oMrT4D_ZyfZveTOI0xRLiFyN2UnJDZwDFtWafHKZbL_-o6zBDrBOHr3B_3Yk08qZacJKoKU8Keo7Yy1JhgucGzJIhfCnzmC_zmL2Gi5QJXmu8zFOmT2THX7fF-JSePBaWbpTSo8AEhFEQIdpVhdZjFExlPIDgCCQTdJcIHx54-Y0HI5LQ-kvOPUUuysGDLhRmKU2V0IYgfzbasjUmO-y3V0h1buODUd_QpYqR' },
-        { name: 'JAX 41 Laundry', tagline: 'Głębokie oczyszczanie tkanin', tag: 'LAUNDRY', color: 'bg-indigo-500', ph: '9.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1Orzt8_DVEFeB-_TjEN7ONz1qJa82E1yNXK77s4xHkTwtaZDEe4rkgG5vmMKTzPkohfrg-s8g-KPNBVCuhb17SRmNusWVUokAdqbTcJCPeCqfWSBQ2CFqqZ7fxDZnqpHze8OvIlNxC1d1ICe8bmoL7YWKNxeMA0JswcCgjz--jK0lHKi8eNxSCB4BDTBDYUqrOdrGgclmiFnBDBjzOtTY6WKMT5hsRaboVJuAYZ72hDmpBdayPPNDgRhLEiB8ChfXBSz5W7NACGAR' },
-        { name: 'JAX 45 Softener', tagline: 'Długotrwała miękkość', tag: 'RINSE', color: 'bg-pink-400', ph: '4.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBLKVsvl75IuEa3XYBqGVstHL9v6_Jle3kPpZvV8sH9o14mU8hDopEaZVddZhuQUfTuQ_fbW0ex5xKuarwUFYvBcOhXUlyZsD8vAeXDS5ff8mNCHS3CVf3LBoMSDXnLbX_Dl2HU3945iGLQqWHEsnT6wcunbFrsGL6naOtQNQD4489SJxVei1QNkgNLYmHwGJuhpw2GpQYWRRciYm4JPtpMbcREGvn2-ffP2PxAoNnE4xzumbOACm8M66_kz1WBGOq8SmqSPW3LbrRH' },
-        { name: 'JAX 31 DW-Gel', tagline: 'Skoncentrowana moc zmywania', tag: 'DISHWASHER', color: 'bg-slate-500', ph: '11.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6YVfB3PabNUQxqV5HhRfexgIEuhCxrUxcTTg0qr5P3L57kiCZKWk2dwvCfgcOZHeNuIXFe3B2r4jVPQQ7f68jEy8oxMrrLNsCvnNaCFtH0CPvi4ZsoKoc4ENi-KmNkMm0fwp0aIMu79CouTrP3Xr_17RyjFv3iJ8MPVSXWzdq7cdLTfC5rRrb_k3yoTjEg8iBiwR1nKFzi0udeNYa1eJlu_07wGHEiv4cWwj8hwYHx_kSpnPIW70BwFnfnjocNURDUsjU8537YZDi' },
-        { name: 'JAX 19 Silk Hand', tagline: 'Delikatne mydło pielęgnacyjne', tag: 'SOAP', color: 'bg-teal-500', ph: '5.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAgfkATUCXzFy68crPhF9pkDFbmbcx-lVNraClyX3vZHc8yxnWLcz-BvhhwnijpKQoEFYmfTBMSYcieDxiMgrFCztAPo8IH4FO9ye_Xomn8HNXynWSsH9s_tfUtIDXFSaGZgiOu6Oh-SgjeKEfUv-eOmtOpc-tw2Z9zOsbT-BQbUW1dBQeou-g1ohiDms9u3BJhN6Or77TeDBVp2IHrTqa1T97zMMTnepB64PUhC5UkMBG6mjfTGgRr9wCeHF4-ByqunTYBnjtqwQod' }
+        { name: '01 Glass', tagline: 'Krystaliczna czystość bez smug', tag: 'GLASS', color: 'bg-blue-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBb0vDEh2Woo2A4uvXfb3yw1vif2McuZwaFdwwf4rviO9_dV2Mv4yIgRpybjbuXZ4orT_gjV-geTgcDyVVZ0lQ6F1L_8J7AJ5IFq2926Jxj-Bf9uFiwK3AXVibs6WfiUjAua8pcKxfduHTKjYglCaLem6Vwq25Fb3NDqZCblEzCU8pC7_aX1v7paqShRdeYU6RD1YyS-Gf5tt8nnMIr8lCtKTBlX0AtAbRtqRIExSiod486UqT6pBKCL8ognv8km_2WijfVYK2EQk6i' },
+        { name: '14 Floor', tagline: 'Ochrona i blask twardych podłóg', tag: 'FLOOR', color: 'bg-amber-500', ph: '8.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAfT-fSNucWAX9zxs87bcEpgV6fLrX7mBg6igspdY01q8LHSDtV2K5_YBwuEoihV5TB9y4iQVvlFILJUiQ1NcPJ69f-SQ_wU7KocUU96pPU4mHq4fnRetDJMLlvg_YRTziHqruLh0cDpABUl82palQKkjwUSiZrJbZrdjQwyVRNxB87gY1lTEKdrkSW0uIwN_V6x_MjSBVvgm57pnqEwfek7qC0p9yyEBMQl1o2RlExosGUoZ5ptnPswpGCGva9gPUTUQ7sFCcCkHa9' },
+        { name: '07 Bath', tagline: 'Skuteczny przeciw osadom', tag: 'BATHROOM', color: 'bg-red-500', ph: '2.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBC3Nj1FpsxDH4UDoq4ImySdNOCwaYGeJfVkPlJhS2o7xZ1uXtD2WqLh1n1dAdsfGUf30lU6b5mwYY_wFCUrIPFY-9HJItMBcQuerhnLjpDOlHKGxy3_fPmcxIiNkt3UprzSg6Eco1hXrURLA78Iy86d41tvxPKMgO4-LWOmILf6K0SovYmCzV_YxGBoYKvhXHh20r9k9VkKpsVrVczJhz5m96UPw5si7lhvoVJpE9oOxuOSDV_9wKpM_YJJMGQp1rJbA3xO3FFRq83' },
+        { name: '22 Dish', tagline: 'Ultra-koncentrat do naczyń', tag: 'DISHES', color: 'bg-emerald-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDXIIyuJl3ln8R42T9DKu6s9JCpT8KlCQtTn_Z4B47oMrT4D_ZyfZveTOI0xRLiFyN2UnJDZwDFtWafHKZbL_-o6zBDrBOHr3B_3Yk08qZacJKoKU8Keo7Yy1JhgucGzJIhfCnzmC_zmL2Gi5QJXmu8zFOmT2THX7fF-JSePBaWbpTSo8AEhFEQIdpVhdZjFExlPIDgCCQTdJcIHx54-Y0HI5LQ-kvOPUUuysGDLhRmKU2V0IYgfzbasjUmO-y3V0h1buODUd_QpYqR' },
+        { name: '41 Laundry', tagline: 'Głębokie oczyszczanie tkanin', tag: 'LAUNDRY', color: 'bg-indigo-500', ph: '9.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1Orzt8_DVEFeB-_TjEN7ONz1qJa82E1yNXK77s4xHkTwtaZDEe4rkgG5vmMKTzPkohfrg-s8g-KPNBVCuhb17SRmNusWVUokAdqbTcJCPeCqfWSBQ2CFqqZ7fxDZnqpHze8OvIlNxC1d1ICe8bmoL7YWKNxeMA0JswcCgjz--jK0lHKi8eNxSCB4BDTBDYUqrOdrGgclmiFnBDBjzOtTY6WKMT5hsRaboVJuAYZ72hDmpBdayPPNDgRhLEiB8ChfXBSz5W7NACGAR' },
+        { name: '45 Softener', tagline: 'Długotrwała miękkość', tag: 'RINSE', color: 'bg-pink-400', ph: '4.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBLKVsvl75IuEa3XYBqGVstHL9v6_Jle3kPpZvV8sH9o14mU8hDopEaZVddZhuQUfTuQ_fbW0ex5xKuarwUFYvBcOhXUlyZsD8vAeXDS5ff8mNCHS3CVf3LBoMSDXnLbX_Dl2HU3945iGLQqWHEsnT6wcunbFrsGL6naOtQNQD4489SJxVei1QNkgNLYmHwGJuhpw2GpQYWRRciYm4JPtpMbcREGvn2-ffP2PxAoNnE4xzumbOACm8M66_kz1WBGOq8SmqSPW3LbrRH' },
+        { name: '31 DW-Gel', tagline: 'Skoncentrowana moc zmywania', tag: 'DISHWASHER', color: 'bg-slate-500', ph: '11.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6YVfB3PabNUQxqV5HhRfexgIEuhCxrUxcTTg0qr5P3L57kiCZKWk2dwvCfgcOZHeNuIXFe3B2r4jVPQQ7f68jEy8oxMrrLNsCvnNaCFtH0CPvi4ZsoKoc4ENi-KmNkMm0fwp0aIMu79CouTrP3Xr_17RyjFv3iJ8MPVSXWzdq7cdLTfC5rRrb_k3yoTjEg8iBiwR1nKFzi0udeNYa1eJlu_07wGHEiv4cWwj8hwYHx_kSpnPIW70BwFnfnjocNURDUsjU8537YZDi' },
+        { name: '19 Silk Hand', tagline: 'Delikatne mydło pielęgnacyjne', tag: 'SOAP', color: 'bg-teal-500', ph: '5.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAgfkATUCXzFy68crPhF9pkDFbmbcx-lVNraClyX3vZHc8yxnWLcz-BvhhwnijpKQoEFYmfTBMSYcieDxiMgrFCztAPo8IH4FO9ye_Xomn8HNXynWSsH9s_tfUtIDXFSaGZgiOu6Oh-SgjeKEfUv-eOmtOpc-tw2Z9zOsbT-BQbUW1dBQeou-g1ohiDms9u3BJhN6Or77TeDBVp2IHrTqa1T97zMMTnepB64PUhC5UkMBG6mjfTGgRr9wCeHF4-ByqunTYBnjtqwQod' }
       ]
     },
-    subscriptionLite: [
+    packagesLite: [
       {
         step: '01',
         title: 'Zamawiasz',
@@ -171,42 +171,52 @@ export const copy = {
     },
     plans: {
       eyebrow: 'Architektura oferty',
-      title: 'Pakiety zbudowane wokół realnego zużycia, nie wokół półki sklepowej.',
+      title: 'Pakiety zaprojektowane dla Ciebie.',
       lead:
-        'Rdzeń modelu to trzy poziomy wejścia, wsparte algorytmem i późniejszą korektą zużycia. Rodziny pozostają głównym segmentem, ale system skaluje się również na singli, pary i biura.',
+        'Płyndo nie sprzedaje pojedynczych butelek. Oferujemy sprytne zestawy, które zabezpieczają Twój dom i portfel. Wybierz gotowy pakiet lub skomponuj własny i oszczędzaj.',
       cards: [
         {
-          name: 'MINI',
-          audience: 'Singiel / para',
-          cadence: 'Najlżejszy wolumen dla mniejszych mieszkań i rzadszych cykli.',
+          name: 'Wybierz Sam (4 szt.)',
+          audience: 'Elastyczność',
+          cadence: 'Skomponuj własny zestaw 4 produktów.',
           bullets: [
-            'Rekomendowany cykl co 2 lub 3 miesiące',
-            'Podstawowy zestaw do kuchni, łazienki, szyb i prania',
-            'Naturalny punkt wejścia do późniejszego rozszerzenia',
+            'Wartość produktów: 150 zł',
+            'Cena w pakiecie: 105 zł',
+            'Oszczędzasz 30%',
           ],
         },
         {
-          name: 'MIDI',
+          name: 'Wybierz Sam (8 szt.)',
+          audience: 'Maximum korzyści',
+          cadence: 'Dowolne 8 produktów do Twojego domu.',
+          bullets: [
+            'Wartość produktów: 300 zł',
+            'Cena w pakiecie: 150 zł',
+            'Oszczędzasz 50%',
+          ],
+        },
+        {
+          name: 'Pakiet Dom (8 szt.)',
           audience: 'Rodzina',
-          cadence: 'Rdzeń biznesu i najbardziej stabilny model zużycia.',
+          cadence: 'Gotowy zestaw do pełnego sprzątania domu.',
           bullets: [
-            'Najsilniejsze dopasowanie do domów z dziećmi lub zwierzętami',
-            'Najczęściej cykl co 1 lub 2 miesiące',
-            'Najlepszy balans między wygodą, wydajnością i wartością',
+            'Wartość produktów: 300 zł',
+            'Cena w pakiecie: 150 zł',
+            'Oszczędzasz 50%',
           ],
         },
         {
-          name: 'MAXI',
-          audience: 'Biuro / duży dom',
-          cadence: 'Wyższy wolumen i mocniejsza logika operacyjna.',
+          name: 'Pakiet Starter (12 szt.)',
+          audience: 'Nowy dom',
+          cadence: 'Wszystkie produkty na start. Pełne zabezpieczenie.',
           bullets: [
-            'Regularne dostawy dla większego zużycia',
-            'Naturalne przejście do obsługi B2B i faktur',
-            'Więcej przewidywalności tam, gdzie standard czystości jest krytyczny',
+            'Wartość produktów: 450 zł',
+            'Cena w pakiecie: 225 zł',
+            'Oszczędzasz 50%',
           ],
         },
       ],
-      modulesTitle: 'Zakres MVP',
+      modulesTitle: 'Zakres produktów',
       modules: [
         'Płyn do podłóg',
         'Płyn do szyb',
@@ -216,6 +226,8 @@ export const copy = {
         'Płyn do płukania',
         'Płyn do naczyń',
         'Płyn do zmywarki',
+        'Płyn do dezynfekcji',
+        'Płyn do WC',
       ],
     },
     operations: {
@@ -245,7 +257,7 @@ export const copy = {
       ],
       rails: [
         {
-          title: 'Subskrypcja lite dla Polski',
+          title: 'Pakiety lite dla Polski',
           copy:
             'Nie każdy klient chce kartę podpiętą na stałe, dlatego model źródłowy zakłada również przypomnienie, gotowy koszyk i szybki checkout z BLIK.',
         },
@@ -294,7 +306,7 @@ export const copy = {
         },
         {
           label: 'Oferta',
-          left: '8 klarownych produktów i logiczne pakiety',
+          left: '10 klarownych produktów i logiczne pakiety',
           right: 'Przeładowany katalog i niskie zaufanie do różnic',
         },
         {
@@ -325,22 +337,22 @@ export const copy = {
         {
           question: 'Czy Plyndo to gotowy sklep?',
           answer:
-            'Jeszcze nie. Obecny etap to dopracowany landing page i walidacja popytu przed wdrożeniem pełnej platformy subskrypcyjnej.',
+            'Jeszcze nie. Obecny etap to dopracowany landing page i walidacja popytu przed wdrożeniem pełnej platformy pakietowej.',
         },
         {
           question: 'Co zawiera MVP?',
           answer:
-            'MVP obejmuje 8 produktów bazowych, pakiety MINI / MIDI / MAXI, ścieżkę personalizacji, logistykę pod Polskę i zapis na priorytetowy dostęp.',
+            'Oferta obejmuje 10 produktów w pakietach po 4 i 8 sztuk, logistykę pod Polskę i zapis na priorytetowy dostęp.',
         },
         {
-          question: 'Czy będzie można kupować pojedyncze produkty?',
+          question: 'Czy można kupować pojedyncze produkty?',
           answer:
-            'Tak. Dokumenty przewidują możliwość dokupienia pojedynczych produktów, gdy jeden płyn zużywa się szybciej od reszty pakietu.',
+            'Nie. Produkty dostępne są wyłącznie w pakietach po 4 lub 8 sztuk — dzięki temu oferujemy oszczędności do 50%.',
         },
         {
-          question: 'Czy subskrypcję będzie można zatrzymać?',
+          question: 'Czy zamówienie można zmienić?',
           answer:
-            'Tak. Źródła wskazują pauzę, zmianę ilości i downgrade jako podstawowe funkcje doświadczenia klienta.',
+            'Tak. Możesz zmienić skład pakietu lub wielkość przed każdą wysyłką.',
         },
         {
           question: 'Dlaczego nacisk jest tak duży na edukację i dozowanie?',
@@ -360,7 +372,7 @@ export const copy = {
       note:
         'Wysyłka startowa będzie ograniczona i iteracyjna, zgodnie z fazą MVP opisaną w dokumentach strategii.',
     },
-    footerDesc: 'Dostarczamy profesjonalną jakość chemii JAX Professional bezpośrednio do Twoich drzwi w inteligentnym modelu subskrypcyjnym.',
+    footerDesc: 'Dostarczamy profesjonalną jakość chemii domowej bezpośrednio do Twoich drzwi w wygodnym modelu pakietowym.',
     footerCol1: {
       title: 'Informacje',
       links: ['Regulamin', 'Polityka Prywatności', 'FAQ']
@@ -369,21 +381,21 @@ export const copy = {
       title: 'Wsparcie',
       links: ['Kontakt', 'Strefa Klienta']
     },
-    footerCopyright: '© 2024 Płyndo.pl. Powered by JAX Professional.',
+    footerCopyright: '© 2024 Płyndo.pl. Powered by Płyndo.',
     footer:
-      'Płyndo.pl to koncepcja premium dla nowego modelu chemii domowej w Polsce: jakość producenta, estetyka i logiczna subskrypcja.',
+      'Płyndo.pl to koncepcja premium dla nowego modelu chemii domowej w Polsce: jakość producenta, estetyka i pakiety.',
   },
   en: {
     htmlLang: 'en',
-    title: 'Plyndo.pl | Professional household chemistry on subscription',
+    title: 'Plyndo.pl | Professional household chemistry packages',
     description:
-      'Plyndo.pl brings order to household chemistry in Poland: 8 core products, MINI / MIDI / MAXI plans, AI personalization, InPost, courier delivery, and a BLIK-ready subscription-lite flow.',
+      'Plyndo.pl brings order to household chemistry in Poland: 10 core products, packages of 4 and 8, InPost, courier delivery, and a BLIK-ready checkout.',
     brand: 'Plyndo.pl',
     nav: {
       product: 'Catalog',
       plans: 'AI Plans',
       operations: 'How It Works',
-      standard: 'Subscription',
+      standard: 'Packages',
       faq: 'FAQ',
       waitlist: 'Early Access',
       menu: 'Menu',
@@ -413,18 +425,18 @@ export const copy = {
       primary: 'Choose your package',
       secondary: 'See the offer',
       proof: [
-        '8 core products for everyday household upkeep',
+        '10 core products for everyday household upkeep',
         'MINI / MIDI / MAXI plans with room to expand',
-        'InPost, courier delivery, and a subscription-lite path for Poland',
+        'InPost, courier delivery, and a packages-lite path for Poland',
         'AI matching the setup to square footage, kids, pets, and lifestyle',
       ],
       trust: {
-        badge: 'JAX Certified',
+        badge: 'Płyndo Certified',
         caption: 'Trusted by professionals since 1994.'
       },
       metrics: [
         { value: '40+', label: 'years of production experience behind the brand' },
-        { value: '8', label: 'MVP products instead of a bloated catalog' },
+        { value: '10', label: 'MVP products instead of a bloated catalog' },
         { value: '1-3', label: 'months as the baseline delivery cycles' },
         { value: 'PL', label: 'logistics and payments designed for Poland' },
       ],
@@ -438,7 +450,7 @@ export const copy = {
         'Plyndo is not selling one bottle. It is selling continuity, calm, and a better-run home.',
     },
     heritage: {
-      text: '30 years of JAX Professional tradition.',
+      text: '30 years of Płyndo tradition.',
       highlight: 'Now in your home.'
     },
     aiAssistant: {
@@ -478,29 +490,29 @@ export const copy = {
         title: 'IN YOUR PACKAGE:',
         count: '6 PRODUCTS',
         items: [
-          'JAX 01 - Glass Surfaces',
-          'JAX 14 - Wood Floors',
-          'JAX 07 - Sanitaries (Active chlorine)'
+          '01 - Glass Surfaces',
+          '14 - Wood Floors',
+          '07 - Sanitaries (Active chlorine)'
         ],
         more: '+ 3 other professional products'
       }
     },
     productGrid: {
       title: 'Chemistry Catalog',
-      lead: 'Our range of JAX Professional products represents 30 years of experience enclosed in a minimalist form. Effectiveness without compromise.',
+      lead: 'Our range of Płyndo products represents 30 years of experience enclosed in a minimalist form. Effectiveness without compromise.',
       cta: 'See full technical specification',
       products: [
-        { name: 'JAX 01 Glass', tagline: 'Crystalline purity without streaks', tag: 'GLASS', color: 'bg-blue-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBb0vDEh2Woo2A4uvXfb3yw1vif2McuZwaFdwwf4rviO9_dV2Mv4yIgRpybjbuXZ4orT_gjV-geTgcDyVVZ0lQ6F1L_8J7AJ5IFq2926Jxj-Bf9uFiwK3AXVibs6WfiUjAua8pcKxfduHTKjYglCaLem6Vwq25Fb3NDqZCblEzCU8pC7_aX1v7paqShRdeYU6RD1YyS-Gf5tt8nnMIr8lCtKTBlX0AtAbRtqRIExSiod486UqT6pBKCL8ognv8km_2WijfVYK2EQk6i' },
-        { name: 'JAX 14 Floor', tagline: 'Protection and shine of hard floors', tag: 'FLOOR', color: 'bg-amber-500', ph: '8.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAfT-fSNucWAX9zxs87bcEpgV6fLrX7mBg6igspdY01q8LHSDtV2K5_YBwuEoihV5TB9y4iQVvlFILJUiQ1NcPJ69f-SQ_wU7KocUU96pPU4mHq4fnRetDJMLlvg_YRTziHqruLh0cDpABUl82palQKkjwUSiZrJbZrdjQwyVRNxB87gY1lTEKdrkSW0uIwN_V6x_MjSBVvgm57pnqEwfek7qC0p9yyEBMQl1o2RlExosGUoZ5ptnPswpGCGva9gPUTUQ7sFCcCkHa9' },
-        { name: 'JAX 07 Bath', tagline: 'Effective against sediments', tag: 'BATHROOM', color: 'bg-red-500', ph: '2.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBC3Nj1FpsxDH4UDoq4ImySdNOCwaYGeJfVkPlJhS2o7xZ1uXtD2WqLh1n1dAdsfGUf30lU6b5mwYY_wFCUrIPFY-9HJItMBcQuerhnLjpDOlHKGxy3_fPmcxIiNkt3UprzSg6Eco1hXrURLA78Iy86d41tvxPKMgO4-LWOmILf6K0SovYmCzV_YxGBoYKvhXHh20r9k9VkKpsVrVczJhz5m96UPw5si7lhvoVJpE9oOxuOSDV_9wKpM_YJJMGQp1rJbA3xO3FFRq83' },
-        { name: 'JAX 22 Dish', tagline: 'Ultra-concentrate for dishes', tag: 'DISHES', color: 'bg-emerald-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDXIIyuJl3ln8R42T9DKu6s9JCpT8KlCQtTn_Z4B47oMrT4D_ZyfZveTOI0xRLiFyN2UnJDZwDFtWafHKZbL_-o6zBDrBOHr3B_3Yk08qZacJKoKU8Keo7Yy1JhgucGzJIhfCnzmC_zmL2Gi5QJXmu8zFOmT2THX7fF-JSePBaWbpTSo8AEhFEQIdpVhdZjFExlPIDgCCQTdJcIHx54-Y0HI5LQ-kvOPUUuysGDLhRmKU2V0IYgfzbasjUmO-y3V0h1buODUd_QpYqR' },
-        { name: 'JAX 41 Laundry', tagline: 'Deep fabric cleaning', tag: 'LAUNDRY', color: 'bg-indigo-500', ph: '9.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1Orzt8_DVEFeB-_TjEN7ONz1qJa82E1yNXK77s4xHkTwtaZDEe4rkgG5vmMKTzPkohfrg-s8g-KPNBVCuhb17SRmNusWVUokAdqbTcJCPeCqfWSBQ2CFqqZ7fxDZnqpHze8OvIlNxC1d1ICe8bmoL7YWKNxeMA0JswcCgjz--jK0lHKi8eNxSCB4BDTBDYUqrOdrGgclmiFnBDBjzOtTY6WKMT5hsRaboVJuAYZ72hDmpBdayPPNDgRhLEiB8ChfXBSz5W7NACGAR' },
-        { name: 'JAX 45 Softener', tagline: 'Long-lasting softness', tag: 'RINSE', color: 'bg-pink-400', ph: '4.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBLKVsvl75IuEa3XYBqGVstHL9v6_Jle3kPpZvV8sH9o14mU8hDopEaZVddZhuQUfTuQ_fbW0ex5xKuarwUFYvBcOhXUlyZsD8vAeXDS5ff8mNCHS3CVf3LBoMSDXnLbX_Dl2HU3945iGLQqWHEsnT6wcunbFrsGL6naOtQNQD4489SJxVei1QNkgNLYmHwGJuhpw2GpQYWRRciYm4JPtpMbcREGvn2-ffP2PxAoNnE4xzumbOACm8M66_kz1WBGOq8SmqSPW3LbrRH' },
-        { name: 'JAX 31 DW-Gel', tagline: 'Concentrated dishwashing power', tag: 'DISHWASHER', color: 'bg-slate-500', ph: '11.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6YVfB3PabNUQxqV5HhRfexgIEuhCxrUxcTTg0qr5P3L57kiCZKWk2dwvCfgcOZHeNuIXFe3B2r4jVPQQ7f68jEy8oxMrrLNsCvnNaCFtH0CPvi4ZsoKoc4ENi-KmNkMm0fwp0aIMu79CouTrP3Xr_17RyjFv3iJ8MPVSXWzdq7cdLTfC5rRrb_k3yoTjEg8iBiwR1nKFzi0udeNYa1eJlu_07wGHEiv4cWwj8hwYHx_kSpnPIW70BwFnfnjocNURDUsjU8537YZDi' },
-        { name: 'JAX 19 Silk Hand', tagline: 'Gentle caring soap', tag: 'SOAP', color: 'bg-teal-500', ph: '5.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAgfkATUCXzFy68crPhF9pkDFbmbcx-lVNraClyX3vZHc8yxnWLcz-BvhhwnijpKQoEFYmfTBMSYcieDxiMgrFCztAPo8IH4FO9ye_Xomn8HNXynWSsH9s_tfUtIDXFSaGZgiOu6Oh-SgjeKEfUv-eOmtOpc-tw2Z9zOsbT-BQbUW1dBQeou-g1ohiDms9u3BJhN6Or77TeDBVp2IHrTqa1T97zMMTnepB64PUhC5UkMBG6mjfTGgRr9wCeHF4-ByqunTYBnjtqwQod' }
+        { name: '01 Glass', tagline: 'Crystalline purity without streaks', tag: 'GLASS', color: 'bg-blue-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBb0vDEh2Woo2A4uvXfb3yw1vif2McuZwaFdwwf4rviO9_dV2Mv4yIgRpybjbuXZ4orT_gjV-geTgcDyVVZ0lQ6F1L_8J7AJ5IFq2926Jxj-Bf9uFiwK3AXVibs6WfiUjAua8pcKxfduHTKjYglCaLem6Vwq25Fb3NDqZCblEzCU8pC7_aX1v7paqShRdeYU6RD1YyS-Gf5tt8nnMIr8lCtKTBlX0AtAbRtqRIExSiod486UqT6pBKCL8ognv8km_2WijfVYK2EQk6i' },
+        { name: '14 Floor', tagline: 'Protection and shine of hard floors', tag: 'FLOOR', color: 'bg-amber-500', ph: '8.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAfT-fSNucWAX9zxs87bcEpgV6fLrX7mBg6igspdY01q8LHSDtV2K5_YBwuEoihV5TB9y4iQVvlFILJUiQ1NcPJ69f-SQ_wU7KocUU96pPU4mHq4fnRetDJMLlvg_YRTziHqruLh0cDpABUl82palQKkjwUSiZrJbZrdjQwyVRNxB87gY1lTEKdrkSW0uIwN_V6x_MjSBVvgm57pnqEwfek7qC0p9yyEBMQl1o2RlExosGUoZ5ptnPswpGCGva9gPUTUQ7sFCcCkHa9' },
+        { name: '07 Bath', tagline: 'Effective against sediments', tag: 'BATHROOM', color: 'bg-red-500', ph: '2.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBC3Nj1FpsxDH4UDoq4ImySdNOCwaYGeJfVkPlJhS2o7xZ1uXtD2WqLh1n1dAdsfGUf30lU6b5mwYY_wFCUrIPFY-9HJItMBcQuerhnLjpDOlHKGxy3_fPmcxIiNkt3UprzSg6Eco1hXrURLA78Iy86d41tvxPKMgO4-LWOmILf6K0SovYmCzV_YxGBoYKvhXHh20r9k9VkKpsVrVczJhz5m96UPw5si7lhvoVJpE9oOxuOSDV_9wKpM_YJJMGQp1rJbA3xO3FFRq83' },
+        { name: '22 Dish', tagline: 'Ultra-concentrate for dishes', tag: 'DISHES', color: 'bg-emerald-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDXIIyuJl3ln8R42T9DKu6s9JCpT8KlCQtTn_Z4B47oMrT4D_ZyfZveTOI0xRLiFyN2UnJDZwDFtWafHKZbL_-o6zBDrBOHr3B_3Yk08qZacJKoKU8Keo7Yy1JhgucGzJIhfCnzmC_zmL2Gi5QJXmu8zFOmT2THX7fF-JSePBaWbpTSo8AEhFEQIdpVhdZjFExlPIDgCCQTdJcIHx54-Y0HI5LQ-kvOPUUuysGDLhRmKU2V0IYgfzbasjUmO-y3V0h1buODUd_QpYqR' },
+        { name: '41 Laundry', tagline: 'Deep fabric cleaning', tag: 'LAUNDRY', color: 'bg-indigo-500', ph: '9.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1Orzt8_DVEFeB-_TjEN7ONz1qJa82E1yNXK77s4xHkTwtaZDEe4rkgG5vmMKTzPkohfrg-s8g-KPNBVCuhb17SRmNusWVUokAdqbTcJCPeCqfWSBQ2CFqqZ7fxDZnqpHze8OvIlNxC1d1ICe8bmoL7YWKNxeMA0JswcCgjz--jK0lHKi8eNxSCB4BDTBDYUqrOdrGgclmiFnBDBjzOtTY6WKMT5hsRaboVJuAYZ72hDmpBdayPPNDgRhLEiB8ChfXBSz5W7NACGAR' },
+        { name: '45 Softener', tagline: 'Long-lasting softness', tag: 'RINSE', color: 'bg-pink-400', ph: '4.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBLKVsvl75IuEa3XYBqGVstHL9v6_Jle3kPpZvV8sH9o14mU8hDopEaZVddZhuQUfTuQ_fbW0ex5xKuarwUFYvBcOhXUlyZsD8vAeXDS5ff8mNCHS3CVf3LBoMSDXnLbX_Dl2HU3945iGLQqWHEsnT6wcunbFrsGL6naOtQNQD4489SJxVei1QNkgNLYmHwGJuhpw2GpQYWRRciYm4JPtpMbcREGvn2-ffP2PxAoNnE4xzumbOACm8M66_kz1WBGOq8SmqSPW3LbrRH' },
+        { name: '31 DW-Gel', tagline: 'Concentrated dishwashing power', tag: 'DISHWASHER', color: 'bg-slate-500', ph: '11.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6YVfB3PabNUQxqV5HhRfexgIEuhCxrUxcTTg0qr5P3L57kiCZKWk2dwvCfgcOZHeNuIXFe3B2r4jVPQQ7f68jEy8oxMrrLNsCvnNaCFtH0CPvi4ZsoKoc4ENi-KmNkMm0fwp0aIMu79CouTrP3Xr_17RyjFv3iJ8MPVSXWzdq7cdLTfC5rRrb_k3yoTjEg8iBiwR1nKFzi0udeNYa1eJlu_07wGHEiv4cWwj8hwYHx_kSpnPIW70BwFnfnjocNURDUsjU8537YZDi' },
+        { name: '19 Silk Hand', tagline: 'Gentle caring soap', tag: 'SOAP', color: 'bg-teal-500', ph: '5.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAgfkATUCXzFy68crPhF9pkDFbmbcx-lVNraClyX3vZHc8yxnWLcz-BvhhwnijpKQoEFYmfTBMSYcieDxiMgrFCztAPo8IH4FO9ye_Xomn8HNXynWSsH9s_tfUtIDXFSaGZgiOu6Oh-SgjeKEfUv-eOmtOpc-tw2Z9zOsbT-BQbUW1dBQeou-g1ohiDms9u3BJhN6Or77TeDBVp2IHrTqa1T97zMMTnepB64PUhC5UkMBG6mjfTGgRr9wCeHF4-ByqunTYBnjtqwQod' }
       ]
     },
-    subscriptionLite: [
+    packagesLite: [
       {
         step: '01',
         title: 'You Order',
@@ -619,7 +631,7 @@ export const copy = {
       ],
       rails: [
         {
-          title: 'Subscription-lite for Poland',
+          title: 'Packages-lite for Poland',
           copy:
             'Not every buyer wants a permanently saved card, so the source strategy also includes reminders, a prefilled cart, and a fast BLIK-based reorder path.',
         },
@@ -668,7 +680,7 @@ export const copy = {
         },
         {
           label: 'Offer design',
-          left: '8 clear products and logical plans',
+          left: '10 clear products and logical plans',
           right: 'Crowded shelves and low trust in the differences',
         },
         {
@@ -699,12 +711,12 @@ export const copy = {
         {
           question: 'Is Plyndo already a full store?',
           answer:
-            'Not yet. The current stage is a refined landing page and demand validation step before the full subscription commerce platform is implemented.',
+            'Not yet. The current stage is a refined landing page and demand validation step before the full packages commerce platform is implemented.',
         },
         {
           question: 'What is included in the MVP?',
           answer:
-            'The MVP includes 8 core products, MINI / MIDI / MAXI plans, a personalization path, Poland-ready logistics assumptions, and priority-access signup.',
+            'The MVP includes 10 core products, MINI / MIDI / MAXI plans, a personalization path, Poland-ready logistics assumptions, and priority-access signup.',
         },
         {
           question: 'Will single products be available too?',
@@ -712,7 +724,7 @@ export const copy = {
             'Yes. The source documents explicitly include the ability to add single products when one item runs out faster than the rest of the plan.',
         },
         {
-          question: 'Can the subscription be paused?',
+          question: 'Can the packages be paused?',
           answer:
             'Yes. Pause, quantity changes, and downgrade paths are core assumptions in the planned customer experience.',
         },
@@ -734,7 +746,7 @@ export const copy = {
       note:
         'The first rollout will stay limited and iterative, consistent with the MVP phase described in the strategy documents.',
     },
-    footerDesc: 'We deliver professional JAX Professional quality chemistry directly to your door in an intelligent subscription model.',
+    footerDesc: 'We deliver professional Płyndo quality chemistry directly to your door in an intelligent packages model.',
     footerCol1: {
       title: 'Information',
       links: ['Terms of Service', 'Privacy Policy', 'FAQ']
@@ -743,8 +755,8 @@ export const copy = {
       title: 'Support',
       links: ['Contact', 'Client Zone']
     },
-    footerCopyright: '© 2024 Plyndo.pl. Powered by JAX Professional.',
+    footerCopyright: '© 2024 Plyndo.pl. Powered by Płyndo.',
     footer:
-      'Plyndo.pl is a premium concept for a new household-chemistry model in Poland: manufacturer quality, aesthetics, and a smarter subscription experience.',
+      'Plyndo.pl is a premium concept for a new household-chemistry model in Poland: manufacturer quality, aesthetics, and a smarter packages experience.',
   },
 }

@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <img src="/logo-black.svg" alt="Płyndo" className="h-9" />
             <p className="mt-4.5 text-fg-muted text-[13.5px] leading-relaxed max-w-[320px]">
-              Dostarczamy profesjonalną jakość chemii bezpośrednio do Twoich drzwi w inteligentnym modelu subskrypcyjnym.
+              Dostarczamy profesjonalną jakość chemii bezpośrednio do Twoich drzwi w wygodnym modelu pakietowym.
             </p>
           </div>
           {cols.map(col => (
@@ -29,9 +29,14 @@ export default function Footer() {
           ))}
         </div>
         <div className="mt-14 pt-6 border-t border-border flex justify-between items-center gap-4 flex-wrap">
-          <span className="text-[11.5px] text-fg-subtle">
-            © 2026 Płyndo.pl · Powered by EmiChem · Made in Poland
-          </span>
+          <div className="flex flex-col gap-1">
+            <span className="text-[11.5px] text-fg-subtle">
+              © 2026 Płyndo.pl · Powered by EmiChem · Made in Poland
+            </span>
+            <span className="text-[10px] text-fg-muted uppercase tracking-widest font-bold opacity-70">
+              Producent: Michał Mierzwa EmiChem P.P. Ul. Wójtowska 16, 61-654 Poznań
+            </span>
+          </div>
           <div className="flex gap-1.5">
             {["BLIK", "PRZELEWY24", "PAYNOW", "VISA"].map(p => (
               <span 

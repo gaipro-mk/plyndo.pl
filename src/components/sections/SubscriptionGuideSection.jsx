@@ -8,7 +8,7 @@ const iconMap = {
 };
 
 export default function SubscriptionGuideSection({ lang = 'pl' }) {
-  const steps = copy[lang].subscriptionLite;
+  const steps = copy[lang].packagesLite;
 
   return (
     <section id="subscription" className="py-24 bg-surface-variant px-6">

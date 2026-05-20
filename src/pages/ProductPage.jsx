@@ -77,10 +77,6 @@ export default function ProductPage() {
                   <strong>Bezpieczeństwo:</strong> {product.safety}
                 </p>
               </section>
-
-              <p className="text-[11px] opacity-70 uppercase tracking-widest font-bold">
-                Producent: {product.producer}
-              </p>
             </div>
           </motion.div>
 

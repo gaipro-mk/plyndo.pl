@@ -1,7 +1,41 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { copy } from '../../content';
 import { products } from '../../data/products';
 import { ArrowRight } from 'lucide-react';
+import { animate, useInView } from 'framer-motion';
+
+function AnimatedMetric({ value, label }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-20px" });
+  const [display, setDisplay] = useState("0");
+  
+  useEffect(() => {
+    if (!inView) return;
+    const numMatch = value.toString().match(/^(\d+)(.*)$/);
+    if (numMatch) {
+      const num = parseInt(numMatch[1], 10);
+      const suffix = numMatch[2];
+      animate(0, num, {
+        duration: 2,
+        ease: "easeOut",
+        onUpdate: (v) => setDisplay(Math.round(v) + suffix),
+      });
+    } else {
+      setDisplay(value);
+    }
+  }, [inView, value]);
+
+  return (
+    <div ref={ref}>
+      <div className="font-display font-black text-4xl tracking-tight leading-none">
+        {display}
+      </div>
+      <div className="mt-1.5 text-xs text-fg-muted leading-relaxed">
+        {label}
+      </div>
+    </div>
+  );
+}
 
 export default function HeroSection({ lang = 'pl' }) {
   const hero = copy[lang].hero;
@@ -65,7 +99,7 @@ export default function HeroSection({ lang = 'pl' }) {
               key={p.id} 
               src={p.image} 
               alt={`${p.name}`}
-              className="absolute w-[115%] h-auto max-w-none transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] object-contain"
+              className="absolute w-full h-[85%] object-cover object-center max-w-none transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] mix-blend-normal"
               style={{
                 opacity: j === idx ? 1 : 0,
                 transform: j === idx ? 'scale(1)' : 'scale(0.96)',
@@ -80,14 +114,7 @@ export default function HeroSection({ lang = 'pl' }) {
       <div className="max-w-7xl mx-auto px-6 mt-[72px]">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-7 border-t border-border">
           {hero.metrics.map(m => (
-            <div key={m.label}>
-              <div className="font-display font-black text-4xl tracking-tight leading-none">
-                {m.value}
-              </div>
-              <div className="mt-1.5 text-xs text-fg-muted leading-relaxed">
-                {m.label}
-              </div>
-            </div>
+            <AnimatedMetric key={m.label} value={m.value} label={m.label} />
           ))}
         </div>
       </div>

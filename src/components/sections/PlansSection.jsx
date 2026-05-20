@@ -3,23 +3,25 @@ import { copy } from '../../content';
 import { Check, ArrowRight, Info } from 'lucide-react';
 
 const TIER_SKINS = {
-  MINI: { bg: "#9ecbe8", fg: "#1e4c7a", subtle: "rgba(30,76,122,.75)", line: "color-mix(in oklab, #1e4c7a 18%, transparent)",
+  'Wybierz Sam (4 szt.)': { bg: "#9ecbe8", fg: "#1e4c7a", subtle: "rgba(30,76,122,.75)", line: "color-mix(in oklab, #1e4c7a 18%, transparent)",
           btnBg: "rgba(255,255,255,.55)", btnFg: "#1e4c7a", btnBorder: "1px solid #1e4c7a" },
-  MIDI: { bg: "#2550a4", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)",
+  'Wybierz Sam (8 szt.)': { bg: "#2550a4", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)",
           btnBg: "#ffffff", btnFg: "#2550a4", btnBorder: "none" },
-  MAXI: { bg: "#2b5a40", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)",
+  'Pakiet Dom (8 szt.)': { bg: "#2b5a40", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)",
           btnBg: "transparent", btnFg: "#ffffff", btnBorder: "1px solid #ffffff" },
+  'Pakiet Starter (12 szt.)': { bg: "#1e4c7a", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)",
+          btnBg: "#ffffff", btnFg: "#1e4c7a", btnBorder: "none" },
 };
 
 export default function PlansSection({ lang = 'pl' }) {
   const content = copy[lang].plans;
-  const [focusedTier, setFocusedTier] = useState("MIDI");
+  const [focusedTier, setFocusedTier] = useState('Pakiet Dom (8 szt.)');
 
   if (!content) return null;
 
   return (
     <section id="plans" className="py-24 bg-surface px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1400px] mx-auto">
         <div className="text-center max-w-[720px] mx-auto mb-16">
           <span className="t-eyebrow">{content.eyebrow}</span>
           <h2 className="t-h1 mt-3">
@@ -30,16 +32,17 @@ export default function PlansSection({ lang = 'pl' }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.08fr_1fr] gap-5.5 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5.5 items-stretch">
           {content.cards.map((plan) => {
             const isHero = plan.name === focusedTier;
-            const skin = TIER_SKINS[plan.name] || TIER_SKINS.MIDI;
+            // Default to blue skin if not found
+            const skin = TIER_SKINS[plan.name] || { bg: "#2550a4", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)", btnBg: "#ffffff", btnFg: "#2550a4", btnBorder: "none" };
             
             return (
               <div 
                 key={plan.name} 
                 onClick={() => setFocusedTier(plan.name)}
-                className={`relative rounded-[28px] p-8 pb-7 cursor-pointer transition-all duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)]`}
+                className={`relative rounded-[28px] p-8 pb-7 cursor-pointer transition-all duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col`}
                 style={{
                   background: skin.bg, 
                   color: skin.fg,
@@ -48,7 +51,7 @@ export default function PlansSection({ lang = 'pl' }) {
                   transform: isHero ? "translateY(-6px)" : "none",
                 }}
               >
-                {isHero && (
+                {plan.name === 'Pakiet Dom (8 szt.)' && (
                   <span 
                     className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full text-[10px] font-extrabold tracking-[0.12em] uppercase whitespace-nowrap"
                     style={{ color: skin.bg }}
@@ -56,7 +59,14 @@ export default function PlansSection({ lang = 'pl' }) {
                     Najczęściej wybierany
                   </span>
                 )}
-                <div className="font-display font-black text-4xl tracking-[-0.04em] leading-none">
+                {plan.name === 'Pakiet Starter (12 szt.)' && (
+                  <span 
+                    className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 px-3 py-1 rounded-full text-[10px] font-extrabold tracking-[0.12em] uppercase whitespace-nowrap text-amber-950"
+                  >
+                    Mega Oferta
+                  </span>
+                )}
+                <div className="font-display font-black text-3xl tracking-[-0.04em] leading-tight">
                   {plan.name}
                 </div>
                 <div 
@@ -67,7 +77,7 @@ export default function PlansSection({ lang = 'pl' }) {
                 </div>
 
                 <p 
-                  className="mt-4 font-serif italic font-medium text-[17px] leading-[1.3] min-h-[44px]"
+                  className="mt-4 font-serif italic font-medium text-[15px] leading-[1.3] min-h-[44px]"
                   style={{ color: skin.fg }}
                 >
                   {plan.cadence}
@@ -92,25 +102,25 @@ export default function PlansSection({ lang = 'pl' }) {
                   }}
                   onClick={(e) => {
                     e.stopPropagation();
-                    document.getElementById("advisor")?.scrollIntoView({ behavior: "smooth" });
+                    // Just basic interaction
                   }}
                 >
-                  Skomponuj {plan.name} <ArrowRight size={16}/>
+                  Wybierz pakiet <ArrowRight size={16}/>
                 </button>
               </div>
             );
           })}
         </div>
 
-        <div className="mt-16 bg-white border border-border rounded-[24px] px-8 py-7 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 items-center">
+        <div className="mt-16 bg-white border border-border rounded-[24px] px-8 py-7 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 items-center max-w-7xl mx-auto">
           <div>
             <h3 className="t-h4 m-0">{content.modulesTitle}</h3>
             <div className="flex items-center gap-1.5 mt-1.5 text-[13px] text-fg-muted">
-              <Info size={14}/> 8 niezawodnych formuł + 2 specjalistyczne
+              <Info size={14}/> 10 profesjonalnych formuł
             </div>
           </div>
           <div className="flex gap-2 flex-wrap">
-            {["Podłogi", "Szyby", "Łazienka", "Mydło", "Pranie", "Płukanie", "Naczynia", "Zmywarka", "WC", "Dezynfekcja"].map(m => (
+            {content.modules.map(m => (
               <span 
                 key={m} 
                 className="bg-surface border border-border text-fg-muted px-3.5 py-2 rounded-[10px] text-[13px] font-medium"
