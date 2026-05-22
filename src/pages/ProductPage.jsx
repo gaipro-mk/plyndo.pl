@@ -106,9 +106,7 @@ function MediaSlot({ title, note, videoSrc }) {
       </div>
     </div>
   );
-}
-
-function HeroVideo({ videoSrc }) {
+function HeroVideo({ videoSrc, className = '' }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -140,7 +138,7 @@ function HeroVideo({ videoSrc }) {
 
   return (
     <div 
-      className="group relative flex w-full max-w-[360px] mx-auto aspect-[9/16] overflow-hidden rounded-[20px] border border-black/10 bg-black shadow-lg cursor-pointer"
+      className={`group relative flex mx-auto aspect-[9/16] overflow-hidden rounded-[20px] border border-black/10 bg-black shadow-lg cursor-pointer flex-shrink-0 ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
@@ -253,7 +251,7 @@ export default function ProductPage({ lang = 'pl' }) {
 
           <section className={`grid items-center gap-10 border-b border-current/15 pb-16 ${
             product.slug === 'naczynia'
-              ? 'lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)_minmax(280px,360px)]'
+              ? 'lg:grid-cols-[minmax(0,1fr)_auto]'
               : 'lg:grid-cols-[minmax(0,1fr)_minmax(340px,520px)]'
           } lg:gap-10 xl:gap-16`}>
             <div>
@@ -273,19 +271,29 @@ export default function ProductPage({ lang = 'pl' }) {
               <p className="mt-7 max-w-[640px] text-base font-medium leading-[1.7] opacity-95">{detail.description}</p>
             </div>
             
-            {product.slug === 'naczynia' && (
-              <div className="flex justify-center w-full mt-6 lg:mt-0">
-                <HeroVideo videoSrc="/video/vid_exploaded_naczynia.mp4" />
+            {product.slug === 'naczynia' ? (
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 xl:gap-10 mt-6 lg:mt-0">
+                <HeroVideo 
+                  videoSrc="/video/vid_exploaded_naczynia.mp4" 
+                  className="h-[380px] md:h-[420px] lg:h-[400px] xl:h-[480px]" 
+                />
+                <div className="h-[380px] md:h-[420px] lg:h-[400px] xl:h-[480px] flex-shrink-0">
+                  <img
+                    src={product.image}
+                    alt={productName}
+                    className="h-full w-auto object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.24)]"
+                  />
+                </div>
+              </div>
+            ) : (
+              <div className="mx-auto flex w-full max-w-[520px] items-center justify-center">
+                <img
+                  src={product.image}
+                  alt={productName}
+                  className="h-auto max-h-[680px] w-full object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.24)]"
+                />
               </div>
             )}
-
-            <div className={`mx-auto flex w-full items-center justify-center ${product.slug === 'naczynia' ? 'max-w-[360px] aspect-[9/16]' : 'max-w-[520px]'}`}>
-              <img
-                src={product.image}
-                alt={productName}
-                className={`w-full object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.24)] ${product.slug === 'naczynia' ? 'h-full' : 'h-auto max-h-[680px]'}`}
-              />
-            </div>
           </section>
 
           <section className="grid gap-6 py-14 lg:grid-cols-[0.72fr_1fr] lg:items-start">
