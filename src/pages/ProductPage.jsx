@@ -108,6 +108,62 @@ function MediaSlot({ title, note, videoSrc }) {
   );
 }
 
+function HeroVideo({ videoSrc }) {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleMouseEnter = () => {
+    if (videoSrc && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoSrc && videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleClick = () => {
+    if (videoSrc && videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play().catch(() => {});
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  return (
+    <div 
+      className="group relative flex w-full max-w-[280px] mx-auto aspect-[9/16] overflow-hidden rounded-[20px] border border-black/10 bg-black shadow-lg cursor-pointer"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+    >
+      <video
+        ref={videoRef}
+        src={videoSrc}
+        muted
+        playsInline
+        loop
+        className="absolute inset-0 h-full w-full object-cover opacity-80 transition-opacity duration-500 group-hover:opacity-100"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-30" />
+      
+      <div className="absolute inset-0 flex items-center justify-center p-6 z-10 pointer-events-none">
+        <span className={`flex h-14 w-14 items-center justify-center rounded-[16px] bg-white/20 backdrop-blur-md text-white transition-all duration-300 ${isPlaying ? 'scale-90 opacity-0' : 'scale-100 opacity-100'}`}>
+          <CirclePlay size={28} />
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function ProductPage({ lang = 'pl' }) {
   const { slug } = useParams();
   const product = products.find(p => p.slug === slug);
@@ -195,7 +251,11 @@ export default function ProductPage({ lang = 'pl' }) {
             <img src={logoSrc} alt="Płyndo" className="h-6 w-fit" />
           </header>
 
-          <section className="grid items-center gap-10 border-b border-current/15 pb-16 lg:grid-cols-[minmax(0,1fr)_minmax(340px,520px)] lg:gap-16">
+          <section className={`grid items-center gap-10 border-b border-current/15 pb-16 ${
+            product.slug === 'naczynia'
+              ? 'lg:grid-cols-[minmax(0,1.2fr)_minmax(220px,280px)_minmax(280px,420px)] xl:grid-cols-[minmax(0,1fr)_minmax(260px,320px)_minmax(340px,520px)]'
+              : 'lg:grid-cols-[minmax(0,1fr)_minmax(340px,520px)]'
+          } lg:gap-10 xl:gap-16`}>
             <div>
               <div className="mb-5 flex flex-wrap gap-2">
                 <div className="inline-block rounded-full px-3 py-1 text-[11px] font-bold uppercase" style={{ backgroundColor: product.color.text, color: product.color.bg }}>
@@ -212,6 +272,13 @@ export default function ProductPage({ lang = 'pl' }) {
               <p className="font-serif text-xl italic opacity-90 md:text-2xl">{detail.subtitle}</p>
               <p className="mt-7 max-w-[640px] text-base font-medium leading-[1.7] opacity-95">{detail.description}</p>
             </div>
+            
+            {product.slug === 'naczynia' && (
+              <div className="flex justify-center w-full mt-6 lg:mt-0">
+                <HeroVideo videoSrc="/video/vid_exploaded_naczynia.mp4" />
+              </div>
+            )}
+
             <div className="mx-auto flex w-full max-w-[520px] items-center justify-center">
               <img
                 src={product.image}
@@ -228,11 +295,7 @@ export default function ProductPage({ lang = 'pl' }) {
               <p className="mt-4 text-sm leading-relaxed opacity-85">{labels.mediaLead}</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <MediaSlot 
-                title={labels.effect} 
-                note={labels.effectNote} 
-                videoSrc={product.slug === 'naczynia' ? '/video/vid_exploaded_naczynia.mp4' : null} 
-              />
+              <MediaSlot title={labels.effect} note={labels.effectNote} />
               <MediaSlot title={labels.guide} note={labels.guideNote} />
             </div>
           </section>
