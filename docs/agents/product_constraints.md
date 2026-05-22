@@ -2,7 +2,7 @@
 
 ## Core Product
 - Treat the current product as a package-first landing page for ready bundles and custom packs, not a checkout flow.
-- Subscription and waitlist models are out of scope for the product.
+- Keep the product scope package-first: ready bundles, custom packs, product education, and Shoper handoff.
 - Current implementation is landing-page only. No backend and no live Shoper checkout yet.
 - The current landing CTA to Shoper must remain an inactive placeholder until the integration is ready.
 - Product prices may be shown as reference prices. Discount and savings belong only to the whole pack.

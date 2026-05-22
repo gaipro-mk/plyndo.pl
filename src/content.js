@@ -149,6 +149,16 @@ export const copy = {
           answer:
             'Docelowo w sklepie Shoper. Obecne przyciski zakupowe są jawnie nieaktywne do czasu podpięcia realnych linków i koszyków.',
         },
+        {
+          question: 'Jak zapłacę i jak dotrze paczka?',
+          answer:
+            'Po uruchomieniu Shopera płatność i dostawa będą finalizowane w sklepie. Landing przygotowuje komunikację pod szybkie metody płatności, takie jak BLIK, przelew i karta, oraz dostawę cięższych płynów pod wskazany adres.',
+        },
+        {
+          question: 'Czy QR i filmy produktowe są już docelowe?',
+          answer:
+            'Nie. Podstrony produktów mają gotowe miejsca na kody QR do ofert Shopera oraz filmy pokazujące skuteczność i bezpieczne użycie. Cele linków zostaną podmienione po starcie sklepu.',
+        },
       ],
     },
   },
@@ -301,6 +311,16 @@ export const copy = {
           question: 'Where is checkout finished?',
           answer:
             'Later in Shoper. Current purchase buttons are clearly inactive until real links and carts are connected.',
+        },
+        {
+          question: 'How will I pay and receive a box?',
+          answer:
+            'Payment and delivery will be finished in Shoper after launch. The landing is prepared for fast payment messaging such as BLIK, bank transfer, and card, plus delivery of the heavier liquids to the selected address.',
+        },
+        {
+          question: 'Are QR codes and product videos final?',
+          answer:
+            'Not yet. Product pages reserve slots for Shoper QR targets and videos that show effectiveness and safe use. Link targets will be replaced when the store goes live.',
         },
       ],
     },

@@ -2,7 +2,7 @@
 
 ## 1. Status dokumentu
 
-Ten dokument zastępuje wcześniejsze założenia platformy opartej o subskrypcję.
+Ten dokument definiuje obowiązujące założenia sprzedaży pakietowej Płyndo.pl.
 
 Obowiązujące decyzje produktowe:
 
@@ -10,7 +10,7 @@ Obowiązujące decyzje produktowe:
 - docelowa domena techniczna i adres URL to `plyndo.pl`, bez polskiego znaku `ł`,
 - landing page prezentuje markę, produkty, pakiety i przejścia do zakupu,
 - zakup odbywa się wyłącznie w pakietach i paczkach, nie jako sprzedaż pojedynczej butelki,
-- subskrypcja i waitlista nie są zakresem produktu,
+- oferta landing page'a jest pakietowa od pierwszego CTA do handoffu Shopera,
 - Shoper będzie docelowym sklepem i checkoutem,
 - obecne CTA do Shopera na landingu jest nieaktywnym placeholderem,
 - po integracji gotowy pakiet i paczka własna przekazują do Shopera pełny skład koszyka oraz rabat pakietowy,
@@ -109,9 +109,9 @@ Płyndo może zająć pozycję pomiędzy marketem a specjalistyczną chemią:
 Nie budujemy w landingu:
 
 - własnego checkoutu,
-- systemu subskrypcji,
+- własnego systemu powtarzalnych zamówień,
 - cyklicznych obciążeń,
-- konta klienta dla zarządzania subskrypcją,
+- konta klienta do zarządzania zamówieniami,
 - pełnego ERP, WMS ani synchronizacji stanów magazynowych,
 - niepotwierdzonych porównań cenowych z konkretnymi sieciami detalicznymi.
 
@@ -815,7 +815,7 @@ Wymagane zasady:
 
 Pierwsza wersja jest gotowa, gdy:
 
-- strona nigdzie nie sprzedaje subskrypcji,
+- strona konsekwentnie sprzedaje pakiety, nie pojedyncze butelki,
 - publiczne polskie copy przedstawia markę jako `Płyndo.pl`, dopuszcza `Płyndo` tylko jako skrót po przedstawieniu marki, nie używa `Płyn DO` jako tekstowego zamiennika marki poza logo i etykietami, a domena pozostaje `plyndo.pl`,
 - strona `O marce` kontroluje referencję do `JAX Professional`, a hero, trust, footer i strony produktów nie powielają jej,
 - footer zachowuje dane producenta lub sprzedawcy z repo jako dane podmiotu bez dominowania marki Płyndo,
@@ -865,7 +865,7 @@ Pierwsza wersja jest gotowa, gdy:
 
 ### Etap B: przebudowa landingu
 
-- usunąć subskrypcję, waitlistę i stare pakiety,
+- usunąć pozostałości poprzedniego lejka sprzedażowego i stare pakiety,
 - wprowadzić narrację paczek,
 - rozbudować pakiety domu i firmy,
 - poprawić FAQ, menu, footer i strony informacyjne.
@@ -921,7 +921,7 @@ Najbliższe wdrożenie ma dostarczyć premium landing page i powiązane widoki, 
 - przygotowują strukturę pod docelowy `Starter 12`,
 - obsługują dom i firmę,
 - używają dummy danych dla Shopera,
-- usuwają wszystkie pozostałości starej subskrypcji.
+- utrzymują jednolity model sprzedaży pakietowej.
 
 ## 25. Źródła I Założenia Do Weryfikacji
 

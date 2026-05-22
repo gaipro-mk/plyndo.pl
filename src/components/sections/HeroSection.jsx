@@ -83,7 +83,7 @@ export default function HeroSection({ lang = 'pl' }) {
               <button
                 key={p.id}
                 onClick={() => { setIdx(j); setPaused(true); }}
-                aria-label={`Pokaż ${p.name}`}
+                aria-label={`${lang === 'en' ? 'Show' : 'Pokaż'} ${p.i18n?.[lang]?.displayName ?? p.name}`}
                 className="w-7 h-1 p-0 border-none rounded-sm cursor-pointer transition-colors duration-300"
                 style={{ background: j === idx ? 'var(--color-primary)' : 'var(--color-surface-variant)' }}
               />

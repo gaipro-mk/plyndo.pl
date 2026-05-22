@@ -23,4 +23,4 @@ Premium landing page and product documentation for Polish D2C household chemistr
 - Premium package-first landing page for products, packs `4` and `8`, current `Starter 10`, and the future `Starter 12`
 - Product reference prices with discount and savings shown only for the whole pack
 - Inactive Shoper CTA placeholder on the current landing; no backend or live checkout yet
-- No subscription or waitlist product model
+- Package-first landing scope only

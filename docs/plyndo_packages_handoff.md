@@ -13,11 +13,11 @@ Czytaj w tej kolejności:
 5. `docs/agents/testing_rules.md`
 6. kod aplikacji w `src`
 
-`PRD.md` zastępuje wcześniejszy cel subskrypcyjny repo decyzją o sprzedaży pakietowej. Jeżeli starszy dokument lub kod nadal mówi o subskrypcji albo waitliście jako obowiązującym celu, potraktuj to jako dług do zsynchronizowania z aktualnym PRD.
+`PRD.md` jest źródłem prawdy dla sprzedaży pakietowej Płyndo.pl. Jeżeli starszy dokument lub kod opisuje inny cel sprzedażowy, potraktuj to jako dług do zsynchronizowania z aktualnym PRD.
 
 ### 1.2 Stan produktu po decyzjach
 
-- Nowy cel to sprzedaż pakietowa, nie subskrypcja.
+- Cel produktu to sprzedaż pakietowa.
 - Widoczna polska marka to `Płyndo.pl`; skrót `Płyndo` wolno użyć po pełnym przedstawieniu marki, gdy poprawia brzmienie zdania. Techniczna domena to `plyndo.pl`.
 - MVP pracuje na 10 produktach już obecnych w repo.
 - Główny starter MVP to `Starter 10`.
@@ -47,14 +47,14 @@ Czytaj w tej kolejności:
 | --- | --- |
 | `src/App.jsx` | routing i kolejność sekcji home |
 | `src/content.js` | stare i nowe copy PL/EN |
-| `src/data/products.js` | aktualny katalog 10 produktów |
-| `src/pages/ProductPage.jsx` | obecny szablon strony produktu |
+| `src/data/products.js` | aktualny katalog 10 produktów, oferta dummy i detale PL/EN |
+| `src/pages/ProductPage.jsx` | długi szablon strony produktu: prezentacja, użycie, bezpieczeństwo, sprzedaż |
 | `src/components/sections/PlansSection.jsx` | obecna sekcja pakietów |
-| `src/components/sections/SubscriptionGuideSection.jsx` | stara narracja do usunięcia lub przepisania |
-| `src/components/sections/WaitlistSection.jsx` | stary lej do usunięcia |
-| `src/components/sections/AiAssistantSection.jsx` | stary advisor `MINI/MIDI/MAXI` |
-| `src/components/layout/TopNav.jsx` | menu i CTA |
-| `src/components/layout/Footer.jsx` | martwe linki, płatności, dane podmiotu do zachowania |
+| `src/components/sections/AiAssistantSection.jsx` | regułowy doradca domu i firmy |
+| `src/components/layout/TopNav.jsx` | menu, dropdown produktów i CTA |
+| `src/components/layout/RouteEffects.jsx` | hash-scroll routingu i dynamiczne meta podstron |
+| `src/components/layout/Breadcrumbs.jsx` | wspólna ścieżka powrotu podstron |
+| `src/components/layout/Footer.jsx` | linki wsparcia, płatności, dane podmiotu do zachowania |
 
 ### 1.5 Zakazy wdrożeniowe
 
@@ -104,6 +104,17 @@ Poza tym etapem zostają:
 - Nie wolno symulować złożonego zamówienia, płatności ani dostępności sklepu, którego jeszcze nie ma.
 - Strony prawne mają mieć placeholder informacyjny, nie wygenerowany regulamin. Szacunek zapasu w doradcy ma wynikać z jawnej reguły lub być opisany jako orientacyjny placeholder do kalibracji.
 
+### 1.9 Stan wdrożenia po polerowaniu landingu
+
+W aktualnym kodzie wykonano już następujące elementy:
+
+- linki navbaru i footeru prowadzą do realnych sekcji/routera, a hash-scroll po przejściu z podstrony obsługuje `RouteEffects`,
+- navbar ma listę 10 produktów na desktopie i mobile, a podstrony produktu, pakietu, konfiguratora i informacji mają breadcrumbs,
+- podstrona produktu prowadzi od ekspozycji produktu przez placeholdery video, instrukcję i bezpieczeństwo do końcowego panelu pakietowego z ceną referencyjną, QR i dummy handoffem Shopera,
+- konfigurator wizualnie pokazuje wypełnienie kartonu i pozostaje oparty o kalkulator pakietowy,
+- detale produktów oraz FAQ mają warstwę PL/EN, a landing ma statyczne meta SEO/GEO/AEO plus dynamiczny title/description/canonical dla tras produktów i pakietów,
+- nadal trzeba podmienić finalne URL-e Shopera, SKU, QR targety, prawne treści, zatwierdzone metody płatności/dostawy oraz docelowe media.
+
 ## 2. Uniwersalny prompt dla agenta implementującego
 
 Skopiuj cały blok poniżej do Claude, Gemini, Codex lub innego agenta, który ma dostęp do repo.
@@ -112,7 +123,7 @@ Skopiuj cały blok poniżej do Claude, Gemini, Codex lub innego agenta, który m
 Pracujesz w repozytorium React/Vite/Tailwind v4:
 /Users/mk/Dev_Env/Plyn_DO/plyndo.pl
 
-Twoim celem jest wdrożenie aktualnego PRD dla marki Płyndo.pl. Najpierw przeanalizuj repo, dopiero potem zmieniaj kod. Jeżeli środowisko wspiera subagentów, użyj ich równolegle do: (1) audytu danych i routingu, (2) audytu copy/i18n i usuwania starej subskrypcji, (3) planu UI/UX i walidacji mobile, (4) testów oraz ryzyk integracji Shopera. Orkiestrator ma scalić wyniki i pilnować jednego spójnego wdrożenia.
+Twoim celem jest wdrożenie aktualnego PRD dla marki Płyndo.pl. Najpierw przeanalizuj repo, dopiero potem zmieniaj kod. Jeżeli środowisko wspiera subagentów, użyj ich równolegle do: (1) audytu danych i routingu, (2) audytu copy/i18n i spójności modelu pakietowego, (3) planu UI/UX i walidacji mobile, (4) testów oraz ryzyk integracji Shopera. Orkiestrator ma scalić wyniki i pilnować jednego spójnego wdrożenia.
 
 Źródło prawdy i kolejność czytania:
 1. AGENTS.md
@@ -123,10 +134,10 @@ Twoim celem jest wdrożenie aktualnego PRD dla marki Płyndo.pl. Najpierw przean
 6. docs/agents/testing_rules.md
 7. aktualny kod w src
 
-Ważna reguła konfliktu: PRD.md zastępuje wcześniejszy opis subskrypcji i waitlisty. Jeżeli AGENTS.md lub starsze dokumenty nadal opisują subskrypcję jako cel produktu, zachowaj ich zasady pracy, testów i stylu, ale zaktualizuj zakres produktu do pakietów zgodnie z PRD.
+Ważna reguła konfliktu: PRD.md ustala pakietowy zakres sprzedaży. Jeżeli AGENTS.md lub starsze dokumenty opisują inny cel produktu, zachowaj ich zasady pracy, testów i stylu, ale zaktualizuj zakres zgodnie z PRD.
 
 Nowy model produktu:
-- Likwidujemy subskrypcję, waitlistę, cykle dostaw i stare warianty MINI/MIDI/MAXI.
+- Likwidujemy pozostałości poprzedniego lejka, cykle dostaw i stare warianty oferty.
 - Widoczne polskie copy ma przedstawiać markę jako Płyndo.pl. Skrót Płyndo jest dopuszczalny po pierwszym pełnym użyciu marki w danym widoku, gdy poprawia brzmienie zdania. Techniczna domena, URL-e i slug to plyndo.pl lub plyndo.
 - Nie zmieniaj istniejących logotypów Płyn DO ani systemu etykiet.
 - MVP pracuje tylko na 10 aktualnych produktach już obecnych w repo.
@@ -151,11 +162,11 @@ Marka i producent:
 - Footer ma zachować dane producenta/sprzedawcy już obecne w repo jako dane podmiotu i nie może oddawać im dominacji nad marką Płyndo.
 
 Wymagany zakres implementacji:
-1. Zsynchronizuj dokumenty repo, które nadal mówią o waitliście lub subskrypcji jako aktywnym celu, z aktualnym PRD.
+1. Zsynchronizuj dokumenty repo, które nadal opisują inny aktywny cel sprzedażowy, z aktualnym PRD.
 2. Rozbuduj dane produktów o co najmniej: volume, audiences, listPrice, dummy sku, dummy shoperUrl, qrTargetUrl, media slots i dane potrzebne pakietom.
 3. Dodaj źródło danych pakietów oraz czyste kalkulatory: list value, bundle price, savings amount i savings percent. Nie hardcoduj oszczędności w copy. Kanoniczne pakiety MVP to Starter 10, Wybierz Sam 4, Wybierz Sam 8, Dom Codzienny 4, Dom Pełny 8, Firma Podstawowa 4 i Firma Operacyjna 8. Wielokrotności paczek traktuj jako rekomendacje lub koszyk paczek 4/8, nie jako nowe stałe produkty poza starterem. Licz ceny dummy z sumy cen referencyjnych i globalnych reguł rabatu z PRD; nie wymyślaj marketingowych zaokrągleń cen ani rabatów dla pozycji produktu.
 4. Przebuduj home page tak, by pokazywał: hero pakietowy, jak kupujesz, katalog 10 produktów, Starter 10, pakiety własne i gotowe, segment Dom/Firma, zaufanie do jakości i logistyki bez publicznej referencji do JAX Professional, doradcę, FAQ oraz footer.
-5. Usuń lub przepisz sekcje i copy związane z waitlistą, subscription guide, cadence, pause i MINI/MIDI/MAXI.
+5. Usuń lub przepisz sekcje i copy związane z poprzednim lejkiem, cyklami dostaw i starymi wariantami oferty.
 6. Dodaj routing i strony: /pakiety, /pakiety/starter-10, /pakiety/:slug, /skomponuj/4, /skomponuj/8, /o-marce, /kontakt, /regulamin, /polityka-prywatnosci, /reklamacje.
 7. Strony pakietów mają pokazać skład, ceny referencyjne produktów, sumę wartości, cenę pakietu, globalną oszczędność kwotową/procentową, uzasadnienie składu, nieaktywne CTA placeholder do Shopera i alternatywy.
 8. Konfigurator własnej paczki ma mieć licznik miejsc, dodawanie i odejmowanie duplikatów, limit 4/8, zmianę ceny ze składem i czytelny stan dummy checkout.
@@ -205,11 +216,11 @@ Przeczytaj PRD.md i docs/plyndo_packages_implementation_plan.md. Zaprojektuj dan
 ### 3.2 Agent UX/copy/i18n
 
 ```text
-Przeczytaj PRD.md, docs/agents/style_guide.md i docs/plyndo_packages_implementation_plan.md. Przepisz IA oraz copy PL/EN z modelu subskrypcji na model pakietowy Płyndo. Zachowaj premium ton, pokaż Dom i Firmę, ogranicz publiczną referencję do JAX Professional wyłącznie do strony O marce i usuń waitlist/cadence/MINI-MIDI-MAXI.
+Przeczytaj PRD.md, docs/agents/style_guide.md i docs/plyndo_packages_implementation_plan.md. Przepisz IA oraz copy PL/EN do modelu pakietowego Płyndo. Zachowaj premium ton, pokaż Dom i Firmę, ogranicz publiczną referencję do JAX Professional wyłącznie do strony O marce i usuń pozostałości poprzedniego lejka.
 ```
 
 ### 3.3 Agent testów
 
 ```text
-Zweryfikuj wdrożenie Płyndo względem PRD.md: brak subskrypcji, poprawne pakiety 4/8/Starter 10, ceny z danych, routing pakietów i stron prawnych, QR/video placeholders na produktach, doradca dla domu i firmy, PL/EN oraz mobile/desktop. Uruchom lint/build i wypisz regresje z plikami.
+Zweryfikuj wdrożenie Płyndo względem PRD.md: jednolity model pakietowy, poprawne pakiety 4/8/Starter 10, ceny z danych, routing pakietów i stron prawnych, QR/video placeholders na produktach, doradca dla domu i firmy, PL/EN oraz mobile/desktop. Uruchom lint/build i wypisz regresje z plikami.
 ```

@@ -63,7 +63,7 @@ export default function Footer({ lang = 'pl', activeTheme }) {
               © 2026 Płyndo.pl · EmiChem · Made in Poland
             </span>
             <span className="text-[10px] text-fg-muted uppercase tracking-widest font-bold opacity-70">
-              Producent: Michał Mierzwa EmiChem P.P. Ul. Wójtowska 16, 61-654 Poznań
+              {lang === 'en' ? 'Producer' : 'Producent'}: Michał Mierzwa EmiChem P.P. Ul. Wójtowska 16, 61-654 Poznań
             </span>
           </div>
           <div className="flex gap-1.5">

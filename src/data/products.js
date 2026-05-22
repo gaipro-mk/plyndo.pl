@@ -160,6 +160,89 @@ const productCatalog = [
   }
 ];
 
+const productDetailEn = {
+  naczynia: {
+    subtitle: 'Cuts through grease without compromise',
+    description: 'A concentrated liquid for hand washing dishes. It removes grease and food soil without streaks or residue and works on glass, ceramics, steel, plastic, and everyday kitchen utensils.',
+    howToUse: 'Apply 1-2 drops to a damp sponge, wash the dishes, then rinse under running water. You can also dissolve 1 tablespoon in 5 l of warm water, wash in the solution, rinse, and leave to dry.',
+    ingredients: '15-30% anionic surfactants, <5% amphoteric and non-ionic surfactants, fragrance composition (Citral), preservatives (Methylisothiazolinone, Methylchloroisothiazolinone).',
+    safety: 'H315 Causes skin irritation. H319 Causes serious eye irritation. Wash hands thoroughly after handling.',
+    scent: 'Watermelon scent',
+  },
+  zmywarka: {
+    subtitle: 'Clean dishes without deposits',
+    description: 'A dishwasher detergent with active chlorine for grease, protein, starch, coffee, and tea deposits. It supports thorough cleaning and helps dishes keep a clean appearance with regular use.',
+    howToUse: 'Pour the liquid into the dishwasher detergent dispenser, close it, and select a wash program. Recommended dose: 20 ml for lightly soiled dishes, 25 ml for medium soil, and 30 ml for heavy soil.',
+    ingredients: '5-15% chlorine-based bleaching agents, phosphates.',
+    safety: 'H314 Causes severe skin burns and eye damage. H400 Very toxic to aquatic life.',
+    scent: 'Rinse-aid finish',
+  },
+  pranie: {
+    subtitle: 'Clean and fresh fabrics',
+    description: 'A liquid detergent for everyday laundry that removes common soil from fabrics and leaves clothing clean and refreshed.',
+    howToUse: '- Best used at 20-60 C.\n- Suitable for home and professional use.\n- Do not transfer the product into unsuitable containers.\n- Follow the washing machine manufacturer instructions.',
+    ingredients: '<5% EDTA and its salts, enzymes, fragrance composition, preservatives (Methylisothiazolinone, Methylchloroisothiazolinone), 5-15% anionic and non-ionic surfactants.',
+    safety: 'H315 Causes skin irritation. Wash hands thoroughly after handling.',
+    scent: 'Fresh scent',
+  },
+  plukanie: {
+    subtitle: 'Softness and a fresh scent',
+    description: 'A fabric softener for natural and synthetic textiles. It improves softness and comfort, supports easier ironing, and helps reduce static.',
+    howToUse: 'Automatic wash: 40 ml per 4-5 kg load.\nHand wash: 20 ml per 10 l of water.',
+    ingredients: '5-15% cationic surfactants, <5% fragrance composition.',
+    safety: 'Keep out of reach of children.',
+    scent: 'Wooly Blizz scent',
+  },
+  podlogi: {
+    subtitle: 'Freshness across surfaces',
+    description: 'A floor cleaner for everyday soil. It leaves floors clean and refreshed without streaks or residue when used as directed.',
+    howToUse: 'Use 30-50 ml per 10 l of water and clean with a mop. Test the product in an inconspicuous place before use.',
+    ingredients: '<5% anionic and non-ionic surfactants, phosphates, EDTA and its salts, fragrance composition (Citral), preservatives (Methylisothiazolinone, Methylchloroisothiazolinone).',
+    safety: 'H319 Causes serious eye irritation. Wash hands thoroughly after handling.',
+    scent: 'Orange scent',
+  },
+  wc: {
+    subtitle: 'Hygiene that works',
+    description: 'A toilet cleaner for scale, deposits, and everyday soil, including hard-to-reach areas. It helps keep the bowl clean and fresh with regular use.',
+    howToUse: 'Press and open the cap, apply inside the toilet bowl, leave for about 15 minutes, then flush. Close the cap until it clicks after use.',
+    ingredients: '<5% anionic and non-ionic surfactants, phosphonates, fragrance composition (Citral), preservatives (Methylisothiazolinone, Methylchloroisothiazolinone).',
+    safety: 'Irritating to eyes and skin. Keep out of reach of children.',
+    scent: 'Lemon scent',
+  },
+  rece: {
+    subtitle: 'Everyday hygiene and comfort',
+    description: 'A gentle and effective hand wash for frequent use at home or in shared spaces. It removes common soil and leaves hands clean and refreshed.',
+    howToUse: 'Apply a small amount to hands, wash following a standard hand washing routine, rinse with clean water, and dry.',
+    ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Propylene Glycol, Glycerin, Parfum, and other label-listed cosmetic ingredients.',
+    safety: 'Use as directed and avoid contact with eyes.',
+    scent: 'Gentle fragrance',
+  },
+  szyby: {
+    subtitle: 'Clear glass without streaks',
+    description: 'A liquid for glass, mirrors, and glossy surfaces. It removes everyday marks and helps leave a clean, transparent finish.',
+    howToUse: 'Spray a small amount onto the surface, wipe with a microfiber cloth or paper towel, and polish until clear.',
+    ingredients: '<5% anionic surfactants, fragrance composition, preservatives according to the product label.',
+    safety: 'Use as directed. Keep out of reach of children.',
+    scent: 'Fresh scent',
+  },
+  lazienka: {
+    subtitle: 'Removes scale and restores shine',
+    description: 'A bathroom cleaner for water deposits, limescale, and soap residue on fittings and tiles.',
+    howToUse: 'Spray a small amount on the soiled surface, leave for about 5 minutes, rinse, and wipe with a microfiber cloth or paper towel until glossy.',
+    ingredients: '<5% anionic and non-ionic surfactants, phosphonates, fragrance composition (Citral), preservatives (Methylisothiazolinone, Methylchloroisothiazolinone).',
+    safety: 'H315 Causes skin irritation. H319 Causes serious eye irritation.',
+    scent: 'Lemon scent',
+  },
+  dezynfekcja: {
+    subtitle: 'Fast hygiene support',
+    description: 'A preparation intended for hand and surface disinfection. It acts quickly and does not leave a sticky layer when used correctly.',
+    howToUse: 'Apply to clean, dry hands, rub for 30 seconds, and leave to dry. The disinfected hand surface must stay wet for at least 30 seconds.',
+    ingredients: 'Active substance: ethanol EC 200-578-6 CAS 64-17-5, content: 800 g/kg.',
+    safety: 'H225 Highly flammable liquid and vapour. Keep away from heat and ignition sources.',
+    scent: 'Unscented',
+  },
+};
+
 export const offerIntegrationConfig = {
   status: 'dummy',
   skuPrefixes: {
@@ -313,16 +396,37 @@ function createProductMediaSlots(labelImage) {
   };
 }
 
-export const products = productCatalog.map((product) => ({
-  ...product,
-  ...productOfferFields[product.slug],
-  volume: {
-    value: 1,
-    unit: 'l',
-    status: 'dummy'
-  },
-  currency: 'PLN',
-  listPriceStatus: 'dummy',
-  ...createProductMediaSlots(product.image),
-  ...createOfferIntegration('product', product.slug)
-}));
+export const products = productCatalog.map((product) => {
+  const offer = productOfferFields[product.slug];
+
+  return {
+    ...product,
+    ...offer,
+    i18n: {
+      pl: {
+        ...offer.i18n.pl,
+        name: product.name,
+        subtitle: product.subtitle,
+        description: product.description,
+        howToUse: product.howToUse,
+        ingredients: product.ingredients,
+        safety: product.safety,
+        scent: product.scent,
+      },
+      en: {
+        ...offer.i18n.en,
+        name: offer.i18n.en.displayName,
+        ...productDetailEn[product.slug],
+      },
+    },
+    volume: {
+      value: 1,
+      unit: 'l',
+      status: 'dummy'
+    },
+    currency: 'PLN',
+    listPriceStatus: 'dummy',
+    ...createProductMediaSlots(product.image),
+    ...createOfferIntegration('product', product.slug)
+  };
+});

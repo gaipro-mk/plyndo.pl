@@ -2,7 +2,7 @@
 
 ## 1. Cel planu
 
-Ten dokument przekłada `PRD.md` na plan przebudowy obecnego landing page'a React/Vite z koncepcji waitlist/subscription na sprzedaż chemii domowej i firmowej wyłącznie w pakietach.
+Ten dokument przekłada `PRD.md` na plan wdrożenia sprzedaży chemii domowej i firmowej wyłącznie w pakietach na obecnym landingu React/Vite.
 
 Plan obejmuje:
 
@@ -30,8 +30,8 @@ Plan nie obejmuje finalnego sklepu Shoper, finalnych cen, finalnych dokumentów 
 
 ### 2.2 Oferta
 
-- Nie ma subskrypcji, cykli dostaw, pauzowania planu ani zarządzania abonamentem.
-- Nie ma waitlisty jako modelu produktu ani celu CTA.
+- Nie ma cykli dostaw, pauzowania planu ani zarządzania abonamentem.
+- CTA prowadzą do pakietów, produktów, doradcy albo jawnych placeholderów Shopera.
 - Nie ma sprzedaży pojedynczej butelki z landing page'a.
 - Jednostką zakupu jest pakiet: gotowy starter, gotowy zestaw albo własna paczka.
 - Podstawowe wielkości logistyczne to paczki 4 i 8 oraz ich wielokrotności.
@@ -56,12 +56,11 @@ Plan nie obejmuje finalnego sklepu Shoper, finalnych cen, finalnych dokumentów 
 - Podstrona produktu pod `/product/:slug`.
 - Przełączanie języka PL/EN w jednej warstwie copy.
 
-### 3.2 Co jest sprzeczne z nowym PRD
+### 3.2 Co wymagało synchronizacji z PRD
 
-- `src/App.jsx` nadal montuje `SubscriptionGuideSection` i `WaitlistSection`.
-- `src/content.js` zawiera waitlist, stare cykle, stare pakiety `MINI/MIDI/MAXI` oraz część starych claimów.
-- `src/components/sections/AiAssistantSection.jsx` opisuje stare warianty i prowadzi do waitlisty.
-- W audycie wyjściowym `README.md`, `CLAUDE.md`, `docs/agents/product_constraints.md` i `docs/agents/api_conventions.md` opisywały waitlist lub subskrypcję; opis produktu w tych instrukcjach musi pozostać zsynchronizowany z PRD.
+- kompozycja home, copy oraz doradca wymagały jednoznacznego przejścia na paczki,
+- historyczne warianty oferty i CTA rozpraszały główną drogę do pakietu,
+- instrukcje repo wymagały zsynchronizowania opisu produktu z PRD,
 - `TopNav.jsx` i `Footer.jsx` mają linki, które trzeba zamienić na realne sekcje lub podstrony.
 - `Footer.jsx` pokazuje metody płatności i dane podmiotu jako twarde copy; metody płatności wymagają konfiguracji, a istniejące dane producenta/sprzedawcy trzeba zachować jako dane podmiotu.
 - `ProductPage.jsx` informuje o użyciu i składzie, ale nie sprzedaje modelu pakietowego, nie pokazuje oszczędności, QR ani video placeholderów.
@@ -281,7 +280,7 @@ Kanały do sprawdzenia:
 | --- | --- |
 | Strengths | Jeden system produktów, pakiety zoptymalizowane logistycznie, jakość producenta JAX Professional, polski kontekst, czytelne etykiety, dostawa ciężkich płynów. |
 | Weaknesses | Nowa marka bez własnej historii konsumenckiej, wyższy próg koszyka niż jedna butelka, zależność od finalnego Shopera, ograniczony obecnie katalog 10 zamiast 12. |
-| Opportunities | Domy i małe firmy potrzebują prostego zapasu, doradca może zmniejszyć paraliż wyboru, video może pokazać skuteczność, pakiety uzupełniające wspierają powroty bez subskrypcji. |
+| Opportunities | Domy i małe firmy potrzebują prostego zapasu, doradca może zmniejszyć paraliż wyboru, video może pokazać skuteczność, a pakiety uzupełniające wspierają powroty. |
 | Threats | Promocje marketowe, nieuczciwe lub nieaktualne porównania cen, ryzyko claims prawnych przy dezynfekcji i ekologii, koszt wysyłki płynów, pomieszanie kanału Płyndo z ofertą B2B producenta. |
 
 ## 9. Plan implementacji
@@ -293,12 +292,12 @@ Cel: usunąć sprzeczne instrukcje dla kolejnych agentów.
 Zakres:
 
 - zsynchronizować `README.md`, `CLAUDE.md`, `docs/agents/product_constraints.md` i `docs/agents/api_conventions.md` z PRD,
-- opisać, że stary model waitlist/subscription jest nieaktualny,
+- opisać obowiązujący pakietowy zakres sprzedaży,
 - zachować zasadę ostrożnego planowania z `AGENTS.md`.
 
 Akceptacja:
 
-- `rg` nie pokazuje starych instrukcji, które nadal każą budować subskrypcję jako scope MVP.
+- `rg` nie pokazuje starych instrukcji, które nadal każą budować inny scope MVP.
 
 ### Faza 1: dane domenowe i kalkulatory
 
@@ -324,7 +323,7 @@ Cel: usunąć stary lej i pokazać nowy model paczek.
 
 Zakres:
 
-- usunąć z kompozycji home waitlist i sekcje subskrypcyjne,
+- usunąć z kompozycji home sekcje poprzedniego lejka,
 - przepisać hero, trust, value, FAQ i navigation copy,
 - wprowadzić moduł `Jak kupujesz`,
 - przebudować sekcję pakietów z realnym `Starter 10`,
@@ -335,7 +334,7 @@ Akceptacja:
 
 - użytkownik widzi paczki 4/8 i starter bez znajomości starego produktu,
 - nie ma martwych linków menu/footeru,
-- nie ma CTA do waitlisty lub subskrypcji.
+- wszystkie CTA prowadzą do aktualnego modelu pakietowego.
 
 ### Faza 3: strony pakietów i konfigurator własnej paczki
 
@@ -398,7 +397,7 @@ Cel: doprowadzić przebudowę do wdrożeniowej jakości.
 Zakres:
 
 - utrzymać PL/EN w tekstach, route labels i FAQ,
-- zadbać o metadata marki/domeny i późniejszy hreflang plan,
+- zadbać o metadata marki/domeny, GEO/AEO facts i późniejszy hreflang plan,
 - dodać dostępne etykiety, focus, keyboard states i sensowny mobile flow,
 - zdefiniować event names dla CTA pakietów, doradcy, produktów, video i Shoper outbound.
 
@@ -407,6 +406,14 @@ Akceptacja:
 - build/lint przechodzą,
 - desktop i mobile są sprawdzone wizualnie,
 - teksty nie przelewają się w pakietach, konfiguratorze i FAQ.
+
+Stan w aktualnym wdrożeniu:
+
+- home, pakiety, konfigurator i produkty utrzymują wariant PL/EN; detale produktu korzystają z danych lokalizowanych przy katalogu produktów,
+- `TopNav` zawiera dropdown produktów oraz mobile listę wejść do 10 podstron,
+- `RouteEffects` rozwiązuje przewijanie sekcji po hashach w routerze i aktualizuje title, description oraz canonical dla tras pakietowych i produktowych,
+- podstrony pakietu, konfiguratora, informacji i produktu korzystają z breadcrumbs,
+- `index.html` zawiera kanoniczną domenę `plyndo.pl`, Open Graph/Twitter, podstawowe metadane lokalizacyjne Poznania i JSON-LD `Organization`, `WebSite`, `ItemList`.
 
 ### Faza 7: integracja Shopera
 
@@ -443,7 +450,7 @@ Nazwy mogą zostać dopasowane do wzorców repo, ale odpowiedzialności powinny 
 
 Zmiana jest kompletna, gdy:
 
-- landing nie sprzedaje subskrypcji ani waitlisty,
+- landing konsekwentnie sprzedaje pakiety,
 - oferta opiera się na `Starter 10`, paczkach 4/8 i gotowych pakietach domu/firmy,
 - strona pokazuje oszczędność całego pakietu z danych,
 - użytkownik może przejść do szczegółu pakietu, produktu i własnej paczki,

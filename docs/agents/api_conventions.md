@@ -1,6 +1,6 @@
 # API Conventions
 
-- Aktualny produkt to landing page sprzedaży pakietowej; subskrypcja i waitlista nie są zakresem produktu.
+- Aktualny produkt to landing page sprzedaży pakietowej i przekazania pełnego koszyka do Shopera.
 - Brak aktywnego backendu produkcyjnego, a obecne CTA do Shopera pozostaje nieaktywnym placeholderem.
 - Nie dodawaj endpointów ani integracji bez jawnego wymagania produktowego.
 - Docelowy handoff do Shopera dla gotowego pakietu i paczki własnej przekazuje pełny skład koszyka oraz rabat pakietowy.

@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import BundleComposition from '../components/bundles/BundleComposition';
 import BundlePricePanel from '../components/bundles/BundlePricePanel';
 import QrPlaceholder from '../components/bundles/QrPlaceholder';
+import Breadcrumbs from '../components/layout/Breadcrumbs';
 import { getBundleBySlug } from '../data/bundles';
 import { products } from '../data/products';
 import { calculateBundlePricing } from '../lib/bundlePricing';
@@ -50,6 +51,13 @@ export default function BundlePage({ lang = 'pl' }) {
   return (
     <main className="px-6 pb-24 pt-[148px]">
       <div className="mx-auto max-w-7xl">
+        <Breadcrumbs
+          lang={lang}
+          items={[
+            { label: lang === 'en' ? 'Packages' : 'Pakiety', to: '/#plans' },
+            { label: displayName },
+          ]}
+        />
         <Link to="/#plans" className="inline-flex items-center gap-2 text-sm font-bold text-fg-muted no-underline">
           <ArrowLeft size={16} />
           {lang === 'en' ? 'Back to packages' : 'Wróć do pakietów'}

@@ -8,7 +8,7 @@
 - App UI: `src/App.jsx` · Styl: `src/index.css` · Config: `vite.config.js`
 
 ## Aktualny zakres produktu
-- Subskrypcja i waitlista nie są zakresem produktu.
+- Jedynym zakresem sprzedażowym landingu są gotowe pakiety i paczki własne.
 - Oferta landing page'a opiera się na pakietach gotowych, paczkach własnych `4` i `8`, aktualnym `Starter 10` oraz docelowym `Starter 12`.
 - Pokazuj ceny referencyjne produktów, ale rabat i oszczędność tylko dla całej paczki.
 - Obecne CTA do Shopera jest nieaktywnym placeholderem; docelowo gotowy pakiet i paczka własna przekazują pełny skład koszyka oraz rabat pakietowy.

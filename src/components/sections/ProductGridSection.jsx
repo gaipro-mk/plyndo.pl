@@ -46,7 +46,7 @@ export default function ProductGridSection({ lang = 'pl' }) {
               >
                 <img 
                   src={p.image} 
-                  alt={p.name}
+                  alt={p.i18n?.[lang]?.displayName ?? p.name}
                   className="w-full h-[85%] object-cover object-center block transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] mix-blend-normal"
                   style={{
                     transform: hovered === p.id ? 'scale(1.05)' : 'scale(1)'
@@ -54,9 +54,11 @@ export default function ProductGridSection({ lang = 'pl' }) {
                 />
               </div>
               <div className="mt-3">
-                <div className="text-[10px] uppercase tracking-[0.12em] font-bold opacity-50 mb-0.5">Płyn do</div>
+                <div className="mb-0.5 text-[10px] font-bold uppercase opacity-50">
+                  {lang === 'en' ? 'Plyndo liquid' : 'Płyn do'}
+                </div>
                 <div className="font-serif italic text-[17px] leading-[1.1] tracking-[-0.005em] font-medium">
-                  {p.name.replace(/^PŁYN DO\s*/i, '')}
+                  {p.i18n?.[lang]?.shortName ?? p.name.replace(/^PŁYN DO\s*/i, '')}
                 </div>
                 <div className="text-xs text-fg-muted mt-1 flex flex-wrap gap-x-1.5 gap-y-0.5 uppercase tracking-wider">
                   <span>1 L</span>

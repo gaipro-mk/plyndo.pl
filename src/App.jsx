@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import TopNav from './components/layout/TopNav';
 import Footer from './components/layout/Footer';
+import RouteEffects from './components/layout/RouteEffects';
 import HeroSection from './components/sections/HeroSection';
 import TrustSection from './components/sections/TrustSection';
 import ProductGridSection from './components/sections/ProductGridSection';
@@ -78,6 +79,7 @@ function App() {
 
   return (
     <div id="top" className={getWrapperStyles()}>
+      <RouteEffects lang={lang} />
       <TopNav 
         lang={lang} setLang={setLang}
         theme={theme} setTheme={setTheme}

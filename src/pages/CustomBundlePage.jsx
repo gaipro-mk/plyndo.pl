@@ -3,6 +3,7 @@ import { ArrowLeft, Minus, PackagePlus, Plus } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import BundleComposition from '../components/bundles/BundleComposition';
 import BundlePricePanel from '../components/bundles/BundlePricePanel';
+import Breadcrumbs from '../components/layout/Breadcrumbs';
 import { bundles } from '../data/bundles';
 import { products } from '../data/products';
 import { calculateBundlePricing, formatPln } from '../lib/bundlePricing';
@@ -74,6 +75,13 @@ export default function CustomBundlePage({ lang = 'pl' }) {
   return (
     <main className="px-6 pb-24 pt-[148px]">
       <div className="mx-auto max-w-7xl">
+        <Breadcrumbs
+          lang={lang}
+          items={[
+            { label: lang === 'en' ? 'Packages' : 'Pakiety', to: '/#plans' },
+            { label: labels.title },
+          ]}
+        />
         <Link to="/#plans" className="inline-flex items-center gap-2 text-sm font-bold text-fg-muted no-underline">
           <ArrowLeft size={16} />
           {labels.back}
@@ -84,7 +92,7 @@ export default function CustomBundlePage({ lang = 'pl' }) {
             <span className="t-eyebrow">{labels.eyebrow}</span>
             <h1 className="t-display-2 mt-4">{labels.title}</h1>
             <p className="t-lead mt-5 max-w-[720px]">{labels.lead}</p>
-            <div className="mt-7 max-w-[560px] rounded-[20px] border border-border bg-white p-5">
+            <div className="mt-7 max-w-[560px] rounded-[20px] border border-border bg-white p-5 shadow-sm">
               <div className="flex items-center justify-between gap-3">
                 <span className="inline-flex items-center gap-2 text-sm font-extrabold">
                   <PackagePlus size={17} />
@@ -96,7 +104,7 @@ export default function CustomBundlePage({ lang = 'pl' }) {
                 {Array.from({ length: size }, (_, index) => (
                   <span
                     key={index}
-                    className={`aspect-square rounded-[10px] border ${index < itemCount ? 'border-black bg-black' : 'border-border bg-surface-container-low'}`}
+                    className={`aspect-square rounded-[10px] border transition-colors ${index < itemCount ? 'border-[var(--color-cta-hover)] bg-[var(--color-cta)]' : 'border-border bg-surface-container-low'}`}
                   />
                 ))}
               </div>

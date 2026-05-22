@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Mail, MapPin, PackageCheck } from 'lucide-react';
+import Breadcrumbs from '../components/layout/Breadcrumbs';
 
 const legalPlaceholder = {
   pl: 'Placeholder do uzupełnienia przed publikacją sklepu i realnej integracji Shoper.',
@@ -125,9 +126,10 @@ export default function InfoPage({ lang = 'pl' }) {
   return (
     <main className="min-h-[70vh] px-6 pb-24 pt-[148px]">
       <div className="mx-auto max-w-5xl">
+        <Breadcrumbs lang={lang} items={[{ label: content.title }]} />
         <Link to="/" className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-fg-muted no-underline">
           <ArrowLeft size={16} />
-          {lang === 'en' ? 'Back to packages' : 'Wróć do pakietów'}
+          {lang === 'en' ? 'Back to home' : 'Wróć na stronę główną'}
         </Link>
         <section className="grid gap-8 border-b border-border pb-12 lg:grid-cols-[1fr_220px]">
           <div>
