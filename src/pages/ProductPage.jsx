@@ -106,6 +106,8 @@ function MediaSlot({ title, note, videoSrc }) {
       </div>
     </div>
   );
+}
+
 function HeroVideo({ videoSrc, className = '' }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
