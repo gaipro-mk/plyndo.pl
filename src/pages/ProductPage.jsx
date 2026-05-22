@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ChevronLeft, CirclePlay, Info, Package, ShieldAlert } from 'lucide-react';
 import { products } from '../data/products';
@@ -33,15 +34,75 @@ function formatPrice(value, lang) {
   }).format(value);
 }
 
-function MediaSlot({ title, note }) {
+function MediaSlot({ title, note, videoSrc }) {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleMouseEnter = () => {
+    if (videoSrc && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoSrc && videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleClick = () => {
+    if (videoSrc && videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play().catch(() => {});
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  if (!videoSrc) {
+    return (
+      <div className="grid min-h-[230px] content-between rounded-[20px] border border-black/10 bg-white/80 p-6 text-black shadow-sm">
+        <span className="flex h-11 w-11 items-center justify-center rounded-[12px] bg-black text-white">
+          <CirclePlay size={21} />
+        </span>
+        <div>
+          <div className="text-sm font-extrabold">{title}</div>
+          <p className="mt-1.5 text-xs leading-relaxed text-black/65">{note}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="grid min-h-[230px] content-between rounded-[20px] border border-black/10 bg-white/80 p-6 text-black shadow-sm">
-      <span className="flex h-11 w-11 items-center justify-center rounded-[12px] bg-black text-white">
-        <CirclePlay size={21} />
-      </span>
-      <div>
-        <div className="text-sm font-extrabold">{title}</div>
-        <p className="mt-1.5 text-xs leading-relaxed text-black/65">{note}</p>
+    <div 
+      className="group relative flex flex-col justify-between min-h-[230px] overflow-hidden rounded-[20px] border border-black/10 bg-black text-white shadow-sm cursor-pointer"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+    >
+      <video
+        ref={videoRef}
+        src={videoSrc}
+        muted
+        playsInline
+        loop
+        className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-500 group-hover:opacity-100"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/30 pointer-events-none transition-opacity duration-500 group-hover:opacity-60" />
+      
+      <div className="relative z-10 flex flex-col h-full justify-between p-6">
+        <span className={`flex h-11 w-11 items-center justify-center rounded-[12px] bg-white/20 backdrop-blur-md text-white transition-all duration-300 ${isPlaying ? 'scale-90 opacity-0' : 'scale-100 opacity-100'}`}>
+          <CirclePlay size={21} />
+        </span>
+        <div className="mt-auto transform transition-transform duration-300">
+          <div className="text-sm font-extrabold drop-shadow-md">{title}</div>
+          <p className="mt-1.5 text-xs leading-relaxed text-white/90 drop-shadow-md">{note}</p>
+        </div>
       </div>
     </div>
   );
@@ -167,7 +228,11 @@ export default function ProductPage({ lang = 'pl' }) {
               <p className="mt-4 text-sm leading-relaxed opacity-85">{labels.mediaLead}</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <MediaSlot title={labels.effect} note={labels.effectNote} />
+              <MediaSlot 
+                title={labels.effect} 
+                note={labels.effectNote} 
+                videoSrc={product.slug === 'naczynia' ? '/video/vid_exploaded_naczynia.mp4' : null} 
+              />
               <MediaSlot title={labels.guide} note={labels.guideNote} />
             </div>
           </section>
