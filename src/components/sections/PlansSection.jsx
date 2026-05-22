@@ -1,133 +1,186 @@
-import { useState } from 'react';
+import { ArrowRight, Box, Layers3, PackagePlus } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { bundles } from '../../data/bundles';
+import { products } from '../../data/products';
+import { calculateBundlePricing, formatPln } from '../../lib/bundlePricing';
 import { copy } from '../../content';
-import { Check, ArrowRight, Info } from 'lucide-react';
 
-const TIER_SKINS = {
-  'Wybierz Sam (4 szt.)': { bg: "#9ecbe8", fg: "#1e4c7a", subtle: "rgba(30,76,122,.75)", line: "color-mix(in oklab, #1e4c7a 18%, transparent)",
-          btnBg: "rgba(255,255,255,.55)", btnFg: "#1e4c7a", btnBorder: "1px solid #1e4c7a" },
-  'Wybierz Sam (8 szt.)': { bg: "#2550a4", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)",
-          btnBg: "#ffffff", btnFg: "#2550a4", btnBorder: "none" },
-  'Pakiet Dom (8 szt.)': { bg: "#2b5a40", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)",
-          btnBg: "transparent", btnFg: "#ffffff", btnBorder: "1px solid #ffffff" },
-  'Pakiet Starter (12 szt.)': { bg: "#1e4c7a", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)",
-          btnBg: "#ffffff", btnFg: "#1e4c7a", btnBorder: "none" },
+const packageTones = {
+  'starter-10': { bg: 'var(--label-bath-bg)', fg: 'var(--label-bath-on)' },
+  'dom-pelny-8': { bg: 'var(--label-dish-bg)', fg: 'var(--label-dish-on)' },
+  'firma-operacyjna-8': { bg: 'var(--label-floor-bg)', fg: 'var(--label-floor-on)' },
+  custom: { bg: 'var(--label-laundry-bg)', fg: 'var(--label-laundry-on)' },
 };
+
+function percent(rate) {
+  return `${Math.round(rate * 100)}%`;
+}
+
+function bundleName(bundle, lang) {
+  return bundle.i18n?.[lang]?.displayName ?? bundle.name;
+}
+
+function audienceLabel(audience, lang) {
+  const labels = {
+    all: lang === 'en' ? 'Start or refill' : 'Start lub uzupełnienie',
+    home: lang === 'en' ? 'Home' : 'Dom',
+    business: lang === 'en' ? 'Business' : 'Firma',
+  };
+
+  return labels[audience] ?? labels.all;
+}
+
+function BundleCard({ bundle, lang, featured = false }) {
+  const pricing = calculateBundlePricing({ bundle, products });
+  const tone = packageTones[bundle.slug] ?? packageTones.custom;
+  const previewItems = pricing.lineItems.slice(0, 4);
+
+  return (
+    <article
+      className={`grid min-h-[420px] gap-6 rounded-[24px] border p-6 md:p-7 ${featured ? 'lg:row-span-2' : ''}`}
+      style={{
+        background: tone.bg,
+        borderColor: 'color-mix(in oklab, currentColor 18%, transparent)',
+        color: tone.fg,
+      }}
+    >
+      <div>
+        <div className="flex items-center justify-between gap-3">
+          <span className="text-[11px] font-extrabold uppercase tracking-[0.12em] opacity-70">
+            {audienceLabel(bundle.audience, lang)}
+          </span>
+          <span className="rounded-full border border-current px-2.5 py-1 text-[11px] font-black">
+            -{percent(bundle.discountRule.rate)}
+          </span>
+        </div>
+        <h3 className="mt-4 font-display text-3xl font-black leading-tight">{bundleName(bundle, lang)}</h3>
+        <p className="mt-2 max-w-[420px] text-sm leading-relaxed opacity-80">
+          {lang === 'en'
+            ? `${bundle.size} one-litre items with package-level savings.`
+            : `${bundle.size} litrowych pozycji z rabatem liczonym dla całej paczki.`}
+        </p>
+      </div>
+
+      <div className="grid gap-2">
+        {previewItems.map((item) => (
+          <div key={item.productSlug} className="flex items-center justify-between gap-3 border-b border-current/15 pb-2 text-sm">
+            <span className="font-semibold">
+              {item.quantity > 1 ? `${item.quantity}x ` : ''}
+              {item.product.i18n?.[lang]?.shortName ?? item.product.shortName}
+            </span>
+            <span className="opacity-75">{formatPln(item.listValue, lang === 'en' ? 'en-GB' : 'pl-PL')}</span>
+          </div>
+        ))}
+        {pricing.lineItems.length > previewItems.length && (
+          <span className="text-xs font-bold opacity-70">
+            + {pricing.lineItems.length - previewItems.length} {lang === 'en' ? 'more product lines' : 'kolejne pozycje'}
+          </span>
+        )}
+      </div>
+
+      <div className="mt-auto grid gap-4 border-t border-current/20 pt-5">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] opacity-65">
+              {lang === 'en' ? 'Package price' : 'Cena paczki'}
+            </div>
+            <div className="font-display text-4xl font-black leading-none">
+              {formatPln(pricing.bundlePrice, lang === 'en' ? 'en-GB' : 'pl-PL')}
+            </div>
+          </div>
+          <div className="text-right text-xs leading-relaxed opacity-80">
+            <div>{lang === 'en' ? 'Reference total' : 'Suma referencyjna'}</div>
+            <div className="text-base font-extrabold line-through">
+              {formatPln(pricing.listValue, lang === 'en' ? 'en-GB' : 'pl-PL')}
+            </div>
+          </div>
+        </div>
+        <Link
+          to={`/pakiety/${bundle.slug}`}
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[10px] bg-white px-4 py-3 text-sm font-extrabold text-black no-underline"
+        >
+          {lang === 'en' ? 'See package' : 'Zobacz pakiet'}
+          <ArrowRight size={16} />
+        </Link>
+      </div>
+    </article>
+  );
+}
+
+function CustomCard({ size, discount, lang }) {
+  return (
+    <article className="grid gap-5 rounded-[24px] border border-border bg-white p-6 md:p-7">
+      <div className="flex h-11 w-11 items-center justify-center rounded-[12px] bg-black text-white">
+        <PackagePlus size={21} />
+      </div>
+      <div>
+        <div className="t-eyebrow">{lang === 'en' ? 'Build your own' : 'Wybierz sam'}</div>
+        <h3 className="t-h3 mt-3">
+          {lang === 'en' ? `Custom box of ${size}` : `Własna paczka ${size}`}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+          {lang === 'en'
+            ? 'Repeat the items you use fastest and keep one global discount for the box.'
+            : 'Powtórz płyny, które zużywasz najszybciej i zachowaj jeden globalny rabat paczki.'}
+        </p>
+      </div>
+      <div className="flex items-center justify-between gap-3 rounded-[14px] bg-surface-container-low p-4">
+        <span className="text-sm font-bold">{lang === 'en' ? 'Package discount' : 'Rabat paczki'}</span>
+        <span className="font-display text-3xl font-black">-{discount}%</span>
+      </div>
+      <Link
+        to={`/pakiety/wlasna-paczka/${size}`}
+        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[10px] border border-black px-4 py-3 text-sm font-extrabold text-black no-underline"
+      >
+        {lang === 'en' ? 'Open builder' : 'Otwórz konfigurator'}
+        <ArrowRight size={16} />
+      </Link>
+    </article>
+  );
+}
 
 export default function PlansSection({ lang = 'pl' }) {
   const content = copy[lang].plans;
-  const [focusedTier, setFocusedTier] = useState('Pakiet Dom (8 szt.)');
-
-  if (!content) return null;
+  const starter = bundles.find((bundle) => bundle.slug === 'starter-10');
+  const readyBundles = bundles.filter((bundle) => !bundle.isCustomizable && bundle.slug !== 'starter-10');
 
   return (
-    <section id="plans" className="py-24 bg-surface px-6">
-      <div className="max-w-[1400px] mx-auto">
-        <div className="text-center max-w-[720px] mx-auto mb-16">
+    <section id="plans" className="bg-surface px-6 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-14 max-w-[760px]">
           <span className="t-eyebrow">{content.eyebrow}</span>
-          <h2 className="t-h1 mt-3">
-            {content.title}
-          </h2>
-          <p className="t-lead mt-4">
-            {content.lead}
-          </p>
+          <h2 className="t-h1 mt-3">{content.title}</h2>
+          <p className="t-lead mt-4">{content.lead}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5.5 items-stretch">
-          {content.cards.map((plan) => {
-            const isHero = plan.name === focusedTier;
-            // Default to blue skin if not found
-            const skin = TIER_SKINS[plan.name] || { bg: "#2550a4", fg: "#ffffff", subtle: "rgba(255,255,255,.75)", line: "rgba(255,255,255,.18)", btnBg: "#ffffff", btnFg: "#2550a4", btnBorder: "none" };
-            
-            return (
-              <div 
-                key={plan.name} 
-                onClick={() => setFocusedTier(plan.name)}
-                className={`relative rounded-[28px] p-8 pb-7 cursor-pointer transition-all duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col`}
-                style={{
-                  background: skin.bg, 
-                  color: skin.fg,
-                  border: `1px solid ${skin.line}`,
-                  boxShadow: isHero ? "var(--shadow-lg)" : "var(--shadow-sm)",
-                  transform: isHero ? "translateY(-6px)" : "none",
-                }}
-              >
-                {plan.name === 'Pakiet Dom (8 szt.)' && (
-                  <span 
-                    className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full text-[10px] font-extrabold tracking-[0.12em] uppercase whitespace-nowrap"
-                    style={{ color: skin.bg }}
-                  >
-                    Najczęściej wybierany
-                  </span>
-                )}
-                {plan.name === 'Pakiet Starter (12 szt.)' && (
-                  <span 
-                    className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 px-3 py-1 rounded-full text-[10px] font-extrabold tracking-[0.12em] uppercase whitespace-nowrap text-amber-950"
-                  >
-                    Mega Oferta
-                  </span>
-                )}
-                <div className="font-display font-black text-3xl tracking-[-0.04em] leading-tight">
-                  {plan.name}
-                </div>
-                <div 
-                  className="mt-1.5 text-[11px] font-extrabold tracking-[0.12em] uppercase"
-                  style={{ color: skin.subtle }}
-                >
-                  {plan.audience}
-                </div>
-
-                <p 
-                  className="mt-4 font-serif italic font-medium text-[15px] leading-[1.3] min-h-[44px]"
-                  style={{ color: skin.fg }}
-                >
-                  {plan.cadence}
-                </p>
-
-                <ul className="list-none p-0 m-0 my-5 grid gap-3">
-                  {plan.bullets.map(b => (
-                    <li key={b} className="flex gap-2.5 items-start">
-                      <Check size={18} className="shrink-0 mt-px" style={{ color: skin.fg }}/>
-                      <span className="text-[13px] leading-[1.5]" style={{ color: skin.subtle }}>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <button 
-                  className="w-full mt-auto py-3.5 rounded-xl font-extrabold text-sm cursor-pointer inline-flex items-center justify-center gap-2 font-sans transition-shadow"
-                  style={{
-                    background: skin.btnBg, 
-                    color: skin.btnFg, 
-                    border: skin.btnBorder,
-                    boxShadow: isHero ? "var(--shadow-cta)" : "none",
-                  }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    // Just basic interaction
-                  }}
-                >
-                  Wybierz pakiet <ArrowRight size={16}/>
-                </button>
-              </div>
-            );
-          })}
+        <div className="grid gap-5 lg:grid-cols-[1.1fr_1fr_1fr]">
+          <BundleCard bundle={starter} lang={lang} featured />
+          {readyBundles.map((bundle) => <BundleCard key={bundle.slug} bundle={bundle} lang={lang} />)}
+          <CustomCard size={4} discount={30} lang={lang} />
+          <CustomCard size={8} discount={40} lang={lang} />
         </div>
 
-        <div className="mt-16 bg-white border border-border rounded-[24px] px-8 py-7 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 items-center max-w-7xl mx-auto">
+        <div className="mt-8 grid gap-5 rounded-[24px] border border-border bg-surface-container-low p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8">
           <div>
-            <h3 className="t-h4 m-0">{content.modulesTitle}</h3>
-            <div className="flex items-center gap-1.5 mt-1.5 text-[13px] text-fg-muted">
-              <Info size={14}/> 10 profesjonalnych formuł
+            <div className="flex items-center gap-2">
+              <Layers3 size={18} />
+              <span className="t-eyebrow">{lang === 'en' ? 'Next catalog step' : 'Kolejny etap katalogu'}</span>
             </div>
+            <h3 className="t-h4 mt-3">
+              {lang === 'en' ? 'Future Starter 12 will reach a 50% discount.' : 'Docelowy Starter 12 osiągnie rabat 50%.'}
+            </h3>
+            <p className="mt-2 max-w-[760px] text-sm leading-relaxed text-fg-muted">
+              {lang === 'en'
+                ? 'The current launch is built on the 10 final liquids already available in the project.'
+                : 'Obecne wdrożenie pracuje na 10 gotowych płynach, które są już dostępne w projekcie.'}
+            </p>
           </div>
-          <div className="flex gap-2 flex-wrap">
-            {content.modules.map(m => (
-              <span 
-                key={m} 
-                className="bg-surface border border-border text-fg-muted px-3.5 py-2 rounded-[10px] text-[13px] font-medium"
-              >
-                {m}
-              </span>
-            ))}
+          <div className="flex items-center gap-3 rounded-[16px] border border-border bg-white p-4">
+            <Box size={21} />
+            <div>
+              <div className="text-xs font-bold text-fg-muted">{lang === 'en' ? 'Launch starter' : 'Starter na start'}</div>
+              <div className="font-display text-2xl font-black">Starter 10 -45%</div>
+            </div>
           </div>
         </div>
       </div>

@@ -3,32 +3,33 @@ import { copy } from '../../content';
 import { products } from '../../data/products';
 import { ArrowRight } from 'lucide-react';
 import { animate, useInView } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 function AnimatedMetric({ value, label }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-20px" });
+  const canAnimate = /^(\d+)(.*)$/.test(value.toString());
   const [display, setDisplay] = useState("0");
   
   useEffect(() => {
-    if (!inView) return;
     const numMatch = value.toString().match(/^(\d+)(.*)$/);
-    if (numMatch) {
-      const num = parseInt(numMatch[1], 10);
-      const suffix = numMatch[2];
-      animate(0, num, {
-        duration: 2,
-        ease: "easeOut",
-        onUpdate: (v) => setDisplay(Math.round(v) + suffix),
-      });
-    } else {
-      setDisplay(value);
-    }
+    if (!inView || !numMatch) return;
+
+    const num = parseInt(numMatch[1], 10);
+    const suffix = numMatch[2];
+    const controls = animate(0, num, {
+      duration: 2,
+      ease: "easeOut",
+      onUpdate: (v) => setDisplay(Math.round(v) + suffix),
+    });
+
+    return () => controls.stop();
   }, [inView, value]);
 
   return (
     <div ref={ref}>
       <div className="font-display font-black text-4xl tracking-tight leading-none">
-        {display}
+        {canAnimate ? display : value}
       </div>
       <div className="mt-1.5 text-xs text-fg-muted leading-relaxed">
         {label}
@@ -65,15 +66,16 @@ export default function HeroSection({ lang = 'pl' }) {
           </p>
 
           <div className="flex flex-wrap gap-3 mt-8">
-            <button 
+            <Link
+              to="/#plans"
               className="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-extrabold text-[15px] shadow-cta transition-all duration-700 hover:scale-105 active:scale-95 cursor-pointer"
               style={{ background: current.color.bg, color: current.color.text }}
             >
               {hero.primary} <ArrowRight className="w-[18px] h-[18px]" />
-            </button>
-            <button className="bg-surface text-primary border border-border-strong px-6 py-4 rounded-xl font-bold text-[15px] transition-colors hover:bg-surface-container-low cursor-pointer">
+            </Link>
+            <Link to="/#products" className="bg-surface text-primary border border-border-strong px-6 py-4 rounded-xl font-bold text-[15px] transition-colors hover:bg-surface-container-low cursor-pointer no-underline">
               {hero.secondary}
-            </button>
+            </Link>
           </div>
 
           <div className="flex flex-wrap gap-1.5 mt-6">

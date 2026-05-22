@@ -1,4 +1,4 @@
-export const products = [
+const productCatalog = [
   {
     id: 1,
     slug: 'naczynia',
@@ -159,3 +159,170 @@ export const products = [
     image: '/labels/front-10-dezynfekcji.png'
   }
 ];
+
+export const offerIntegrationConfig = {
+  status: 'dummy',
+  skuPrefixes: {
+    product: 'DUMMY-PRODUCT-',
+    bundle: 'DUMMY-BUNDLE-'
+  },
+  shoperPaths: {
+    product: '/shoper-placeholder/products/',
+    bundle: '/shoper-placeholder/bundles/'
+  },
+  qrPaths: {
+    product: '/qr-placeholder/products/',
+    bundle: '/qr-placeholder/bundles/'
+  },
+  cta: {
+    status: 'disabled',
+    kind: 'placeholder',
+    isPlaceholder: true,
+    label: {
+      pl: 'Wkrótce w sklepie',
+      en: 'Store link coming soon'
+    }
+  }
+};
+
+const productOfferFields = {
+  naczynia: {
+    shortName: 'Naczynia',
+    i18n: {
+      pl: { displayName: 'Płyn do naczyń', shortName: 'Naczynia' },
+      en: { displayName: 'Dishwashing liquid', shortName: 'Dishes' }
+    },
+    audiences: ['home', 'business'],
+    listPrice: 19.9
+  },
+  zmywarka: {
+    shortName: 'Zmywarka',
+    i18n: {
+      pl: { displayName: 'Płyn do zmywarki', shortName: 'Zmywarka' },
+      en: { displayName: 'Dishwasher detergent', shortName: 'Dishwasher' }
+    },
+    audiences: ['home', 'business'],
+    listPrice: 29.9
+  },
+  pranie: {
+    shortName: 'Pranie',
+    i18n: {
+      pl: { displayName: 'Płyn do prania', shortName: 'Pranie' },
+      en: { displayName: 'Laundry detergent', shortName: 'Laundry' }
+    },
+    audiences: ['home'],
+    listPrice: 34.9
+  },
+  plukanie: {
+    shortName: 'Płukanie',
+    i18n: {
+      pl: { displayName: 'Płyn do płukania', shortName: 'Płukanie' },
+      en: { displayName: 'Fabric softener', shortName: 'Softener' }
+    },
+    audiences: ['home'],
+    listPrice: 24.9
+  },
+  podlogi: {
+    shortName: 'Podłogi',
+    i18n: {
+      pl: { displayName: 'Płyn do podłóg', shortName: 'Podłogi' },
+      en: { displayName: 'Floor cleaner', shortName: 'Floors' }
+    },
+    audiences: ['home', 'business'],
+    listPrice: 22.9
+  },
+  wc: {
+    shortName: 'WC',
+    i18n: {
+      pl: { displayName: 'Płyn do WC', shortName: 'WC' },
+      en: { displayName: 'Toilet cleaner', shortName: 'Toilet' }
+    },
+    audiences: ['home', 'business'],
+    listPrice: 19.9
+  },
+  rece: {
+    shortName: 'Ręce',
+    i18n: {
+      pl: { displayName: 'Płyn do mycia rąk', shortName: 'Ręce' },
+      en: { displayName: 'Hand wash', shortName: 'Hands' }
+    },
+    audiences: ['home', 'business'],
+    listPrice: 27.9
+  },
+  szyby: {
+    shortName: 'Szyby',
+    i18n: {
+      pl: { displayName: 'Płyn do mycia szyb', shortName: 'Szyby' },
+      en: { displayName: 'Glass cleaner', shortName: 'Glass' }
+    },
+    audiences: ['home', 'business'],
+    listPrice: 21.9
+  },
+  lazienka: {
+    shortName: 'Łazienka',
+    i18n: {
+      pl: { displayName: 'Płyn do łazienki', shortName: 'Łazienka' },
+      en: { displayName: 'Bathroom cleaner', shortName: 'Bathroom' }
+    },
+    audiences: ['home', 'business'],
+    listPrice: 24.9
+  },
+  dezynfekcja: {
+    shortName: 'Dezynfekcja',
+    i18n: {
+      pl: { displayName: 'Płyn do dezynfekcji', shortName: 'Dezynfekcja' },
+      en: { displayName: 'Disinfectant', shortName: 'Disinfection' }
+    },
+    audiences: ['home', 'business'],
+    listPrice: 39.9
+  }
+};
+
+function toSkuToken(slug) {
+  return slug.toUpperCase().replace(/-/g, '_');
+}
+
+export function createOfferIntegration(kind, slug) {
+  const skuPrefix = offerIntegrationConfig.skuPrefixes[kind];
+  const shoperPath = offerIntegrationConfig.shoperPaths[kind];
+  const qrPath = offerIntegrationConfig.qrPaths[kind];
+
+  return {
+    status: offerIntegrationConfig.status,
+    sku: `${skuPrefix}${toSkuToken(slug)}`,
+    shoperUrl: `${shoperPath}${slug}`,
+    qrTargetUrl: `${qrPath}${slug}`,
+    cta: offerIntegrationConfig.cta
+  };
+}
+
+function createProductMediaSlots(labelImage) {
+  const videoSlots = [
+    { id: 'effectiveness', status: 'placeholder', src: null },
+    { id: 'how-to', status: 'placeholder', src: null }
+  ];
+
+  return {
+    bottleImage: null,
+    videoSlots,
+    mediaSlots: {
+      label: { status: 'ready', src: labelImage },
+      bottle: { status: 'placeholder', src: null },
+      videos: videoSlots
+    }
+  };
+}
+
+export const products = productCatalog.map((product) => ({
+  ...product,
+  ...productOfferFields[product.slug],
+  volume: {
+    value: 1,
+    unit: 'l',
+    status: 'dummy'
+  },
+  currency: 'PLN',
+  listPriceStatus: 'dummy',
+  ...createProductMediaSlots(product.image),
+  ...createOfferIntegration('product', product.slug)
+}));

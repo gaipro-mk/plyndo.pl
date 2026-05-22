@@ -1,6 +1,6 @@
 # Plyndo.pl
 
-Premium MVP landing page and product documentation for a Polish D2C household chemistry subscription concept.
+Premium landing page and product documentation for Polish D2C household chemistry sold in ready bundles and custom packs.
 
 ## Stack
 - React
@@ -20,6 +20,7 @@ Premium MVP landing page and product documentation for a Polish D2C household ch
 - `CODEX.md` for repo-specific implementation guidance
 
 ## Current Scope
-- Premium waitlist-first landing page
-- Brand and offer framing
-- No backend or live checkout yet
+- Premium package-first landing page for products, packs `4` and `8`, current `Starter 10`, and the future `Starter 12`
+- Product reference prices with discount and savings shown only for the whole pack
+- Inactive Shoper CTA placeholder on the current landing; no backend or live checkout yet
+- No subscription or waitlist product model

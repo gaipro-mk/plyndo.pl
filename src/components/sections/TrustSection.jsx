@@ -1,6 +1,6 @@
 import { copy } from '../../content';
 
-export default function TrustSection({ lang = 'pl', activeTheme }) {
+export default function TrustSection({ lang = 'pl' }) {
   const content = copy[lang].heritage;
 
   return (

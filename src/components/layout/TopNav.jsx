@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Globe, ArrowRight, Sun, Moon, Monitor } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { copy } from '../../content';
 
 export default function TopNav({ lang, setLang, theme, setTheme, fontScale, setFontScale, activeTheme }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
+  const labels = copy[lang].nav;
   const NAV = [
-    { href: "#products", label: "Katalog Czystości" },
-    { href: "#plans", label: "Pakiety" },
-    { href: "#operations", label: "Jak działa" },
-    { href: "#faq", label: "FAQ" }
+    { href: "/#products", label: labels.products },
+    { href: "/#plans", label: labels.bundles },
+    { href: "/#use-cases", label: labels.useCases },
+    { href: "/#advisor", label: labels.advisor },
+    { href: "/#faq", label: labels.faq }
   ];
 
   const isDark = activeTheme === 'dark';
@@ -24,19 +26,19 @@ export default function TopNav({ lang, setLang, theme, setTheme, fontScale, setF
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-180 border-b ${scrolled ? (isDark ? 'bg-[#0a0f12]/90 border-[#2a3138]' : 'bg-white/80 border-border') : (isDark ? 'bg-[#0a0f12]/60 border-transparent' : 'bg-white/60 border-transparent')} backdrop-blur-[18px]`}>
       <div className="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between gap-6">
-        <a href="#top" className="flex items-center">
+        <Link to="/#top" className="flex items-center">
           <img src={isDark ? '/logo-white.svg' : '/logo-black.svg'} alt="Płyndo" className="h-[30px] w-auto" />
-        </a>
+        </Link>
         <div className="hidden md:flex gap-7 items-center">
           {NAV.map((n, i) => (
-            <a 
+            <Link
               key={n.href} 
-              href={n.href}
+              to={n.href}
               className={`text-[13.5px] no-underline pb-0.5 ${i === 0 ? 'font-bold border-b-2 border-current' : 'font-medium border-b-2 border-transparent hover:opacity-100 transition-colors'}`}
               style={{ color: i === 0 ? 'var(--color-fg)' : 'var(--color-fg-muted)' }}
             >
               {n.label}
-            </a>
+            </Link>
           ))}
         </div>
         <div className="flex items-center gap-2.5">
@@ -46,18 +48,18 @@ export default function TopNav({ lang, setLang, theme, setTheme, fontScale, setF
               { val: 'light', icon: Sun, label: 'Jasny' },
               { val: 'dark', icon: Moon, label: 'Ciemny' },
               { val: 'system', icon: Monitor, label: 'System' },
-            ].map(({ val, icon: Icon, label }) => (
+            ].map((option) => (
               <button
-                key={val}
-                onClick={() => setTheme(val)}
-                aria-label={label}
+                key={option.val}
+                onClick={() => setTheme(option.val)}
+                aria-label={option.label}
                 className="p-1.5 rounded-full transition-colors cursor-pointer border-none"
                 style={{
-                  background: theme === val ? 'var(--color-fg)' : 'transparent',
-                  color: theme === val ? 'var(--color-bg)' : 'var(--color-fg-muted)',
+                  background: theme === option.val ? 'var(--color-fg)' : 'transparent',
+                  color: theme === option.val ? 'var(--color-bg)' : 'var(--color-fg-muted)',
                 }}
               >
-                <Icon size={13} />
+                <option.icon size={13} />
               </button>
             ))}
           </div>
@@ -96,16 +98,16 @@ export default function TopNav({ lang, setLang, theme, setTheme, fontScale, setF
           >
             <Globe size={13} />{lang.toUpperCase()}
           </button>
-          <button 
-            onClick={() => document.getElementById("plans")?.scrollIntoView({ behavior: "smooth" })}
+          <Link
+            to="/#plans"
             className="border-none px-[18px] py-[10px] rounded-[10px] font-bold text-[13px] cursor-pointer shadow-cta inline-flex items-center gap-1.5 transition-colors"
             style={{
               background: 'var(--color-fg)',
               color: 'var(--color-bg)',
             }}
           >
-            Wybierz pakiet <ArrowRight size={14} />
-          </button>
+            {lang === 'en' ? 'Choose package' : 'Wybierz pakiet'} <ArrowRight size={14} />
+          </Link>
           <button 
             className="md:hidden bg-transparent border-none p-1.5 cursor-pointer"
             style={{ color: 'var(--color-fg)' }}
@@ -119,15 +121,15 @@ export default function TopNav({ lang, setLang, theme, setTheme, fontScale, setF
       {open && (
         <div className="border-t px-6 py-3 md:hidden shadow-lg" style={{ background: 'var(--color-bg)', borderColor: 'var(--color-border)' }}>
           {NAV.map(n => (
-            <a 
+            <Link
               key={n.href} 
-              href={n.href} 
+              to={n.href}
               onClick={() => setOpen(false)}
               className="block py-3 font-semibold no-underline"
               style={{ color: 'var(--color-fg)' }}
             >
               {n.label}
-            </a>
+            </Link>
           ))}
           {/* Mobile theme/font controls */}
           <div className="flex items-center gap-2 py-3 border-t" style={{ borderColor: 'var(--color-border)' }}>
@@ -136,17 +138,17 @@ export default function TopNav({ lang, setLang, theme, setTheme, fontScale, setF
                 { val: 'light', icon: Sun },
                 { val: 'dark', icon: Moon },
                 { val: 'system', icon: Monitor },
-              ].map(({ val, icon: Icon }) => (
+              ].map((option) => (
                 <button
-                  key={val}
-                  onClick={() => setTheme(val)}
+                  key={option.val}
+                  onClick={() => setTheme(option.val)}
                   className="p-1.5 rounded-full transition-colors cursor-pointer border-none"
                   style={{
-                    background: theme === val ? 'var(--color-fg)' : 'transparent',
-                    color: theme === val ? 'var(--color-bg)' : 'var(--color-fg-muted)',
+                    background: theme === option.val ? 'var(--color-fg)' : 'transparent',
+                    color: theme === option.val ? 'var(--color-bg)' : 'var(--color-fg-muted)',
                   }}
                 >
-                  <Icon size={13} />
+                  <option.icon size={13} />
                 </button>
               ))}
             </div>

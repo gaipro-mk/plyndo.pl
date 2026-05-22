@@ -1,206 +1,263 @@
-import { useState } from 'react';
-import { copy } from '../../content';
-import { Home, Dog, Baby, Check, Sparkles } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { Baby, Building2, Dog, Droplets, Home, Sparkles, Store, WashingMachine } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { bundles } from '../../data/bundles';
+import { products } from '../../data/products';
+import { calculateBundlePricing, formatPln } from '../../lib/bundlePricing';
 
-function Step({ label, children }) {
+const homeTraits = [
+  { id: 'pets', pl: 'Zwierzęta', en: 'Pets', icon: Dog },
+  { id: 'kids', pl: 'Dzieci', en: 'Children', icon: Baby },
+  { id: 'laundry', pl: 'Dużo prania', en: 'More laundry', icon: WashingMachine },
+];
+
+const businessTraits = [
+  { id: 'visitors', pl: 'Ruch klientów', en: 'Visitor traffic', icon: Store },
+  { id: 'sanitary', pl: 'Sanitariaty', en: 'Restrooms', icon: Droplets },
+  { id: 'kitchen', pl: 'Kuchnia', en: 'Kitchen', icon: WashingMachine },
+];
+
+function readyBundle(slug) {
+  return bundles.find((bundle) => bundle.slug === slug);
+}
+
+function quantityLabel(quantity, lang) {
+  return lang === 'en' ? `${quantity} box${quantity === 1 ? '' : 'es'}` : `${quantity} ${quantity === 1 ? 'karton' : 'kartony'}`;
+}
+
+function createCustomAdvice(size, composition, slug) {
+  const bundle = readyBundle(`wybierz-sam-${size}`);
+
+  return {
+    bundle,
+    slug,
+    composition,
+    quantity: 1,
+    isCustom: true,
+  };
+}
+
+function buildAdvice(segment, area, traits) {
+  if (segment === 'business') {
+    if (area <= 120) {
+      return [{ bundle: readyBundle('firma-podstawowa-4'), quantity: 1 }];
+    }
+
+    const mainQuantity = area > 420 ? 3 : area > 240 ? 2 : 1;
+    const advice = [{ bundle: readyBundle('firma-operacyjna-8'), quantity: mainQuantity }];
+
+    if (traits.includes('visitors') || traits.includes('sanitary')) {
+      advice.push(createCustomAdvice(4, ['rece', 'wc', 'lazienka', 'dezynfekcja'], 'business-hygiene-4'));
+    }
+
+    return advice;
+  }
+
+  const advice = [{ bundle: readyBundle('starter-10'), quantity: 1 }];
+
+  if (area > 120 || traits.includes('kids') || traits.includes('pets')) {
+    advice.push(createCustomAdvice(4, [
+      'podlogi',
+      traits.includes('pets') ? 'dezynfekcja' : 'lazienka',
+      'wc',
+      traits.includes('laundry') ? 'pranie' : 'naczynia',
+    ], 'home-refill-4'));
+  }
+
+  if (area > 190 && traits.includes('laundry')) {
+    advice.push({ bundle: readyBundle('dom-pelny-8'), quantity: 1 });
+  }
+
+  return advice;
+}
+
+function TraitButton({ active, icon, label, onClick }) {
   return (
-    <div>
-      <div className="t-eyebrow text-[#1e4c7a] mb-3">{label}</div>
-      {children}
-    </div>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`grid min-h-[92px] content-center justify-items-center gap-2 rounded-[14px] border p-3 text-center text-xs font-extrabold ${
+        active ? 'border-black bg-black text-white' : 'border-border bg-white text-fg-muted'
+      }`}
+    >
+      {icon}
+      {label}
+    </button>
   );
 }
 
-function AddOn({ children }) {
+function AdviceCard({ advice, lang }) {
+  const pricing = calculateBundlePricing({
+    bundle: advice.bundle,
+    composition: advice.composition ?? advice.bundle.composition,
+    products,
+  });
+  const name = advice.isCustom
+    ? (lang === 'en' ? `Suggested custom box ${advice.bundle.size}` : `Sugerowana paczka własna ${advice.bundle.size}`)
+    : advice.bundle.i18n?.[lang]?.displayName ?? advice.bundle.name;
+  const href = advice.isCustom ? `/pakiety/wlasna-paczka/${advice.bundle.size}` : `/pakiety/${advice.bundle.slug}`;
+
   return (
-    <div className="flex items-center gap-2 text-xs font-semibold">
-      <Check size={14} className="text-green-500" /> {children}
-    </div>
+    <article className="grid gap-4 rounded-[20px] border border-border bg-white p-5">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h3 className="text-lg font-extrabold leading-tight">{name}</h3>
+          <div className="mt-1 text-sm text-fg-muted">
+            {quantityLabel(advice.quantity, lang)} · {pricing.itemCount * advice.quantity} {lang === 'en' ? 'items' : 'sztuk'}
+          </div>
+        </div>
+        <span className="rounded-full bg-black px-3 py-1 text-xs font-black text-white">
+          -{pricing.savingsPercent}%
+        </span>
+      </div>
+      <div className="grid gap-1.5 text-sm">
+        {pricing.lineItems.slice(0, 5).map((item) => (
+          <div key={item.productSlug} className="flex items-center justify-between gap-3">
+            <span className="font-semibold">
+              {item.quantity > 1 ? `${item.quantity}x ` : ''}
+              {item.product.i18n?.[lang]?.shortName ?? item.product.shortName}
+            </span>
+            <span className="text-fg-muted">{formatPln(item.listValue, lang === 'en' ? 'en-GB' : 'pl-PL')}</span>
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-wrap items-end justify-between gap-3 border-t border-border pt-4">
+        <div>
+          <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-fg-muted">
+            {lang === 'en' ? 'One box price' : 'Cena jednego kartonu'}
+          </div>
+          <div className="font-display text-3xl font-black">
+            {formatPln(pricing.bundlePrice, lang === 'en' ? 'en-GB' : 'pl-PL')}
+          </div>
+        </div>
+        <Link to={href} className="rounded-[10px] border border-black px-4 py-2.5 text-sm font-extrabold text-black no-underline">
+          {lang === 'en' ? 'Open package' : 'Otwórz pakiet'}
+        </Link>
+      </div>
+    </article>
   );
 }
 
 export default function AiAssistantSection({ lang = 'pl' }) {
-  const [area, setArea] = useState(60);
-  const [traits, setTraits] = useState(["Dzieci"]);
-  const [surfaces, setSurfaces] = useState([]);
-  const [freq, setFreq] = useState("Co 2 miesiące");
+  const [segment, setSegment] = useState('home');
+  const [area, setArea] = useState(85);
+  const [traits, setTraits] = useState(['kids']);
+  const options = segment === 'home' ? homeTraits : businessTraits;
+  const advice = useMemo(() => buildAdvice(segment, area, traits), [area, segment, traits]);
 
-  const toggle = (s, v) => s.includes(v) ? s.filter(x => x !== v) : [...s, v];
+  function selectSegment(nextSegment) {
+    setSegment(nextSegment);
+    setArea(nextSegment === 'home' ? 85 : 180);
+    setTraits([]);
+  }
 
-  let pkgName = "MINI", pkgPrice = "89", pkgCount = 5;
-  if (area > 50 && area <= 120) { pkgName = "MIDI"; pkgPrice = "129"; pkgCount = 7; }
-  else if (area > 120)          { pkgName = "MAXI"; pkgPrice = "189"; pkgCount = 9; }
-
-  const products = [
-    { id: '1', sub: 'PODŁÓG DREWNIANYCH', bg: '#d4a373' },
-    { id: '2', sub: 'SZYB I LUSTER', bg: '#caf0f8' },
-    { id: '3', sub: 'ŁAZIENKI', bg: '#ffc8dd' },
-    { id: '4', sub: 'NACZYŃ', bg: '#fefae0' },
-    { id: '5', sub: 'KUCHNI', bg: '#e9edc9' },
-    { id: '6', sub: 'PRANIA', bg: '#ccd5ae' },
-    { id: '7', sub: 'PŁUKANIA', bg: '#faedcd' },
-    { id: '8', sub: 'WC', bg: '#bde0fe' },
-    { id: '9', sub: 'DEZYNFEKCJI', bg: '#ffb5a7' }
-  ];
-  
-  const picks = products.slice(0, pkgCount);
+  function toggleTrait(id) {
+    setTraits((current) => current.includes(id)
+      ? current.filter((trait) => trait !== id)
+      : [...current, id]);
+  }
 
   return (
-    <section id="advisor" className="py-24 bg-surface-variant px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-[720px] mx-auto mb-14">
-          <span className="t-eyebrow">Jak to działa</span>
-          <h2 className="t-h1 mt-3">Doradca Czystości.</h2>
-          <p className="t-lead mt-3.5">
-            Cztery pytania &mdash; jeden pakiet dopasowany do tego, jak Twój dom naprawdę żyje.
-            Bez konta, bez maila, bez nudnej ankiety.
+    <section id="advisor" className="bg-surface-variant px-6 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 max-w-[760px]">
+          <span className="t-eyebrow">{lang === 'en' ? 'Package advisor' : 'Doradca paczek'}</span>
+          <h2 className="t-h1 mt-3">
+            {lang === 'en' ? 'Pick stock by place and consumption.' : 'Dobierz zapas do miejsca i zużycia.'}
+          </h2>
+          <p className="t-lead mt-4">
+            {lang === 'en'
+              ? 'The first rule-based segment shows the boxes and quantities worth checking before the Shoper handoff is connected.'
+              : 'Pierwszy regułowy segment pokazuje paczki i liczby kartonów, które warto sprawdzić przed podpięciem koszyka Shoper.'}
           </p>
         </div>
 
-        <div className="bg-white rounded-[32px] p-9 border border-border shadow-sm grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12">
-          <div className="grid gap-8">
-            <Step label="Wielkość Twojego domu">
-              <div className="flex justify-between items-baseline">
-                <span className="text-[13px] text-fg-muted">20 – 250 m²</span>
-                <span className="font-display font-black text-3xl tracking-[-0.04em]">
-                  {area} <span className="text-[14px] text-fg-muted font-medium">m²</span>
-                </span>
-              </div>
-              <input 
-                type="range" min="20" max="250" step="5" value={area}
-                onChange={e => setArea(+e.target.value)}
-                className="w-full mt-2 accent-[#1e4c7a]"
-              />
-            </Step>
-
-            <Step label="Dodatkowe uwarunkowania">
-              <div className="grid grid-cols-3 gap-2.5">
+        <div className="grid gap-6 rounded-[28px] border border-border bg-white p-6 md:p-8 lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="grid content-start gap-7">
+            <div>
+              <div className="t-eyebrow mb-3">{lang === 'en' ? 'Place' : 'Miejsce'}</div>
+              <div className="grid grid-cols-2 gap-2 rounded-[14px] bg-surface-container-low p-1.5">
                 {[
-                  { l: "Zwierzęta", I: Dog },
-                  { l: "Dzieci",    I: Baby },
-                  { l: "Alergicy",  I: Home },
-                ].map(({l, I}) => {
-                  const active = traits.includes(l);
-                  return (
-                    <button 
-                      key={l} 
-                      onClick={() => setTraits(toggle(traits, l))} 
-                      className={`p-4 rounded-xl flex flex-col gap-2 items-center cursor-pointer font-bold text-[12.5px] transition-colors ${
-                        active 
-                          ? "border-2 border-[#1e4c7a] bg-[#1e4c7a]/[0.06] text-[#1e4c7a]" 
-                          : "border border-border bg-white text-fg-muted"
-                      }`}
-                    >
-                      <I size={20}/> {l}
-                    </button>
-                  );
-                })}
-              </div>
-            </Step>
-
-            <Step label="Jakie powierzchnie dominują?">
-              <div className="flex flex-wrap gap-2">
-                {["Podłogi drewniane", "Płytki / Terakota", "Duże przeszklenia", "Trudne zabrudzenia"].map(s => {
-                  const active = surfaces.includes(s);
-                  return (
-                    <button 
-                      key={s} 
-                      onClick={() => setSurfaces(toggle(surfaces, s))} 
-                      className={`px-3.5 py-2 rounded-full text-[13px] font-medium cursor-pointer transition-colors ${
-                        active 
-                          ? "border border-black bg-black text-white" 
-                          : "border border-border bg-white text-black"
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  );
-                })}
-              </div>
-            </Step>
-
-            <Step label="Częstotliwość dostaw">
-              <div className="flex p-1 bg-surface-variant rounded-xl">
-                {["Co miesiąc", "Co 2 miesiące", "Co 3 miesiące"].map(o => (
-                  <button 
-                    key={o} 
-                    onClick={() => setFreq(o)} 
-                    className={`flex-1 p-2.5 rounded-lg border-none font-bold text-[12.5px] cursor-pointer transition-colors ${
-                      freq === o 
-                        ? "bg-white text-black shadow-xs" 
-                        : "bg-transparent text-fg-muted"
+                  { id: 'home', label: lang === 'en' ? 'Home' : 'Dom', icon: Home },
+                  { id: 'business', label: lang === 'en' ? 'Business' : 'Firma', icon: Building2 },
+                ].map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => selectSegment(option.id)}
+                    className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-[10px] text-sm font-extrabold ${
+                      segment === option.id ? 'bg-black text-white' : 'bg-transparent text-black'
                     }`}
                   >
-                    {o}
+                    <option.icon size={17} />
+                    {option.label}
                   </button>
                 ))}
               </div>
-            </Step>
-          </div>
+            </div>
 
-          <div className="lg:sticky lg:top-24 self-start">
-            <div className="bg-gradient-to-br from-[#1e4c7a]/[0.08] to-transparent border border-[#1e4c7a]/20 rounded-[24px] p-7 shadow-lg">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-full bg-[#1e4c7a] text-white flex items-center justify-center shadow-[0_6px_14px_rgba(30,76,122,0.35)]">
-                  <Sparkles size={18}/>
-                </div>
+            <div>
+              <div className="flex items-end justify-between gap-4">
                 <div>
-                  <div className="t-eyebrow text-[#1e4c7a]">Rekomendacja AI</div>
-                  <div className="text-[11.5px] italic text-fg-muted">Na podstawie Twoich odpowiedzi</div>
+                  <div className="t-eyebrow">{lang === 'en' ? 'Area' : 'Metraż'}</div>
+                  <p className="mt-1 text-sm text-fg-muted">
+                    {segment === 'home'
+                      ? (lang === 'en' ? 'Flat or house' : 'Mieszkanie lub dom')
+                      : (lang === 'en' ? 'Cleaning area' : 'Powierzchnia obsługi')}
+                  </p>
+                </div>
+                <div className="font-display text-4xl font-black">
+                  {area} <span className="text-base text-fg-muted">m2</span>
                 </div>
               </div>
+              <input
+                type="range"
+                min={segment === 'home' ? 30 : 40}
+                max={segment === 'home' ? 260 : 600}
+                step={10}
+                value={area}
+                onChange={(event) => setArea(Number(event.target.value))}
+                className="mt-4 w-full accent-black"
+              />
+            </div>
 
-              <h3 className="t-h3 mt-4.5">Pakiet {pkgName}</h3>
-              <p className="mt-1.5 text-[13px] text-fg-muted leading-[1.5]">
-                {pkgName === "MINI" && "Optymalny dla mniejszych mieszkań i wolniejszych cykli."}
-                {pkgName === "MIDI" && "Najlepszy balans wygody i wartości dla rodzin."}
-                {pkgName === "MAXI" && "Większy wolumen dla biur i dużych domów."}
-              </p>
-
-              {(traits.length > 0 || surfaces.length > 0) && (
-                <div className="mt-4.5 p-3.5 bg-white/60 border border-border rounded-xl grid gap-2">
-                  <div className="text-[10px] font-extrabold tracking-[0.12em] uppercase text-fg-muted">
-                    Automatycznie dodano
-                  </div>
-                  {traits.includes("Zwierzęta") && <AddOn>JAX 44 — eliminator zapachów</AddOn>}
-                  {traits.includes("Dzieci")    && <AddOn>Formuła hipoalergiczna</AddOn>}
-                  {surfaces.includes("Podłogi drewniane") && <AddOn>Podwójna dawka: JAX 14 (drewno)</AddOn>}
-                  {surfaces.includes("Duże przeszklenia") && <AddOn>Ultra Glass Cleaner — zwiększona obj.</AddOn>}
-                </div>
-              )}
-
-              <div className="mt-5.5 pt-4.5 border-t border-border">
-                <div className="flex justify-between mb-3">
-                  <span className="t-eyebrow text-[#1e4c7a]">Zawartość paczki</span>
-                  <span className="text-[11px] font-bold px-2 py-1 bg-surface-variant rounded-md">
-                    {picks.length} butelek
-                  </span>
-                </div>
-                <div className="grid gap-2">
-                  {picks.map(p => (
-                    <div key={p.id} className="flex items-center gap-2.5 text-[12.5px]">
-                      <span className="w-2.5 h-2.5 rounded-full" style={{ background: p.bg }}/>
-                      <span className="font-medium">PŁYN DO {p.sub}</span>
-                    </div>
-                  ))}
-                </div>
+            <div>
+              <div className="t-eyebrow mb-3">
+                {segment === 'home'
+                  ? (lang === 'en' ? 'Home signals' : 'Sygnały domu')
+                  : (lang === 'en' ? 'Business signals' : 'Sygnały firmy')}
               </div>
-
-              <div className="mt-5.5 pt-4.5 border-t border-border flex justify-between items-end gap-3">
-                <div>
-                  <div className="font-display font-black text-4xl tracking-[-0.04em] leading-none text-[#1e4c7a]">
-                    {pkgPrice} <span className="text-lg">zł</span>
-                  </div>
-                  <div className="text-[11px] text-fg-muted mt-0.5">/ wysyłka {freq.toLowerCase()}</div>
-                </div>
-                <button 
-                  onClick={() => document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" })}
-                  className="bg-black text-white border-none px-4.5 py-3 rounded-[10px] font-extrabold text-[13px] cursor-pointer shadow-cta"
-                >
-                  Wybierz ten pakiet
-                </button>
+              <div className="grid grid-cols-3 gap-2">
+                {options.map((option) => (
+                  <TraitButton
+                    key={option.id}
+                    active={traits.includes(option.id)}
+                    icon={<option.icon size={20} />}
+                    label={lang === 'en' ? option.en : option.pl}
+                    onClick={() => toggleTrait(option.id)}
+                  />
+                ))}
               </div>
             </div>
+          </div>
+
+          <div className="grid content-start gap-4 rounded-[24px] bg-surface-container-low p-5 md:p-6">
+            <div className="flex items-center gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-[12px] bg-black text-white">
+                <Sparkles size={20} />
+              </span>
+              <div>
+                <div className="t-eyebrow">{lang === 'en' ? 'Recommendation' : 'Rekomendacja'}</div>
+                <p className="text-sm text-fg-muted">
+                  {segment === 'business'
+                    ? (lang === 'en' ? 'Stock weighted for operations.' : 'Zapas ważony pod pracę firmy.')
+                    : (lang === 'en' ? 'Starter first, then flexible refills.' : 'Najpierw starter, potem elastyczne uzupełnienia.')}
+                </p>
+              </div>
+            </div>
+            {advice.map((item) => (
+              <AdviceCard key={item.slug ?? item.bundle.slug} advice={item} lang={lang} />
+            ))}
           </div>
         </div>
       </div>

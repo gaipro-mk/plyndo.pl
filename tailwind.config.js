@@ -1,3 +1,4 @@
+/* global module */
 /** @type {import('tailwindcss').Config}
  *
  *  Tailwind v4 preset that mirrors the Płyndo design system tokens.

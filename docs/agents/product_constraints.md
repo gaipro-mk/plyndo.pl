@@ -1,10 +1,13 @@
 # Product Constraints & Workflow
 
 ## Core Product
-- Treat the current page as a waitlist-first MVP landing page, not a checkout flow.
-- Preserve the single primary CTA strategy unless product requirements change.
-- Current implementation is landing-page only. No backend, no live checkout, no live subscription engine.
-- Waitlist interaction is prototype-only unless explicitly upgraded.
+- Treat the current product as a package-first landing page for ready bundles and custom packs, not a checkout flow.
+- Subscription and waitlist models are out of scope for the product.
+- Current implementation is landing-page only. No backend and no live Shoper checkout yet.
+- The current landing CTA to Shoper must remain an inactive placeholder until the integration is ready.
+- Product prices may be shown as reference prices. Discount and savings belong only to the whole pack.
+- The public `JAX Professional` reference belongs only on the About page. Do not repeat it in hero, trust, footer, or every product page.
+- Keep existing footer producer/seller entity data from the repo as entity data without making it dominate the Płyndo brand.
 
 ## File Ownership
 - App UI: `src/App.jsx`
@@ -13,7 +16,7 @@
 - Product documentation: `PRD.md`
 
 ## Future Scope (Do not build yet unless requested)
-- Add real waitlist backend or CRM integration.
+- Connect ready bundles and custom packs to Shoper with the full cart composition and package discount.
 - Add analytics and event tracking.
 - Add bilingual Polish/English content strategy if needed.
-- Add ecommerce and subscription backend only after product validation.
+- Add ecommerce integration only after product validation.

@@ -1,11 +1,18 @@
 # CLAUDE.md — Płyndo.pl (Claude Code)
 
-**CEL:** Premium landing page + dokumentacja koncepcji subskrypcji chemii gospodarczej (Polska).
+**CEL:** Premium landing page + dokumentacja sprzedaży pakietowej chemii gospodarczej (Polska).
 
 ## Stack & Commands
 - React + Vite + Tailwind CSS v4 (`@tailwindcss/vite`)
 - `npm install` | `npm run dev` | `npm run build` | `npm run preview` | `npm run lint`
 - App UI: `src/App.jsx` · Styl: `src/index.css` · Config: `vite.config.js`
+
+## Aktualny zakres produktu
+- Subskrypcja i waitlista nie są zakresem produktu.
+- Oferta landing page'a opiera się na pakietach gotowych, paczkach własnych `4` i `8`, aktualnym `Starter 10` oraz docelowym `Starter 12`.
+- Pokazuj ceny referencyjne produktów, ale rabat i oszczędność tylko dla całej paczki.
+- Obecne CTA do Shopera jest nieaktywnym placeholderem; docelowo gotowy pakiet i paczka własna przekazują pełny skład koszyka oraz rabat pakietowy.
+- `JAX Professional` może być publicznie przywołane tylko na stronie `O marce`, nie w hero, trust, footerze ani na każdej stronie produktu.
 
 ## Hierarchia Modeli (Claude Code)
 

@@ -1,19 +1,16 @@
 export const copy = {
   pl: {
     htmlLang: 'pl',
-    title: 'Płyndo.pl | Profesjonalna czystość dla Twojego domu',
+    title: 'Płyndo.pl | Płyny do domu i firmy w pakietach',
     description:
-      'Plyndo.pl porządkuje chemię domową w Polsce: 10 kluczowych produktów, pakiety po 4 i 8 sztuk, InPost, kurier i wygodne płatności BLIK.',
+      'Płyndo.pl pokazuje 10 płynów do domu i firmy kupowanych w pakietach 4, 8 oraz Starter 10. Wybierz gotowy zestaw albo skomponuj własną paczkę.',
     brand: 'Płyndo.pl',
     nav: {
-      product: 'Katalog Czystości',
-      plans: 'Pakiety',
-      operations: 'Jak działa',
-      standard: 'Pakiety',
+      products: 'Produkty',
+      bundles: 'Pakiety',
+      useCases: 'Dom i firma',
+      advisor: 'Doradca',
       faq: 'FAQ',
-      waitlist: 'Wczesny dostęp',
-      menu: 'Menu',
-      close: 'Zamknij',
     },
     controls: {
       language: 'Język',
@@ -22,384 +19,151 @@ export const copy = {
       light: 'Jasny',
       dark: 'Ciemny',
       system: 'System',
-      small: 'A-',
-      medium: 'A',
-      large: 'A+',
-    },
-    topNav: {
-      clientZone: 'Strefa Klienta',
-      choosePackage: 'Wybierz Pakiet'
     },
     hero: {
-      tag: 'Digital-First Cleaning',
-      eyebrow: '40+ lat zaplecza produkcyjnego. Nowy model dla nowoczesnego domu.',
-      title: 'Profesjonalna czystość\nw pakietach dla Ciebie.',
+      eyebrow: 'Nowa marka chemii kupowanej kartonami',
+      title: 'Płyndo.pl.\nPłyny do domu i firmy w pakietach.',
       lead:
-        'Skuteczność producenta, wygoda Płyndo.pl. Wybierz pakiet 4 lub 8 produktów i zapomnij o dźwiganiu z marketu.',
-      primary: 'Wybierz swój pakiet',
-      secondary: 'Zobacz ofertę',
-      proof: [
-        '10 produktów do codziennego utrzymania domu',
-        'Pakiety po 4 i 8 sztuk z oszczędnością do 50%',
-        'InPost, kurier i wygodne płatności pod polski rynek',
-        'Gotowe zestawy lub skomponuj własny pakiet',
-      ],
-      trust: {
-        badge: 'Płyndo Certified',
-        caption: 'Zaufane przez profesjonalistów od 1994 roku.'
-      },
+        'Poznaj całą linię w Starter 10 albo dobierz paczkę 4 lub 8 sztuk do tego, co naprawdę zużywasz.',
+      primary: 'Zobacz pakiety',
+      secondary: 'Poznaj produkty',
       metrics: [
-        { value: '40+', label: 'lat doświadczenia produkcyjnego w tle marki' },
-        { value: '10', label: 'produktów MVP zamiast przeładowanego katalogu' },
-        { value: '1-3', label: 'miesiące jako bazowe cykle dostaw' },
-        { value: 'PL', label: 'logistyka i płatności projektowane dla Polski' },
+        { value: '10', label: 'obecnych płynów w Starter 10' },
+        { value: '4', label: 'sztuki w małej paczce uzupełniającej' },
+        { value: '8', label: 'sztuk w głównej paczce zapasu' },
+        { value: 'PL', label: 'zakup ciężkich płynów bez wyjścia do marketu' },
       ],
-      panelTitle: 'Model MVP',
-      panelRows: [
-        ['Oferta', 'Pakiety 4 i 8 sztuk + zestawy tematyczne'],
-        ['Płatności', 'Przelewy24, Paynow, BLIK, Stripe'],
-        ['Dostawa', 'InPost + kurier dla większych zamówień'],
-      ],
-      sideNote:
-        'Plyndo nie sprzedaje jednej butelki. Sprzedaje spokój, ciągłość i dobrze ustawiony dom.',
     },
     heritage: {
-      text: '30 lat tradycji.',
-      highlight: 'Teraz w Twoim domu.'
-    },
-    aiAssistant: {
-      title: 'Doradca Czystości AI',
-      lead: 'Skonfiguruj swój pakiet w 30 sekund. Nasz algorytm dobierze idealną ilość chemii do Twoich potrzeb.',
-      step1: {
-        title: 'Wielkość Twojego Domu',
-        unit: 'm²',
-        help: 'Przesuń suwak, aby wybrać dokładny metraż'
-      },
-      step2: {
-        title: 'Dodatkowe uwarunkowania',
-        options: [
-          { label: 'Zwierzęta', icon: 'pets' },
-          { label: 'Dzieci', icon: 'child_care' },
-          { label: 'Alergicy', icon: 'allergy' }
-        ]
-      },
-      step3: {
-        title: 'Jakie powierzchnie dominują?',
-        options: ['Podłogi drewniane', 'Płytki / Terakota', 'Duże przeszklenia', 'Trudne zabrudzenia']
-      },
-      step4: {
-        title: 'Częstotliwość dostaw',
-        options: ['Co miesiąc', 'Co 2 miesiące', 'Co 3 miesiące']
-      },
-      result: {
-        badge: 'Rekomendacja AI',
-        subText: 'Na podstawie Twoich odpowiedzi',
-        title: 'Pakiet MINI Clean+',
-        desc: 'Optymalny dla małych mieszkań ze zwierzętami. Zwiększona dawka neutralizatora zapachów.',
-        price: '89,00 zł',
-        priceSuffix: '/m-c',
-        cta: 'Wybierz ten pakiet'
-      },
-      vis: {
-        title: 'W TWOIM PAKIECIE:',
-        count: '6 PRODUKTÓW',
-        items: [
-          '01 - Powierzchnie Szklane',
-          '14 - Podłogi Drewniane',
-          '07 - Sanitariaty (Aktywny chlor)'
-        ],
-        more: '+ 3 inne profesjonalne produkty'
-      }
+      text: 'Jedna linia do codziennej czystości.',
+      highlight: 'Kupujesz paczkę, nie przypadkową półkę.',
     },
     productGrid: {
-      title: 'Katalog Czystości',
-      lead: 'Nasza gama produktów Płyndo to 30 lat doświadczenia zamknięte w minimalistycznej formie. Skuteczność bez kompromisów.',
-      cta: 'Zobacz pełną specyfikację techniczną',
-      products: [
-        { name: '01 Glass', tagline: 'Krystaliczna czystość bez smug', tag: 'GLASS', color: 'bg-blue-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBb0vDEh2Woo2A4uvXfb3yw1vif2McuZwaFdwwf4rviO9_dV2Mv4yIgRpybjbuXZ4orT_gjV-geTgcDyVVZ0lQ6F1L_8J7AJ5IFq2926Jxj-Bf9uFiwK3AXVibs6WfiUjAua8pcKxfduHTKjYglCaLem6Vwq25Fb3NDqZCblEzCU8pC7_aX1v7paqShRdeYU6RD1YyS-Gf5tt8nnMIr8lCtKTBlX0AtAbRtqRIExSiod486UqT6pBKCL8ognv8km_2WijfVYK2EQk6i' },
-        { name: '14 Floor', tagline: 'Ochrona i blask twardych podłóg', tag: 'FLOOR', color: 'bg-amber-500', ph: '8.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAfT-fSNucWAX9zxs87bcEpgV6fLrX7mBg6igspdY01q8LHSDtV2K5_YBwuEoihV5TB9y4iQVvlFILJUiQ1NcPJ69f-SQ_wU7KocUU96pPU4mHq4fnRetDJMLlvg_YRTziHqruLh0cDpABUl82palQKkjwUSiZrJbZrdjQwyVRNxB87gY1lTEKdrkSW0uIwN_V6x_MjSBVvgm57pnqEwfek7qC0p9yyEBMQl1o2RlExosGUoZ5ptnPswpGCGva9gPUTUQ7sFCcCkHa9' },
-        { name: '07 Bath', tagline: 'Skuteczny przeciw osadom', tag: 'BATHROOM', color: 'bg-red-500', ph: '2.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBC3Nj1FpsxDH4UDoq4ImySdNOCwaYGeJfVkPlJhS2o7xZ1uXtD2WqLh1n1dAdsfGUf30lU6b5mwYY_wFCUrIPFY-9HJItMBcQuerhnLjpDOlHKGxy3_fPmcxIiNkt3UprzSg6Eco1hXrURLA78Iy86d41tvxPKMgO4-LWOmILf6K0SovYmCzV_YxGBoYKvhXHh20r9k9VkKpsVrVczJhz5m96UPw5si7lhvoVJpE9oOxuOSDV_9wKpM_YJJMGQp1rJbA3xO3FFRq83' },
-        { name: '22 Dish', tagline: 'Ultra-koncentrat do naczyń', tag: 'DISHES', color: 'bg-emerald-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDXIIyuJl3ln8R42T9DKu6s9JCpT8KlCQtTn_Z4B47oMrT4D_ZyfZveTOI0xRLiFyN2UnJDZwDFtWafHKZbL_-o6zBDrBOHr3B_3Yk08qZacJKoKU8Keo7Yy1JhgucGzJIhfCnzmC_zmL2Gi5QJXmu8zFOmT2THX7fF-JSePBaWbpTSo8AEhFEQIdpVhdZjFExlPIDgCCQTdJcIHx54-Y0HI5LQ-kvOPUUuysGDLhRmKU2V0IYgfzbasjUmO-y3V0h1buODUd_QpYqR' },
-        { name: '41 Laundry', tagline: 'Głębokie oczyszczanie tkanin', tag: 'LAUNDRY', color: 'bg-indigo-500', ph: '9.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1Orzt8_DVEFeB-_TjEN7ONz1qJa82E1yNXK77s4xHkTwtaZDEe4rkgG5vmMKTzPkohfrg-s8g-KPNBVCuhb17SRmNusWVUokAdqbTcJCPeCqfWSBQ2CFqqZ7fxDZnqpHze8OvIlNxC1d1ICe8bmoL7YWKNxeMA0JswcCgjz--jK0lHKi8eNxSCB4BDTBDYUqrOdrGgclmiFnBDBjzOtTY6WKMT5hsRaboVJuAYZ72hDmpBdayPPNDgRhLEiB8ChfXBSz5W7NACGAR' },
-        { name: '45 Softener', tagline: 'Długotrwała miękkość', tag: 'RINSE', color: 'bg-pink-400', ph: '4.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBLKVsvl75IuEa3XYBqGVstHL9v6_Jle3kPpZvV8sH9o14mU8hDopEaZVddZhuQUfTuQ_fbW0ex5xKuarwUFYvBcOhXUlyZsD8vAeXDS5ff8mNCHS3CVf3LBoMSDXnLbX_Dl2HU3945iGLQqWHEsnT6wcunbFrsGL6naOtQNQD4489SJxVei1QNkgNLYmHwGJuhpw2GpQYWRRciYm4JPtpMbcREGvn2-ffP2PxAoNnE4xzumbOACm8M66_kz1WBGOq8SmqSPW3LbrRH' },
-        { name: '31 DW-Gel', tagline: 'Skoncentrowana moc zmywania', tag: 'DISHWASHER', color: 'bg-slate-500', ph: '11.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6YVfB3PabNUQxqV5HhRfexgIEuhCxrUxcTTg0qr5P3L57kiCZKWk2dwvCfgcOZHeNuIXFe3B2r4jVPQQ7f68jEy8oxMrrLNsCvnNaCFtH0CPvi4ZsoKoc4ENi-KmNkMm0fwp0aIMu79CouTrP3Xr_17RyjFv3iJ8MPVSXWzdq7cdLTfC5rRrb_k3yoTjEg8iBiwR1nKFzi0udeNYa1eJlu_07wGHEiv4cWwj8hwYHx_kSpnPIW70BwFnfnjocNURDUsjU8537YZDi' },
-        { name: '19 Silk Hand', tagline: 'Delikatne mydło pielęgnacyjne', tag: 'SOAP', color: 'bg-teal-500', ph: '5.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAgfkATUCXzFy68crPhF9pkDFbmbcx-lVNraClyX3vZHc8yxnWLcz-BvhhwnijpKQoEFYmfTBMSYcieDxiMgrFCztAPo8IH4FO9ye_Xomn8HNXynWSsH9s_tfUtIDXFSaGZgiOu6Oh-SgjeKEfUv-eOmtOpc-tw2Z9zOsbT-BQbUW1dBQeou-g1ohiDms9u3BJhN6Or77TeDBVp2IHrTqa1T97zMMTnepB64PUhC5UkMBG6mjfTGgRr9wCeHF4-ByqunTYBnjtqwQod' }
-      ]
-    },
-    packagesLite: [
-      {
-        step: '01',
-        title: 'Zamawiasz',
-        icon: 'shopping-cart',
-        desc: 'Wybierasz pakiet dostosowany do Twojego domu. Bez zbędnych produktów, bez dźwigania.'
-      },
-      {
-        step: '02',
-        title: 'Przypominamy',
-        icon: 'bell',
-        desc: 'Gdy środki się kończą, otrzymujesz powiadomienie. Możesz zmienić termin lub skład paczki jednym kliknięciem.'
-      },
-      {
-        step: '03',
-        title: 'Płacisz BLIKIEM',
-        icon: 'credit-card',
-        desc: 'Szybko i bezpiecznie. Żadnych ukrytych kosztów ani podpiętych kart, jeśli tego nie chcesz.'
-      }
-    ],
-    value: {
-      eyebrow: 'Trzy realne przewagi',
-      title: 'Jakość, cena i estetyka w jednym systemie.',
+      title: 'Katalog produktów',
+      heading: '10 płynów gotowych do pakietów.',
       lead:
-        'Dokumenty źródłowe są spójne w jednym punkcie: produkt ma wyglądać premium, działać jak profesjonalna chemia i kosztować uczciwie dzięki modelowi direct-to-consumer.',
+        'Każdy produkt ma własne zastosowanie, cenę referencyjną i stronę szczegółów. Zakup finalizujesz jako część gotowej lub własnej paczki.',
+      cta: 'Przejdź do pakietów',
+    },
+    value: {
+      eyebrow: 'Dlaczego pakiety',
+      title: 'Wygoda, zapas i cena policzona na całym kartonie.',
+      lead:
+        'Płyndo.pl nie rozbija oferty na pojedyncze promocje butelek. Im większa paczka, tym wyraźniejszy rabat dla całego zamówienia.',
       items: [
         {
-          title: 'Jakość producenta',
+          title: 'Nie dźwigasz płynów',
           copy:
-            'Sprawdzone receptury, kontrola składu, koncentracji i zapachu oraz doświadczenie wywodzące się z produkcji chemii na większą skalę.',
+            'Komplet do domu lub firmy trafia w jednej decyzji do dostawy zamiast do ciężkiego koszyka z kilku alejek.',
         },
         {
-          title: 'Cena bez piętrowych marż',
+          title: 'Widzisz realny skład',
           copy:
-            'Model D2C usuwa hurtowników i sieci handlowe, dzięki czemu część marży wraca do klienta bez obniżania jakości.',
+            'Każdy pakiet pokazuje listę produktów, ich ceny referencyjne, sumę wartości i globalną oszczędność paczki.',
         },
         {
-          title: 'Estetyka, którą chcesz zostawić na widoku',
+          title: 'Uzupełniasz po swojemu',
           copy:
-            'Minimalistyczne butelki, spokojny design i zapach inspirowany perfumami budują wartość, której zwykle brakuje w tej kategorii.',
+            'Po starterze możesz dokupić cztery lub osiem sztuk tych płynów, które kończą się u Ciebie najszybciej.',
         },
       ],
     },
     plans: {
-      eyebrow: 'Architektura oferty',
-      title: 'Pakiety zaprojektowane dla Ciebie.',
+      eyebrow: 'Oferta pakietowa',
+      title: 'Zacznij od pełnej linii albo wybierz karton.',
       lead:
-        'Płyndo nie sprzedaje pojedynczych butelek. Oferujemy sprytne zestawy, które zabezpieczają Twój dom i portfel. Wybierz gotowy pakiet lub skomponuj własny i oszczędzaj.',
-      cards: [
-        {
-          name: 'Wybierz Sam (4 szt.)',
-          audience: 'Elastyczność',
-          cadence: 'Skomponuj własny zestaw 4 produktów.',
-          bullets: [
-            'Wartość produktów: 150 zł',
-            'Cena w pakiecie: 105 zł',
-            'Oszczędzasz 30%',
-          ],
-        },
-        {
-          name: 'Wybierz Sam (8 szt.)',
-          audience: 'Maximum korzyści',
-          cadence: 'Dowolne 8 produktów do Twojego domu.',
-          bullets: [
-            'Wartość produktów: 300 zł',
-            'Cena w pakiecie: 150 zł',
-            'Oszczędzasz 50%',
-          ],
-        },
-        {
-          name: 'Pakiet Dom (8 szt.)',
-          audience: 'Rodzina',
-          cadence: 'Gotowy zestaw do pełnego sprzątania domu.',
-          bullets: [
-            'Wartość produktów: 300 zł',
-            'Cena w pakiecie: 150 zł',
-            'Oszczędzasz 50%',
-          ],
-        },
-        {
-          name: 'Pakiet Starter (12 szt.)',
-          audience: 'Nowy dom',
-          cadence: 'Wszystkie produkty na start. Pełne zabezpieczenie.',
-          bullets: [
-            'Wartość produktów: 450 zł',
-            'Cena w pakiecie: 225 zł',
-            'Oszczędzasz 50%',
-          ],
-        },
-      ],
-      modulesTitle: 'Zakres produktów',
-      modules: [
-        'Płyn do podłóg',
-        'Płyn do szyb',
-        'Płyn do łazienki',
-        'Mydło do rąk',
-        'Płyn do prania',
-        'Płyn do płukania',
-        'Płyn do naczyń',
-        'Płyn do zmywarki',
-        'Płyn do dezynfekcji',
-        'Płyn do WC',
-      ],
+        'Gotowe pakiety skracają decyzję dla domu i firmy. Własna paczka daje duplikaty tam, gdzie zużycie jest większe.',
+      modulesTitle: 'Produkty dostępne w paczkach',
     },
     operations: {
-      eyebrow: 'Jak to działa',
-      title: 'Od profilu domu do automatycznego uzupełniania.',
-      lead:
-        'MVP ma skracać drogę do zakupu i uczyć się zużycia zamiast wymagać od klienta ciągłego pamiętania o zakupach.',
+      eyebrow: 'Jak kupujesz',
+      title: 'Od Starter 10 do własnej paczki uzupełniającej.',
       steps: [
         {
           step: '01',
-          title: 'Profil domu',
+          title: 'Wybierasz wejście',
           copy:
-            'Użytkownik podaje metraż, liczbę łazienek, domowników, dzieci i zwierząt. To dane, których retail zwykle nie ma, a które naprawdę wpływają na zużycie.',
+            'Starter 10 pokazuje całą obecną linię. Gotowe pakiety Dom i Firma podają skład od razu.',
         },
         {
           step: '02',
-          title: 'Dobór AI i pakietu',
+          title: 'Widzisz ekonomię paczki',
           copy:
-            'Asystent proponuje wariant minimalny, optymalny i rozszerzony, a klient wybiera MINI, MIDI lub MAXI oraz tempo uzupełniania.',
+            'Ceny referencyjne produktów sumują się do wartości paczki, a rabat liczony jest globalnie dla zestawu.',
         },
         {
           step: '03',
-          title: 'Dostawa i korekta',
+          title: 'Przechodzisz do Shopera',
           copy:
-            'InPost obsługuje wygodny odbiór, kurier większe zamówienia, a kolejne paczki można korygować zamiast anulować całą relację.',
-        },
-      ],
-      rails: [
-        {
-          title: 'Pakiety lite dla Polski',
-          copy:
-            'Nie każdy klient chce kartę podpiętą na stałe, dlatego model źródłowy zakłada również przypomnienie, gotowy koszyk i szybki checkout z BLIK.',
-        },
-        {
-          title: 'Pauza jednym kliknięciem',
-          copy:
-            'Źródła wyraźnie stawiają elastyczność wyżej niż agresywny rabat. Zmiana ilości, pauza i downgrade są ważniejsze niż twarde lock-in.',
-        },
-        {
-          title: 'Uczenie się zużycia',
-          copy:
-            'System startuje od reguł, a potem pyta klienta, czy był zapas, czego było za mało i co skończyło się za szybko.',
+            'Na tym etapie CTA jest placeholderem. Docelowo Shoper otrzyma skład paczki i rabat gotowy do zamówienia.',
         },
       ],
     },
-    standard: {
-      eyebrow: 'Standard operacyjny',
-      title: 'Projektowany pod realia rynku polskiego.',
-      features: [
-        {
-          title: 'InPost i gabaryty',
-          copy:
-            'Chemia domowa jest cięższa niż kosmetyki, dlatego ważne są paczkomaty, kurier i logika doboru gabarytu dla paczek około 5,5 kg.',
-        },
-        {
-          title: 'Przelewy24 / Paynow / Stripe',
-          copy:
-            'Dokumenty rekomendują lokalne bramki dla marży oraz Stripe tam, gdzie potrzebna jest pełna automatyzacja cyklicznych obciążeń.',
-        },
-        {
-          title: 'Dozowanie jako przewaga',
-          copy:
-            'Jedna jasna dawka i edukacja użycia mają ograniczać marnowanie produktu. Marka ma zarabiać na długiej relacji, a nie na nadmiernym zużyciu.',
-        },
-        {
-          title: 'Content, który buduje zaufanie',
-          copy:
-            'Encyklopedia stosowania, instrukcje, poradniki i format “jaki płyn do” są częścią akwizycji, SEO i retencji.',
-        },
-      ],
-      comparison: [
-        {
-          label: 'Zakup',
-          left: 'Planowany, przewidywalny, dopasowany do domu',
-          right: 'Reaktywny, po fakcie, często pod presją',
-        },
-        {
-          label: 'Oferta',
-          left: '10 klarownych produktów i logiczne pakiety',
-          right: 'Przeładowany katalog i niskie zaufanie do różnic',
-        },
-        {
-          label: 'Relacja',
-          left: 'Dane o zużyciu, pauza, korekta i edukacja',
-          right: 'Jednorazowy zakup bez pamięci o kliencie',
-        },
-        {
-          label: 'Percepcja marki',
-          left: 'Premium, spokojna, nowoczesna i funkcjonalna',
-          right: 'Promocyjna, głośna, przypadkowa i mało estetyczna',
-        },
-      ],
-    },
-    proof: {
-      eyebrow: 'Skąd bierze się wiarygodność',
-      title: 'To nie jest startup wymyślający chemię od zera.',
-      items: [
-        'Źródła opisują projekt jako rozszerzenie wieloletnich kompetencji produkcyjnych firmy rodzinnej.',
-        'MVP ma najpierw walidować popyt na grupie Family & Friends, zamiast udawać gotową platformę masową.',
-        'Marka ma rosnąć dzięki edukacji, referencjom i jakości doświadczenia, nie przez wyścig cenowy na półce.',
-      ],
+    audience: {
+      eyebrow: 'Dom i firma',
+      title: 'Ten sam system, inne tempo zużycia.',
+      home: {
+        title: 'Dom',
+        copy:
+          'Kuchnia, łazienka, podłogi, pranie i szyby. Starter pokazuje pełną linię, a później dokupujesz to, co schodzi szybciej.',
+        bullets: ['Pranie i płukanie w gotowych zestawach domu', 'Paczki 4 dla szybkiego uzupełnienia', 'Duplikaty przy większym zużyciu'],
+      },
+      business: {
+        title: 'Firma',
+        copy:
+          'Biuro, lokal lub gabinet potrzebują przede wszystkim podłóg, sanitariatów, rąk, szyb i higieny powierzchni.',
+        bullets: ['Pakiety bez prania i płukania', 'Więcej podłóg przy większym metrażu', 'Rekomendacja zapasu przez doradcę'],
+      },
     },
     faq: {
       eyebrow: 'FAQ',
-      title: 'Najważniejsze pytania przed startem.',
+      title: 'Najważniejsze pytania o paczki.',
       items: [
         {
-          question: 'Czy Plyndo to gotowy sklep?',
+          question: 'Czy mogę kupić jedną butelkę?',
           answer:
-            'Jeszcze nie. Obecny etap to dopracowany landing page i walidacja popytu przed wdrożeniem pełnej platformy pakietowej.',
+            'Nie z tego landingu. Oferta Płyndo.pl jest zaprojektowana dla pakietów 4, 8 oraz startera całej aktualnej linii.',
         },
         {
-          question: 'Co zawiera MVP?',
+          question: 'Jak liczony jest rabat?',
           answer:
-            'Oferta obejmuje 10 produktów w pakietach po 4 i 8 sztuk, logistykę pod Polskę i zapis na priorytetowy dostęp.',
+            'Pokazujemy ceny referencyjne produktów i sumę wartości paczki. Paczka 4 ma rabat 30%, paczka 8 rabat 40%, a obecny Starter 10 rabat 45%. Docelowy Starter 12 osiągnie 50%. Rabat oraz oszczędność liczymy globalnie dla całego pakietu, nie dla pojedynczej butelki.',
         },
         {
-          question: 'Czy można kupować pojedyncze produkty?',
+          question: 'Czy Starter 10 jest obowiązkowy?',
           answer:
-            'Nie. Produkty dostępne są wyłącznie w pakietach po 4 lub 8 sztuk — dzięki temu oferujemy oszczędności do 50%.',
+            'Nie. Możesz zacząć od gotowego zestawu albo własnej paczki 4 lub 8 sztuk.',
         },
         {
-          question: 'Czy zamówienie można zmienić?',
+          question: 'Czy mogę wybrać kilka sztuk tego samego płynu?',
           answer:
-            'Tak. Możesz zmienić skład pakietu lub wielkość przed każdą wysyłką.',
+            'Tak. Konfigurator własnej paczki pozwala powtarzać produkty do limitu wybranego kartonu.',
         },
         {
-          question: 'Dlaczego nacisk jest tak duży na edukację i dozowanie?',
+          question: 'Co jest przygotowane dla firmy?',
           answer:
-            'Bo to wzmacnia zaufanie, zmniejsza marnowanie produktu i buduje dłuższą relację z klientem.',
+            'Gotowe pakiety firmowe skupiają się na podłogach, WC, łazience, myciu rąk, szybach, dezynfekcji i opcjonalnej kuchni.',
+        },
+        {
+          question: 'Gdzie finalizuję zakup?',
+          answer:
+            'Docelowo w sklepie Shoper. Obecne przyciski zakupowe są jawnie nieaktywne do czasu podpięcia realnych linków i koszyków.',
         },
       ],
     },
-    waitlist: {
-      eyebrow: 'Wczesny dostęp',
-      title: 'Wejdź na listę przed startem sprzedaży.',
-      lead:
-        'Pierwsze wdrożenie jest projektowane jako kontrolowany launch. Zapis daje priorytetowy kontakt, dostęp do pierwszych testów i informację o starcie pakietów.',
-      placeholder: 'Twój adres e-mail',
-      submit: 'Poproś o dostęp',
-      success: 'Dziękujemy. Adres został zapisany do kontaktu priorytetowego.',
-      note:
-        'Wysyłka startowa będzie ograniczona i iteracyjna, zgodnie z fazą MVP opisaną w dokumentach strategii.',
-    },
-    footerDesc: 'Dostarczamy profesjonalną jakość chemii domowej bezpośrednio do Twoich drzwi w wygodnym modelu pakietowym.',
-    footerCol1: {
-      title: 'Informacje',
-      links: ['Regulamin', 'Polityka Prywatności', 'FAQ']
-    },
-    footerCol2: {
-      title: 'Wsparcie',
-      links: ['Kontakt', 'Strefa Klienta']
-    },
-    footerCopyright: '© 2024 Płyndo.pl. Powered by Płyndo.',
-    footer:
-      'Płyndo.pl to koncepcja premium dla nowego modelu chemii domowej w Polsce: jakość producenta, estetyka i pakiety.',
   },
   en: {
     htmlLang: 'en',
-    title: 'Plyndo.pl | Professional household chemistry packages',
+    title: 'Plyndo.pl | Cleaning liquids for home and business in packages',
     description:
-      'Plyndo.pl brings order to household chemistry in Poland: 10 core products, packages of 4 and 8, InPost, courier delivery, and a BLIK-ready checkout.',
+      'Plyndo.pl presents 10 cleaning liquids sold as packages of 4, 8, and the Starter 10. Choose a ready bundle or build your own box.',
     brand: 'Plyndo.pl',
     nav: {
-      product: 'Catalog',
-      plans: 'AI Plans',
-      operations: 'How It Works',
-      standard: 'Packages',
+      products: 'Products',
+      bundles: 'Packages',
+      useCases: 'Home and business',
+      advisor: 'Advisor',
       faq: 'FAQ',
-      waitlist: 'Early Access',
-      menu: 'Menu',
-      close: 'Close',
     },
     controls: {
       language: 'Language',
@@ -408,355 +172,137 @@ export const copy = {
       light: 'Light',
       dark: 'Dark',
       system: 'System',
-      small: 'A-',
-      medium: 'A',
-      large: 'A+',
-    },
-    topNav: {
-      clientZone: 'Client Zone',
-      choosePackage: 'Choose Package'
     },
     hero: {
-      tag: 'Digital-First Cleaning',
-      eyebrow: '40+ years of production backbone. A new model for the modern home.',
-      title: 'Professional household chemistry without retail chaos.',
+      eyebrow: 'A cleaning line built for boxes',
+      title: 'Plyndo.pl.\nCleaning liquids for home and business packages.',
       lead:
-        'Plyndo combines manufacturer-grade quality, direct pricing, and premium aesthetics. Enjoy AI matched packages precisely to your needs.',
-      primary: 'Choose your package',
-      secondary: 'See the offer',
-      proof: [
-        '10 core products for everyday household upkeep',
-        'MINI / MIDI / MAXI plans with room to expand',
-        'InPost, courier delivery, and a packages-lite path for Poland',
-        'AI matching the setup to square footage, kids, pets, and lifestyle',
-      ],
-      trust: {
-        badge: 'Płyndo Certified',
-        caption: 'Trusted by professionals since 1994.'
-      },
+        'Start with the full Starter 10 line or choose a box of 4 or 8 based on what you actually use.',
+      primary: 'See packages',
+      secondary: 'Explore products',
       metrics: [
-        { value: '40+', label: 'years of production experience behind the brand' },
-        { value: '10', label: 'MVP products instead of a bloated catalog' },
-        { value: '1-3', label: 'months as the baseline delivery cycles' },
-        { value: 'PL', label: 'logistics and payments designed for Poland' },
+        { value: '10', label: 'current liquids in Starter 10' },
+        { value: '4', label: 'items in a small refill box' },
+        { value: '8', label: 'items in the main stock-up box' },
+        { value: 'PL', label: 'heavy essentials delivered instead of carried' },
       ],
-      panelTitle: 'MVP model',
-      panelRows: [
-        ['Offer', 'MINI / MIDI / MAXI + single-product add-ons'],
-        ['Payments', 'Przelewy24, Paynow, BLIK-lite, Stripe for automation'],
-        ['Delivery', 'InPost by default + courier for heavier orders'],
-      ],
-      sideNote:
-        'Plyndo is not selling one bottle. It is selling continuity, calm, and a better-run home.',
     },
     heritage: {
-      text: '30 years of Płyndo tradition.',
-      highlight: 'Now in your home.'
-    },
-    aiAssistant: {
-      title: 'AI Cleaning Advisor',
-      lead: 'Configure your package in 30 seconds. Our algorithm will match the ideal amount of chemistry to your needs.',
-      step1: {
-        title: 'Size of Your Home',
-        unit: 'm²',
-        help: 'Drag the slider to select exact area'
-      },
-      step2: {
-        title: 'Additional conditions',
-        options: [
-          { label: 'Pets', icon: 'pets' },
-          { label: 'Children', icon: 'child_care' },
-          { label: 'Allergies', icon: 'allergy' }
-        ]
-      },
-      step3: {
-        title: 'What surfaces dominate?',
-        options: ['Wood floors', 'Tiles / Ceramics', 'Large windows', 'Tough dirt']
-      },
-      step4: {
-        title: 'Delivery frequency',
-        options: ['Monthly', 'Every 2 months', 'Every 3 months']
-      },
-      result: {
-        badge: 'AI Recommendation',
-        subText: 'Based on your answers',
-        title: 'MINI Clean+ Package',
-        desc: 'Optimal for small apartments with pets. Increased dose of odor neutralizer.',
-        price: '89.00 zł',
-        priceSuffix: '/mo',
-        cta: 'Select this package'
-      },
-      vis: {
-        title: 'IN YOUR PACKAGE:',
-        count: '6 PRODUCTS',
-        items: [
-          '01 - Glass Surfaces',
-          '14 - Wood Floors',
-          '07 - Sanitaries (Active chlorine)'
-        ],
-        more: '+ 3 other professional products'
-      }
+      text: 'One line for everyday cleaning.',
+      highlight: 'You buy a box, not a random shelf.',
     },
     productGrid: {
-      title: 'Chemistry Catalog',
-      lead: 'Our range of Płyndo products represents 30 years of experience enclosed in a minimalist form. Effectiveness without compromise.',
-      cta: 'See full technical specification',
-      products: [
-        { name: '01 Glass', tagline: 'Crystalline purity without streaks', tag: 'GLASS', color: 'bg-blue-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBb0vDEh2Woo2A4uvXfb3yw1vif2McuZwaFdwwf4rviO9_dV2Mv4yIgRpybjbuXZ4orT_gjV-geTgcDyVVZ0lQ6F1L_8J7AJ5IFq2926Jxj-Bf9uFiwK3AXVibs6WfiUjAua8pcKxfduHTKjYglCaLem6Vwq25Fb3NDqZCblEzCU8pC7_aX1v7paqShRdeYU6RD1YyS-Gf5tt8nnMIr8lCtKTBlX0AtAbRtqRIExSiod486UqT6pBKCL8ognv8km_2WijfVYK2EQk6i' },
-        { name: '14 Floor', tagline: 'Protection and shine of hard floors', tag: 'FLOOR', color: 'bg-amber-500', ph: '8.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAfT-fSNucWAX9zxs87bcEpgV6fLrX7mBg6igspdY01q8LHSDtV2K5_YBwuEoihV5TB9y4iQVvlFILJUiQ1NcPJ69f-SQ_wU7KocUU96pPU4mHq4fnRetDJMLlvg_YRTziHqruLh0cDpABUl82palQKkjwUSiZrJbZrdjQwyVRNxB87gY1lTEKdrkSW0uIwN_V6x_MjSBVvgm57pnqEwfek7qC0p9yyEBMQl1o2RlExosGUoZ5ptnPswpGCGva9gPUTUQ7sFCcCkHa9' },
-        { name: '07 Bath', tagline: 'Effective against sediments', tag: 'BATHROOM', color: 'bg-red-500', ph: '2.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBC3Nj1FpsxDH4UDoq4ImySdNOCwaYGeJfVkPlJhS2o7xZ1uXtD2WqLh1n1dAdsfGUf30lU6b5mwYY_wFCUrIPFY-9HJItMBcQuerhnLjpDOlHKGxy3_fPmcxIiNkt3UprzSg6Eco1hXrURLA78Iy86d41tvxPKMgO4-LWOmILf6K0SovYmCzV_YxGBoYKvhXHh20r9k9VkKpsVrVczJhz5m96UPw5si7lhvoVJpE9oOxuOSDV_9wKpM_YJJMGQp1rJbA3xO3FFRq83' },
-        { name: '22 Dish', tagline: 'Ultra-concentrate for dishes', tag: 'DISHES', color: 'bg-emerald-500', ph: '7.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDXIIyuJl3ln8R42T9DKu6s9JCpT8KlCQtTn_Z4B47oMrT4D_ZyfZveTOI0xRLiFyN2UnJDZwDFtWafHKZbL_-o6zBDrBOHr3B_3Yk08qZacJKoKU8Keo7Yy1JhgucGzJIhfCnzmC_zmL2Gi5QJXmu8zFOmT2THX7fF-JSePBaWbpTSo8AEhFEQIdpVhdZjFExlPIDgCCQTdJcIHx54-Y0HI5LQ-kvOPUUuysGDLhRmKU2V0IYgfzbasjUmO-y3V0h1buODUd_QpYqR' },
-        { name: '41 Laundry', tagline: 'Deep fabric cleaning', tag: 'LAUNDRY', color: 'bg-indigo-500', ph: '9.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1Orzt8_DVEFeB-_TjEN7ONz1qJa82E1yNXK77s4xHkTwtaZDEe4rkgG5vmMKTzPkohfrg-s8g-KPNBVCuhb17SRmNusWVUokAdqbTcJCPeCqfWSBQ2CFqqZ7fxDZnqpHze8OvIlNxC1d1ICe8bmoL7YWKNxeMA0JswcCgjz--jK0lHKi8eNxSCB4BDTBDYUqrOdrGgclmiFnBDBjzOtTY6WKMT5hsRaboVJuAYZ72hDmpBdayPPNDgRhLEiB8ChfXBSz5W7NACGAR' },
-        { name: '45 Softener', tagline: 'Long-lasting softness', tag: 'RINSE', color: 'bg-pink-400', ph: '4.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBLKVsvl75IuEa3XYBqGVstHL9v6_Jle3kPpZvV8sH9o14mU8hDopEaZVddZhuQUfTuQ_fbW0ex5xKuarwUFYvBcOhXUlyZsD8vAeXDS5ff8mNCHS3CVf3LBoMSDXnLbX_Dl2HU3945iGLQqWHEsnT6wcunbFrsGL6naOtQNQD4489SJxVei1QNkgNLYmHwGJuhpw2GpQYWRRciYm4JPtpMbcREGvn2-ffP2PxAoNnE4xzumbOACm8M66_kz1WBGOq8SmqSPW3LbrRH' },
-        { name: '31 DW-Gel', tagline: 'Concentrated dishwashing power', tag: 'DISHWASHER', color: 'bg-slate-500', ph: '11.0', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6YVfB3PabNUQxqV5HhRfexgIEuhCxrUxcTTg0qr5P3L57kiCZKWk2dwvCfgcOZHeNuIXFe3B2r4jVPQQ7f68jEy8oxMrrLNsCvnNaCFtH0CPvi4ZsoKoc4ENi-KmNkMm0fwp0aIMu79CouTrP3Xr_17RyjFv3iJ8MPVSXWzdq7cdLTfC5rRrb_k3yoTjEg8iBiwR1nKFzi0udeNYa1eJlu_07wGHEiv4cWwj8hwYHx_kSpnPIW70BwFnfnjocNURDUsjU8537YZDi' },
-        { name: '19 Silk Hand', tagline: 'Gentle caring soap', tag: 'SOAP', color: 'bg-teal-500', ph: '5.5', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAgfkATUCXzFy68crPhF9pkDFbmbcx-lVNraClyX3vZHc8yxnWLcz-BvhhwnijpKQoEFYmfTBMSYcieDxiMgrFCztAPo8IH4FO9ye_Xomn8HNXynWSsH9s_tfUtIDXFSaGZgiOu6Oh-SgjeKEfUv-eOmtOpc-tw2Z9zOsbT-BQbUW1dBQeou-g1ohiDms9u3BJhN6Or77TeDBVp2IHrTqa1T97zMMTnepB64PUhC5UkMBG6mjfTGgRr9wCeHF4-ByqunTYBnjtqwQod' }
-      ]
-    },
-    packagesLite: [
-      {
-        step: '01',
-        title: 'You Order',
-        icon: 'shopping-cart',
-        desc: 'Choose a package tailored to your home. No unnecessary products, no heavy lifting.'
-      },
-      {
-        step: '02',
-        title: 'We Remind You',
-        icon: 'bell',
-        desc: 'When supplies run low, you get a notification. You can change the date or package contents with one click.'
-      },
-      {
-        step: '03',
-        title: 'You Pay with BLIK',
-        icon: 'credit-card',
-        desc: 'Fast and secure. No hidden costs or attached cards, if you do not want them.'
-      }
-    ],
-    value: {
-      eyebrow: 'Three real advantages',
-      title: 'Quality, pricing, and aesthetics in one system.',
+      title: 'Product catalog',
+      heading: '10 liquids ready for packages.',
       lead:
-        'The source material is consistent on one point: the product should look premium, perform like professional chemistry, and stay fairly priced because the model removes middlemen.',
+        'Each product has a clear role, a reference price, and a detail page. Purchase happens inside a ready or custom package.',
+      cta: 'Go to packages',
+    },
+    value: {
+      eyebrow: 'Why packages',
+      title: 'Convenience, stock, and pricing counted for the whole box.',
+      lead:
+        'Plyndo.pl avoids single-bottle promo math. Larger packages earn a clearer discount for the complete set.',
       items: [
         {
-          title: 'Manufacturer-grade quality',
+          title: 'No heavy store run',
           copy:
-            'Proven formulas, control over composition, concentration, and fragrance, and operational knowledge rooted in large-scale production.',
+            'A home or business set moves into delivery as one decision instead of a heavy basket from several aisles.',
         },
         {
-          title: 'Pricing without stacked margins',
+          title: 'Visible contents',
           copy:
-            'The D2C model removes wholesalers and retail layers, allowing part of the margin to return to the customer without lowering quality.',
+            'Every package lists its products, reference prices, total value, and the global saving for the box.',
         },
         {
-          title: 'Aesthetic enough to leave in sight',
+          title: 'Refill your way',
           copy:
-            'Minimal bottles, a calm visual system, and fragrance inspired by perfume create category value that standard household products rarely deliver.',
+            'After the starter, build a box of four or eight around the liquids that run out fastest for you.',
         },
       ],
     },
     plans: {
-      eyebrow: 'Offer architecture',
-      title: 'Plans built around real consumption, not a store shelf.',
+      eyebrow: 'Package offer',
+      title: 'Start with the full line or choose a box.',
       lead:
-        'The core model uses three entry points supported by an algorithm and later usage correction. Families remain the key segment, but the system also scales to singles, couples, and offices.',
-      cards: [
-        {
-          name: 'MINI',
-          audience: 'Single / couple',
-          cadence: 'The lightest volume for smaller homes and slower cycles.',
-          bullets: [
-            'Recommended cadence every 2 or 3 months',
-            'Foundational setup for kitchen, bathroom, glass, and laundry',
-            'A clean entry point that can expand later',
-          ],
-        },
-        {
-          name: 'MIDI',
-          audience: 'Family',
-          cadence: 'The commercial core and the most stable usage model.',
-          bullets: [
-            'Best fit for homes with children or pets',
-            'Most often every 1 or 2 months',
-            'The strongest balance of convenience, coverage, and value',
-          ],
-        },
-        {
-          name: 'MAXI',
-          audience: 'Office / large home',
-          cadence: 'Higher volume with a more operational usage pattern.',
-          bullets: [
-            'Designed for more consistent replenishment',
-            'Natural bridge toward B2B support and invoicing',
-            'More predictability where hygiene standards matter',
-          ],
-        },
-      ],
-      modulesTitle: 'MVP scope',
-      modules: [
-        'Floor cleaner',
-        'Glass cleaner',
-        'Bathroom cleaner',
-        'Hand soap',
-        'Laundry detergent',
-        'Fabric softener',
-        'Dish liquid',
-        'Dishwasher liquid',
-      ],
+        'Ready bundles shorten the choice for homes and businesses. Custom boxes allow duplicates where consumption is higher.',
+      modulesTitle: 'Products available in packages',
     },
     operations: {
-      eyebrow: 'How it works',
-      title: 'From home profile to automated replenishment.',
-      lead:
-        'The MVP is meant to shorten time to purchase and learn actual usage instead of forcing the customer to remember every refill.',
+      eyebrow: 'How buying works',
+      title: 'From Starter 10 to your own refill box.',
       steps: [
         {
           step: '01',
-          title: 'Home profile',
+          title: 'Choose an entry point',
           copy:
-            'The user provides square footage, bathrooms, household size, children, and pets. Those are the inputs retail rarely has, and they directly shape usage.',
+            'Starter 10 covers the current line. Ready Home and Business bundles show their composition immediately.',
         },
         {
           step: '02',
-          title: 'AI and plan fit',
+          title: 'See the package math',
           copy:
-            'The advisor proposes minimal, optimal, and extended variants, then the user selects MINI, MIDI, or MAXI and a preferred cadence.',
+            'Reference product prices add up to package value, while discount is shown globally for the set.',
         },
         {
           step: '03',
-          title: 'Delivery and adjustment',
+          title: 'Continue to Shoper',
           copy:
-            'InPost supports the default experience, courier covers larger orders, and each next shipment can be adjusted instead of cancelling the entire relationship.',
-        },
-      ],
-      rails: [
-        {
-          title: 'Packages-lite for Poland',
-          copy:
-            'Not every buyer wants a permanently saved card, so the source strategy also includes reminders, a prefilled cart, and a fast BLIK-based reorder path.',
-        },
-        {
-          title: 'One-click pause',
-          copy:
-            'The documentation values flexibility above aggressive discounting. Quantity edits, pause, and downgrade matter more than hard lock-in.',
-        },
-        {
-          title: 'Usage learning',
-          copy:
-            'The system starts with rules, then asks whether there was extra stock, what ran out too fast, and what should be rebalanced.',
+            'The CTA is a placeholder for now. Later Shoper will receive the composition and package discount.',
         },
       ],
     },
-    standard: {
-      eyebrow: 'Operating standard',
-      title: 'Designed around Polish market reality.',
-      features: [
-        {
-          title: 'InPost and parcel sizing',
-          copy:
-            'Household chemistry is heavier than cosmetics, so parcel lockers, courier fallback, and size logic matter for baskets in the 5.5 kg range.',
-        },
-        {
-          title: 'Przelewy24 / Paynow / Stripe',
-          copy:
-            'The documents prefer local gateways for margin efficiency, while keeping Stripe for cases where full recurring automation is required.',
-        },
-        {
-          title: 'Dosing as an advantage',
-          copy:
-            'One clear dose and visible usage guidance help reduce waste. The brand should profit from a long relationship, not from overconsumption.',
-        },
-        {
-          title: 'Trust-building content',
-          copy:
-            'Usage encyclopedia, instructions, guides, and the “which fluid for what” format are part of acquisition, SEO, and retention.',
-        },
-      ],
-      comparison: [
-        {
-          label: 'Purchase mode',
-          left: 'Planned, predictable, matched to the home',
-          right: 'Reactive, late, often under pressure',
-        },
-        {
-          label: 'Offer design',
-          left: '10 clear products and logical plans',
-          right: 'Crowded shelves and low trust in the differences',
-        },
-        {
-          label: 'Relationship',
-          left: 'Usage data, pause, adjustment, and education',
-          right: 'One-off transaction with no memory of the customer',
-        },
-        {
-          label: 'Brand feel',
-          left: 'Premium, calm, modern, and functional',
-          right: 'Promotional, noisy, random, and visually generic',
-        },
-      ],
-    },
-    proof: {
-      eyebrow: 'Why this is credible',
-      title: 'This is not a startup inventing chemistry from scratch.',
-      items: [
-        'The source materials frame the project as an extension of a long-standing family manufacturing capability.',
-        'The MVP is intentionally designed to validate demand with a Family & Friends launch before the full platform build-out.',
-        'The brand is meant to grow through education, referrals, and quality of experience, not through a race to the bottom on price.',
-      ],
+    audience: {
+      eyebrow: 'Home and business',
+      title: 'One system, different consumption patterns.',
+      home: {
+        title: 'Home',
+        copy:
+          'Kitchen, bathroom, floors, laundry, and glass. The starter introduces the full line, then refills follow your use.',
+        bullets: ['Laundry products in ready home sets', 'Boxes of 4 for quick refills', 'Duplicates for higher consumption'],
+      },
+      business: {
+        title: 'Business',
+        copy:
+          'An office, studio, or service space usually needs floors, sanitary areas, hand washing, glass, and surface hygiene first.',
+        bullets: ['Ready sets without laundry products', 'More floor care for larger areas', 'Advisor-led stock suggestion'],
+      },
     },
     faq: {
       eyebrow: 'FAQ',
-      title: 'The most important questions before launch.',
+      title: 'Key questions about packages.',
       items: [
         {
-          question: 'Is Plyndo already a full store?',
+          question: 'Can I buy one bottle?',
           answer:
-            'Not yet. The current stage is a refined landing page and demand validation step before the full packages commerce platform is implemented.',
+            'Not from this landing page. Plyndo.pl is built around boxes of 4, 8, and the starter for the current line.',
         },
         {
-          question: 'What is included in the MVP?',
+          question: 'How is the discount calculated?',
           answer:
-            'The MVP includes 10 core products, MINI / MIDI / MAXI plans, a personalization path, Poland-ready logistics assumptions, and priority-access signup.',
+            'We show product reference prices and the package total value. A box of 4 is discounted by 30%, a box of 8 by 40%, and the current Starter 10 by 45%. The future Starter 12 reaches 50%. Discount and saving are calculated globally for the full package.',
         },
         {
-          question: 'Will single products be available too?',
+          question: 'Is Starter 10 mandatory?',
           answer:
-            'Yes. The source documents explicitly include the ability to add single products when one item runs out faster than the rest of the plan.',
+            'No. Start with a ready set or build your own box of 4 or 8 items.',
         },
         {
-          question: 'Can the packages be paused?',
+          question: 'Can I repeat the same liquid?',
           answer:
-            'Yes. Pause, quantity changes, and downgrade paths are core assumptions in the planned customer experience.',
+            'Yes. The custom box allows duplicates up to the selected package limit.',
         },
         {
-          question: 'Why is there so much emphasis on education and dosing?',
+          question: 'What is prepared for businesses?',
           answer:
-            'Because that improves trust, reduces waste, and supports a longer, healthier customer relationship.',
+            'Business sets focus on floors, WC, bathroom, hand washing, glass, disinfection, and optional kitchen use.',
+        },
+        {
+          question: 'Where is checkout finished?',
+          answer:
+            'Later in Shoper. Current purchase buttons are clearly inactive until real links and carts are connected.',
         },
       ],
     },
-    waitlist: {
-      eyebrow: 'Early access',
-      title: 'Join before the first controlled release.',
-      lead:
-        'The initial launch is intentionally limited. Signup gives you priority contact, access to the earliest tests, and first notice when plan sales open.',
-      placeholder: 'Your email address',
-      submit: 'Request access',
-      success: 'Thank you. Your address has been saved for priority outreach.',
-      note:
-        'The first rollout will stay limited and iterative, consistent with the MVP phase described in the strategy documents.',
-    },
-    footerDesc: 'We deliver professional Płyndo quality chemistry directly to your door in an intelligent packages model.',
-    footerCol1: {
-      title: 'Information',
-      links: ['Terms of Service', 'Privacy Policy', 'FAQ']
-    },
-    footerCol2: {
-      title: 'Support',
-      links: ['Contact', 'Client Zone']
-    },
-    footerCopyright: '© 2024 Plyndo.pl. Powered by Płyndo.',
-    footer:
-      'Plyndo.pl is a premium concept for a new household-chemistry model in Poland: manufacturer quality, aesthetics, and a smarter packages experience.',
   },
-}
+};

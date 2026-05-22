@@ -1,6 +1,13 @@
 # AGENTS.md (Plyndo.pl)
 
-Cel projektu: premium landing page i dokumentacja koncepcji subskrypcji chemii gospodarczej na rynek polski.
+Cel projektu: premium landing page i dokumentacja sprzedaży chemii gospodarczej na rynek polski w gotowych pakietach i paczkach własnych.
+
+## Aktualny zakres produktu
+- Model subskrypcji i waitlista nie są zakresem produktu.
+- Landing pokazuje produkty, paczki `4` i `8`, aktualny `Starter 10` oraz docelową migrację do `Starter 12`.
+- Bieżące CTA do Shopera jest nieaktywnym placeholderem; docelowo gotowy pakiet i paczka własna przekazują do Shopera pełny skład koszyka oraz rabat pakietowy.
+- Ceny produktów są referencyjne. Rabat i oszczędność komunikujemy tylko globalnie dla paczki.
+- Publiczna referencja do `JAX Professional` należy tylko do strony `O marce`; nie powielaj jej w hero, trust, footerze ani na każdej stronie produktu.
 
 ## Stack & Commands
 - Stack: React, Vite, Tailwind CSS v4 (`@tailwindcss/vite`)
