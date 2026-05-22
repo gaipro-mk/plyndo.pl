@@ -140,7 +140,7 @@ function HeroVideo({ videoSrc }) {
 
   return (
     <div 
-      className="group relative flex w-full max-w-[280px] mx-auto aspect-[9/16] overflow-hidden rounded-[20px] border border-black/10 bg-black shadow-lg cursor-pointer"
+      className="group relative flex w-full max-w-[360px] mx-auto aspect-[9/16] overflow-hidden rounded-[20px] border border-black/10 bg-black shadow-lg cursor-pointer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
@@ -253,7 +253,7 @@ export default function ProductPage({ lang = 'pl' }) {
 
           <section className={`grid items-center gap-10 border-b border-current/15 pb-16 ${
             product.slug === 'naczynia'
-              ? 'lg:grid-cols-[minmax(0,1.2fr)_minmax(220px,280px)_minmax(280px,420px)] xl:grid-cols-[minmax(0,1fr)_minmax(260px,320px)_minmax(340px,520px)]'
+              ? 'lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)_minmax(280px,360px)]'
               : 'lg:grid-cols-[minmax(0,1fr)_minmax(340px,520px)]'
           } lg:gap-10 xl:gap-16`}>
             <div>
@@ -279,11 +279,11 @@ export default function ProductPage({ lang = 'pl' }) {
               </div>
             )}
 
-            <div className="mx-auto flex w-full max-w-[520px] items-center justify-center">
+            <div className={`mx-auto flex w-full items-center justify-center ${product.slug === 'naczynia' ? 'max-w-[360px] aspect-[9/16]' : 'max-w-[520px]'}`}>
               <img
                 src={product.image}
                 alt={productName}
-                className="h-auto max-h-[680px] w-full object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.24)]"
+                className={`w-full object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.24)] ${product.slug === 'naczynia' ? 'h-full' : 'h-auto max-h-[680px]'}`}
               />
             </div>
           </section>
