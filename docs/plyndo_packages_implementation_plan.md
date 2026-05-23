@@ -30,7 +30,6 @@ Plan nie obejmuje finalnego sklepu Shoper, finalnych cen, finalnych dokumentów 
 
 ### 2.2 Oferta
 
-- Nie ma cykli dostaw, pauzowania planu ani zarządzania abonamentem.
 - CTA prowadzą do pakietów, produktów, doradcy albo jawnych placeholderów Shopera.
 - Nie ma sprzedaży pojedynczej butelki z landing page'a.
 - Jednostką zakupu jest pakiet: gotowy starter, gotowy zestaw albo własna paczka.

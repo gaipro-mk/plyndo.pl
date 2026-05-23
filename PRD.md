@@ -109,9 +109,6 @@ Płyndo może zająć pozycję pomiędzy marketem a specjalistyczną chemią:
 Nie budujemy w landingu:
 
 - własnego checkoutu,
-- własnego systemu powtarzalnych zamówień,
-- cyklicznych obciążeń,
-- konta klienta do zarządzania zamówieniami,
 - pełnego ERP, WMS ani synchronizacji stanów magazynowych,
 - niepotwierdzonych porównań cenowych z konkretnymi sieciami detalicznymi.
 
