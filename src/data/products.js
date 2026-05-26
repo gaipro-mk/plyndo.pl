@@ -9,7 +9,7 @@ const productCatalog = [
     ingredients: '15-30% anionowe środki powierzchniowo czynne, <5% amfoteryczne i niejonowe środki powierzchniowo czynne, kompozycja zapachowa (Citral), substancje konserwujące (Methylisothiazolinone, Methylchloroisothiazolinone).',
     safety: 'H315 Działa drażniąco na skórę. H319 Działa drażniąco na oczy. P264 Dokładnie umyć ręce...',
     scent: 'O zapachu arbuza',
-    color: { bg: '#2B5A40', fg: '#133021', text: '#FFFFFF', pattern: '#1B402D' },
+    color: { bg: '#276142', fg: '#1c623b', text: '#FFFFFF', pattern: '#40725a' },
     iconType: 'naczynia',
     bgPattern: 'monstera',
     image: '/labels/front-01-naczyn.png'
@@ -25,7 +25,7 @@ const productCatalog = [
     safety: 'H314 Powoduje poważne oparzenia skóry oraz uszkodzenia oczu. H400 Działa bardzo toksycznie na organizmy wodne...',
     producer: '',
     scent: 'Nabłyszczacz',
-    color: { bg: '#A63C45', fg: '#72242B', text: '#FFFFFF', pattern: '#B24750' },
+    color: { bg: '#a7444b', fg: '#72242b', text: '#FFFFFF', pattern: '#bd6266' },
     iconType: 'zmywarka',
     bgPattern: 'geometry',
     image: '/labels/front-02-zmywarki.png'
@@ -41,7 +41,7 @@ const productCatalog = [
     safety: 'H315 Działa drażniąco na skórę. P264 Dokładnie umyć ręce...',
     producer: '',
     scent: 'O zapachu świeżości',
-    color: { bg: '#9ECBE8', fg: '#60A5D8', text: '#1E4C7A', pattern: '#B6DBF1' },
+    color: { bg: '#a5c7eb', fg: '#60A5D8', text: '#1E4C7A', pattern: '#bed5f0' },
     iconType: 'pranie',
     bgPattern: 'brush',
     image: '/labels/front-03-prania.png'
@@ -105,7 +105,7 @@ const productCatalog = [
     safety: 'Tylko do użytku zewnętrznego. Unikać kontaktu z oczami.',
     producer: '',
     scent: 'O zapachu Oud Wood',
-    color: { bg: '#E4C969', fg: '#B3912E', text: '#3E341B', pattern: '#F0D577' },
+    color: { bg: '#eac973', fg: '#9f7849', text: '#3E341B', pattern: '#eac973' },
     iconType: 'rece',
     bgPattern: 'topo',
     image: '/labels/front-07-rece.png'
@@ -137,7 +137,7 @@ const productCatalog = [
     safety: 'H315 Działa drażniąco na skórę. H319 Działa drażniąco na oczy.',
     producer: '',
     scent: 'O zapachu cytryny',
-    color: { bg: '#2550A4', fg: '#14316A', text: '#FFFFFF', pattern: '#3662B7' },
+    color: { bg: '#5c77b7', fg: '#3f5398', text: '#FFFFFF', pattern: '#3f5398' },
     iconType: 'lazienka',
     bgPattern: 'blobs',
     image: '/labels/front-09-lazienki.png'
@@ -153,7 +153,7 @@ const productCatalog = [
     safety: 'H225 Wysoce łatwopalna ciecz i pary. P210 Przechowywać z dala od źródeł ciepła...',
     producer: '',
     scent: 'Bez zapachu',
-    color: { bg: '#EBEBEB', fg: '#C7C7C7', text: '#1A1A1A', pattern: '#FFFFFF' },
+    color: { bg: '#ececec', fg: '#C7C7C7', text: '#1A1A1A', pattern: '#FFFFFF' },
     iconType: 'dezynfekcja',
     bgPattern: 'confetti',
     image: '/labels/front-10-dezynfekcji.png'

@@ -1,31 +1,11 @@
 import { useRef, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ChevronLeft, CirclePlay, Info, Package, ShieldAlert } from 'lucide-react';
+import { ChevronLeft, CirclePlay, Info, Package, ShieldAlert, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { products } from '../data/products';
 import Breadcrumbs from '../components/layout/Breadcrumbs';
 import QrPlaceholder from '../components/bundles/QrPlaceholder';
 import ShoperPlaceholderButton from '../components/bundles/ShoperPlaceholderButton';
-
-/**
- * Splits "PŁYN DO naczyń" into logo part + suffix in label font.
- * The logo replaces the "PŁYN DO" text.
- */
-function ProductNameDisplay({ name, logoSrc, className = '' }) {
-  const prefix = 'PŁYN DO ';
-  if (name.startsWith(prefix)) {
-    const suffix = name.slice(prefix.length);
-    return (
-      <div className={`flex flex-col gap-2 ${className}`}>
-        <img src={logoSrc} alt="PŁYN DO" className="h-[42px] md:h-[56px] w-auto object-contain object-left" />
-        <span className="font-serif italic font-medium text-[clamp(36px,5vw,64px)] leading-[0.95] tracking-[-0.02em]">
-          {suffix}
-        </span>
-      </div>
-    );
-  }
-  // Fallback: just render the name
-  return <span className={className}>{name}</span>;
-}
 
 function formatPrice(value, lang) {
   return new Intl.NumberFormat(lang === 'en' ? 'en-GB' : 'pl-PL', {
@@ -66,13 +46,13 @@ function MediaSlot({ title, note, videoSrc }) {
 
   if (!videoSrc) {
     return (
-      <div className="grid min-h-[230px] content-between rounded-[20px] border border-black/10 bg-white/80 p-6 text-black shadow-sm">
-        <span className="flex h-11 w-11 items-center justify-center rounded-[12px] bg-black text-white">
-          <CirclePlay size={21} />
+      <div className="grid min-h-[200px] content-between rounded-[16px] border p-6" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg)' }}>
+        <span className="flex h-10 w-10 items-center justify-center rounded-full" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+          <CirclePlay size={18} />
         </span>
         <div>
-          <div className="text-sm font-extrabold">{title}</div>
-          <p className="mt-1.5 text-xs leading-relaxed text-black/65">{note}</p>
+          <div className="text-[13px] font-medium">{title}</div>
+          <p className="mt-1.5 text-[12px] leading-relaxed text-fg-muted">{note}</p>
         </div>
       </div>
     );
@@ -80,7 +60,8 @@ function MediaSlot({ title, note, videoSrc }) {
 
   return (
     <div 
-      className="group relative flex flex-col justify-between min-h-[230px] overflow-hidden rounded-[20px] border border-black/10 bg-black text-white shadow-sm cursor-pointer"
+      className="group relative flex flex-col justify-between min-h-[200px] overflow-hidden rounded-[16px] border bg-black cursor-pointer"
+      style={{ borderColor: 'var(--color-border)' }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
@@ -94,14 +75,13 @@ function MediaSlot({ title, note, videoSrc }) {
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-500 group-hover:opacity-100"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/30 pointer-events-none transition-opacity duration-500 group-hover:opacity-60" />
-      
       <div className="relative z-10 flex flex-col h-full justify-between p-6">
-        <span className={`flex h-11 w-11 items-center justify-center rounded-[12px] bg-white/20 backdrop-blur-md text-white transition-all duration-300 ${isPlaying ? 'scale-90 opacity-0' : 'scale-100 opacity-100'}`}>
-          <CirclePlay size={21} />
+        <span className={`flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white transition-all duration-300 ${isPlaying ? 'scale-90 opacity-0' : 'scale-100 opacity-100'}`}>
+          <CirclePlay size={18} />
         </span>
-        <div className="mt-auto transform transition-transform duration-300">
-          <div className="text-sm font-extrabold drop-shadow-md">{title}</div>
-          <p className="mt-1.5 text-xs leading-relaxed text-white/90 drop-shadow-md">{note}</p>
+        <div className="mt-auto">
+          <div className="text-[13px] font-medium text-white drop-shadow-md">{title}</div>
+          <p className="mt-1.5 text-[12px] leading-relaxed text-white/80 drop-shadow-md">{note}</p>
         </div>
       </div>
     </div>
@@ -113,51 +93,33 @@ function HeroVideo({ videoSrc, className = '' }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleMouseEnter = () => {
-    if (videoSrc && videoRef.current) {
-      videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
-    }
+    if (videoSrc && videoRef.current) { videoRef.current.play().catch(() => {}); setIsPlaying(true); }
   };
-
   const handleMouseLeave = () => {
-    if (videoSrc && videoRef.current) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
+    if (videoSrc && videoRef.current) { videoRef.current.pause(); setIsPlaying(false); }
   };
-
   const handleClick = () => {
     if (videoSrc && videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play().catch(() => {});
-        setIsPlaying(true);
-      } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
+      if (videoRef.current.paused) { videoRef.current.play().catch(() => {}); setIsPlaying(true); }
+      else { videoRef.current.pause(); setIsPlaying(false); }
     }
   };
 
   return (
     <div 
-      className={`group relative flex mx-auto aspect-[9/16] overflow-hidden rounded-[20px] border border-black/10 bg-black shadow-lg cursor-pointer flex-shrink-0 ${className}`}
+      className={`group relative flex mx-auto aspect-[9/16] overflow-hidden rounded-[16px] border bg-black cursor-pointer flex-shrink-0 ${className}`}
+      style={{ borderColor: 'var(--color-border)' }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      <video
-        ref={videoRef}
-        src={videoSrc}
-        muted
-        playsInline
-        loop
+      <video ref={videoRef} src={videoSrc} muted playsInline loop
         className="absolute inset-0 h-full w-full object-cover opacity-80 transition-opacity duration-500 group-hover:opacity-100"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-30" />
-      
       <div className="absolute inset-0 flex items-center justify-center p-6 z-10 pointer-events-none">
-        <span className={`flex h-14 w-14 items-center justify-center rounded-[16px] bg-white/20 backdrop-blur-md text-white transition-all duration-300 ${isPlaying ? 'scale-90 opacity-0' : 'scale-100 opacity-100'}`}>
-          <CirclePlay size={28} />
+        <span className={`flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white transition-all duration-300 ${isPlaying ? 'scale-90 opacity-0' : 'scale-100 opacity-100'}`}>
+          <CirclePlay size={24} />
         </span>
       </div>
     </div>
@@ -223,145 +185,193 @@ export default function ProductPage({ lang = 'pl' }) {
     return <Navigate to="/" />;
   }
 
-  // Determine if background is light to switch logo/text colors if needed
-  const isLightBg = product.color.bg === '#EBEBEB' || product.color.bg === '#E0E0E0' || product.color.bg === '#E4C969' || product.color.bg === '#A7CFEA' || product.color.bg === '#9ECBE8';
-  const logoSrc = isLightBg ? '/logo-black.svg' : '/logo-white.svg';
   const detail = product.i18n?.[lang] ?? product.i18n.pl;
   const productName = detail.name ?? detail.displayName ?? product.name;
+  const displayName = productName.replace(/^PŁYN DO\s*/i, '');
 
   return (
-    <div className="min-h-screen relative w-full flex flex-col font-sans" style={{ backgroundColor: product.color.bg, color: product.color.text }}>
-      <main className="relative z-10 flex-grow pt-[112px]">
+    <div className="min-h-screen relative w-full flex flex-col font-sans" style={{ background: 'var(--color-bg)', color: 'var(--color-fg)' }}>
+      {/* Thin product-color accent strip at the very top */}
+      <div className="h-[3px] w-full" style={{ background: product.color.bg }} />
+      
+      <main className="relative z-10 flex-grow pt-[100px]">
         <div className="mx-auto w-full max-w-7xl px-6">
-          <header className="flex flex-col gap-5 pb-10">
+          {/* Header with breadcrumbs */}
+          <motion.header
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col gap-4 pb-8"
+          >
             <div className="flex flex-wrap items-center justify-between gap-4">
               <Breadcrumbs
                 lang={lang}
-                tone="inverse"
                 items={[
                   { label: labels.products, to: '/#products' },
                   { label: detail.displayName ?? product.name },
                 ]}
               />
-              <Link to="/#products" className="flex items-center gap-2 text-[11px] font-bold uppercase no-underline opacity-90 hover:opacity-70">
-                <ChevronLeft size={16} />
+              <Link to="/#products" className="flex items-center gap-1.5 text-[12px] font-medium uppercase no-underline transition-opacity hover:opacity-60 tracking-wide" style={{ color: 'var(--color-fg-muted)' }}>
+                <ChevronLeft size={14} />
                 {labels.back}
               </Link>
             </div>
-            <img src={logoSrc} alt="Płyndo" className="h-6 w-fit" />
-          </header>
+          </motion.header>
 
-          <section className={`grid items-center gap-10 border-b border-current/15 pb-16 ${
+          {/* Hero section — white-based with product image */}
+          <section className={`grid items-center gap-12 border-b pb-16 ${
             product.slug === 'naczynia'
               ? 'lg:grid-cols-[minmax(0,1fr)_auto]'
               : 'lg:grid-cols-[minmax(0,1fr)_minmax(340px,520px)]'
-          } lg:gap-10 xl:gap-16`}>
-            <div>
+          } lg:gap-12 xl:gap-20`} style={{ borderColor: 'var(--color-border)' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <div className="mb-5 flex flex-wrap gap-2">
-                <div className="inline-block rounded-full px-3 py-1 text-[11px] font-bold uppercase" style={{ backgroundColor: product.color.text, color: product.color.bg }}>
+                <div className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[11px] font-medium" style={{ borderColor: product.color.bg, color: product.color.bg }}>
+                  <span className="color-dot" style={{ background: product.color.bg }} />
                   {detail.scent}
                 </div>
-                <div className="inline-flex items-center gap-1.5 rounded-full border border-current px-3 py-1 text-[11px] font-bold uppercase opacity-80">
-                  <Package size={12} />
+                <div className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[11px] font-medium" style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg-muted)' }}>
+                  <Package size={11} />
                   {labels.packageOnly}
                 </div>
               </div>
-              <h1 className="mb-4">
-                <ProductNameDisplay name={productName} logoSrc={logoSrc} />
-              </h1>
-              <p className="font-serif text-xl italic opacity-90 md:text-2xl">{detail.subtitle}</p>
-              <p className="mt-7 max-w-[640px] text-base font-medium leading-[1.7] opacity-95">{detail.description}</p>
-            </div>
+
+              <div className="flex flex-col gap-1">
+                <span className="t-eyebrow">Płyn do</span>
+                <h1 className="font-serif italic font-light text-[clamp(40px,6vw,72px)] leading-[0.95] tracking-[-0.02em]">
+                  {displayName}
+                </h1>
+              </div>
+
+              <p className="font-serif italic text-lg mt-4" style={{ color: 'var(--color-fg-muted)' }}>{detail.subtitle}</p>
+              <p className="mt-6 max-w-[560px] text-[15px] leading-[1.7]" style={{ color: 'var(--color-fg-muted)' }}>{detail.description}</p>
+            </motion.div>
             
             {product.slug === 'naczynia' ? (
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 xl:gap-10 mt-6 lg:mt-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-6 xl:gap-10 mt-6 lg:mt-0"
+              >
                 <HeroVideo 
                   videoSrc="/video/vid_exploaded_naczynia.mp4" 
-                  className="h-[380px] md:h-[420px] lg:h-[400px] xl:h-[480px]" 
+                  className="h-[360px] md:h-[400px] lg:h-[380px] xl:h-[460px]" 
                 />
-                <div className="h-[380px] md:h-[420px] lg:h-[400px] xl:h-[480px] flex-shrink-0">
+                <div className="h-[360px] md:h-[400px] lg:h-[380px] xl:h-[460px] flex-shrink-0">
                   <img
                     src={product.image}
                     alt={productName}
-                    className="h-full w-auto object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.24)]"
+                    className="h-full w-auto object-contain"
+                    style={{ filter: 'drop-shadow(0 16px 32px rgba(0,0,0,0.1))' }}
                   />
                 </div>
-              </div>
+              </motion.div>
             ) : (
-              <div className="mx-auto flex w-full max-w-[520px] items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="mx-auto flex w-full max-w-[480px] items-center justify-center"
+              >
                 <img
                   src={product.image}
                   alt={productName}
-                  className="h-auto max-h-[680px] w-full object-contain drop-shadow-[0_18px_34px_rgba(0,0,0,0.24)]"
+                  className="h-auto max-h-[600px] w-full object-contain"
+                  style={{ filter: 'drop-shadow(0 16px 32px rgba(0,0,0,0.1))' }}
                 />
-              </div>
+              </motion.div>
             )}
           </section>
 
-          <section className="grid gap-6 py-14 lg:grid-cols-[0.72fr_1fr] lg:items-start">
-            <div className="max-w-[430px]">
-              <span className="text-[11px] font-extrabold uppercase opacity-70">{labels.mediaTitle}</span>
-              <h2 className="mt-3 max-w-[360px] text-3xl font-black leading-tight">{labels.effect}</h2>
-              <p className="mt-4 text-sm leading-relaxed opacity-85">{labels.mediaLead}</p>
+          {/* Media section */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid gap-8 py-14 lg:grid-cols-[0.72fr_1fr] lg:items-start"
+          >
+            <div className="max-w-[400px]">
+              <span className="t-eyebrow">{labels.mediaTitle}</span>
+              <h2 className="t-h2 mt-3">{labels.effect}</h2>
+              <p className="mt-4 text-[13px] leading-relaxed text-fg-muted">{labels.mediaLead}</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <MediaSlot title={labels.effect} note={labels.effectNote} />
               <MediaSlot title={labels.guide} note={labels.guideNote} />
             </div>
-          </section>
+          </motion.section>
 
-          <section className="grid gap-5 pb-14 lg:grid-cols-2">
-            <article className="rounded-[24px] border border-black/5 bg-black/5 p-6 backdrop-blur-sm md:p-8">
-              <h2 className="mb-5 flex items-center gap-3 text-[12px] font-bold uppercase">
-                <Info size={18} /> {labels.usage}
+          {/* Usage & Safety */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid gap-6 pb-14 lg:grid-cols-2"
+          >
+            <article className="rounded-[16px] border p-6 md:p-8" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
+              <h2 className="mb-5 flex items-center gap-2.5 text-[12px] font-medium uppercase tracking-wide" style={{ color: 'var(--color-fg-muted)' }}>
+                <Info size={15} /> {labels.usage}
               </h2>
-              <p className="whitespace-pre-line text-[15px] leading-[1.7] opacity-95">{detail.howToUse}</p>
+              <p className="whitespace-pre-line text-[14px] leading-[1.7] text-fg-muted">{detail.howToUse}</p>
             </article>
-            <article className="rounded-[24px] border border-black/5 bg-black/5 p-6 backdrop-blur-sm md:p-8">
-              <h2 className="mb-5 flex items-center gap-3 text-[12px] font-bold uppercase">
-                <ShieldAlert size={18} /> {labels.safety}
+            <article className="rounded-[16px] border p-6 md:p-8" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
+              <h2 className="mb-5 flex items-center gap-2.5 text-[12px] font-medium uppercase tracking-wide" style={{ color: 'var(--color-fg-muted)' }}>
+                <ShieldAlert size={15} /> {labels.safety}
               </h2>
-              <p className="mb-4 text-[13px] leading-[1.7] opacity-95">
-                <strong>{labels.ingredients}:</strong> {detail.ingredients}
+              <p className="mb-4 text-[13px] leading-[1.7] text-fg-muted">
+                <strong className="font-medium" style={{ color: 'var(--color-fg)' }}>{labels.ingredients}:</strong> {detail.ingredients}
               </p>
-              <p className="text-[13px] leading-[1.7] opacity-95">
-                <strong>{labels.safetyLabel}:</strong> {detail.safety}
+              <p className="text-[13px] leading-[1.7] text-fg-muted">
+                <strong className="font-medium" style={{ color: 'var(--color-fg)' }}>{labels.safetyLabel}:</strong> {detail.safety}
               </p>
             </article>
-          </section>
+          </motion.section>
         </div>
 
-        <section className="px-6 py-16" style={{ background: 'var(--color-bg)', color: 'var(--color-fg)' }}>
-          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
-            <div>
+        {/* Sell / CTA section — still on white */}
+        <section className="px-6 py-16 border-t" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg)' }}>
+          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <span className="t-eyebrow">{labels.scent}</span>
-              <h2 className="t-h1 mt-3">{labels.sellTitle}</h2>
-              <p className="t-lead mt-4 max-w-[720px]">{labels.sellLead}</p>
+              <h2 className="t-h1 mt-4">{labels.sellTitle}</h2>
+              <p className="t-lead mt-4 max-w-[620px]">{labels.sellLead}</p>
 
-              <div className="mt-8 grid gap-5 rounded-[24px] border border-border bg-white p-6 md:grid-cols-[0.62fr_1fr] md:p-8">
+              <div className="mt-8 grid gap-5 rounded-[16px] border p-6 md:grid-cols-[0.62fr_1fr] md:p-8" style={{ borderColor: 'var(--color-border)' }}>
                 <div>
-                  <div className="text-[11px] font-extrabold uppercase text-fg-muted">{labels.price}</div>
-                  <div className="mt-2 font-display text-4xl font-black leading-none">{formatPrice(product.listPrice, lang)}</div>
-                  <p className="mt-3 max-w-[290px] text-sm leading-relaxed text-fg-muted">{labels.priceNote}</p>
+                  <div className="t-eyebrow">{labels.price}</div>
+                  <div className="mt-2 font-serif italic text-4xl font-light">{formatPrice(product.listPrice, lang)}</div>
+                  <p className="mt-3 max-w-[290px] text-[13px] leading-relaxed text-fg-muted">{labels.priceNote}</p>
                 </div>
                 <div className="grid gap-2 self-center sm:grid-cols-2">
-                  <Link to="/#plans" className="inline-flex min-h-12 items-center justify-center rounded-[10px] bg-black px-4 py-3 text-center text-sm font-extrabold text-white no-underline">
-                    {labels.add}
+                  <Link to="/#plans" className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-center text-[13px] font-medium no-underline" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+                    {labels.add} <ArrowRight size={13} />
                   </Link>
-                  <Link to="/pakiety/wlasna-paczka/4" className="inline-flex min-h-12 items-center justify-center rounded-[10px] border border-black px-4 py-3 text-center text-sm font-extrabold text-black no-underline">
+                  <Link to="/pakiety/wlasna-paczka/4" className="inline-flex min-h-11 items-center justify-center rounded-full border px-5 py-2.5 text-center text-[13px] font-medium no-underline" style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}>
                     {labels.box4}
                   </Link>
-                  <Link to="/pakiety/wlasna-paczka/8" className="inline-flex min-h-12 items-center justify-center rounded-[10px] border border-black px-4 py-3 text-center text-sm font-extrabold text-black no-underline sm:col-span-2">
+                  <Link to="/pakiety/wlasna-paczka/8" className="inline-flex min-h-11 items-center justify-center rounded-full border px-5 py-2.5 text-center text-[13px] font-medium no-underline sm:col-span-2" style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}>
                     {labels.box8}
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
             <aside className="grid content-start gap-4">
               <QrPlaceholder lang={lang} compact />
-              <article className="rounded-[20px] border border-border bg-white p-5">
+              <article className="rounded-[16px] border p-5" style={{ borderColor: 'var(--color-border)' }}>
                 <div className="t-eyebrow">{labels.shoper}</div>
-                <p className="mb-4 mt-3 text-sm leading-relaxed text-fg-muted">{labels.shoperNote}</p>
+                <p className="mb-4 mt-3 text-[13px] leading-relaxed text-fg-muted">{labels.shoperNote}</p>
                 <ShoperPlaceholderButton lang={lang} />
               </article>
             </aside>

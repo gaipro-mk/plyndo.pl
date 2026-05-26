@@ -1,141 +1,121 @@
-@import url('https://api.fontshare.com/v2/css?f[]=switzer@200,300,400,500,600,700,800,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
 /* ============================================================
-   Płyndo Design System — Colors & Type tokens
-   Source: 10 product labels (materialy/2. Etykiety) +
-           plyndo.pl codebase (Material You-style semantic tokens)
+   Płyndo Design System — TeaFlow-inspired Minimal Redesign
+   White-based · Premium typography · Color accents only
    ============================================================ */
 
-/* Web fonts — Switzer (Fontshare) for chrome + Lora Italic (Google) for label-style display copy. */
-
 :root {
-  /* ---------- BRAND CORE ----------
-     The księga znaku locks the main theme to BLACK + WHITE.
-     Every accent below is promoted from the 10 label palette —
-     never invented. */
-  --plyndo-black:      #000000;  /* book-defined primary               */
-  --plyndo-white:      #ffffff;  /* book-defined surface                */
-  --plyndo-ink:        #231f20;  /* logo file ink (a hair off pure black) */
-  --plyndo-bone:       #f6f4ef;  /* warm off-white “paper” alt           */
-  --plyndo-paper:      #ffffff;  /* alias for legacy refs               */
+  /* ---------- BRAND CORE ---------- */
+  --plyndo-black:      #000000;
+  --plyndo-white:      #ffffff;
+  --plyndo-ink:        #231f20;
+  --plyndo-bone:       #faf9f6;
+  --plyndo-paper:      #ffffff;
 
-  /* System accents — both lifted directly from labels */
-  --plyndo-cobalt:     #2550a4;  /* = --label-bath-bg   · focus / info / link */
-  --plyndo-cobalt-ink: #14316a;  /* = --label-bath-deep                       */
-  --plyndo-citron:     #e4c969;  /* = --label-hand-bg   · CTA / highlight     */
-  --plyndo-citron-deep:#b3912e;  /* = --label-hand-deep                       */
+  /* System accents — lifted from SVG-synced labels */
+  --plyndo-cobalt:     #5c77b7;
+  --plyndo-cobalt-ink: #3f5398;
+  --plyndo-citron:     #eac973;
+  --plyndo-citron-deep:#9f7849;
 
-  /* ---------- LABEL PALETTE (the 8+2 SKUs)
-     These ARE the brand. Use as surfaces for product cards,
-     section dividers, plan tiles, hero panels, etc.        */
-
-  /* 1. Naczynia / Dish        — deep green     */
-  --label-dish-bg:     #2b5a40;
-  --label-dish-deep:   #133021;
-  --label-dish-pat:    #1b402d;
+  /* ---------- LABEL PALETTE (SVG-synced) ---------- */
+  --label-dish-bg:     #276142;
+  --label-dish-deep:   #1c623b;
+  --label-dish-pat:    #40725a;
   --label-dish-on:     #ffffff;
 
-  /* 2. Zmywarka / Dishwasher  — terracotta red */
-  --label-dw-bg:       #a63c45;
+  --label-dw-bg:       #a7444b;
   --label-dw-deep:     #72242b;
-  --label-dw-pat:      #b24750;
+  --label-dw-pat:      #bd6266;
   --label-dw-on:       #ffffff;
 
-  /* 3. Pranie / Laundry       — sky blue       */
-  --label-laundry-bg:  #9ecbe8;
+  --label-laundry-bg:  #a5c7eb;
   --label-laundry-deep:#60a5d8;
-  --label-laundry-pat: #b6dbf1;
+  --label-laundry-pat: #bed5f0;
   --label-laundry-on:  #1e4c7a;
 
-  /* 4. Płukanie / Softener    — lilac          */
   --label-rinse-bg:    #a692c6;
   --label-rinse-deep:  #725ca6;
   --label-rinse-pat:   #8f7bb5;
   --label-rinse-on:    #ffffff;
 
-  /* 5. Podłogi / Floor        — espresso brown */
   --label-floor-bg:    #784638;
   --label-floor-deep:  #542e24;
   --label-floor-pat:   #8e5a4b;
   --label-floor-on:    #ffffff;
 
-  /* 6. WC                     — pearl grey     */
   --label-wc-bg:       #e0e0e0;
   --label-wc-deep:     #a3a3a3;
   --label-wc-pat:      #d1d1d1;
   --label-wc-on:       #1a1a1a;
 
-  /* 7. Ręce / Hand            — saffron        */
-  --label-hand-bg:     #e4c969;
-  --label-hand-deep:   #b3912e;
-  --label-hand-pat:    #f0d577;
+  --label-hand-bg:     #eac973;
+  --label-hand-deep:   #9f7849;
+  --label-hand-pat:    #eac973;
   --label-hand-on:     #3e341b;
 
-  /* 8. Szyby / Glass          — pale aqua      */
   --label-glass-bg:    #a7cfea;
   --label-glass-deep:  #2a7f96;
   --label-glass-pat:   #bde0f5;
   --label-glass-on:    #114455;
 
-  /* 9. Łazienka / Bathroom    — royal blue     */
-  --label-bath-bg:     #2550a4;
-  --label-bath-deep:   #14316a;
-  --label-bath-pat:    #3662b7;
+  --label-bath-bg:     #5c77b7;
+  --label-bath-deep:   #3f5398;
+  --label-bath-pat:    #3f5398;
   --label-bath-on:     #ffffff;
 
-  /* 10. Dezynfekcja / Sanitize — chalk white   */
-  --label-sani-bg:     #ebebeb;
+  --label-sani-bg:     #ececec;
   --label-sani-deep:   #c7c7c7;
   --label-sani-pat:    #ffffff;
   --label-sani-on:     #1a1a1a;
 
-  /* ---------- NEUTRAL RAMP (M3-derived) ---------- */
+  /* ---------- NEUTRAL RAMP ---------- */
   --n-0:   #ffffff;
-  --n-50:  #f6f4ef;   /* bone */
-  --n-100: #f3f4f5;   /* surface-container-low  */
-  --n-150: #edeeef;   /* surface-container      */
-  --n-200: #e7e8e9;   /* surface-container-high */
-  --n-300: #e1e3e4;   /* surface-container-highest / variant */
-  --n-400: #c1c6d7;   /* outline-variant        */
-  --n-500: #717786;   /* outline                */
-  --n-700: #414755;   /* on-surface-variant     */
-  --n-800: #2e3132;   /* inverse-surface        */
-  --n-900: #111111;   /* primary-container      */
-  --n-1000:#000000;   /* primary / on-surface   */
+  --n-50:  #faf9f6;
+  --n-100: #f5f4f1;
+  --n-150: #eeede9;
+  --n-200: #e7e6e3;
+  --n-300: #dddcd9;
+  --n-400: #c4c3c0;
+  --n-500: #8a8986;
+  --n-700: #555452;
+  --n-800: #2e2d2b;
+  --n-900: #1a1918;
+  --n-1000:#000000;
 
   /* ---------- SEMANTIC TOKENS ---------- */
   --color-bg:                var(--n-0);
-  --color-bg-muted:          var(--n-100);
-  --color-bg-sunken:         var(--n-150);
+  --color-bg-muted:          var(--n-50);
+  --color-bg-sunken:         var(--n-100);
   --color-bg-raised:         var(--n-0);
-  --color-bg-inverse:        var(--n-1000);
+  --color-bg-inverse:        var(--n-900);
 
-  --color-fg:                var(--n-1000);          /* fg1: headings, primary body */
-  --color-fg-muted:          var(--n-700);           /* fg2: secondary copy        */
-  --color-fg-subtle:         var(--n-500);           /* fg3: meta, captions        */
+  --color-fg:                var(--n-900);
+  --color-fg-muted:          var(--n-700);
+  --color-fg-subtle:         var(--n-500);
   --color-fg-onDark:         var(--n-0);
 
-  --color-border:            color-mix(in oklab, var(--n-400) 60%, transparent);
-  --color-border-strong:     var(--n-400);
+  --color-border:            rgba(0, 0, 0, 0.08);
+  --color-border-strong:     rgba(0, 0, 0, 0.15);
   --color-border-focus:      var(--plyndo-cobalt);
 
-  --color-primary:           var(--plyndo-black);     /* the brand IS black-on-white */
+  --color-primary:           var(--n-900);
   --color-primary-on:        var(--plyndo-white);
-  --color-primary-hover:     var(--n-900);
+  --color-primary-hover:     var(--n-800);
 
   --color-accent:            var(--plyndo-cobalt);
   --color-accent-on:         var(--n-0);
-  --color-accent-tint:       color-mix(in oklab, var(--plyndo-cobalt) 8%, var(--n-0));
+  --color-accent-tint:       color-mix(in oklab, var(--plyndo-cobalt) 6%, var(--n-0));
 
-  --color-cta:               var(--plyndo-citron);   /* "Wybierz pakiet" yellow */
-  --color-cta-on:            var(--n-1000);
-  --color-cta-hover:         var(--plyndo-citron-deep);
+  --color-cta:               var(--n-900);
+  --color-cta-on:            var(--n-0);
+  --color-cta-hover:         var(--n-800);
 
-  --color-success:           #2b5a40;                /* reuse dish-green */
-  --color-warning:           #b3912e;                /* reuse hand-deep  */
+  --color-success:           #276142;
+  --color-warning:           #9f7849;
   --color-danger:            #ba1a1a;
   --color-info:              var(--plyndo-cobalt);
 
@@ -143,17 +123,17 @@
   --radius-xs:  4px;
   --radius-sm:  6px;
   --radius-md:  10px;
-  --radius-lg:  16px;     /* default card        */
-  --radius-xl:  24px;     /* feature card        */
-  --radius-2xl: 32px;     /* hero panel          */
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-2xl: 32px;
   --radius-pill: 9999px;
 
-  /* ---------- SHADOWS / ELEVATION ---------- */
-  --shadow-xs: 0 1px 2px rgba(17, 17, 17, .06);
-  --shadow-sm: 0 2px 6px rgba(17, 17, 17, .08);
-  --shadow-md: 0 8px 24px rgba(17, 17, 17, .10);
-  --shadow-lg: 0 18px 48px rgba(17, 17, 17, .14);
-  --shadow-cta:0 10px 26px rgba(0, 0, 0, .22);     /* Primary action lift — neutral, no colour tint */
+  /* ---------- SHADOWS (very subtle) ---------- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, .04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, .05);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, .06);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, .08);
+  --shadow-cta:0 4px 16px rgba(0, 0, 0, .10);
   --shadow-inset: inset 0 0 0 1px var(--color-border);
 
   /* ---------- SPACING (4px grid) ---------- */
@@ -177,81 +157,78 @@
   --container-pad: clamp(20px, 4vw, 48px);
   --gutter:       24px;
 
-  /* ---------- TYPOGRAPHY — base ---------- */
-  --font-sans:    'Switzer', ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  --font-display: 'Switzer', ui-sans-serif, system-ui, sans-serif;   /* same family, heavier weights */
-  --font-serif:   'Lora', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;   /* product-name italic, taglines */
-  --font-mono:    ui-monospace, SFMono-Regular, "JetBrains Mono", Consolas, monospace;
+  /* ---------- TYPOGRAPHY ---------- */
+  --font-sans:    'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-serif:   'Cormorant Garamond', 'Georgia', serif;
+  --font-mono:    ui-monospace, SFMono-Regular, Consolas, monospace;
 
-  /* Weights pulled from the labels' bold sans + UI */
   --fw-light:   300;
   --fw-regular: 400;
   --fw-medium:  500;
   --fw-semi:    600;
   --fw-bold:    700;
-  --fw-black:   900;
+  --fw-black:   800;
 
-  /* Type ramp (1.250 minor-third) */
-  --t-xs:   12px;   /* caption / micro */
-  --t-sm:   14px;   /* small body / UI */
-  --t-base: 16px;   /* default body    */
-  --t-md:   18px;
-  --t-lg:   20px;
+  /* Type ramp */
+  --t-xs:   11px;
+  --t-sm:   13px;
+  --t-base: 15px;
+  --t-md:   17px;
+  --t-lg:   19px;
   --t-xl:   24px;
   --t-2xl:  30px;
-  --t-3xl:  36px;
-  --t-4xl:  48px;
-  --t-5xl:  64px;
-  --t-6xl:  88px;   /* hero display     */
+  --t-3xl:  38px;
+  --t-4xl:  52px;
+  --t-5xl:  68px;
+  --t-6xl:  88px;
 
-  /* Tracking — labels use slight negative track on display, wide on micro caps */
-  --tk-tight:  -0.025em;
+  --tk-tight:  -0.03em;
   --tk-snug:   -0.015em;
   --tk-normal: 0em;
-  --tk-wide:   0.05em;
-  --tk-wider:  0.12em;    /* eyebrow / micro-cap labels */
+  --tk-wide:   0.06em;
+  --tk-wider:  0.14em;
 
   --lh-tight: 1.05;
   --lh-snug:  1.2;
-  --lh-body:  1.55;
-  --lh-loose: 1.7;
+  --lh-body:  1.6;
+  --lh-loose: 1.75;
 }
 
-/* Dark theme override (matches plyndo.pl) */
+/* Dark theme */
 :root[data-theme='dark'] {
-  --color-bg:           #0a0f12;
-  --color-bg-muted:     #101518;
-  --color-bg-sunken:    #14191c;
-  --color-bg-raised:    #1a2024;
-  --color-bg-inverse:   #e6ebf0;
-  --color-fg:           #e6ebf0;
-  --color-fg-muted:     #a9b1b7;
-  --color-fg-subtle:    #8d959d;
-  --color-fg-onDark:    #0a0f12;
-  --color-border:       #2a3138;
-  --color-border-strong:#42484e;
-  --color-border-focus: #6b9dd6;
-  --color-primary:      #ffffff;
-  --color-primary-on:   #0a0f12;
-  --color-primary-hover:#e6ebf0;
-  --color-accent:       #6b9dd6;
-  --color-accent-on:    #0a0f12;
-  --color-accent-tint:  color-mix(in oklab, #6b9dd6 12%, #0a0f12);
-  --color-cta:          var(--plyndo-citron);
-  --color-cta-on:       #0a0f12;
-  --color-cta-hover:    var(--plyndo-citron-deep);
+  --color-bg:           #0c0b09;
+  --color-bg-muted:     #141310;
+  --color-bg-sunken:    #1a1916;
+  --color-bg-raised:    #1e1d1a;
+  --color-bg-inverse:   #e8e6e1;
+  --color-fg:           #e8e6e1;
+  --color-fg-muted:     #a8a6a1;
+  --color-fg-subtle:    #7a7874;
+  --color-fg-onDark:    #0c0b09;
+  --color-border:       rgba(255, 255, 255, .08);
+  --color-border-strong:rgba(255, 255, 255, .15);
+  --color-border-focus: #8fa4d4;
+  --color-primary:      #e8e6e1;
+  --color-primary-on:   #0c0b09;
+  --color-primary-hover:#d4d2cd;
+  --color-accent:       #8fa4d4;
+  --color-accent-on:    #0c0b09;
+  --color-accent-tint:  color-mix(in oklab, #8fa4d4 10%, #0c0b09);
+  --color-cta:          #e8e6e1;
+  --color-cta-on:       #0c0b09;
+  --color-cta-hover:    #d4d2cd;
   --color-success:      #4a8c65;
   --color-warning:      #d4a944;
   --color-danger:       #e0534b;
-  --color-info:         #6b9dd6;
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, .25);
-  --shadow-sm: 0 2px 6px rgba(0, 0, 0, .30);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, .35);
-  --shadow-lg: 0 18px 48px rgba(0, 0, 0, .45);
-  --shadow-cta:0 10px 26px rgba(0, 0, 0, .50);
+  --color-info:         #8fa4d4;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, .20);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, .25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, .30);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, .40);
+  --shadow-cta:0 4px 16px rgba(0, 0, 0, .35);
 }
 
-/* Dark theme component-level overrides */
 :root[data-theme='dark'] .bg-surface,
 :root[data-theme='dark'] .bg-background { background: var(--color-bg) !important; }
 :root[data-theme='dark'] .bg-white { background: var(--color-bg-raised) !important; }
@@ -265,20 +242,16 @@
 
 /* Font scale */
 :root[data-font-scale='sm'] { font-size: 14px; }
-:root[data-font-scale='md'] { font-size: 16px; }
-:root[data-font-scale='lg'] { font-size: 18px; }
+:root[data-font-scale='md'] { font-size: 15px; }
+:root[data-font-scale='lg'] { font-size: 17px; }
 
 /* ============================================================
-   SEMANTIC ELEMENT STYLES
-   Apply these classes directly, or use them as a reference
-   for component-level CSS.
+   BASE STYLES — TeaFlow-inspired
    ============================================================ */
 
-html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+html { font-size: 15px; -webkit-font-smoothing: antialiased; }
 
-[id] {
-  scroll-margin-top: 92px;
-}
+[id] { scroll-margin-top: 80px; }
 
 body {
   font-family: var(--font-sans);
@@ -287,57 +260,61 @@ body {
   font-size: var(--t-base);
   line-height: var(--lh-body);
   font-weight: var(--fw-regular);
-  letter-spacing: var(--tk-snug);
+  letter-spacing: var(--tk-normal);
 }
 
-/* Display — hero titles, big numbers on labels */
+/* ============================================================
+   TYPOGRAPHY — Premium editorial style
+   ============================================================ */
+
+/* Display — hero titles: large serif, light weight */
 .t-display-1 {
-  font-family: var(--font-display);
-  font-weight: var(--fw-black);
-  font-size: clamp(48px, 7vw, var(--t-6xl));
+  font-family: var(--font-serif);
+  font-weight: var(--fw-light);
+  font-size: clamp(44px, 7vw, var(--t-6xl));
   line-height: var(--lh-tight);
   letter-spacing: var(--tk-tight);
   text-wrap: balance;
 }
 .t-display-2 {
-  font-family: var(--font-display);
-  font-weight: var(--fw-black);
+  font-family: var(--font-serif);
+  font-weight: var(--fw-light);
   font-size: clamp(36px, 5vw, var(--t-5xl));
   line-height: var(--lh-tight);
   letter-spacing: var(--tk-tight);
 }
 
-/* Headings */
+/* Headings — clean sans, medium weight */
 .t-h1, h1 {
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: clamp(32px, 4.2vw, var(--t-4xl));
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semi);
+  font-size: clamp(28px, 3.8vw, var(--t-4xl));
   line-height: var(--lh-snug);
   letter-spacing: var(--tk-tight);
   text-wrap: balance;
   margin: 0;
 }
 .t-h2, h2 {
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: clamp(26px, 3vw, var(--t-3xl));
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semi);
+  font-size: clamp(22px, 2.6vw, var(--t-3xl));
   line-height: var(--lh-snug);
   letter-spacing: var(--tk-tight);
   text-wrap: balance;
   margin: 0;
 }
 .t-h3, h3 {
-  font-family: var(--font-display);
-  font-weight: var(--fw-semi);
-  font-size: var(--t-2xl);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: var(--t-xl);
   line-height: var(--lh-snug);
   letter-spacing: var(--tk-snug);
   margin: 0;
 }
 .t-h4, h4 {
-  font-family: var(--font-display);
-  font-weight: var(--fw-semi);
-  font-size: var(--t-xl);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: var(--t-lg);
   line-height: var(--lh-snug);
   letter-spacing: var(--tk-snug);
   margin: 0;
@@ -345,7 +322,7 @@ body {
 
 /* Body */
 .t-lead {
-  font-size: var(--t-lg);
+  font-size: var(--t-md);
   line-height: var(--lh-body);
   color: var(--color-fg-muted);
   font-weight: var(--fw-regular);
@@ -358,37 +335,48 @@ body {
   color: var(--color-fg-subtle);
 }
 
-/* Eyebrows / micro-cap labels — used heavily on plans + sections */
+/* Eyebrows — ultra-refined micro labels */
 .t-eyebrow {
   display: inline-block;
+  font-family: var(--font-sans);
   font-size: var(--t-xs);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-medium);
   text-transform: uppercase;
   letter-spacing: var(--tk-wider);
-  color: var(--color-primary);
+  color: var(--color-fg-subtle);
 }
 
-/* "PŁYN DO" lockup — the brand's signature text element */
+/* Editorial serif — for taglines and accent text */
+.t-editorial {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--fw-light);
+  font-size: clamp(24px, 3vw, 42px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* Product name on labels — kept for product pages */
 .t-lockup {
-  font-family: var(--font-display);
-  font-weight: var(--fw-black);
-  font-size: var(--t-4xl);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--t-3xl);
   line-height: 0.95;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
 }
 .t-lockup-sub {
   display: block;
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-medium);
   letter-spacing: -0.02em;
   text-transform: lowercase;
 }
 
-/* Label-derived display — italic serif, used for SKU names and brand taglines on every label. */
+/* Label italic serif */
 .t-label-display {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
   font-size: clamp(28px, 4vw, 44px);
   line-height: 1.05;
   letter-spacing: -0.01em;
@@ -396,9 +384,9 @@ body {
 .t-label-tagline {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 500;
-  font-size: clamp(20px, 2.2vw, 26px);
-  line-height: 1.25;
+  font-weight: 400;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.3;
 }
 
 code, pre, .t-mono {
@@ -406,4 +394,38 @@ code, pre, .t-mono {
   font-size: 0.92em;
 }
 
-::selection { background: var(--plyndo-black); color: var(--plyndo-white); }
+::selection { background: var(--n-900); color: var(--n-0); }
+
+/* ============================================================
+   UTILITY CLASSES for TeaFlow-style components
+   ============================================================ */
+
+/* Subtle hairline separator */
+.hairline {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
+  margin: 0;
+}
+
+/* Product color accent dot */
+.color-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Smooth hover lift for cards */
+.hover-lift {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* No-scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

@@ -28,10 +28,10 @@ function AnimatedMetric({ value, label }) {
 
   return (
     <div ref={ref}>
-      <div className="font-display font-black text-4xl tracking-tight leading-none">
+      <div className="font-serif text-4xl font-light tracking-tight leading-none" style={{ fontStyle: 'italic' }}>
         {canAnimate ? display : value}
       </div>
-      <div className="mt-1.5 text-xs text-fg-muted leading-relaxed">
+      <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.12em] text-fg-subtle leading-relaxed">
         {label}
       </div>
     </div>
@@ -45,76 +45,98 @@ export default function HeroSection({ lang = 'pl' }) {
 
   useEffect(() => {
     if (paused) return;
-    const t = setInterval(() => setIdx(i => (i + 1) % products.length), 2400);
+    const t = setInterval(() => setIdx(i => (i + 1) % products.length), 3000);
     return () => clearInterval(t);
   }, [paused]);
 
   const current = products[idx];
 
   return (
-    <section id="top" className="relative pt-[140px] pb-[100px] overflow-hidden border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-14 items-center">
+    <section id="top" className="relative pt-[140px] pb-[80px] overflow-hidden" style={{ background: 'var(--color-bg)' }}>
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 items-center">
+        {/* Left — editorial text */}
         <div>
-          <span className="t-eyebrow bg-primary/10 px-3 py-1.5 rounded-full">
+          <span className="t-eyebrow">
             {hero.eyebrow || hero.tag}
           </span>
-          <h1 className="t-display-1 mt-6 whitespace-pre-line text-balance">
+          <h1 className="t-display-1 mt-6 whitespace-pre-line">
             {hero.title}
           </h1>
-          <p className="t-lead mt-6 max-w-[520px]">
+          <p className="t-lead mt-8 max-w-[480px]" style={{ lineHeight: 1.7 }}>
             {hero.lead}
           </p>
 
-          <div className="flex flex-wrap gap-3 mt-8">
+          <div className="flex flex-wrap items-center gap-4 mt-10">
             <Link
               to="/#plans"
-              className="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-extrabold text-[15px] shadow-cta transition-all duration-700 hover:scale-105 active:scale-95 cursor-pointer"
-              style={{ background: current.color.bg, color: current.color.text }}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-medium text-[14px] transition-all duration-300 hover:opacity-90 cursor-pointer no-underline"
+              style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}
             >
-              {hero.primary} <ArrowRight className="w-[18px] h-[18px]" />
+              {hero.primary} <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link to="/#products" className="bg-surface text-primary border border-border-strong px-6 py-4 rounded-xl font-bold text-[15px] transition-colors hover:bg-surface-container-low cursor-pointer no-underline">
-              {hero.secondary}
+            <Link to="/#products" className="text-[14px] font-medium cursor-pointer no-underline transition-opacity hover:opacity-60 inline-flex items-center gap-1.5" style={{ color: 'var(--color-fg)' }}>
+              {hero.secondary} <ArrowRight className="w-3.5 h-3.5 opacity-50" />
             </Link>
           </div>
 
-          <div className="flex flex-wrap gap-1.5 mt-6">
+          {/* Product indicator dots */}
+          <div className="flex flex-wrap items-center gap-2 mt-8">
             {products.map((p, j) => (
               <button
                 key={p.id}
                 onClick={() => { setIdx(j); setPaused(true); }}
                 aria-label={`${lang === 'en' ? 'Show' : 'Pokaż'} ${p.i18n?.[lang]?.displayName ?? p.name}`}
-                className="w-7 h-1 p-0 border-none rounded-sm cursor-pointer transition-colors duration-300"
-                style={{ background: j === idx ? 'var(--color-primary)' : 'var(--color-surface-variant)' }}
+                className="w-2.5 h-2.5 p-0 border-none rounded-full cursor-pointer transition-all duration-400"
+                style={{ 
+                  background: j === idx ? p.color.bg : 'var(--color-border-strong)',
+                  transform: j === idx ? 'scale(1.3)' : 'scale(1)',
+                }}
               />
             ))}
           </div>
         </div>
 
+        {/* Right — product image on white */}
         <div 
-          className="relative aspect-[4/5] flex items-center justify-center transition-all duration-700"
+          className="relative flex items-center justify-center"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          {products.map((p, j) => (
-            <img 
-              key={p.id} 
-              src={p.image} 
-              alt={`${p.name}`}
-              className="absolute w-full h-[85%] object-cover object-center max-w-none transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] mix-blend-normal"
-              style={{
-                opacity: j === idx ? 1 : 0,
-                transform: j === idx ? 'scale(1)' : 'scale(0.96)',
-                filter: 'drop-shadow(0 18px 28px rgba(0,0,0,0.28))'
-              }}
-            />
-          ))}
+          {/* Subtle background circle accent */}
+          <div 
+            className="absolute inset-[10%] rounded-full opacity-[0.08] transition-all duration-700"
+            style={{ background: current.color.bg }}
+          />
+          
+          <div className="relative aspect-[4/5] w-full max-w-[480px]">
+            {products.map((p, j) => (
+              <img 
+                key={p.id} 
+                src={p.image} 
+                alt={`${p.name}`}
+                className="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                style={{
+                  opacity: j === idx ? 1 : 0,
+                  transform: j === idx ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(8px)',
+                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.12))'
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Product name overlay */}
+          <div className="absolute bottom-0 left-0 right-0 text-center pb-2 transition-all duration-500">
+            <span className="text-[11px] font-medium uppercase tracking-[0.14em]" style={{ color: 'var(--color-fg-subtle)' }}>
+              {current.i18n?.[lang]?.displayName ?? current.name}
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Metrics */}
-      <div className="max-w-7xl mx-auto px-6 mt-[72px]">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-7 border-t border-border">
+      {/* Metrics — TeaFlow style with thin border */}
+      <div className="max-w-7xl mx-auto px-6 mt-20">
+        <div className="hairline" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10">
           {hero.metrics.map(m => (
             <AnimatedMetric key={m.label} value={m.value} label={m.label} />
           ))}

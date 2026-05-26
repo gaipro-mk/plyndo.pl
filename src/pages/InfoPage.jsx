@@ -124,21 +124,21 @@ export default function InfoPage({ lang = 'pl' }) {
   const Icon = pageConfig.icon;
 
   return (
-    <main className="min-h-[70vh] px-6 pb-24 pt-[148px]">
+    <main className="min-h-[70vh] px-6 pb-24 pt-[120px]" style={{ background: 'var(--color-bg)' }}>
       <div className="mx-auto max-w-5xl">
         <Breadcrumbs lang={lang} items={[{ label: content.title }]} />
-        <Link to="/" className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-fg-muted no-underline">
+        <Link to="/" className="mb-8 mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium text-fg-muted no-underline transition-opacity hover:opacity-60 tracking-wide uppercase">
           <ArrowLeft size={16} />
           {lang === 'en' ? 'Back to home' : 'Wróć na stronę główną'}
         </Link>
-        <section className="grid gap-8 border-b border-border pb-12 lg:grid-cols-[1fr_220px]">
+        <section className="grid gap-8 border-b pb-12 lg:grid-cols-[1fr_220px]" style={{ borderColor: 'var(--color-border)' }}>
           <div>
             <span className="t-eyebrow">{content.eyebrow}</span>
             <h1 className="t-display-2 mt-4">{content.title}</h1>
             <p className="t-lead mt-5 max-w-[720px]">{content.intro}</p>
           </div>
           {Icon && (
-            <div className="flex aspect-square max-w-[220px] items-center justify-center rounded-[24px] bg-black text-white">
+            <div className="flex aspect-square max-w-[220px] items-center justify-center rounded-[20px]" style={{ background: 'var(--color-bg-muted)', color: 'var(--color-fg-subtle)' }}>
               <Icon size={64} strokeWidth={1.5} />
             </div>
           )}
@@ -146,7 +146,7 @@ export default function InfoPage({ lang = 'pl' }) {
         {content.blocks.length > 0 && (
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {content.blocks.map((block) => (
-              <article key={block.title} className="rounded-[20px] border border-border bg-white p-7">
+              <article key={block.title} className="rounded-[16px] border p-7" style={{ borderColor: 'var(--color-border)' }}>
                 <h2 className="t-h4">{block.title}</h2>
                 <p className="mt-3 text-sm leading-relaxed text-fg-muted">{block.copy}</p>
               </article>

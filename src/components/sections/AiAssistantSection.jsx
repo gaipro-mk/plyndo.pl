@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Baby, Building2, Dog, Droplets, Home, Sparkles, Store, WashingMachine } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { bundles } from '../../data/bundles';
 import { products } from '../../data/products';
 import { calculateBundlePricing, formatPln } from '../../lib/bundlePricing';
@@ -27,34 +28,21 @@ function quantityLabel(quantity, lang) {
 
 function createCustomAdvice(size, composition, slug) {
   const bundle = readyBundle(`wybierz-sam-${size}`);
-
-  return {
-    bundle,
-    slug,
-    composition,
-    quantity: 1,
-    isCustom: true,
-  };
+  return { bundle, slug, composition, quantity: 1, isCustom: true };
 }
 
 function buildAdvice(segment, area, traits) {
   if (segment === 'business') {
-    if (area <= 120) {
-      return [{ bundle: readyBundle('firma-podstawowa-4'), quantity: 1 }];
-    }
-
+    if (area <= 120) return [{ bundle: readyBundle('firma-podstawowa-4'), quantity: 1 }];
     const mainQuantity = area > 420 ? 3 : area > 240 ? 2 : 1;
     const advice = [{ bundle: readyBundle('firma-operacyjna-8'), quantity: mainQuantity }];
-
     if (traits.includes('visitors') || traits.includes('sanitary')) {
       advice.push(createCustomAdvice(4, ['rece', 'wc', 'lazienka', 'dezynfekcja'], 'business-hygiene-4'));
     }
-
     return advice;
   }
 
   const advice = [{ bundle: readyBundle('starter-10'), quantity: 1 }];
-
   if (area > 120 || traits.includes('kids') || traits.includes('pets')) {
     advice.push(createCustomAdvice(4, [
       'podlogi',
@@ -63,11 +51,9 @@ function buildAdvice(segment, area, traits) {
       traits.includes('laundry') ? 'pranie' : 'naczynia',
     ], 'home-refill-4'));
   }
-
   if (area > 190 && traits.includes('laundry')) {
     advice.push({ bundle: readyBundle('dom-pelny-8'), quantity: 1 });
   }
-
   return advice;
 }
 
@@ -76,9 +62,12 @@ function TraitButton({ active, icon, label, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className={`grid min-h-[92px] content-center justify-items-center gap-2 rounded-[14px] border p-3 text-center text-xs font-extrabold ${
-        active ? 'border-black bg-black text-white' : 'border-border bg-white text-fg-muted'
-      }`}
+      className="grid min-h-[80px] content-center justify-items-center gap-2 rounded-[14px] border p-3 text-center text-[11px] font-medium transition-all duration-300 cursor-pointer"
+      style={{
+        borderColor: active ? 'var(--color-fg)' : 'var(--color-border)',
+        background: active ? 'var(--color-fg)' : 'var(--color-bg)',
+        color: active ? 'var(--color-bg)' : 'var(--color-fg-muted)',
+      }}
     >
       {icon}
       {label}
@@ -98,43 +87,47 @@ function AdviceCard({ advice, lang }) {
   const href = advice.isCustom ? `/pakiety/wlasna-paczka/${advice.bundle.size}` : `/pakiety/${advice.bundle.slug}`;
 
   return (
-    <article className="grid gap-4 rounded-[20px] border border-border bg-white p-5">
+    <motion.article
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      className="grid gap-4 rounded-[16px] border bg-white p-5"
+      style={{ borderColor: 'var(--color-border)' }}
+    >
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-lg font-extrabold leading-tight">{name}</h3>
-          <div className="mt-1 text-sm text-fg-muted">
+          <h3 className="text-base font-semibold leading-tight">{name}</h3>
+          <div className="mt-1 text-[12px] text-fg-muted">
             {quantityLabel(advice.quantity, lang)} · {pricing.itemCount * advice.quantity} {lang === 'en' ? 'items' : 'sztuk'}
           </div>
         </div>
-        <span className="rounded-full bg-black px-3 py-1 text-xs font-black text-white">
+        <span className="rounded-full border px-2.5 py-1 text-[11px] font-medium" style={{ borderColor: 'var(--color-border-strong)' }}>
           -{pricing.savingsPercent}%
         </span>
       </div>
-      <div className="grid gap-1.5 text-sm">
+      <div className="grid gap-1.5 text-[13px]">
         {pricing.lineItems.slice(0, 5).map((item) => (
           <div key={item.productSlug} className="flex items-center justify-between gap-3">
-            <span className="font-semibold">
-              {item.quantity > 1 ? `${item.quantity}x ` : ''}
+            <span className="font-medium">
+              {item.quantity > 1 ? `${item.quantity}× ` : ''}
               {item.product.i18n?.[lang]?.shortName ?? item.product.shortName}
             </span>
-            <span className="text-fg-muted">{formatPln(item.listValue, lang === 'en' ? 'en-GB' : 'pl-PL')}</span>
+            <span className="text-fg-subtle">{formatPln(item.listValue, lang === 'en' ? 'en-GB' : 'pl-PL')}</span>
           </div>
         ))}
       </div>
-      <div className="flex flex-wrap items-end justify-between gap-3 border-t border-border pt-4">
+      <div className="flex flex-wrap items-end justify-between gap-3 border-t pt-4" style={{ borderColor: 'var(--color-border)' }}>
         <div>
-          <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-fg-muted">
-            {lang === 'en' ? 'One box price' : 'Cena jednego kartonu'}
-          </div>
-          <div className="font-display text-3xl font-black">
+          <div className="t-eyebrow">{lang === 'en' ? 'Box price' : 'Cena kartonu'}</div>
+          <div className="font-serif italic text-2xl font-light mt-1">
             {formatPln(pricing.bundlePrice, lang === 'en' ? 'en-GB' : 'pl-PL')}
           </div>
         </div>
-        <Link to={href} className="rounded-[10px] border border-black px-4 py-2.5 text-sm font-extrabold text-black no-underline">
+        <Link to={href} className="rounded-full border px-4 py-2 text-[12px] font-medium no-underline transition-all duration-300 hover:bg-black/[0.03]" style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}>
           {lang === 'en' ? 'Open package' : 'Otwórz pakiet'}
         </Link>
       </div>
-    </article>
+    </motion.article>
   );
 }
 
@@ -158,11 +151,17 @@ export default function AiAssistantSection({ lang = 'pl' }) {
   }
 
   return (
-    <section id="advisor" className="bg-surface-variant px-6 py-24">
+    <section id="advisor" className="px-6 py-24" style={{ background: 'var(--color-bg)' }}>
       <div className="mx-auto max-w-7xl">
-        <div className="mb-12 max-w-[760px]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 max-w-[660px]"
+        >
           <span className="t-eyebrow">{lang === 'en' ? 'Package advisor' : 'Doradca paczek'}</span>
-          <h2 className="t-h1 mt-3">
+          <h2 className="t-h1 mt-4">
             {lang === 'en' ? 'Pick stock by place and consumption.' : 'Dobierz zapas do miejsca i zużycia.'}
           </h2>
           <p className="t-lead mt-4">
@@ -170,13 +169,20 @@ export default function AiAssistantSection({ lang = 'pl' }) {
               ? 'The first rule-based segment shows the boxes and quantities worth checking before the Shoper handoff is connected.'
               : 'Pierwszy regułowy segment pokazuje paczki i liczby kartonów, które warto sprawdzić przed podpięciem koszyka Shoper.'}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid gap-6 rounded-[28px] border border-border bg-white p-6 md:p-8 lg:grid-cols-[0.92fr_1.08fr]">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="grid gap-6 rounded-[20px] border bg-white p-6 md:p-8 lg:grid-cols-[0.92fr_1.08fr]"
+          style={{ borderColor: 'var(--color-border)' }}
+        >
           <div className="grid content-start gap-7">
             <div>
               <div className="t-eyebrow mb-3">{lang === 'en' ? 'Place' : 'Miejsce'}</div>
-              <div className="grid grid-cols-2 gap-2 rounded-[14px] bg-surface-container-low p-1.5">
+              <div className="grid grid-cols-2 gap-2 rounded-[14px] p-1.5" style={{ background: 'var(--color-bg-muted)' }}>
                 {[
                   { id: 'home', label: lang === 'en' ? 'Home' : 'Dom', icon: Home },
                   { id: 'business', label: lang === 'en' ? 'Business' : 'Firma', icon: Building2 },
@@ -185,11 +191,13 @@ export default function AiAssistantSection({ lang = 'pl' }) {
                     key={option.id}
                     type="button"
                     onClick={() => selectSegment(option.id)}
-                    className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-[10px] text-sm font-extrabold ${
-                      segment === option.id ? 'bg-black text-white' : 'bg-transparent text-black'
-                    }`}
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] text-[13px] font-medium border-none cursor-pointer transition-all duration-300"
+                    style={{
+                      background: segment === option.id ? 'var(--color-fg)' : 'transparent',
+                      color: segment === option.id ? 'var(--color-bg)' : 'var(--color-fg)',
+                    }}
                   >
-                    <option.icon size={17} />
+                    <option.icon size={16} />
                     {option.label}
                   </button>
                 ))}
@@ -200,14 +208,14 @@ export default function AiAssistantSection({ lang = 'pl' }) {
               <div className="flex items-end justify-between gap-4">
                 <div>
                   <div className="t-eyebrow">{lang === 'en' ? 'Area' : 'Metraż'}</div>
-                  <p className="mt-1 text-sm text-fg-muted">
+                  <p className="mt-1 text-[12px] text-fg-muted">
                     {segment === 'home'
                       ? (lang === 'en' ? 'Flat or house' : 'Mieszkanie lub dom')
                       : (lang === 'en' ? 'Cleaning area' : 'Powierzchnia obsługi')}
                   </p>
                 </div>
-                <div className="font-display text-4xl font-black">
-                  {area} <span className="text-base text-fg-muted">m2</span>
+                <div className="font-serif italic text-3xl font-light">
+                  {area} <span className="text-base text-fg-subtle not-italic">m²</span>
                 </div>
               </div>
               <input
@@ -232,7 +240,7 @@ export default function AiAssistantSection({ lang = 'pl' }) {
                   <TraitButton
                     key={option.id}
                     active={traits.includes(option.id)}
-                    icon={<option.icon size={20} />}
+                    icon={<option.icon size={18} />}
                     label={lang === 'en' ? option.en : option.pl}
                     onClick={() => toggleTrait(option.id)}
                   />
@@ -241,14 +249,14 @@ export default function AiAssistantSection({ lang = 'pl' }) {
             </div>
           </div>
 
-          <div className="grid content-start gap-4 rounded-[24px] bg-surface-container-low p-5 md:p-6">
+          <div className="grid content-start gap-4 rounded-[16px] p-5 md:p-6" style={{ background: 'var(--color-bg-muted)' }}>
             <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-[12px] bg-black text-white">
-                <Sparkles size={20} />
+              <span className="flex h-10 w-10 items-center justify-center rounded-full" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+                <Sparkles size={18} />
               </span>
               <div>
                 <div className="t-eyebrow">{lang === 'en' ? 'Recommendation' : 'Rekomendacja'}</div>
-                <p className="text-sm text-fg-muted">
+                <p className="text-[12px] text-fg-muted">
                   {segment === 'business'
                     ? (lang === 'en' ? 'Stock weighted for operations.' : 'Zapas ważony pod pracę firmy.')
                     : (lang === 'en' ? 'Starter first, then flexible refills.' : 'Najpierw starter, potem elastyczne uzupełnienia.')}
@@ -259,7 +267,7 @@ export default function AiAssistantSection({ lang = 'pl' }) {
               <AdviceCard key={item.slug ?? item.bundle.slug} advice={item} lang={lang} />
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

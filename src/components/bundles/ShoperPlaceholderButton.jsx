@@ -11,7 +11,8 @@ export default function ShoperPlaceholderButton({ lang = 'pl', className = '' })
       <button
         type="button"
         disabled
-        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[10px] border border-border bg-black px-5 py-3 text-sm font-extrabold text-white opacity-55"
+        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-[13px] font-medium opacity-45"
+        style={{ borderColor: 'var(--color-border-strong)', background: 'var(--color-fg)', color: 'var(--color-bg)' }}
       >
         <ShoppingCart size={17} />
         {label}

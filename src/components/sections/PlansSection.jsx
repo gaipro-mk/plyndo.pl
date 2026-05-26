@@ -1,16 +1,10 @@
 import { ArrowRight, Box, Layers3, PackagePlus } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { bundles } from '../../data/bundles';
 import { products } from '../../data/products';
 import { calculateBundlePricing, formatPln } from '../../lib/bundlePricing';
 import { copy } from '../../content';
-
-const packageTones = {
-  'starter-10': { bg: 'var(--label-bath-bg)', fg: 'var(--label-bath-on)' },
-  'dom-pelny-8': { bg: 'var(--label-dish-bg)', fg: 'var(--label-dish-on)' },
-  'firma-operacyjna-8': { bg: 'var(--label-floor-bg)', fg: 'var(--label-floor-on)' },
-  custom: { bg: 'var(--label-laundry-bg)', fg: 'var(--label-laundry-on)' },
-};
 
 function percent(rate) {
   return `${Math.round(rate * 100)}%`;
@@ -26,35 +20,42 @@ function audienceLabel(audience, lang) {
     home: lang === 'en' ? 'Home' : 'Dom',
     business: lang === 'en' ? 'Business' : 'Firma',
   };
-
   return labels[audience] ?? labels.all;
 }
 
-function BundleCard({ bundle, lang, featured = false }) {
+/* Color accent for left border strip — subtle product-color accent */
+const accentColors = {
+  'starter-10': 'var(--label-bath-bg)',
+  'dom-pelny-8': 'var(--label-dish-bg)',
+  'firma-operacyjna-8': 'var(--label-floor-bg)',
+  custom: 'var(--label-laundry-bg)',
+};
+
+function BundleCard({ bundle, lang, featured = false, index = 0 }) {
   const pricing = calculateBundlePricing({ bundle, products });
-  const tone = packageTones[bundle.slug] ?? packageTones.custom;
+  const accent = accentColors[bundle.slug] ?? accentColors.custom;
   const previewItems = pricing.lineItems.slice(0, 4);
 
   return (
-    <article
-      className={`grid min-h-[420px] gap-6 rounded-[24px] border p-6 md:p-7 ${featured ? 'lg:row-span-2' : ''}`}
-      style={{
-        background: tone.bg,
-        borderColor: 'color-mix(in oklab, currentColor 18%, transparent)',
-        color: tone.fg,
-      }}
+    <motion.article
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className={`grid min-h-[400px] gap-6 rounded-[20px] border bg-white p-6 md:p-7 ${featured ? 'lg:row-span-2' : ''}`}
+      style={{ borderColor: 'var(--color-border)', borderLeft: `3px solid ${accent}` }}
     >
       <div>
         <div className="flex items-center justify-between gap-3">
-          <span className="text-[11px] font-extrabold uppercase tracking-[0.12em] opacity-70">
+          <span className="t-eyebrow">
             {audienceLabel(bundle.audience, lang)}
           </span>
-          <span className="rounded-full border border-current px-2.5 py-1 text-[11px] font-black">
+          <span className="rounded-full border px-2.5 py-1 text-[11px] font-semibold" style={{ borderColor: accent, color: accent }}>
             -{percent(bundle.discountRule.rate)}
           </span>
         </div>
-        <h3 className="mt-4 font-display text-3xl font-black leading-tight">{bundleName(bundle, lang)}</h3>
-        <p className="mt-2 max-w-[420px] text-sm leading-relaxed opacity-80">
+        <h3 className="mt-4 text-2xl font-semibold leading-tight">{bundleName(bundle, lang)}</h3>
+        <p className="mt-2 max-w-[420px] text-[13px] leading-relaxed text-fg-muted">
           {lang === 'en'
             ? `${bundle.size} one-litre items with package-level savings.`
             : `${bundle.size} litrowych pozycji z rabatem liczonym dla całej paczki.`}
@@ -63,79 +64,88 @@ function BundleCard({ bundle, lang, featured = false }) {
 
       <div className="grid gap-2">
         {previewItems.map((item) => (
-          <div key={item.productSlug} className="flex items-center justify-between gap-3 border-b border-current/15 pb-2 text-sm">
-            <span className="font-semibold">
-              {item.quantity > 1 ? `${item.quantity}x ` : ''}
+          <div key={item.productSlug} className="flex items-center justify-between gap-3 border-b pb-2 text-[13px]" style={{ borderColor: 'var(--color-border)' }}>
+            <span className="font-medium">
+              {item.quantity > 1 ? `${item.quantity}× ` : ''}
               {item.product.i18n?.[lang]?.shortName ?? item.product.shortName}
             </span>
-            <span className="opacity-75">{formatPln(item.listValue, lang === 'en' ? 'en-GB' : 'pl-PL')}</span>
+            <span className="text-fg-subtle">{formatPln(item.listValue, lang === 'en' ? 'en-GB' : 'pl-PL')}</span>
           </div>
         ))}
         {pricing.lineItems.length > previewItems.length && (
-          <span className="text-xs font-bold opacity-70">
-            + {pricing.lineItems.length - previewItems.length} {lang === 'en' ? 'more product lines' : 'kolejne pozycje'}
+          <span className="text-[11px] font-medium text-fg-subtle">
+            + {pricing.lineItems.length - previewItems.length} {lang === 'en' ? 'more' : 'więcej'}
           </span>
         )}
       </div>
 
-      <div className="mt-auto grid gap-4 border-t border-current/20 pt-5">
+      <div className="mt-auto grid gap-4 border-t pt-5" style={{ borderColor: 'var(--color-border)' }}>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <div className="text-[11px] font-extrabold uppercase tracking-[0.12em] opacity-65">
+            <div className="t-eyebrow">
               {lang === 'en' ? 'Package price' : 'Cena paczki'}
             </div>
-            <div className="font-display text-4xl font-black leading-none">
+            <div className="font-serif italic text-3xl font-light mt-1">
               {formatPln(pricing.bundlePrice, lang === 'en' ? 'en-GB' : 'pl-PL')}
             </div>
           </div>
-          <div className="text-right text-xs leading-relaxed opacity-80">
-            <div>{lang === 'en' ? 'Reference total' : 'Suma referencyjna'}</div>
-            <div className="text-base font-extrabold line-through">
+          <div className="text-right text-[12px] leading-relaxed text-fg-subtle">
+            <div>{lang === 'en' ? 'Ref. total' : 'Suma ref.'}</div>
+            <div className="text-base font-medium line-through">
               {formatPln(pricing.listValue, lang === 'en' ? 'en-GB' : 'pl-PL')}
             </div>
           </div>
         </div>
         <Link
           to={`/pakiety/${bundle.slug}`}
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[10px] bg-white px-4 py-3 text-sm font-extrabold text-black no-underline"
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-medium no-underline transition-all duration-300 hover:opacity-90"
+          style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}
         >
           {lang === 'en' ? 'See package' : 'Zobacz pakiet'}
-          <ArrowRight size={16} />
+          <ArrowRight size={14} />
         </Link>
       </div>
-    </article>
+    </motion.article>
   );
 }
 
-function CustomCard({ size, discount, lang }) {
+function CustomCard({ size, discount, lang, index = 0 }) {
   return (
-    <article className="grid gap-5 rounded-[24px] border border-border bg-white p-6 md:p-7">
-      <div className="flex h-11 w-11 items-center justify-center rounded-[12px] bg-black text-white">
-        <PackagePlus size={21} />
+    <motion.article
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="grid gap-5 rounded-[20px] border bg-white p-6 md:p-7"
+      style={{ borderColor: 'var(--color-border)' }}
+    >
+      <div className="flex h-10 w-10 items-center justify-center rounded-full" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+        <PackagePlus size={18} />
       </div>
       <div>
         <div className="t-eyebrow">{lang === 'en' ? 'Build your own' : 'Wybierz sam'}</div>
         <h3 className="t-h3 mt-3">
           {lang === 'en' ? `Custom box of ${size}` : `Własna paczka ${size}`}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+        <p className="mt-2 text-[13px] leading-relaxed text-fg-muted">
           {lang === 'en'
-            ? 'Repeat the items you use fastest and keep one global discount for the box.'
-            : 'Powtórz płyny, które zużywasz najszybciej i zachowaj jeden globalny rabat paczki.'}
+            ? 'Repeat the items you use fastest and keep one global discount.'
+            : 'Powtórz płyny, które zużywasz najszybciej i zachowaj jeden globalny rabat.'}
         </p>
       </div>
-      <div className="flex items-center justify-between gap-3 rounded-[14px] bg-surface-container-low p-4">
-        <span className="text-sm font-bold">{lang === 'en' ? 'Package discount' : 'Rabat paczki'}</span>
-        <span className="font-display text-3xl font-black">-{discount}%</span>
+      <div className="flex items-center justify-between gap-3 rounded-[14px] p-4" style={{ background: 'var(--color-bg-muted)' }}>
+        <span className="text-[13px] font-medium">{lang === 'en' ? 'Package discount' : 'Rabat paczki'}</span>
+        <span className="font-serif italic text-2xl font-light">-{discount}%</span>
       </div>
       <Link
         to={`/pakiety/wlasna-paczka/${size}`}
-        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[10px] border border-black px-4 py-3 text-sm font-extrabold text-black no-underline"
+        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-[13px] font-medium no-underline transition-all duration-300 hover:bg-black/[0.03]"
+        style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}
       >
         {lang === 'en' ? 'Open builder' : 'Otwórz konfigurator'}
-        <ArrowRight size={16} />
+        <ArrowRight size={14} />
       </Link>
-    </article>
+    </motion.article>
   );
 }
 
@@ -145,44 +155,57 @@ export default function PlansSection({ lang = 'pl' }) {
   const readyBundles = bundles.filter((bundle) => !bundle.isCustomizable && bundle.slug !== 'starter-10');
 
   return (
-    <section id="plans" className="bg-surface px-6 py-24">
+    <section id="plans" className="px-6 py-24" style={{ background: 'var(--color-bg-muted)' }}>
       <div className="mx-auto max-w-7xl">
-        <div className="mb-14 max-w-[760px]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-14 max-w-[660px]"
+        >
           <span className="t-eyebrow">{content.eyebrow}</span>
-          <h2 className="t-h1 mt-3">{content.title}</h2>
+          <h2 className="t-h1 mt-4">{content.title}</h2>
           <p className="t-lead mt-4">{content.lead}</p>
-        </div>
+        </motion.div>
 
         <div className="grid gap-5 lg:grid-cols-[1.1fr_1fr_1fr]">
-          <BundleCard bundle={starter} lang={lang} featured />
-          {readyBundles.map((bundle) => <BundleCard key={bundle.slug} bundle={bundle} lang={lang} />)}
-          <CustomCard size={4} discount={30} lang={lang} />
-          <CustomCard size={8} discount={40} lang={lang} />
+          <BundleCard bundle={starter} lang={lang} featured index={0} />
+          {readyBundles.map((bundle, i) => <BundleCard key={bundle.slug} bundle={bundle} lang={lang} index={i + 1} />)}
+          <CustomCard size={4} discount={30} lang={lang} index={readyBundles.length + 1} />
+          <CustomCard size={8} discount={40} lang={lang} index={readyBundles.length + 2} />
         </div>
 
-        <div className="mt-8 grid gap-5 rounded-[24px] border border-border bg-surface-container-low p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-8 grid gap-5 rounded-[20px] border bg-white p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8"
+          style={{ borderColor: 'var(--color-border)' }}
+        >
           <div>
             <div className="flex items-center gap-2">
-              <Layers3 size={18} />
+              <Layers3 size={16} className="text-fg-subtle" />
               <span className="t-eyebrow">{lang === 'en' ? 'Next catalog step' : 'Kolejny etap katalogu'}</span>
             </div>
             <h3 className="t-h4 mt-3">
               {lang === 'en' ? 'Future Starter 12 will reach a 50% discount.' : 'Docelowy Starter 12 osiągnie rabat 50%.'}
             </h3>
-            <p className="mt-2 max-w-[760px] text-sm leading-relaxed text-fg-muted">
+            <p className="mt-2 max-w-[660px] text-[13px] leading-relaxed text-fg-muted">
               {lang === 'en'
                 ? 'The current launch is built on the 10 final liquids already available in the project.'
                 : 'Obecne wdrożenie pracuje na 10 gotowych płynach, które są już dostępne w projekcie.'}
             </p>
           </div>
-          <div className="flex items-center gap-3 rounded-[16px] border border-border bg-white p-4">
-            <Box size={21} />
+          <div className="flex items-center gap-3 rounded-[14px] border p-4" style={{ borderColor: 'var(--color-border)' }}>
+            <Box size={18} className="text-fg-subtle" />
             <div>
-              <div className="text-xs font-bold text-fg-muted">{lang === 'en' ? 'Launch starter' : 'Starter na start'}</div>
-              <div className="font-display text-2xl font-black">Starter 10 -45%</div>
+              <div className="text-[11px] font-medium text-fg-muted">{lang === 'en' ? 'Launch starter' : 'Starter na start'}</div>
+              <div className="font-serif italic text-xl font-light">Starter 10 -45%</div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

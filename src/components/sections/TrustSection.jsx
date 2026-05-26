@@ -4,21 +4,21 @@ export default function TrustSection({ lang = 'pl' }) {
   const content = copy[lang].heritage;
 
   return (
-    <section className="bg-black py-16 overflow-hidden">
-      <div className="max-w-[880px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-        <div className="flex-1">
-          <h2 className="t-h3 text-white">
-            {content.text}{' '}
-            <span className="text-white/70 italic">{content.highlight}</span>
-          </h2>
-        </div>
-        <div className="flex items-center justify-center">
+    <section className="py-20 px-6" style={{ background: 'var(--color-bg)' }}>
+      <div className="max-w-[800px] mx-auto text-center">
+        <div className="hairline mb-16" />
+        <h2 className="t-editorial">
+          {content.text}{' '}
+          <span style={{ color: 'var(--color-fg-subtle)' }}>{content.highlight}</span>
+        </h2>
+        <div className="mt-12 flex items-center justify-center">
           <img 
-            src="/logo-white.svg"
+            src="/logo-black.svg"
             alt="Płyndo" 
-            className="h-12 object-contain opacity-80"
+            className="h-8 object-contain opacity-30"
           />
         </div>
+        <div className="hairline mt-16" />
       </div>
     </section>
   );

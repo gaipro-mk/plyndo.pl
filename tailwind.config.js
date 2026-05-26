@@ -12,16 +12,16 @@
  */
 
 const labelHues = {
-  dish:    { bg: '#2b5a40', deep: '#133021', pat: '#1b402d', on: '#ffffff' },
-  dw:      { bg: '#a63c45', deep: '#72242b', pat: '#b24750', on: '#ffffff' },
-  laundry: { bg: '#9ecbe8', deep: '#60a5d8', pat: '#b6dbf1', on: '#1e4c7a' },
+  dish:    { bg: '#276142', deep: '#1c623b', pat: '#40725a', on: '#ffffff' },
+  dw:      { bg: '#a7444b', deep: '#72242b', pat: '#bd6266', on: '#ffffff' },
+  laundry: { bg: '#a5c7eb', deep: '#60a5d8', pat: '#bed5f0', on: '#1e4c7a' },
   rinse:   { bg: '#a692c6', deep: '#725ca6', pat: '#8f7bb5', on: '#ffffff' },
   floor:   { bg: '#784638', deep: '#542e24', pat: '#8e5a4b', on: '#ffffff' },
   wc:      { bg: '#e0e0e0', deep: '#a3a3a3', pat: '#d1d1d1', on: '#1a1a1a' },
-  hand:    { bg: '#e4c969', deep: '#b3912e', pat: '#f0d577', on: '#3e341b' },
+  hand:    { bg: '#eac973', deep: '#9f7849', pat: '#eac973', on: '#3e341b' },
   glass:   { bg: '#a7cfea', deep: '#2a7f96', pat: '#bde0f5', on: '#114455' },
-  bath:    { bg: '#2550a4', deep: '#14316a', pat: '#3662b7', on: '#ffffff' },
-  sani:    { bg: '#ebebeb', deep: '#c7c7c7', pat: '#ffffff', on: '#1a1a1a' },
+  bath:    { bg: '#5c77b7', deep: '#3f5398', pat: '#3f5398', on: '#ffffff' },
+  sani:    { bg: '#ececec', deep: '#c7c7c7', pat: '#ffffff', on: '#1a1a1a' },
 };
 
 module.exports = {
@@ -58,10 +58,10 @@ module.exports = {
       },
 
       fontFamily: {
-        sans:    ['Switzer', 'ui-sans-serif', 'system-ui', '-apple-system', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        display: ['Switzer', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif:   ['Lora', '"Cormorant Garamond"', 'Georgia', 'Times New Roman', 'serif'],
-        mono:    ['ui-monospace', 'SFMono-Regular', 'JetBrains Mono', 'Consolas', 'monospace'],
+        sans:    ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif:   ['Cormorant Garamond', 'Georgia', 'serif'],
+        mono:    ['ui-monospace', 'SFMono-Regular', 'Consolas', 'monospace'],
       },
 
       fontSize: {

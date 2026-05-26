@@ -21,7 +21,6 @@ function resolveActiveTheme(theme) {
   if (theme === 'system') {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
-
   return theme;
 }
 
@@ -43,9 +42,8 @@ function HomePage({ lang }) {
 
 function App() {
   const [lang, setLang] = useState('pl');
-  const [theme, setTheme] = useState('system'); // 'light', 'dark', 'system'
-  const [fontScale, setFontScale] = useState('md'); // 'sm', 'md', 'lg'
-  const [resolution, setResolution] = useState('desktop'); // 'mobile', 'tablet', 'desktop'
+  const [theme, setTheme] = useState('system');
+  const [fontScale, setFontScale] = useState('md');
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -60,35 +58,17 @@ function App() {
 
   const activeTheme = resolveActiveTheme(theme);
 
-  const getContainerStyles = () => {
-    switch(resolution) {
-      case 'mobile':
-        return 'max-w-[375px] mx-auto overflow-x-hidden border-x border-outline-variant/30 shadow-2xl h-[812px] overflow-y-auto mt-20 relative no-scrollbar';
-      case 'tablet':
-        return 'max-w-[768px] mx-auto overflow-x-hidden border-x border-outline-variant/30 shadow-2xl h-[1024px] overflow-y-auto mt-20 relative no-scrollbar';
-      case 'desktop':
-      default:
-        return 'w-full';
-    }
-  };
-
-  const getWrapperStyles = () => {
-    if (resolution === 'desktop') return 'min-h-screen bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed';
-    return 'min-h-screen bg-surface-container-lowest text-on-background font-body flex items-start justify-center pt-8 pb-8 !px-4 selection:bg-primary-fixed selection:text-on-primary-fixed';
-  };
-
   return (
-    <div id="top" className={getWrapperStyles()}>
+    <div id="top" className="min-h-screen w-full" style={{ background: 'var(--color-bg)', color: 'var(--color-fg)' }}>
       <RouteEffects lang={lang} />
       <TopNav 
         lang={lang} setLang={setLang}
         theme={theme} setTheme={setTheme}
         fontScale={fontScale} setFontScale={setFontScale}
-        resolution={resolution} setResolution={setResolution}
         activeTheme={activeTheme}
       />
       
-      <div className={`bg-background transition-all duration-300 ${getContainerStyles()}`}>
+      <div className="w-full">
         <Routes>
           <Route path="/" element={<HomePage lang={lang} />} />
           <Route path="/product/:slug" element={<ProductPage lang={lang} />} />

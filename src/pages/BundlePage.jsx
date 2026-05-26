@@ -1,5 +1,6 @@
 import { ArrowLeft, Boxes, ClipboardList } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import BundleComposition from '../components/bundles/BundleComposition';
 import BundlePricePanel from '../components/bundles/BundlePricePanel';
 import QrPlaceholder from '../components/bundles/QrPlaceholder';
@@ -49,7 +50,7 @@ export default function BundlePage({ lang = 'pl' }) {
   const displayName = bundle.i18n?.[lang]?.displayName ?? bundle.name;
 
   return (
-    <main className="px-6 pb-24 pt-[148px]">
+    <main className="px-6 pb-24 pt-[120px]" style={{ background: 'var(--color-bg)' }}>
       <div className="mx-auto max-w-7xl">
         <Breadcrumbs
           lang={lang}
@@ -58,37 +59,49 @@ export default function BundlePage({ lang = 'pl' }) {
             { label: displayName },
           ]}
         />
-        <Link to="/#plans" className="inline-flex items-center gap-2 text-sm font-bold text-fg-muted no-underline">
-          <ArrowLeft size={16} />
+        <Link to="/#plans" className="mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium text-fg-muted no-underline transition-opacity hover:opacity-60 tracking-wide uppercase">
+          <ArrowLeft size={14} />
           {lang === 'en' ? 'Back to packages' : 'Wróć do pakietów'}
         </Link>
 
-        <section className="mt-8 grid gap-8 border-b border-border pb-12 lg:grid-cols-[1fr_360px] lg:items-start">
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mt-8 grid gap-8 border-b pb-12 lg:grid-cols-[1fr_360px] lg:items-start"
+          style={{ borderColor: 'var(--color-border)' }}
+        >
           <div>
             <span className="t-eyebrow">
               {lang === 'en' ? 'Ready Plyndo package' : 'Gotowy pakiet Płyndo'}
             </span>
             <h1 className="t-display-2 mt-4">{displayName}</h1>
-            <p className="t-lead mt-5 max-w-[720px]">{packageLead(bundle, lang)}</p>
+            <p className="t-lead mt-5 max-w-[620px]">{packageLead(bundle, lang)}</p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm font-bold">
-                <Boxes size={16} />
+              <span className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[12px] font-medium" style={{ borderColor: 'var(--color-border-strong)' }}>
+                <Boxes size={14} />
                 {pricing.itemCount} {lang === 'en' ? 'one-litre items' : 'litrowych sztuk'}
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm font-bold">
-                <ClipboardList size={16} />
+              <span className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[12px] font-medium" style={{ borderColor: 'var(--color-border-strong)' }}>
+                <ClipboardList size={14} />
                 {lang === 'en' ? 'Full composition below' : 'Pełny skład poniżej'}
               </span>
             </div>
           </div>
           <BundlePricePanel pricing={pricing} lang={lang} />
-        </section>
+        </motion.section>
 
-        <section className="mt-10 grid gap-6 lg:grid-cols-[1fr_240px]">
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-10 grid gap-6 lg:grid-cols-[1fr_240px]"
+        >
           <div>
             <div className="mb-5">
               <span className="t-eyebrow">{lang === 'en' ? 'Composition' : 'Skład pakietu'}</span>
-              <h2 className="t-h2 mt-2">
+              <h2 className="t-h2 mt-3">
                 {lang === 'en' ? 'Reference values per product line.' : 'Ceny referencyjne przy każdej pozycji.'}
               </h2>
             </div>
@@ -96,16 +109,16 @@ export default function BundlePage({ lang = 'pl' }) {
           </div>
           <div className="grid content-start gap-5">
             <QrPlaceholder lang={lang} />
-            <article className="rounded-[20px] border border-border bg-surface-container-low p-5">
+            <article className="rounded-[16px] border p-5" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
               <div className="t-eyebrow">{lang === 'en' ? 'Shoper handoff' : 'Handoff do Shopera'}</div>
-              <p className="mt-3 text-sm leading-relaxed text-fg-muted">
+              <p className="mt-3 text-[13px] leading-relaxed text-fg-muted">
                 {lang === 'en'
                   ? 'The final CTA will open a prepared cart with this composition and the global package discount.'
                   : 'Docelowy przycisk otworzy koszyk z tym składem oraz globalnym rabatem paczki.'}
               </p>
             </article>
           </div>
-        </section>
+        </motion.section>
       </div>
     </main>
   );
