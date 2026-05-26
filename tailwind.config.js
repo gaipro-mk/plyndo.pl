@@ -58,10 +58,10 @@ module.exports = {
       },
 
       fontFamily: {
-        sans:    ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif:   ['Cormorant Garamond', 'Georgia', 'serif'],
-        mono:    ['ui-monospace', 'SFMono-Regular', 'Consolas', 'monospace'],
+        sans:    ['Switzer', 'ui-sans-serif', 'system-ui', '-apple-system', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        display: ['Switzer', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif:   ['Lora', '"Cormorant Garamond"', 'Georgia', 'Times New Roman', 'serif'],
+        mono:    ['ui-monospace', 'SFMono-Regular', 'JetBrains Mono', 'Consolas', 'monospace'],
       },
 
       fontSize: {
