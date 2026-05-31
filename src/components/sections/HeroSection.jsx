@@ -42,14 +42,35 @@ export default function HeroSection({ lang = 'pl' }) {
   const hero = copy[lang].hero;
   const [idx, setIdx] = useState(0);
   const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused) return;
-    const t = setInterval(() => setIdx(i => (i + 1) % products.length), 3000);
-    return () => clearInterval(t);
-  }, [paused]);
+  const videoRefs = useRef([]);
+  const prevIdx = useRef(idx);
 
   const current = products[idx];
+
+  useEffect(() => {
+    if (paused) {
+      videoRefs.current.forEach(v => v?.pause());
+      return;
+    }
+    
+    const activeVideo = videoRefs.current[idx];
+    if (activeVideo && current.videoSrc) {
+      activeVideo.play().catch(() => {});
+    } else {
+      const t = setTimeout(() => {
+        setIdx(i => (i + 1) % products.length);
+      }, 5000);
+      return () => clearTimeout(t);
+    }
+  }, [idx, paused, current.videoSrc]);
+
+  useEffect(() => {
+    if (prevIdx.current !== idx) {
+      const activeVideo = videoRefs.current[idx];
+      if (activeVideo) activeVideo.currentTime = 0;
+      prevIdx.current = idx;
+    }
+  }, [idx]);
 
   return (
     <section id="top" className="relative pt-[140px] pb-[80px] overflow-hidden" style={{ background: 'var(--color-bg)' }}>
@@ -60,7 +81,16 @@ export default function HeroSection({ lang = 'pl' }) {
             {hero.eyebrow || hero.tag}
           </span>
           <h1 className="t-display-1 mt-6 whitespace-pre-line">
-            {hero.title}
+            {hero.title.split(/(w pakietach)/i).map((part, i) => {
+              if (part.toLowerCase() === 'w pakietach') {
+                return (
+                  <span key={i} style={{ color: current.color.bg, fontStyle: 'italic', fontWeight: 'normal', transition: 'color 0.7s ease' }}>
+                    {part}
+                  </span>
+                );
+              }
+              return <span key={i}>{part}</span>;
+            })}
           </h1>
           <p className="t-lead mt-8 max-w-[480px]" style={{ lineHeight: 1.7 }}>
             {hero.lead}
@@ -96,36 +126,52 @@ export default function HeroSection({ lang = 'pl' }) {
           </div>
         </div>
 
-        {/* Right — product image on white */}
+        {/* Right — product video/image showcase */}
         <div 
           className="relative flex items-center justify-center"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          {/* Subtle background circle accent */}
-          <div 
-            className="absolute inset-[10%] rounded-full opacity-[0.08] transition-all duration-700"
-            style={{ background: current.color.bg }}
-          />
-          
-          <div className="relative aspect-[4/5] w-full max-w-[480px]">
-            {products.map((p, j) => (
-              <img 
-                key={p.id} 
-                src={p.image} 
-                alt={`${p.name}`}
-                className="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                style={{
-                  opacity: j === idx ? 1 : 0,
-                  transform: j === idx ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(8px)',
-                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.12))'
-                }}
-              />
-            ))}
+          <div className="relative aspect-[9/16] w-full max-w-[360px] rounded-[24px] overflow-hidden" style={{ boxShadow: '0 20px 40px rgba(0,0,0,0.12)' }}>
+            {products.map((p, j) => {
+              const isActive = j === idx;
+              return (
+                <div
+                  key={p.id}
+                  className="absolute inset-0 w-full h-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  style={{
+                    opacity: isActive ? 1 : 0,
+                    transform: isActive ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(8px)',
+                    zIndex: isActive ? 10 : 0,
+                    pointerEvents: isActive ? 'auto' : 'none',
+                    background: '#000'
+                  }}
+                >
+                  {p.videoSrc ? (
+                    <video
+                      ref={el => videoRefs.current[j] = el}
+                      src={p.videoSrc}
+                      muted
+                      playsInline
+                      onEnded={() => {
+                        if (!paused && isActive) setIdx(i => (i + 1) % products.length);
+                      }}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <img 
+                      src={p.image} 
+                      alt={`${p.name}`}
+                      className="w-full h-full object-contain p-8"
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* Product name overlay */}
-          <div className="absolute bottom-0 left-0 right-0 text-center pb-2 transition-all duration-500">
+          <div className="absolute -bottom-8 left-0 right-0 text-center pb-2 transition-all duration-500">
             <span className="text-[11px] font-medium uppercase tracking-[0.14em]" style={{ color: 'var(--color-fg-subtle)' }}>
               {current.i18n?.[lang]?.displayName ?? current.name}
             </span>

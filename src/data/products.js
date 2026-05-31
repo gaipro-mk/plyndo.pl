@@ -12,7 +12,7 @@ const productCatalog = [
     color: { bg: '#276142', fg: '#1c623b', text: '#FFFFFF', pattern: '#40725a' },
     iconType: 'naczynia',
     bgPattern: 'monstera',
-    image: '/labels/front-01-naczyn.png'
+    image: '/labels/front-01-naczyn.webp'
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const productCatalog = [
     color: { bg: '#a7444b', fg: '#72242b', text: '#FFFFFF', pattern: '#bd6266' },
     iconType: 'zmywarka',
     bgPattern: 'geometry',
-    image: '/labels/front-02-zmywarki.png'
+    image: '/labels/front-02-zmywarki.webp'
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ const productCatalog = [
     color: { bg: '#a5c7eb', fg: '#60A5D8', text: '#1E4C7A', pattern: '#bed5f0' },
     iconType: 'pranie',
     bgPattern: 'brush',
-    image: '/labels/front-03-prania.png'
+    image: '/labels/front-03-prania.webp'
   },
   {
     id: 4,
@@ -60,7 +60,7 @@ const productCatalog = [
     color: { bg: '#A692C6', fg: '#725CA6', text: '#FFFFFF', pattern: '#8F7BB5' },
     iconType: 'plukanie',
     bgPattern: 'flowers',
-    image: '/labels/front-04-plukania.png'
+    image: '/labels/front-04-plukania.webp'
   },
   {
     id: 5,
@@ -76,7 +76,7 @@ const productCatalog = [
     color: { bg: '#784638', fg: '#542E24', text: '#FFFFFF', pattern: '#8E5A4B' },
     iconType: 'podlogi',
     bgPattern: 'wood',
-    image: '/labels/front-05-podlog.png'
+    image: '/labels/front-05-podlog.webp'
   },
   {
     id: 6,
@@ -92,7 +92,7 @@ const productCatalog = [
     color: { bg: '#E0E0E0', fg: '#A3A3A3', text: '#1A1A1A', pattern: '#D1D1D1' },
     iconType: 'wc',
     bgPattern: 'waves',
-    image: '/labels/front-06-wc.png'
+    image: '/labels/front-06-wc.webp'
   },
   {
     id: 7,
@@ -108,7 +108,7 @@ const productCatalog = [
     color: { bg: '#eac973', fg: '#9f7849', text: '#3E341B', pattern: '#eac973' },
     iconType: 'rece',
     bgPattern: 'topo',
-    image: '/labels/front-07-rece.png'
+    image: '/labels/front-07-rece.webp'
   },
   {
     id: 8,
@@ -124,7 +124,7 @@ const productCatalog = [
     color: { bg: '#A7CFEA', fg: '#2A7F96', text: '#114455', pattern: '#BDE0F5' },
     iconType: 'szyby',
     bgPattern: 'floral',
-    image: '/labels/front-08-szyby.png'
+    image: '/labels/front-08-szyby.webp'
   },
   {
     id: 9,
@@ -140,7 +140,7 @@ const productCatalog = [
     color: { bg: '#5c77b7', fg: '#3f5398', text: '#FFFFFF', pattern: '#3f5398' },
     iconType: 'lazienka',
     bgPattern: 'blobs',
-    image: '/labels/front-09-lazienki.png'
+    image: '/labels/front-09-lazienki.webp'
   },
   {
     id: 10,
@@ -156,7 +156,7 @@ const productCatalog = [
     color: { bg: '#ececec', fg: '#C7C7C7', text: '#1A1A1A', pattern: '#FFFFFF' },
     iconType: 'dezynfekcja',
     bgPattern: 'confetti',
-    image: '/labels/front-10-dezynfekcji.png'
+    image: '/labels/front-10-dezynfekcji.webp'
   }
 ];
 
@@ -399,9 +399,67 @@ function createProductMediaSlots(labelImage) {
 export const products = productCatalog.map((product) => {
   const offer = productOfferFields[product.slug];
 
+  let videoSrc = null;
+  let bottleFront = null;
+  let bottleBack = null;
+
+  switch(product.slug) {
+    case 'naczynia': 
+      videoSrc = '/video/vid_exploaded_naczynia.mp4'; 
+      bottleFront = '/images/bottles/bottle-front-naczynia.webp';
+      bottleBack = '/images/bottles/bottle-back-naczynia.webp';
+      break;
+    case 'zmywarka': 
+      videoSrc = '/video/vid_zmywarka.mp4'; 
+      bottleFront = '/images/bottles/bottle-front-zmywarka.webp';
+      bottleBack = '/images/bottles/bottle-back-zmywarka.webp';
+      break;
+    case 'pranie': 
+      videoSrc = '/video/vid_pranie.mp4'; 
+      bottleFront = '/images/bottles/bottle-front-pranie.webp';
+      bottleBack = '/images/bottles/bottle-back-pranie.webp';
+      break;
+    case 'plukanie': 
+      videoSrc = '/video/vid_plukanie.mp4'; 
+      bottleFront = '/images/bottles/bottle-front-plukanie.webp';
+      bottleBack = '/images/bottles/bottle-back-plukanie.webp';
+      break;
+    case 'podlogi': 
+      videoSrc = '/video/vid_podlogi.mp4'; 
+      bottleFront = '/images/bottles/bottle-front-podlogi.webp';
+      bottleBack = '/images/bottles/bottle-back-podlogi.webp';
+      break;
+    case 'wc': 
+      videoSrc = '/video/vid_wc.mp4'; 
+      bottleFront = '/images/bottles/bottle-front-wc.webp';
+      bottleBack = '/images/bottles/bottle-back-wc.webp';
+      break;
+    case 'rece': 
+      videoSrc = '/video/vid_rece.mp4'; 
+      bottleFront = '/images/bottles/bottle-front-rece.webp';
+      bottleBack = '/images/bottles/bottle-back-rece.webp';
+      break;
+    case 'szyby': 
+      videoSrc = '/video/vid_szyby.mp4'; 
+      bottleFront = '/images/bottles/bottle-front-szyby.webp';
+      bottleBack = '/images/bottles/bottle-back-szyby.webp';
+      break;
+    case 'lazienka': 
+      videoSrc = '/video/vid_lazienka.mp4'; 
+      bottleFront = '/images/bottles/bottle-front-lazienka.webp';
+      bottleBack = '/images/bottles/bottle-back-lazienka.webp';
+      break;
+    case 'dezynfekcja': 
+      videoSrc = null; 
+      break;
+  }
+
   return {
     ...product,
     ...offer,
+    videoSrc,
+    bottleFront,
+    bottleBack,
     i18n: {
       pl: {
         ...offer.i18n.pl,

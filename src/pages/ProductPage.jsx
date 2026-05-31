@@ -251,7 +251,7 @@ export default function ProductPage({ lang = 'pl' }) {
               <p className="mt-6 max-w-[560px] text-[15px] leading-[1.7]" style={{ color: 'var(--color-fg-muted)' }}>{detail.description}</p>
             </motion.div>
             
-            {product.slug === 'naczynia' ? (
+            {product.videoSrc ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -259,7 +259,7 @@ export default function ProductPage({ lang = 'pl' }) {
                 className="flex flex-col sm:flex-row items-center justify-center gap-6 xl:gap-10 mt-6 lg:mt-0"
               >
                 <HeroVideo 
-                  videoSrc="/video/vid_exploaded_naczynia.mp4" 
+                  videoSrc={product.videoSrc} 
                   className="h-[360px] md:h-[400px] lg:h-[380px] xl:h-[460px]" 
                 />
                 <div className="h-[360px] md:h-[400px] lg:h-[380px] xl:h-[460px] flex-shrink-0">
@@ -294,7 +294,8 @@ export default function ProductPage({ lang = 'pl' }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid gap-8 py-14 lg:grid-cols-[0.72fr_1fr] lg:items-start"
+            className="grid gap-8 py-14 lg:grid-cols-[0.72fr_1fr] lg:items-start border-b"
+            style={{ borderColor: 'var(--color-border)' }}
           >
             <div className="max-w-[400px]">
               <span className="t-eyebrow">{labels.mediaTitle}</span>
@@ -304,6 +305,40 @@ export default function ProductPage({ lang = 'pl' }) {
             <div className="grid gap-4 sm:grid-cols-2">
               <MediaSlot title={labels.effect} note={labels.effectNote} />
               <MediaSlot title={labels.guide} note={labels.guideNote} />
+            </div>
+          </motion.section>
+
+          {/* Packaging Details section */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="py-14 border-b"
+            style={{ borderColor: 'var(--color-border)' }}
+          >
+            <div className="mb-10">
+              <span className="t-eyebrow">Opakowanie</span>
+              <h2 className="t-h2 mt-3">Szczegóły butelki i etykiety</h2>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-3">
+              <div className="rounded-[16px] border overflow-hidden relative bg-white aspect-[3/4] flex items-center justify-center" style={{ borderColor: 'var(--color-border)' }}>
+                {product.bottleFront ? (
+                  <img src={product.bottleFront} alt="Przód" className="absolute inset-0 w-full h-full object-cover" />
+                ) : (
+                  <div className="text-gray-400 text-sm">Brak zdjęcia</div>
+                )}
+              </div>
+              <div className="rounded-[16px] border overflow-hidden relative bg-white aspect-[3/4] flex items-center justify-center" style={{ borderColor: 'var(--color-border)' }}>
+                {product.bottleBack ? (
+                  <img src={product.bottleBack} alt="Tył" className="absolute inset-0 w-full h-full object-cover" />
+                ) : (
+                  <div className="text-gray-400 text-sm">Brak zdjęcia</div>
+                )}
+              </div>
+              <div className="rounded-[16px] border overflow-hidden relative bg-white aspect-[3/4] flex items-center justify-center" style={{ borderColor: 'var(--color-border)' }}>
+                <img src={product.image} alt="Etykieta" className="absolute inset-0 w-full h-full object-cover" />
+              </div>
             </div>
           </motion.section>
 

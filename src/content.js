@@ -22,7 +22,7 @@ export const copy = {
     },
     hero: {
       eyebrow: 'Nowa marka chemii kupowanej kartonami',
-      title: 'Płyndo.pl.\nPłyny do domu i firmy w pakietach.',
+      title: 'Płyny do domu i firmy\nw pakietach.',
       lead:
         'Poznaj całą linię w Starter 10 albo dobierz paczkę 4 lub 8 sztuk do tego, co naprawdę zużywasz.',
       primary: 'Zobacz pakiety',
