@@ -35,22 +35,22 @@ export default function ProductGridSection({ lang = 'pl' }) {
               className="no-underline text-inherit block cursor-pointer group"
             >
               {/* White card with product image */}
-              <div 
-                className="rounded-[16px] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center aspect-[4/5] border"
+              <div
+                className="rounded-[16px] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] aspect-[4/5] border"
                 style={{
                   borderColor: hovered === p.id ? 'rgba(0,0,0,0.12)' : 'var(--color-border)',
-                  background: 'var(--color-bg)',
+                  background: p.color.bg,
                   boxShadow: hovered === p.id ? 'var(--shadow-md)' : 'none',
                   transform: hovered === p.id ? 'translateY(-4px)' : 'translateY(0)',
                 }}
               >
-                <img 
-                  src={p.image} 
+                <img
+                  src={p.image}
                   alt={p.i18n?.[lang]?.displayName ?? p.name}
-                  className="w-[80%] h-[80%] object-contain transition-transform duration-600 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  className="w-full h-full object-cover transition-transform duration-600 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   style={{
-                    transform: hovered === p.id ? 'scale(1.06)' : 'scale(1)',
-                    filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.08))'
+                    transform: hovered === p.id ? 'scale(1.04)' : 'scale(1)',
+                    objectPosition: 'top center',
                   }}
                 />
               </div>

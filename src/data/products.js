@@ -528,6 +528,8 @@ export const products = productCatalog.map((product) => {
     videoSrc,
     bottleFront,
     bottleBack,
+    labelFront: product.image,
+    labelBack: product.image.replace('/front-', '/back-'),
     i18n: {
       pl: {
         ...offer.i18n.pl,

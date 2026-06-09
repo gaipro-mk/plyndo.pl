@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ChevronLeft, CirclePlay, Info, Package, ShieldAlert, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -126,6 +126,79 @@ function HeroVideo({ videoSrc, className = '' }) {
   );
 }
 
+function VideoPanel({ videoSrc, lang, className = '' }) {
+  if (videoSrc) {
+    return <HeroVideo videoSrc={videoSrc} className={className} />;
+  }
+  return (
+    <div
+      className={`relative flex aspect-[9/16] flex-shrink-0 overflow-hidden rounded-[16px] border ${className}`}
+      style={{ borderColor: 'var(--color-border)' }}
+    >
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(155deg, #232323 0%, #3a3a3a 100%)' }} />
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur">
+          <CirclePlay size={26} />
+        </span>
+        <div className="text-[12px] font-medium text-white/85">
+          {lang === 'en' ? 'Product video coming soon' : 'Film produktowy wkrótce'}
+        </div>
+        <div className="text-[11px] leading-relaxed text-white/55">
+          {lang === 'en' ? 'Placeholder slot for the hero clip' : 'Miejsce na film produktowy'}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LabelSlideshow({ front, back, alt, lang = 'pl', className = '' }) {
+  const slides = [
+    { src: front, label: lang === 'en' ? 'Front label' : 'Etykieta — przód', icon: 'layers', fit: 'cover' },
+    { src: back, label: lang === 'en' ? 'Usage & ingredients' : 'Opis, użycie i skład', icon: 'file', fit: 'contain' },
+  ].filter((s) => s.src);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (slides.length < 2) return undefined;
+    const timer = setInterval(() => setIndex((prev) => (prev + 1) % slides.length), 3800);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  const current = slides[index] ?? slides[0];
+
+  return (
+    <div
+      className={`relative flex-shrink-0 overflow-hidden rounded-[16px] border bg-white ${className}`}
+      style={{ borderColor: 'var(--color-border)', aspectRatio: '4 / 5' }}
+    >
+      {slides.map((s, i) => (
+        <img
+          key={i}
+          src={s.src}
+          alt={alt}
+          className="absolute inset-0 h-full w-full transition-opacity duration-[900ms] ease-out"
+          style={{ opacity: i === index ? 1 : 0, objectFit: s.fit }}
+        />
+      ))}
+
+      {slides.length > 1 && (
+        <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setIndex(i)}
+              aria-label={`${lang === 'en' ? 'Slide' : 'Slajd'} ${i + 1}`}
+              className="h-1.5 cursor-pointer rounded-full border-none p-0 transition-all duration-300"
+              style={{ width: i === index ? 18 : 6, background: i === index ? 'var(--color-fg)' : 'rgba(0,0,0,0.25)' }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ProductPage({ lang = 'pl' }) {
   const { slug } = useParams();
   const product = products.find(p => p.slug === slug);
@@ -219,11 +292,7 @@ export default function ProductPage({ lang = 'pl' }) {
           </motion.header>
 
           {/* Hero section — white-based with product image */}
-          <section className={`grid items-center gap-12 border-b pb-16 ${
-            product.slug === 'naczynia'
-              ? 'lg:grid-cols-[minmax(0,1fr)_auto]'
-              : 'lg:grid-cols-[minmax(0,1fr)_minmax(340px,520px)]'
-          } lg:gap-12 xl:gap-20`} style={{ borderColor: 'var(--color-border)' }}>
+          <section className="grid items-center gap-12 border-b pb-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12 xl:gap-16" style={{ borderColor: 'var(--color-border)' }}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -251,41 +320,25 @@ export default function ProductPage({ lang = 'pl' }) {
               <p className="mt-6 max-w-[560px] text-[15px] leading-[1.7]" style={{ color: 'var(--color-fg-muted)' }}>{detail.description}</p>
             </motion.div>
             
-            {product.videoSrc ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="flex flex-col sm:flex-row items-center justify-center gap-6 xl:gap-10 mt-6 lg:mt-0"
-              >
-                <HeroVideo 
-                  videoSrc={product.videoSrc} 
-                  className="h-[360px] md:h-[400px] lg:h-[380px] xl:h-[460px]" 
-                />
-                <div className="h-[360px] md:h-[400px] lg:h-[380px] xl:h-[460px] flex-shrink-0">
-                  <img
-                    src={product.image}
-                    alt={productName}
-                    className="h-full w-auto object-contain"
-                    style={{ filter: 'drop-shadow(0 16px 32px rgba(0,0,0,0.1))' }}
-                  />
-                </div>
-              </motion.div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="mx-auto flex w-full max-w-[480px] items-center justify-center"
-              >
-                <img
-                  src={product.image}
-                  alt={productName}
-                  className="h-auto max-h-[600px] w-full object-contain"
-                  style={{ filter: 'drop-shadow(0 16px 32px rgba(0,0,0,0.1))' }}
-                />
-              </motion.div>
-            )}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="flex flex-col items-center justify-center gap-6 sm:flex-row xl:gap-8 mt-6 lg:mt-0"
+            >
+              <VideoPanel
+                videoSrc={product.videoSrc}
+                lang={lang}
+                className="h-[360px] md:h-[420px] lg:h-[400px] xl:h-[470px]"
+              />
+              <LabelSlideshow
+                front={product.labelFront ?? product.image}
+                back={product.labelBack}
+                alt={productName}
+                lang={lang}
+                className="h-[360px] md:h-[420px] lg:h-[400px] xl:h-[470px]"
+              />
+            </motion.div>
           </section>
 
           {/* Media section */}
@@ -303,7 +356,7 @@ export default function ProductPage({ lang = 'pl' }) {
               <p className="mt-4 text-[13px] leading-relaxed text-fg-muted">{labels.mediaLead}</p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <MediaSlot title={labels.effect} note={labels.effectNote} />
+              <MediaSlot title={labels.effect} note={labels.effectNote} videoSrc={product.videoSrc} />
               <MediaSlot title={labels.guide} note={labels.guideNote} />
             </div>
           </motion.section>
@@ -337,7 +390,7 @@ export default function ProductPage({ lang = 'pl' }) {
                 )}
               </div>
               <div className="rounded-[16px] border overflow-hidden relative bg-white aspect-[3/4] flex items-center justify-center" style={{ borderColor: 'var(--color-border)' }}>
-                <img src={product.image} alt="Etykieta" className="absolute inset-0 w-full h-full object-cover" />
+                <img src={product.labelBack ?? product.image} alt={lang === 'en' ? 'Information label' : 'Etykieta z opisem'} className="absolute inset-0 w-full h-full object-cover" />
               </div>
             </div>
           </motion.section>
