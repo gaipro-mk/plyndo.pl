@@ -18,7 +18,7 @@ const pages = {
         {
           title: 'Nowa linia dystrybucji',
           copy:
-            'Płyndo.pl sprzedaje obecną linię w kartonach 4, 8 i Starter 10. Ten model upraszcza logistykę, pozwala lepiej policzyć rabat paczki i daje klientowi wygodne uzupełnianie zapasu.',
+            'Płyndo.pl sprzedaje obecną linię w paczkach po 4, 8 i 12 sztuk. Ten model upraszcza logistykę, pozwala lepiej policzyć rabat paczki i daje klientowi wygodne uzupełnianie zapasu.',
         },
         {
           title: 'Zaplecze jakości',
@@ -36,7 +36,7 @@ const pages = {
         {
           title: 'A new distribution line',
           copy:
-            'Plyndo.pl sells the current line in boxes of 4, 8, and Starter 10. This model simplifies logistics, makes package discounts clear, and keeps replenishment flexible.',
+            'Plyndo.pl sells the current line in boxes of 4, 8, and 12. This model simplifies logistics, makes package discounts clear, and keeps replenishment flexible.',
         },
         {
           title: 'Quality background',

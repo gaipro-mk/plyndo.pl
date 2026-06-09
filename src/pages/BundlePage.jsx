@@ -11,9 +11,9 @@ import { calculateBundlePricing } from '../lib/bundlePricing';
 
 function packageLead(bundle, lang) {
   const copy = {
-    'starter-10': {
-      pl: 'Pierwszy zakup pełnej obecnej linii. Sprawdzasz wszystkie 10 płynów i później uzupełniasz tylko te, które schodzą szybciej.',
-      en: 'The first purchase for the current full line. Try all 10 liquids, then refill only what runs out fastest.',
+    'komplet-12': {
+      pl: 'Pełna obecna linia w jednym kartonie. Sprawdzasz wszystkie 12 płynów i później uzupełniasz tylko te, które schodzą szybciej.',
+      en: 'The complete current line in one box. Try all 12 liquids, then refill only what runs out fastest.',
     },
     'dom-codzienny-4': {
       pl: 'Mały karton do podstawowych stref domu: kuchnia, podłoga i łazienka.',
@@ -23,6 +23,10 @@ function packageLead(bundle, lang) {
       pl: 'Domowy zapas obejmujący sprzątanie, higienę i pranie bez przypadkowych nadwyżek.',
       en: 'A home stock-up covering cleaning, hygiene, and laundry without random extras.',
     },
+    'dom-komplet-12': {
+      pl: 'Pełen domowy zapas na cały miesiąc – od kuchni i prania po łazienkę, odkamienianie i udrażnianie rur.',
+      en: 'A full month of home supplies — from the kitchen and laundry to the bathroom, descaling, and drain care.',
+    },
     'firma-podstawowa-4': {
       pl: 'Kompaktowy zestaw dla mniejszego biura, lokalu lub gabinetu.',
       en: 'A compact set for a smaller office, venue, or studio.',
@@ -30,6 +34,10 @@ function packageLead(bundle, lang) {
     'firma-operacyjna-8': {
       pl: 'Pakiet dla firmy z większym naciskiem na podłogi, sanitariaty i powierzchnie wspólne.',
       en: 'A business set weighted toward floors, sanitary zones, and shared surfaces.',
+    },
+    'firma-gastro-12': {
+      pl: 'Pakiet dla gastronomii i firm: mycie naczyń, nabłyszczanie i odkamienianie zmywarek oraz udrażnianie rur w jednym kartonie.',
+      en: 'A pack for gastronomy and businesses: dishwashing, rinse aid, dishwasher descaling, and drain care in one box.',
     },
   };
 

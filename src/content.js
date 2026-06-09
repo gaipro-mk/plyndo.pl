@@ -3,7 +3,7 @@ export const copy = {
     htmlLang: 'pl',
     title: 'Płyndo.pl | Płyny do domu i firmy w pakietach',
     description:
-      'Płyndo.pl pokazuje 10 płynów do domu i firmy kupowanych w pakietach 4, 8 oraz Starter 10. Wybierz gotowy zestaw albo skomponuj własną paczkę.',
+      'Płyndo.pl pokazuje 12 płynów do domu i firmy kupowanych w paczkach po 4, 8 i 12 sztuk. Wybierz gotowy zestaw albo skomponuj własną paczkę.',
     brand: 'Płyndo.pl',
     nav: {
       products: 'Produkty',
@@ -24,13 +24,13 @@ export const copy = {
       eyebrow: 'Nowa marka chemii kupowanej kartonami',
       title: 'Płyny do domu i firmy\nw pakietach.',
       lead:
-        'Poznaj całą linię w Starter 10 albo dobierz paczkę 4 lub 8 sztuk do tego, co naprawdę zużywasz.',
+        'Poznaj całą linię w Komplecie 12 albo dobierz paczkę 4, 8 lub 12 sztuk do tego, co naprawdę zużywasz.',
       primary: 'Zobacz pakiety',
       secondary: 'Poznaj produkty',
       metrics: [
-        { value: '10', label: 'obecnych płynów w Starter 10' },
+        { value: '12', label: 'obecnych płynów w Komplecie 12' },
         { value: '4', label: 'sztuki w małej paczce uzupełniającej' },
-        { value: '8', label: 'sztuk w głównej paczce zapasu' },
+        { value: '12', label: 'sztuk w pełnej paczce zapasu' },
         { value: 'PL', label: 'zakup ciężkich płynów bez wyjścia do marketu' },
       ],
     },
@@ -40,7 +40,7 @@ export const copy = {
     },
     productGrid: {
       title: 'Katalog produktów',
-      heading: '10 płynów gotowych do pakietów.',
+      heading: '12 płynów gotowych do pakietów.',
       lead:
         'Każdy produkt ma własne zastosowanie, cenę referencyjną i stronę szczegółów. Zakup finalizujesz jako część gotowej lub własnej paczki.',
       cta: 'Przejdź do pakietów',
@@ -64,7 +64,7 @@ export const copy = {
         {
           title: 'Uzupełniasz po swojemu',
           copy:
-            'Po starterze możesz dokupić cztery lub osiem sztuk tych płynów, które kończą się u Ciebie najszybciej.',
+            'Po Komplecie możesz dokupić paczkę 4, 8 lub 12 sztuk tych płynów, które kończą się u Ciebie najszybciej.',
         },
       ],
     },
@@ -77,13 +77,13 @@ export const copy = {
     },
     operations: {
       eyebrow: 'Jak kupujesz',
-      title: 'Od Starter 10 do własnej paczki uzupełniającej.',
+      title: 'Od Kompletu 12 do własnej paczki uzupełniającej.',
       steps: [
         {
           step: '01',
           title: 'Wybierasz wejście',
           copy:
-            'Starter 10 pokazuje całą obecną linię. Gotowe pakiety Dom i Firma podają skład od razu.',
+            'Komplet 12 pokazuje całą obecną linię. Gotowe pakiety Dom i Firma podają skład od razu.',
         },
         {
           step: '02',
@@ -105,7 +105,7 @@ export const copy = {
       home: {
         title: 'Dom',
         copy:
-          'Kuchnia, łazienka, podłogi, pranie i szyby. Starter pokazuje pełną linię, a później dokupujesz to, co schodzi szybciej.',
+          'Kuchnia, łazienka, podłogi, pranie i szyby. Komplet pokazuje pełną linię, a później dokupujesz to, co schodzi szybciej.',
         bullets: ['Pranie i płukanie w gotowych zestawach domu', 'Paczki 4 dla szybkiego uzupełnienia', 'Duplikaty przy większym zużyciu'],
       },
       business: {
@@ -122,17 +122,17 @@ export const copy = {
         {
           question: 'Czy mogę kupić jedną butelkę?',
           answer:
-            'Nie z tego landingu. Oferta Płyndo.pl jest zaprojektowana dla pakietów 4, 8 oraz startera całej aktualnej linii.',
+            'Nie z tego landingu. Oferta Płyndo.pl jest zaprojektowana dla paczek po 4, 8 i 12 sztuk z całej aktualnej linii.',
         },
         {
           question: 'Jak liczony jest rabat?',
           answer:
-            'Pokazujemy ceny referencyjne produktów i sumę wartości paczki. Paczka 4 ma rabat 30%, paczka 8 rabat 40%, a obecny Starter 10 rabat 45%. Docelowy Starter 12 osiągnie 50%. Rabat oraz oszczędność liczymy globalnie dla całego pakietu, nie dla pojedynczej butelki.',
+            'Pokazujemy ceny referencyjne produktów i sumę wartości paczki. Paczka 4 ma rabat 30%, paczka 8 rabat 40%, a paczka 12 oraz Komplet 12 rabat 50%. Rabat oraz oszczędność liczymy globalnie dla całego pakietu, nie dla pojedynczej butelki.',
         },
         {
-          question: 'Czy Starter 10 jest obowiązkowy?',
+          question: 'Czy Komplet 12 jest obowiązkowy?',
           answer:
-            'Nie. Możesz zacząć od gotowego zestawu albo własnej paczki 4 lub 8 sztuk.',
+            'Nie. Możesz zacząć od gotowego zestawu albo własnej paczki 4, 8 lub 12 sztuk.',
         },
         {
           question: 'Czy mogę wybrać kilka sztuk tego samego płynu?',
@@ -142,7 +142,7 @@ export const copy = {
         {
           question: 'Co jest przygotowane dla firmy?',
           answer:
-            'Gotowe pakiety firmowe skupiają się na podłogach, WC, łazience, myciu rąk, szybach, dezynfekcji i opcjonalnej kuchni.',
+            'Gotowe pakiety firmowe skupiają się na podłogach, WC, łazience, myciu rąk, szybach, odkamienianiu, nabłyszczaniu i udrażnianiu rur oraz myciu naczyń.',
         },
         {
           question: 'Gdzie finalizuję zakup?',
@@ -166,7 +166,7 @@ export const copy = {
     htmlLang: 'en',
     title: 'Plyndo.pl | Cleaning liquids for home and business in packages',
     description:
-      'Plyndo.pl presents 10 cleaning liquids sold as packages of 4, 8, and the Starter 10. Choose a ready bundle or build your own box.',
+      'Plyndo.pl presents 12 cleaning liquids sold as packages of 4, 8, and 12. Choose a ready bundle or build your own box.',
     brand: 'Plyndo.pl',
     nav: {
       products: 'Products',
@@ -187,13 +187,13 @@ export const copy = {
       eyebrow: 'A cleaning line built for boxes',
       title: 'Plyndo.pl.\nCleaning liquids for home and business packages.',
       lead:
-        'Start with the full Starter 10 line or choose a box of 4 or 8 based on what you actually use.',
+        'Start with the full Complete 12 line or choose a box of 4, 8, or 12 based on what you actually use.',
       primary: 'See packages',
       secondary: 'Explore products',
       metrics: [
-        { value: '10', label: 'current liquids in Starter 10' },
+        { value: '12', label: 'current liquids in Complete 12' },
         { value: '4', label: 'items in a small refill box' },
-        { value: '8', label: 'items in the main stock-up box' },
+        { value: '12', label: 'items in the full stock-up box' },
         { value: 'PL', label: 'heavy essentials delivered instead of carried' },
       ],
     },
@@ -203,7 +203,7 @@ export const copy = {
     },
     productGrid: {
       title: 'Product catalog',
-      heading: '10 liquids ready for packages.',
+      heading: '12 liquids ready for packages.',
       lead:
         'Each product has a clear role, a reference price, and a detail page. Purchase happens inside a ready or custom package.',
       cta: 'Go to packages',
@@ -227,7 +227,7 @@ export const copy = {
         {
           title: 'Refill your way',
           copy:
-            'After the starter, build a box of four or eight around the liquids that run out fastest for you.',
+            'After the complete set, build a box of 4, 8, or 12 around the liquids that run out fastest for you.',
         },
       ],
     },
@@ -240,13 +240,13 @@ export const copy = {
     },
     operations: {
       eyebrow: 'How buying works',
-      title: 'From Starter 10 to your own refill box.',
+      title: 'From Complete 12 to your own refill box.',
       steps: [
         {
           step: '01',
           title: 'Choose an entry point',
           copy:
-            'Starter 10 covers the current line. Ready Home and Business bundles show their composition immediately.',
+            'Complete 12 covers the current line. Ready Home and Business bundles show their composition immediately.',
         },
         {
           step: '02',
@@ -268,7 +268,7 @@ export const copy = {
       home: {
         title: 'Home',
         copy:
-          'Kitchen, bathroom, floors, laundry, and glass. The starter introduces the full line, then refills follow your use.',
+          'Kitchen, bathroom, floors, laundry, and glass. Complete 12 introduces the full line, then refills follow your use.',
         bullets: ['Laundry products in ready home sets', 'Boxes of 4 for quick refills', 'Duplicates for higher consumption'],
       },
       business: {
@@ -285,17 +285,17 @@ export const copy = {
         {
           question: 'Can I buy one bottle?',
           answer:
-            'Not from this landing page. Plyndo.pl is built around boxes of 4, 8, and the starter for the current line.',
+            'Not from this landing page. Plyndo.pl is built around boxes of 4, 8, and 12 from the current line.',
         },
         {
           question: 'How is the discount calculated?',
           answer:
-            'We show product reference prices and the package total value. A box of 4 is discounted by 30%, a box of 8 by 40%, and the current Starter 10 by 45%. The future Starter 12 reaches 50%. Discount and saving are calculated globally for the full package.',
+            'We show product reference prices and the package total value. A box of 4 is discounted by 30%, a box of 8 by 40%, and a box of 12 or Complete 12 by 50%. Discount and saving are calculated globally for the full package.',
         },
         {
-          question: 'Is Starter 10 mandatory?',
+          question: 'Is Complete 12 mandatory?',
           answer:
-            'No. Start with a ready set or build your own box of 4 or 8 items.',
+            'No. Start with a ready set or build your own box of 4, 8, or 12 items.',
         },
         {
           question: 'Can I repeat the same liquid?',
@@ -305,7 +305,7 @@ export const copy = {
         {
           question: 'What is prepared for businesses?',
           answer:
-            'Business sets focus on floors, WC, bathroom, hand washing, glass, disinfection, and optional kitchen use.',
+            'Business sets focus on floors, WC, bathroom, hand washing, glass, descaling, rinse aid, drain care, and dishwashing.',
         },
         {
           question: 'Where is checkout finished?',

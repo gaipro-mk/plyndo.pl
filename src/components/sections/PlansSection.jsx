@@ -25,9 +25,11 @@ function audienceLabel(audience, lang) {
 
 /* Color accent for left border strip — subtle product-color accent */
 const accentColors = {
-  'starter-10': 'var(--label-bath-bg)',
+  'komplet-12': 'var(--label-bath-bg)',
   'dom-pelny-8': 'var(--label-dish-bg)',
+  'dom-komplet-12': 'var(--label-dish-bg)',
   'firma-operacyjna-8': 'var(--label-floor-bg)',
+  'firma-gastro-12': 'var(--label-floor-bg)',
   custom: 'var(--label-laundry-bg)',
 };
 
@@ -151,8 +153,8 @@ function CustomCard({ size, discount, lang, index = 0 }) {
 
 export default function PlansSection({ lang = 'pl' }) {
   const content = copy[lang].plans;
-  const starter = bundles.find((bundle) => bundle.slug === 'starter-10');
-  const readyBundles = bundles.filter((bundle) => !bundle.isCustomizable && bundle.slug !== 'starter-10');
+  const starter = bundles.find((bundle) => bundle.slug === 'komplet-12');
+  const readyBundles = bundles.filter((bundle) => !bundle.isCustomizable && bundle.slug !== 'komplet-12');
 
   return (
     <section id="plans" className="px-6 py-24" style={{ background: 'var(--color-bg-muted)' }}>
@@ -174,6 +176,7 @@ export default function PlansSection({ lang = 'pl' }) {
           {readyBundles.map((bundle, i) => <BundleCard key={bundle.slug} bundle={bundle} lang={lang} index={i + 1} />)}
           <CustomCard size={4} discount={30} lang={lang} index={readyBundles.length + 1} />
           <CustomCard size={8} discount={40} lang={lang} index={readyBundles.length + 2} />
+          <CustomCard size={12} discount={50} lang={lang} index={readyBundles.length + 3} />
         </div>
 
         <motion.div
@@ -190,19 +193,19 @@ export default function PlansSection({ lang = 'pl' }) {
               <span className="t-eyebrow">{lang === 'en' ? 'Next catalog step' : 'Kolejny etap katalogu'}</span>
             </div>
             <h3 className="t-h4 mt-3">
-              {lang === 'en' ? 'Future Starter 12 will reach a 50% discount.' : 'Docelowy Starter 12 osiągnie rabat 50%.'}
+              {lang === 'en' ? 'Complete 12 reaches a 50% package discount.' : 'Komplet 12 osiąga rabat 50% dla całej paczki.'}
             </h3>
             <p className="mt-2 max-w-[660px] text-[13px] leading-relaxed text-fg-muted">
               {lang === 'en'
-                ? 'The current launch is built on the 10 final liquids already available in the project.'
-                : 'Obecne wdrożenie pracuje na 10 gotowych płynach, które są już dostępne w projekcie.'}
+                ? 'The current line is built on the 12 final liquids available in the project, sold in boxes of 4, 8, and 12.'
+                : 'Obecna linia to 12 gotowych płynów dostępnych w projekcie, sprzedawanych w paczkach po 4, 8 i 12 sztuk.'}
             </p>
           </div>
           <div className="flex items-center gap-3 rounded-[14px] border p-4" style={{ borderColor: 'var(--color-border)' }}>
             <Box size={18} className="text-fg-subtle" />
             <div>
-              <div className="text-[11px] font-medium text-fg-muted">{lang === 'en' ? 'Launch starter' : 'Starter na start'}</div>
-              <div className="font-serif italic text-xl font-light">Starter 10 -45%</div>
+              <div className="text-[11px] font-medium text-fg-muted">{lang === 'en' ? 'Full line' : 'Cała linia'}</div>
+              <div className="font-serif italic text-xl font-light">Komplet 12 -50%</div>
             </div>
           </div>
         </motion.div>

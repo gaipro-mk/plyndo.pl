@@ -144,19 +144,51 @@ const productCatalog = [
   },
   {
     id: 10,
-    slug: 'dezynfekcja',
-    name: 'PŁYN DO dezynfekcji',
-    subtitle: 'Natychmiastowa ochrona',
-    description: 'Preparat przeznaczony do dezynfekcji dłoni i powierzchni, skutecznie eliminuje bakterie, wirusy i grzyby. Działa szybko i nie pozostawia lepkiej warstwy, zapewniając wysoki poziom higieny w codziennym użytkowaniu.',
-    howToUse: 'Nanieść niewielką ilość preparatu na czyste i suche dłonie, wcierać w skórę rąk w czasie 30 sekund, pozostawić do wyschnięcia. Cała dezynfekowana powierzchnia rąk musi być wilgotna przez co najmniej 30 sekund.',
-    ingredients: 'Substancja czynna: etanol WE 200-578-6 CAS 64-17-5, zawartość: 800g/kg.',
-    safety: 'H225 Wysoce łatwopalna ciecz i pary. P210 Przechowywać z dala od źródeł ciepła...',
+    slug: 'nablyszczanie',
+    name: 'PŁYN DO nabłyszczania',
+    subtitle: 'Błysk i szybkie schnięcie bez zacieków',
+    description: 'Skoncentrowany płyn do nabłyszczania naczyń w zmywarkach gastronomicznych. Sprawia, że naczynia są lśniące, szybciej schną i nie pozostają na nich smugi ani zacieki. Pomaga usunąć resztki po myciu i zapobiega ponownemu osadzaniu się tłuszczu oraz brudu. Regularne stosowanie wspiera również ochronę zmywarki przed osadzaniem się kamienia.',
+    howToUse: 'Otwórz butelkę i wlej płyn do dozownika na nabłyszczacz w zmywarce. Zamknij dozownik i wybierz program zmywania. Nie mieszać z innymi produktami myjącymi. Przestrzegać zaleceń producenta zmywarki. Przechowywać w temperaturze od 0°C do 30°C.',
+    ingredients: '15-30% niejonowe środki powierzchniowo czynne.',
+    safety: 'H314 Powoduje poważne oparzenia skóry oraz uszkodzenia oczu. Chronić przed dziećmi. W razie kontaktu ze skórą lub oczami natychmiast przemyć dużą ilością wody. Niebezpieczeństwo.',
     producer: '',
     scent: 'Bez zapachu',
-    color: { bg: '#ececec', fg: '#C7C7C7', text: '#1A1A1A', pattern: '#FFFFFF' },
-    iconType: 'dezynfekcja',
+    color: { bg: '#B63244', fg: '#8C2535', text: '#FFFFFF', pattern: '#CD5360' },
+    iconType: 'nablyszczanie',
+    bgPattern: 'geometry',
+    image: '/labels/front-10-nablyszczania.webp'
+  },
+  {
+    id: 11,
+    slug: 'odkamienianie',
+    name: 'PŁYN DO odkamieniania',
+    subtitle: 'Skutecznie usuwa kamień i osady',
+    description: 'Skoncentrowany płyn do usuwania kamienia, osadów mineralnych oraz śladów po wodzie z urządzeń i powierzchni odpornych na działanie kwasów. Pomaga usunąć także tłuszcz i pozostałości białka, przywracając czystość oraz sprawność urządzeń takich jak czajniki, ekspresy do kawy, warniki i pralki, a także armatury łazienkowej i kuchennej. Nie zawiera substancji zapachowych ani barwników i może być stosowany do powierzchni mających kontakt z żywnością.',
+    howToUse: 'Przygotuj roztwór ok. 10% (100 ml płynu uzupełnić wodą do 1 l). Napełnij urządzenie i uruchom je na 10-15 minut. Po zakończeniu usuń roztwór i dokładnie spłucz całe urządzenie czystą wodą. Ekspresy do kawy czyść zgodnie z instrukcją producenta.',
+    ingredients: 'Skoncentrowany roztwór kwasów organicznych (m.in. kwas cytrynowy). Nie zawiera substancji zapachowych ani barwników.',
+    safety: 'H319 Działa drażniąco na oczy. Chronić przed dziećmi. W przypadku dostania się do oczu ostrożnie płukać wodą przez kilka minut. Uwaga.',
+    producer: '',
+    scent: 'Bez zapachu',
+    color: { bg: '#E9E9E9', fg: '#C7C7C7', text: '#1A1A1A', pattern: '#3F56AF' },
+    iconType: 'odkamienianie',
     bgPattern: 'confetti',
-    image: '/labels/front-10-dezynfekcji.webp'
+    image: '/labels/front-11-odkamieniania.webp'
+  },
+  {
+    id: 12,
+    slug: 'udraznianie-rur',
+    name: 'PŁYN DO udrażniania rur',
+    subtitle: 'Szybko usuwa zatory i nieprzyjemne zapachy',
+    description: 'Skuteczny żel do udrażniania rur, odpływów i zlewów, który rozpuszcza włosy, tłuszcz, resztki mydła oraz inne zanieczyszczenia powodujące zapchania. Działa również w zimnej i stojącej wodzie, pomagając szybko przywrócić drożność instalacji. Pomaga usuwać nieprzyjemne zapachy i jest bezpieczny dla rur oraz uszczelek przy prawidłowym stosowaniu.',
+    howToUse: 'Wlać produkt bezpośrednio do odpływu i pozostawić na kilkanaście minut, następnie przepłukać dużą ilością gorącej wody. Do zastosowań profesjonalnych i domowych. Nie mieszać z innymi produktami czyszczącymi. Przechowywać w temperaturze od 0°C do 30°C.',
+    ingredients: '<5% niejonowe środki powierzchniowo czynne. Zawiera wodorotlenek potasu.',
+    safety: 'H314 Powoduje poważne oparzenia skóry oraz uszkodzenia oczu. Chronić przed dziećmi. Stosować rękawice ochronne oraz ochronę oczu i twarzy. Niebezpieczeństwo.',
+    producer: '',
+    scent: 'Bez zapachu',
+    color: { bg: '#4D8D9A', fg: '#336873', text: '#FFFFFF', pattern: '#A6D5F2' },
+    iconType: 'udraznianie',
+    bgPattern: 'blobs',
+    image: '/labels/front-12-udraznianie.webp'
   }
 ];
 
@@ -233,12 +265,28 @@ const productDetailEn = {
     safety: 'H315 Causes skin irritation. H319 Causes serious eye irritation.',
     scent: 'Lemon scent',
   },
-  dezynfekcja: {
-    subtitle: 'Fast hygiene support',
-    description: 'A preparation intended for hand and surface disinfection. It acts quickly and does not leave a sticky layer when used correctly.',
-    howToUse: 'Apply to clean, dry hands, rub for 30 seconds, and leave to dry. The disinfected hand surface must stay wet for at least 30 seconds.',
-    ingredients: 'Active substance: ethanol EC 200-578-6 CAS 64-17-5, content: 800 g/kg.',
-    safety: 'H225 Highly flammable liquid and vapour. Keep away from heat and ignition sources.',
+  nablyszczanie: {
+    subtitle: 'Shine and fast drying without streaks',
+    description: 'A concentrated rinse aid for commercial dishwashers. It leaves dishes glossy, helps them dry faster, and prevents streaks and water spots. With regular use it also supports dishwasher protection against limescale build-up.',
+    howToUse: 'Pour the liquid into the dishwasher rinse-aid dispenser, close it, and select a wash program. Do not mix with other detergents. Follow the dishwasher manufacturer instructions. Store between 0 C and 30 C.',
+    ingredients: '15-30% non-ionic surfactants.',
+    safety: 'H314 Causes severe skin burns and eye damage. Keep out of reach of children. Rinse immediately with plenty of water on contact. Danger.',
+    scent: 'Unscented',
+  },
+  odkamienianie: {
+    subtitle: 'Removes limescale and deposits effectively',
+    description: 'A concentrated descaler for limescale, mineral deposits, and water marks on acid-resistant devices and surfaces. It also helps remove grease and protein residue, restoring kettles, coffee machines, water boilers, washing machines, and bathroom or kitchen fittings. Free from fragrances and dyes; suitable for surfaces that contact food.',
+    howToUse: 'Prepare a ~10% solution (100 ml of liquid topped up to 1 l with water). Fill the appliance and run it for 10-15 minutes, then remove the solution and rinse thoroughly with clean water. Clean coffee machines according to the manufacturer instructions.',
+    ingredients: 'Concentrated organic-acid solution (including citric acid). Free from fragrances and dyes.',
+    safety: 'H319 Causes serious eye irritation. Keep out of reach of children. If in eyes, rinse cautiously with water for several minutes. Warning.',
+    scent: 'Unscented',
+  },
+  'udraznianie-rur': {
+    subtitle: 'Clears blockages and odours fast',
+    description: 'An effective gel for unclogging pipes, drains, and sinks that dissolves hair, grease, soap residue, and other matter causing blockages. It works even in cold and standing water to quickly restore flow. It helps remove unpleasant odours and is safe for pipes and seals when used as directed.',
+    howToUse: 'Pour directly into the drain, leave for several minutes, then flush with plenty of hot water. For professional and home use. Do not mix with other cleaning products. Store between 0 C and 30 C.',
+    ingredients: '<5% non-ionic surfactants. Contains potassium hydroxide.',
+    safety: 'H314 Causes severe skin burns and eye damage. Keep out of reach of children. Wear protective gloves and eye/face protection. Danger.',
     scent: 'Unscented',
   },
 };
@@ -350,14 +398,32 @@ const productOfferFields = {
     audiences: ['home', 'business'],
     listPrice: 24.9
   },
-  dezynfekcja: {
-    shortName: 'Dezynfekcja',
+  nablyszczanie: {
+    shortName: 'Nabłyszczanie',
     i18n: {
-      pl: { displayName: 'Płyn do dezynfekcji', shortName: 'Dezynfekcja' },
-      en: { displayName: 'Disinfectant', shortName: 'Disinfection' }
+      pl: { displayName: 'Płyn do nabłyszczania', shortName: 'Nabłyszczanie' },
+      en: { displayName: 'Rinse aid', shortName: 'Rinse aid' }
     },
     audiences: ['home', 'business'],
-    listPrice: 39.9
+    listPrice: 24.9
+  },
+  odkamienianie: {
+    shortName: 'Odkamienianie',
+    i18n: {
+      pl: { displayName: 'Płyn do odkamieniania', shortName: 'Odkamienianie' },
+      en: { displayName: 'Descaler', shortName: 'Descaler' }
+    },
+    audiences: ['home', 'business'],
+    listPrice: 26.9
+  },
+  'udraznianie-rur': {
+    shortName: 'Udrażnianie rur',
+    i18n: {
+      pl: { displayName: 'Płyn do udrażniania rur', shortName: 'Udrażnianie rur' },
+      en: { displayName: 'Drain unblocker', shortName: 'Drains' }
+    },
+    audiences: ['home', 'business'],
+    listPrice: 29.9
   }
 };
 
@@ -404,53 +470,55 @@ export const products = productCatalog.map((product) => {
   let bottleBack = null;
 
   switch(product.slug) {
-    case 'naczynia': 
-      videoSrc = '/video/vid_exploaded_naczynia.mp4'; 
+    case 'naczynia':
+      videoSrc = '/video/vid_exploaded_naczynia.mp4';
       bottleFront = '/images/bottles/bottle-front-naczynia.webp';
       bottleBack = '/images/bottles/bottle-back-naczynia.webp';
       break;
-    case 'zmywarka': 
-      videoSrc = '/video/vid_zmywarka.mp4'; 
+    case 'zmywarka':
+      videoSrc = '/video/vid_zmywarka.mp4';
       bottleFront = '/images/bottles/bottle-front-zmywarka.webp';
       bottleBack = '/images/bottles/bottle-back-zmywarka.webp';
       break;
-    case 'pranie': 
-      videoSrc = '/video/vid_pranie.mp4'; 
+    case 'pranie':
+      videoSrc = '/video/vid_pranie.mp4';
       bottleFront = '/images/bottles/bottle-front-pranie.webp';
       bottleBack = '/images/bottles/bottle-back-pranie.webp';
       break;
-    case 'plukanie': 
-      videoSrc = '/video/vid_plukanie.mp4'; 
+    case 'plukanie':
+      videoSrc = '/video/vid_plukanie.mp4';
       bottleFront = '/images/bottles/bottle-front-plukanie.webp';
       bottleBack = '/images/bottles/bottle-back-plukanie.webp';
       break;
-    case 'podlogi': 
-      videoSrc = '/video/vid_podlogi.mp4'; 
+    case 'podlogi':
+      videoSrc = '/video/vid_podlogi.mp4';
       bottleFront = '/images/bottles/bottle-front-podlogi.webp';
       bottleBack = '/images/bottles/bottle-back-podlogi.webp';
       break;
-    case 'wc': 
-      videoSrc = '/video/vid_wc.mp4'; 
+    case 'wc':
+      videoSrc = '/video/vid_wc.mp4';
       bottleFront = '/images/bottles/bottle-front-wc.webp';
       bottleBack = '/images/bottles/bottle-back-wc.webp';
       break;
-    case 'rece': 
-      videoSrc = '/video/vid_rece.mp4'; 
+    case 'rece':
+      videoSrc = '/video/vid_rece.mp4';
       bottleFront = '/images/bottles/bottle-front-rece.webp';
       bottleBack = '/images/bottles/bottle-back-rece.webp';
       break;
-    case 'szyby': 
-      videoSrc = '/video/vid_szyby.mp4'; 
+    case 'szyby':
+      videoSrc = '/video/vid_szyby.mp4';
       bottleFront = '/images/bottles/bottle-front-szyby.webp';
       bottleBack = '/images/bottles/bottle-back-szyby.webp';
       break;
-    case 'lazienka': 
-      videoSrc = '/video/vid_lazienka.mp4'; 
+    case 'lazienka':
+      videoSrc = '/video/vid_lazienka.mp4';
       bottleFront = '/images/bottles/bottle-front-lazienka.webp';
       bottleBack = '/images/bottles/bottle-back-lazienka.webp';
       break;
-    case 'dezynfekcja': 
-      videoSrc = null; 
+    case 'nablyszczanie':
+    case 'odkamienianie':
+    case 'udraznianie-rur':
+      videoSrc = null;
       break;
   }
 

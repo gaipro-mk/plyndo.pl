@@ -37,16 +37,16 @@ function buildAdvice(segment, area, traits) {
     const mainQuantity = area > 420 ? 3 : area > 240 ? 2 : 1;
     const advice = [{ bundle: readyBundle('firma-operacyjna-8'), quantity: mainQuantity }];
     if (traits.includes('visitors') || traits.includes('sanitary')) {
-      advice.push(createCustomAdvice(4, ['rece', 'wc', 'lazienka', 'dezynfekcja'], 'business-hygiene-4'));
+      advice.push(createCustomAdvice(4, ['rece', 'wc', 'lazienka', 'odkamienianie'], 'business-hygiene-4'));
     }
     return advice;
   }
 
-  const advice = [{ bundle: readyBundle('starter-10'), quantity: 1 }];
+  const advice = [{ bundle: readyBundle('komplet-12'), quantity: 1 }];
   if (area > 120 || traits.includes('kids') || traits.includes('pets')) {
     advice.push(createCustomAdvice(4, [
       'podlogi',
-      traits.includes('pets') ? 'dezynfekcja' : 'lazienka',
+      traits.includes('pets') ? 'odkamienianie' : 'lazienka',
       'wc',
       traits.includes('laundry') ? 'pranie' : 'naczynia',
     ], 'home-refill-4'));

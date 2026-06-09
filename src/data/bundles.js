@@ -1,9 +1,9 @@
 import { createOfferIntegration, products } from './products.js';
 
 export const bundleDiscountRules = {
-  starter10: {
+  komplet12: {
     type: 'percentage',
-    rate: 0.45
+    rate: 0.5
   },
   box4: {
     type: 'percentage',
@@ -12,29 +12,33 @@ export const bundleDiscountRules = {
   box8: {
     type: 'percentage',
     rate: 0.4
+  },
+  box12: {
+    type: 'percentage',
+    rate: 0.5
   }
 };
 
-const starter10Composition = products.map((product) => ({
+const komplet12Composition = products.map((product) => ({
   productSlug: product.slug,
   quantity: 1
 }));
 
 const bundleDefinitions = [
   {
-    id: 'starter-10',
-    slug: 'starter-10',
-    name: 'Starter 10',
+    id: 'komplet-12',
+    slug: 'komplet-12',
+    name: 'Komplet 12',
     i18n: {
-      pl: { displayName: 'Starter 10' },
-      en: { displayName: 'Starter 10' }
+      pl: { displayName: 'Komplet 12' },
+      en: { displayName: 'Complete 12' }
     },
     audience: 'all',
-    size: starter10Composition.length,
-    composition: starter10Composition,
+    size: komplet12Composition.length,
+    composition: komplet12Composition,
     isCustomizable: false,
     allowsDuplicates: false,
-    discountRule: bundleDiscountRules.starter10
+    discountRule: bundleDiscountRules.komplet12
   },
   {
     id: 'wybierz-sam-4',
@@ -65,6 +69,21 @@ const bundleDefinitions = [
     isCustomizable: true,
     allowsDuplicates: true,
     discountRule: bundleDiscountRules.box8
+  },
+  {
+    id: 'wybierz-sam-12',
+    slug: 'wybierz-sam-12',
+    name: 'Wybierz Sam 12',
+    i18n: {
+      pl: { displayName: 'Wybierz Sam 12' },
+      en: { displayName: 'Build Your Own 12' }
+    },
+    audience: 'all',
+    size: 12,
+    composition: [],
+    isCustomizable: true,
+    allowsDuplicates: true,
+    discountRule: bundleDiscountRules.box12
   },
   {
     id: 'dom-codzienny-4',
@@ -98,17 +117,45 @@ const bundleDefinitions = [
     size: 8,
     composition: [
       { productSlug: 'naczynia', quantity: 1 },
+      { productSlug: 'zmywarka', quantity: 1 },
       { productSlug: 'pranie', quantity: 1 },
       { productSlug: 'plukanie', quantity: 1 },
       { productSlug: 'podlogi', quantity: 1 },
       { productSlug: 'wc', quantity: 1 },
-      { productSlug: 'rece', quantity: 1 },
       { productSlug: 'szyby', quantity: 1 },
       { productSlug: 'lazienka', quantity: 1 }
     ],
     isCustomizable: false,
     allowsDuplicates: false,
     discountRule: bundleDiscountRules.box8
+  },
+  {
+    id: 'dom-komplet-12',
+    slug: 'dom-komplet-12',
+    name: 'Dom Komplet 12',
+    i18n: {
+      pl: { displayName: 'Dom Komplet 12' },
+      en: { displayName: 'Full Home 12' }
+    },
+    audience: 'home',
+    size: 12,
+    composition: [
+      { productSlug: 'naczynia', quantity: 1 },
+      { productSlug: 'zmywarka', quantity: 1 },
+      { productSlug: 'nablyszczanie', quantity: 1 },
+      { productSlug: 'pranie', quantity: 1 },
+      { productSlug: 'plukanie', quantity: 1 },
+      { productSlug: 'podlogi', quantity: 1 },
+      { productSlug: 'wc', quantity: 1 },
+      { productSlug: 'lazienka', quantity: 1 },
+      { productSlug: 'szyby', quantity: 1 },
+      { productSlug: 'rece', quantity: 1 },
+      { productSlug: 'odkamienianie', quantity: 1 },
+      { productSlug: 'udraznianie-rur', quantity: 1 }
+    ],
+    isCustomizable: false,
+    allowsDuplicates: false,
+    discountRule: bundleDiscountRules.box12
   },
   {
     id: 'firma-podstawowa-4',
@@ -146,12 +193,38 @@ const bundleDefinitions = [
       { productSlug: 'lazienka', quantity: 1 },
       { productSlug: 'rece', quantity: 1 },
       { productSlug: 'szyby', quantity: 1 },
-      { productSlug: 'dezynfekcja', quantity: 1 },
+      { productSlug: 'odkamienianie', quantity: 1 },
       { productSlug: 'naczynia', quantity: 1 }
     ],
     isCustomizable: false,
     allowsDuplicates: true,
     discountRule: bundleDiscountRules.box8
+  },
+  {
+    id: 'firma-gastro-12',
+    slug: 'firma-gastro-12',
+    name: 'Firma Gastro 12',
+    i18n: {
+      pl: { displayName: 'Firma Gastro 12' },
+      en: { displayName: 'Business Gastro 12' }
+    },
+    audience: 'business',
+    size: 12,
+    composition: [
+      { productSlug: 'naczynia', quantity: 1 },
+      { productSlug: 'zmywarka', quantity: 1 },
+      { productSlug: 'nablyszczanie', quantity: 1 },
+      { productSlug: 'odkamienianie', quantity: 1 },
+      { productSlug: 'udraznianie-rur', quantity: 1 },
+      { productSlug: 'podlogi', quantity: 2 },
+      { productSlug: 'wc', quantity: 1 },
+      { productSlug: 'lazienka', quantity: 1 },
+      { productSlug: 'rece', quantity: 2 },
+      { productSlug: 'szyby', quantity: 1 }
+    ],
+    isCustomizable: false,
+    allowsDuplicates: true,
+    discountRule: bundleDiscountRules.box12
   }
 ];
 

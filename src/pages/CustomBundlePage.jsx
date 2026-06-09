@@ -29,7 +29,7 @@ export default function CustomBundlePage({ lang = 'pl' }) {
   const composition = useMemo(() => buildComposition(counts), [counts]);
   const pricing = bundle ? calculateBundlePricing({ bundle, composition, products }) : null;
 
-  if (!bundle || ![4, 8].includes(size)) {
+  if (!bundle || ![4, 8, 12].includes(size)) {
     return <Navigate to="/#plans" replace />;
   }
 
