@@ -1,0 +1,469 @@
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@200,300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,300;1,400;1,500;1,600;1,700&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* ============================================================
+   Płyndo Design System — TeaFlow-inspired Minimal Redesign
+   White-based · Premium typography · Color accents only
+   ============================================================ */
+
+:root {
+  /* ---------- BRAND CORE ---------- */
+  --plyndo-black:      #000000;
+  --plyndo-white:      #ffffff;
+  --plyndo-ink:        #231f20;
+  --plyndo-bone:       #faf9f6;
+  --plyndo-paper:      #ffffff;
+
+  /* System accents — lifted from SVG-synced labels */
+  --plyndo-cobalt:     #5c77b7;
+  --plyndo-cobalt-ink: #3f5398;
+  --plyndo-cobalt-deep: #3f5398;
+  --plyndo-citron:     #eac973;
+  --plyndo-citron-deep:#9f7849;
+
+  /* ---------- LABEL PALETTE (SVG-synced) ---------- */
+  --label-dish-bg:     #276142;
+  --label-dish-deep:   #1c623b;
+  --label-dish-pat:    #40725a;
+  --label-dish-on:     #ffffff;
+
+  --label-dw-bg:       #a7444b;
+  --label-dw-deep:     #72242b;
+  --label-dw-pat:      #bd6266;
+  --label-dw-on:       #ffffff;
+
+  --label-laundry-bg:  #a5c7eb;
+  --label-laundry-deep:#60a5d8;
+  --label-laundry-pat: #bed5f0;
+  --label-laundry-on:  #1e4c7a;
+
+  --label-rinse-bg:    #f37b91;
+  --label-rinse-deep:  #d7526b;
+  --label-rinse-pat:   #f6a9b8;
+  --label-rinse-on:    #ffffff;
+
+  --label-floor-bg:    #784638;
+  --label-floor-deep:  #542e24;
+  --label-floor-pat:   #8e5a4b;
+  --label-floor-on:    #ffffff;
+
+  --label-wc-bg:       #e0e0e0;
+  --label-wc-deep:     #a3a3a3;
+  --label-wc-pat:      #d1d1d1;
+  --label-wc-on:       #1a1a1a;
+
+  --label-hand-bg:     #eac973;
+  --label-hand-deep:   #9f7849;
+  --label-hand-pat:    #eac973;
+  --label-hand-on:     #3e341b;
+
+  --label-glass-bg:    #a7cfea;
+  --label-glass-deep:  #2a7f96;
+  --label-glass-pat:   #bde0f5;
+  --label-glass-on:    #114455;
+
+  --label-bath-bg:     #5c77b7;
+  --label-bath-deep:   #3f5398;
+  --label-bath-pat:    #3f5398;
+  --label-bath-on:     #ffffff;
+
+  --label-sani-bg:     #ececec;
+  --label-sani-deep:   #c7c7c7;
+  --label-sani-pat:    #ffffff;
+  --label-sani-on:     #1a1a1a;
+
+  /* ---------- NEUTRAL RAMP ---------- */
+  --n-0:   #ffffff;
+  --n-50:  #faf9f6;
+  --n-100: #f5f4f1;
+  --n-150: #eeede9;
+  --n-200: #e7e6e3;
+  --n-300: #dddcd9;
+  --n-400: #c4c3c0;
+  --n-500: #6b6a67;
+  --n-700: #555452;
+  --n-800: #2e2d2b;
+  --n-900: #1a1918;
+  --n-1000:#000000;
+
+  /* ---------- SEMANTIC TOKENS ---------- */
+  --color-bg:                var(--n-0);
+  --color-bg-muted:          var(--n-50);
+  --color-bg-sunken:         var(--n-100);
+  --color-bg-raised:         var(--n-0);
+  --color-bg-inverse:        var(--n-900);
+
+  --color-fg:                var(--n-900);
+  --color-fg-muted:          var(--n-700);
+  --color-fg-subtle:         var(--n-500);
+  --color-fg-onDark:         var(--n-0);
+
+  --color-border:            rgba(0, 0, 0, 0.08);
+  --color-border-strong:     rgba(0, 0, 0, 0.15);
+  --color-border-focus:      var(--plyndo-cobalt);
+
+  --color-primary:           var(--n-900);
+  --color-primary-on:        var(--plyndo-white);
+  --color-primary-hover:     var(--n-800);
+
+  --color-accent:            var(--plyndo-cobalt);
+  --color-accent-on:         var(--n-0);
+  --color-accent-tint:       color-mix(in oklab, var(--plyndo-cobalt) 6%, var(--n-0));
+
+  --color-cta:               var(--n-900);
+  --color-cta-on:            var(--n-0);
+  --color-cta-hover:         var(--n-800);
+
+  --color-success:           #276142;
+  --color-warning:           #9f7849;
+  --color-danger:            #ba1a1a;
+  --color-info:              var(--plyndo-cobalt);
+
+  /* ---------- RADII ---------- */
+  --radius-xs:  4px;
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-2xl: 32px;
+  --radius-pill: 9999px;
+
+  /* ---------- SHADOWS (very subtle) ---------- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, .04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, .05);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, .06);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, .08);
+  --shadow-cta:0 4px 16px rgba(0, 0, 0, .10);
+  --shadow-inset: inset 0 0 0 1px var(--color-border);
+
+  /* ---------- SPACING (4px grid) ---------- */
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32: 128px;
+
+  /* ---------- LAYOUT ---------- */
+  --container-max: 1280px;
+  --container-pad: clamp(20px, 4vw, 48px);
+  --gutter:       24px;
+
+  /* ---------- TYPOGRAPHY ---------- */
+  --font-sans:    'Switzer', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+  --font-serif:   'Lora', 'Georgia', serif;
+  --font-mono:    ui-monospace, SFMono-Regular, JetBrains Mono, Consolas, monospace;
+
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+
+  /* Type ramp */
+  --t-xs:   11px;
+  --t-sm:   13px;
+  --t-base: 15px;
+  --t-md:   17px;
+  --t-lg:   19px;
+  --t-xl:   24px;
+  --t-2xl:  30px;
+  --t-3xl:  38px;
+  --t-4xl:  52px;
+  --t-5xl:  68px;
+  --t-6xl:  88px;
+
+  --tk-tight:  -0.03em;
+  --tk-snug:   -0.015em;
+  --tk-normal: 0em;
+  --tk-wide:   0.06em;
+  --tk-wider:  0.14em;
+
+  --lh-tight: 1.05;
+  --lh-snug:  1.2;
+  --lh-body:  1.6;
+  --lh-loose: 1.75;
+}
+
+/* Dark theme */
+:root[data-theme='dark'] {
+  --color-bg:           #0c0b09;
+  --color-bg-muted:     #141310;
+  --color-bg-sunken:    #1a1916;
+  --color-bg-raised:    #1e1d1a;
+  --color-bg-inverse:   #e8e6e1;
+  --color-fg:           #e8e6e1;
+  --color-fg-muted:     #a8a6a1;
+  --color-fg-subtle:    #7a7874;
+  --color-fg-onDark:    #0c0b09;
+  --color-border:       rgba(255, 255, 255, .08);
+  --color-border-strong:rgba(255, 255, 255, .15);
+  --color-border-focus: #8fa4d4;
+  --color-primary:      #e8e6e1;
+  --color-primary-on:   #0c0b09;
+  --color-primary-hover:#d4d2cd;
+  --color-accent:       #8fa4d4;
+  --color-accent-on:    #0c0b09;
+  --color-accent-tint:  color-mix(in oklab, #8fa4d4 10%, #0c0b09);
+  --color-cta:          #e8e6e1;
+  --color-cta-on:       #0c0b09;
+  --color-cta-hover:    #d4d2cd;
+  --color-success:      #4a8c65;
+  --color-warning:      #d4a944;
+  --color-danger:       #e0534b;
+  --color-info:         #8fa4d4;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, .20);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, .25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, .30);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, .40);
+  --shadow-cta:0 4px 16px rgba(0, 0, 0, .35);
+}
+
+:root[data-theme='dark'] .bg-surface,
+:root[data-theme='dark'] .bg-background { background: var(--color-bg) !important; }
+:root[data-theme='dark'] .bg-white { background: var(--color-bg-raised) !important; }
+:root[data-theme='dark'] .bg-white\/88 { background: color-mix(in oklab, var(--color-bg-raised) 88%, transparent) !important; }
+:root[data-theme='dark'] .bg-surface-variant { background: var(--color-bg-muted) !important; }
+:root[data-theme='dark'] .bg-surface-container-low { background: var(--color-bg-sunken) !important; }
+:root[data-theme='dark'] .border-border { border-color: var(--color-border) !important; }
+:root[data-theme='dark'] .text-fg-base { color: var(--color-fg) !important; }
+:root[data-theme='dark'] .text-fg-muted { color: var(--color-fg-muted) !important; }
+:root[data-theme='dark'] .text-fg-subtle { color: var(--color-fg-subtle) !important; }
+:root[data-theme='dark'] .text-primary { color: var(--color-primary) !important; }
+:root[data-theme='dark'] .text-black,
+:root[data-theme='dark'] .text-gray-800,
+:root[data-theme='dark'] .text-gray-700 { color: var(--color-fg) !important; }
+:root[data-theme='dark'] .text-gray-500,
+:root[data-theme='dark'] .text-gray-400 { color: var(--color-fg-subtle) !important; }
+:root[data-theme='dark'] img[src$="logo-black.svg"] {
+  filter: invert(1) brightness(1.08);
+}
+
+/* Font scale */
+:root[data-font-scale='sm'] { font-size: 14px; }
+:root[data-font-scale='md'] { font-size: 15px; }
+:root[data-font-scale='lg'] { font-size: 17px; }
+
+/* ============================================================
+   BASE STYLES — TeaFlow-inspired
+   ============================================================ */
+
+html { font-size: 15px; -webkit-font-smoothing: antialiased; }
+
+[id] { scroll-margin-top: 80px; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  font-size: var(--t-base);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-regular);
+  letter-spacing: var(--tk-normal);
+}
+
+/* ============================================================
+   TYPOGRAPHY — Premium editorial style
+   ============================================================ */
+
+/* Display — hero titles: large serif, light weight */
+.t-display-1 {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-light);
+  font-size: clamp(44px, 7vw, var(--t-6xl));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tk-tight);
+  text-wrap: balance;
+}
+.t-display-2 {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-light);
+  font-size: clamp(36px, 5vw, var(--t-5xl));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tk-tight);
+}
+
+/* Headings — clean sans, medium weight */
+.t-h1, h1 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semi);
+  font-size: clamp(28px, 3.8vw, var(--t-4xl));
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tk-tight);
+  text-wrap: balance;
+  margin: 0;
+}
+.t-h2, h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semi);
+  font-size: clamp(22px, 2.6vw, var(--t-3xl));
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tk-tight);
+  text-wrap: balance;
+  margin: 0;
+}
+.t-h3, h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: var(--t-xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tk-snug);
+  margin: 0;
+}
+.t-h4, h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: var(--t-lg);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tk-snug);
+  margin: 0;
+}
+
+/* Body */
+.t-lead {
+  font-size: var(--t-md);
+  line-height: var(--lh-body);
+  color: var(--color-fg-muted);
+  font-weight: var(--fw-regular);
+}
+.t-body { font-size: var(--t-base); line-height: var(--lh-body); }
+.t-small { font-size: var(--t-sm); line-height: var(--lh-body); color: var(--color-fg-muted); }
+.t-caption {
+  font-size: var(--t-xs);
+  line-height: 1.4;
+  color: var(--color-fg-subtle);
+}
+
+/* Eyebrows — ultra-refined micro labels */
+.t-eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--t-xs);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tk-wider);
+  color: var(--color-fg-subtle);
+}
+
+/* Editorial serif — for taglines and accent text */
+.t-editorial {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--fw-light);
+  font-size: clamp(24px, 3vw, 42px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* Product name on labels — kept for product pages */
+.t-lockup {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--t-3xl);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+.t-lockup-sub {
+  display: block;
+  font-weight: var(--fw-medium);
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+}
+
+/* Label italic serif */
+.t-label-display {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.t-label-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.3;
+}
+
+code, pre, .t-mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+::selection { background: var(--n-900); color: var(--n-0); }
+
+/* ============================================================
+   UTILITY CLASSES for TeaFlow-style components
+   ============================================================ */
+
+/* Subtle hairline separator */
+.hairline {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
+  margin: 0;
+}
+
+/* Product color accent dot */
+.color-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Smooth hover lift for cards */
+.hover-lift {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* No-scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
