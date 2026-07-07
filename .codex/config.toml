@@ -1,0 +1,136 @@
+# [Model Settings]
+# Top-level model settings are commented out to allow freely changing the model in the Codex app UI.
+# When commented out, Codex defaults to the model selected in the app UI or defined globally in ~/.codex/config.toml.
+# model = "gpt-5.5"            # Flagship: Complex coding, computer use, and reasoning
+# model_provider = "openai"
+# review_model = "gpt-5.5"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "disabled"
+# model_reasoning_effort = "medium"
+# model_reasoning_summary = "concise"
+# model_verbosity = "low"
+personality = "pragmatic"
+
+# Keep context small and compact earlier than default.
+model_context_window = 200000
+model_auto_compact_token_limit = 120000
+tool_output_token_limit = 4000
+project_doc_max_bytes = 32768
+ignore_large_untracked_files = true
+ignore_large_untracked_dirs = true
+ignore_untracked_files_over_bytes = 2097152
+large_untracked_dir_warning_threshold = 200
+
+[shell_environment_policy]
+inherit = "core"
+
+[history]
+persistence = "save-all"
+max_bytes = 5242880
+file_opener = "vscode"
+
+[features]
+enable_request_compression = true
+plugins = false
+multi_agent = true
+tool_suggest = false
+skill_mcp_dependency_install = false
+shell_snapshot = false
+runtime_metrics = false
+general_analytics = false
+unified_exec = false
+apply_patch_freeform = false
+view_image_tool = false
+js_repl = false
+js_repl_tools_only = false
+
+[profiles.default-worker]
+# model = "gpt-5.5"            # Inherits the active model selected in the app UI if commented out
+# model_reasoning_effort = "medium"
+# model_reasoning_summary = "concise"
+# model_verbosity = "low"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "disabled"
+
+[profiles.orchestrator]
+# model = "gpt-5.5"            # Inherits the active model selected in the app UI if commented out
+# model_reasoning_effort = "high"
+# model_reasoning_summary = "detailed"
+# model_verbosity = "medium"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "disabled"
+
+[profiles.advisor]
+model = "gpt-5.4"              # Using the latest GPT-5 professional reasoning model
+model_reasoning_effort = "high"
+model_reasoning_summary = "detailed"
+model_verbosity = "medium"
+approval_policy = "untrusted"
+sandbox_mode = "read-only"
+web_search = "disabled"
+
+[profiles.worker-fast]
+model = "gpt-5.4-mini"         # Using the latest GPT-5 efficient model
+model_reasoning_effort = "low"
+model_reasoning_summary = "concise"
+model_verbosity = "low"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "disabled"
+
+[profiles.worker-tests]
+model = "gpt-5.3-codex-spark"  # Using the latest GPT-5 spark model optimized for instant code iteration
+model_reasoning_effort = "medium"
+model_reasoning_summary = "concise"
+model_verbosity = "low"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "disabled"
+
+[profiles.worker-docs]
+model = "gpt-5.4-mini"         # Using the latest GPT-5 efficient model
+model_reasoning_effort = "medium"
+model_reasoning_summary = "concise"
+model_verbosity = "low"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "disabled"
+
+[mcp_servers.playwright]
+enabled = false
+
+[mcp_servers.Sanity]
+enabled = false
+
+[plugins."cloudflare@openai-curated"]
+enabled = false
+
+[plugins."vercel@openai-curated"]
+enabled = false
+
+[plugins."github@openai-curated"]
+enabled = false
+
+[plugins."canva@openai-curated"]
+enabled = false
+
+[plugins."life-science-research@openai-curated"]
+enabled = false
+
+[plugins."build-web-apps@openai-curated"]
+enabled = false
+
+[plugins."build-ios-apps@openai-curated"]
+enabled = false
+
+[plugins."build-macos-apps@openai-curated"]
+enabled = false
+
+[plugins."test-android-apps@openai-curated"]
+enabled = false
+
+[projects."/Users/mk/Dev_Env/Plyn_DO/plyndo.pl"]
+trust_level = "trusted"

@@ -1,0 +1,55 @@
+{
+  "project": {
+    "name": "Płyndo"
+  },
+  "defaultProfile": "low-pro",
+  "profiles": {
+    "low-pro": {
+      "model": "gemini-3.1-pro",
+      "reasoningEffort": "low",
+      "description": "Domyślny model. Niskokosztowy Pro, standardowy / niski reasoning."
+    },
+    "orchestrator": {
+      "model": "gemini-3.1-pro",
+      "reasoningEffort": "high",
+      "description": "Planowanie, architektura i delegacja."
+    },
+    "advisor": {
+      "model": "gemini-3.1-pro",
+      "reasoningEffort": "high",
+      "tools": {
+        "enabled": ["read_file", "search", "list_dir", "view_file", "grep_search", "run_command", "git_log"],
+        "disabled": ["write_to_file", "replace_file_content", "multi_replace_file_content", "apply_patch", "run_unsafe_command", "mcp_*"]
+      },
+      "description": "Czysty doradca, audyty, bez pisania kodu."
+    },
+    "flash-worker": {
+      "model": "gemini-3-flash",
+      "reasoningEffort": "low",
+      "description": "Szybkie, proste zadania (np. boilerplate, formatowanie, testy)."
+    }
+  },
+  "antigravity": {
+    "defaultProfile": "low-pro",
+    "workspaceRulesFile": "AGENTS.md"
+  },
+  "tools": {
+    "output": {
+      "maxLines": 200,
+      "maxBytes": 102400,
+      "summarize": true
+    },
+    "mcp": {
+      "enabled": false
+    }
+  },
+  "exclude": [
+    "node_modules/**",
+    "dist/**",
+    ".git/**",
+    ".env*",
+    "secrets/**",
+    "*.zip",
+    "*.tar.gz"
+  ]
+}

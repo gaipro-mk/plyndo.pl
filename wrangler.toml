@@ -1,0 +1,7 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "plyndo"
+pages_build_output_dir = "./dist"
+
+[vars]
+# Add any client-side environment variables or configuration here if needed
+# Note: For client-side env vars in Vite, you usually use .env or Vite environment variables.

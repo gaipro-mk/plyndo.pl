@@ -1,0 +1,32 @@
+# Dependencies and build outputs
+node_modules/
+dist/
+dist-ssr/
+coverage/
+.vite/
+
+# Logs and temporary artifacts
+logs/
+*.log
+*.log.*
+tmp/
+temp/
+*.tmp
+
+# Databases and dumps
+*.sqlite
+*.sqlite-*
+*.db
+*.sql
+*.dump
+
+# Archives and binaries
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+*.dmg
+*.iso
+*.bin

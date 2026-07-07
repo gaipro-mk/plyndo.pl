@@ -1,0 +1,61 @@
+{
+  "model": "claude-sonnet-4-6",
+
+  "env": {
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
+    "MAX_THINKING_TOKENS": "10000"
+  },
+
+  "profiles": {
+    "sonnet": {
+      "model": "claude-sonnet-4-6",
+      "thinkingEffort": "medium",
+      "description": "Domyślny orkiestrator. Balans jakość/koszt do codziennych zadań."
+    },
+    "advisor": {
+      "model": "claude-opus-4-7",
+      "thinkingEffort": "high",
+      "description": "Opus Advisor – tylko analiza i architektura. BEZ pisania kodu."
+    },
+    "worker": {
+      "model": "claude-haiku-4-6",
+      "thinkingEffort": "minimal",
+      "description": "Haiku Worker – szybkie/tanie zadania: boilerplate, testy, dokumentacja."
+    }
+  },
+
+  "tools": {
+    "output": {
+      "maxLines": 200,
+      "maxBytes": 102400,
+      "summarize": true
+    }
+  },
+
+  "permissions": {
+    "deny": [
+      "Bash(cat:.env*)",
+      "Bash(cat:secrets/**)",
+      "Read(.env*)",
+      "Read(secrets/**)",
+      "Read(*.pem)",
+      "Read(*.key)"
+    ]
+  },
+
+  "mcp": {
+    "disabled": true
+  },
+
+  "exclude": [
+    "node_modules/**",
+    "dist/**",
+    ".git/**",
+    ".env*",
+    "secrets/**",
+    "*.log",
+    "*.zip",
+    "*.tar.gz",
+    "*.map"
+  ]
+}
