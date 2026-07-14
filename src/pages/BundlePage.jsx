@@ -58,7 +58,7 @@ export default function BundlePage({ lang = 'pl' }) {
   const displayName = bundle.i18n?.[lang]?.displayName ?? bundle.name;
 
   return (
-    <main className="px-6 pb-24 pt-[120px]" style={{ background: 'var(--color-bg)' }}>
+    <main className="px-6 pb-24 pt-[120px] bg-bg">
       <div className="mx-auto max-w-7xl">
         <Breadcrumbs
           lang={lang}
@@ -76,8 +76,7 @@ export default function BundlePage({ lang = 'pl' }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mt-8 grid gap-8 border-b pb-12 lg:grid-cols-[1fr_360px] lg:items-start"
-          style={{ borderColor: 'var(--color-border)' }}
+          className="mt-8 grid gap-8 border-b pb-12 lg:grid-cols-[1fr_360px] lg:items-start border-border"
         >
           <div>
             <span className="t-eyebrow">
@@ -86,11 +85,11 @@ export default function BundlePage({ lang = 'pl' }) {
             <h1 className="t-display-2 mt-4">{displayName}</h1>
             <p className="t-lead mt-5 max-w-[620px]">{packageLead(bundle, lang)}</p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[12px] font-medium" style={{ borderColor: 'var(--color-border-strong)' }}>
+              <span className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[12px] font-medium border-border-strong">
                 <Boxes size={14} />
                 {pricing.itemCount} {lang === 'en' ? 'one-litre items' : 'litrowych sztuk'}
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[12px] font-medium" style={{ borderColor: 'var(--color-border-strong)' }}>
+              <span className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[12px] font-medium border-border-strong">
                 <ClipboardList size={14} />
                 {lang === 'en' ? 'Full composition below' : 'Pełny skład poniżej'}
               </span>
@@ -117,7 +116,7 @@ export default function BundlePage({ lang = 'pl' }) {
           </div>
           <div className="grid content-start gap-5">
             <QrPlaceholder lang={lang} />
-            <article className="rounded-[16px] border p-5" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
+            <article className="rounded-[16px] border p-5 border-border bg-bg-muted">
               <div className="t-eyebrow">{lang === 'en' ? 'Store handoff' : 'Przejście do sklepu'}</div>
               <p className="mt-3 text-[13px] leading-relaxed text-fg-muted">
                 {lang === 'en'

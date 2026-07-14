@@ -48,8 +48,8 @@ function MediaSlot({ title, note, videoSrc }) {
 
   if (!videoSrc) {
     return (
-      <div className="grid min-h-[200px] content-between rounded-[16px] border p-6" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg)' }}>
-        <span className="flex h-10 w-10 items-center justify-center rounded-full" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+      <div className="grid min-h-[200px] content-between rounded-[16px] border p-6 border-border bg-bg">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-fg text-bg">
           <CirclePlay size={18} />
         </span>
         <div>
@@ -62,8 +62,7 @@ function MediaSlot({ title, note, videoSrc }) {
 
   return (
     <div 
-      className="group relative flex flex-col justify-between min-h-[200px] overflow-hidden rounded-[16px] border bg-black cursor-pointer"
-      style={{ borderColor: 'var(--color-border)' }}
+      className="group relative flex flex-col justify-between min-h-[200px] overflow-hidden rounded-[16px] border bg-black cursor-pointer border-border"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
@@ -110,8 +109,7 @@ function HeroVideo({ videoSrc, className = '' }) {
 
   return (
     <div 
-      className={`group relative flex mx-auto aspect-[9/16] overflow-hidden rounded-[16px] border bg-black cursor-pointer flex-shrink-0 ${className}`}
-      style={{ borderColor: 'var(--color-border)' }}
+      className={`group relative flex mx-auto aspect-[9/16] overflow-hidden rounded-[16px] border bg-black cursor-pointer flex-shrink-0 border-border ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
@@ -135,8 +133,7 @@ function VideoPanel({ videoSrc, lang, className = '' }) {
   }
   return (
     <div
-      className={`relative flex aspect-[9/16] flex-shrink-0 overflow-hidden rounded-[16px] border ${className}`}
-      style={{ borderColor: 'var(--color-border)' }}
+      className={`relative flex aspect-[9/16] flex-shrink-0 overflow-hidden rounded-[16px] border border-border ${className}`}
     >
       <div className="absolute inset-0" style={{ background: 'linear-gradient(155deg, #232323 0%, #3a3a3a 100%)' }} />
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
@@ -182,8 +179,7 @@ function LabelSlideshow({ front, backPanel, alt, lang = 'pl', className = '' }) 
 
   return (
     <div
-      className={`relative flex-shrink-0 overflow-hidden rounded-[16px] border bg-white ${className}`}
-      style={{ borderColor: 'var(--color-border)', aspectRatio: '4 / 5' }}
+      className={`relative flex-shrink-0 overflow-hidden rounded-[16px] border bg-white aspect-[4/5] border-border ${className}`}
     >
       {slides.map((s, i) => (
         <div key={i} className="absolute inset-0 transition-opacity duration-[900ms] ease-out" style={{ opacity: i === index ? 1 : 0 }}>
@@ -225,7 +221,7 @@ function ReferencePriceOptions({ listPrice, lang }) {
         const price = calculateDiscountedUnitPrice(listPrice, tier.rate);
 
         return (
-          <div key={tier.size} className="flex items-center justify-between gap-3 rounded-[12px] px-3 py-2" style={{ background: 'var(--color-bg-muted)' }}>
+          <div key={tier.size} className="flex items-center justify-between gap-3 rounded-[12px] px-3 py-2 bg-bg-muted">
             <span className="text-[12px] font-medium text-fg-muted">
               {lang === 'en' ? `${tier.size}-pack` : `Paczka ${tier.size} szt.`}
             </span>
@@ -334,7 +330,7 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
   const displayName = detail.displayName ?? productName;
 
   return (
-    <div className="min-h-screen relative w-full flex flex-col font-sans" style={{ background: 'var(--color-bg)', color: 'var(--color-fg)' }}>
+    <div className="min-h-screen relative w-full flex flex-col font-sans bg-bg text-fg">
       {/* Thin product-color accent strip at the very top */}
       <div className="h-[3px] w-full" style={{ background: product.color.bg }} />
       
@@ -355,7 +351,7 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
                   { label: detail.displayName ?? product.name },
                 ]}
               />
-              <Link to="/#products" className="flex items-center gap-1.5 text-[12px] font-medium uppercase no-underline transition-opacity hover:opacity-60 tracking-wide" style={{ color: 'var(--color-fg-muted)' }}>
+              <Link to="/#products" className="flex items-center gap-1.5 text-[12px] font-medium uppercase no-underline transition-opacity hover:opacity-60 tracking-wide text-fg-muted">
                 <ChevronLeft size={14} />
                 {labels.back}
               </Link>
@@ -363,7 +359,7 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
           </Motion.header>
 
           {/* Hero section — white-based with product image */}
-          <section className="grid items-center gap-12 border-b pb-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12 xl:gap-16" style={{ borderColor: 'var(--color-border)' }}>
+          <section className="grid items-center gap-12 border-b pb-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12 xl:gap-16 border-border">
             <Motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -374,7 +370,7 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
                   <span className="color-dot" style={{ background: product.color.bg }} />
                   {detail.scent}
                 </div>
-                <div className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[11px] font-medium" style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg-muted)' }}>
+                <div className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[11px] font-medium border-border-strong text-fg-muted">
                   <Package size={11} />
                   {labels.packageOnly}
                 </div>
@@ -387,15 +383,14 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
                   className="h-[20px] sm:h-[22px] md:h-[24px] w-auto select-none opacity-90" 
                 />
                 <h1 
-                  className="text-[clamp(40px,6vw,68px)] leading-[0.95] tracking-[-0.02em] mt-3"
-                  style={{ fontFamily: "'Lora', serif", fontStyle: 'italic', fontWeight: 500 }}
+                  className="text-[clamp(40px,6vw,68px)] leading-[0.95] tracking-[-0.02em] mt-3 font-serif italic font-medium"
                 >
                   {displayName}
                 </h1>
               </div>
 
-              <p className="font-serif italic text-lg mt-4" style={{ color: 'var(--color-fg-muted)' }}>{detail.subtitle}</p>
-              <p className="mt-6 max-w-[560px] text-[15px] leading-[1.7]" style={{ color: 'var(--color-fg-muted)' }}>{detail.description}</p>
+              <p className="font-serif italic text-lg mt-4 text-fg-muted">{detail.subtitle}</p>
+              <p className="mt-6 max-w-[560px] text-[15px] leading-[1.7] text-fg-muted">{detail.description}</p>
             </Motion.div>
             
             <Motion.div
@@ -425,8 +420,7 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid gap-8 py-14 lg:grid-cols-[0.72fr_1fr] lg:items-start border-b"
-            style={{ borderColor: 'var(--color-border)' }}
+            className="grid gap-8 py-14 lg:grid-cols-[0.72fr_1fr] lg:items-start border-b border-border"
           >
             <div className="max-w-[400px]">
               <span className="t-eyebrow">{labels.mediaTitle}</span>
@@ -445,29 +439,28 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="py-14 border-b"
-            style={{ borderColor: 'var(--color-border)' }}
+            className="py-14 border-b border-border"
           >
             <div className="mb-10">
               <span className="t-eyebrow">Opakowanie</span>
               <h2 className="t-h2 mt-3">Szczegóły butelki i etykiety</h2>
             </div>
             <div className="grid gap-6 sm:grid-cols-3">
-              <div className="rounded-[16px] border overflow-hidden relative bg-white aspect-[3/4] flex items-center justify-center" style={{ borderColor: 'var(--color-border)' }}>
+              <div className="rounded-[16px] border overflow-hidden relative bg-white aspect-[3/4] flex items-center justify-center border-border">
                 {product.bottleFront ? (
                   <img src={product.bottleFront} alt="Przód" className="absolute inset-0 h-full w-full object-cover" />
                 ) : (
                   <div className="text-sm text-fg-subtle">Brak zdjęcia</div>
                 )}
               </div>
-              <div className="rounded-[16px] border overflow-hidden relative bg-white aspect-[3/4] flex items-center justify-center" style={{ borderColor: 'var(--color-border)' }}>
+              <div className="rounded-[16px] border overflow-hidden relative bg-white aspect-[3/4] flex items-center justify-center border-border">
                 {product.bottleBack ? (
                   <img src={product.bottleBack} alt="Tył" className="absolute inset-0 h-full w-full object-cover" />
                 ) : (
                   <div className="text-sm text-fg-subtle">Brak zdjęcia</div>
                 )}
               </div>
-              <div className="rounded-[16px] border overflow-hidden relative bg-white aspect-[3/4] flex items-center justify-center" style={{ borderColor: 'var(--color-border)' }}>
+              <div className="rounded-[16px] border overflow-hidden relative bg-white aspect-[3/4] flex items-center justify-center border-border">
                 <BackLabelFrame
                   front={product.labelFront ?? product.image}
                   backPanel={product.labelBackPanel}
@@ -486,18 +479,18 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
             transition={{ duration: 0.6 }}
             className="grid gap-6 pb-14 lg:grid-cols-2"
           >
-            <article className="rounded-[16px] border p-6 md:p-8" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
-              <h2 className="mb-5 flex items-center gap-2.5 text-[12px] font-medium uppercase tracking-wide" style={{ color: 'var(--color-fg-muted)' }}>
+            <article className="rounded-[16px] border p-6 md:p-8 border-border bg-bg-muted">
+              <h2 className="mb-5 flex items-center gap-2.5 text-[12px] font-medium uppercase tracking-wide text-fg-muted">
                 <Info size={15} /> {labels.usage}
               </h2>
               <p className="whitespace-pre-line text-[14px] leading-[1.7] text-fg-muted">{detail.howToUse}</p>
             </article>
-            <article className="rounded-[16px] border p-6 md:p-8" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
-              <h2 className="mb-5 flex items-center gap-2.5 text-[12px] font-medium uppercase tracking-wide" style={{ color: 'var(--color-fg-muted)' }}>
+            <article className="rounded-[16px] border p-6 md:p-8 border-border bg-bg-muted">
+              <h2 className="mb-5 flex items-center gap-2.5 text-[12px] font-medium uppercase tracking-wide text-fg-muted">
                 <ShieldAlert size={15} /> {labels.safety}
               </h2>
               {(detail.warningWord || (product.pictograms && product.pictograms.length > 0)) && (
-                <div className="mb-6 flex flex-wrap items-center gap-5 border-b pb-5" style={{ borderColor: 'var(--color-border)' }}>
+                <div className="mb-6 flex flex-wrap items-center gap-5 border-b pb-5 border-border">
                   {product.pictograms && product.pictograms.map(pic => (
                     <div key={pic} className="flex items-center">
                       <GhsPictogram type={pic} />
@@ -514,16 +507,15 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
                 </div>
               )}
               <p className="mb-4 text-[13px] leading-[1.7] text-fg-muted">
-                <strong className="font-medium" style={{ color: 'var(--color-fg)' }}>{labels.ingredients}:</strong> {detail.ingredients}
+                <strong className="font-medium text-fg">{labels.ingredients}:</strong> {detail.ingredients}
               </p>
               {detail.safety && (
                 <div>
                   {detail.safety.length > 80 ? (
-                    <div className="mt-4 border-t pt-4" style={{ borderColor: 'var(--color-border)' }}>
+                    <div className="mt-4 border-t pt-4 border-border">
                       <button
                         onClick={() => setSafetyExpanded(!safetyExpanded)}
-                        className="flex w-full items-center justify-between py-2 text-left text-[13px] font-medium transition-colors hover:text-[var(--color-fg-strong)] cursor-pointer"
-                        style={{ color: 'var(--color-fg)' }}
+                        className="flex w-full items-center justify-between py-2 text-left text-[13px] font-medium transition-colors hover:text-[var(--color-fg-strong)] cursor-pointer text-fg"
                       >
                         <span className="flex items-center gap-2">
                           <strong className="font-medium">{labels.safetyLabel}</strong>
@@ -543,7 +535,7 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
                     </div>
                   ) : (
                     <p className="text-[13px] leading-[1.7] text-fg-muted">
-                      <strong className="font-medium" style={{ color: 'var(--color-fg)' }}>{labels.safetyLabel}:</strong> {detail.safety}
+                      <strong className="font-medium text-fg">{labels.safetyLabel}:</strong> {detail.safety}
                     </p>
                   )}
                 </div>
@@ -553,7 +545,7 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
         </div>
 
         {/* Sell / CTA section — still on white */}
-        <section className="px-6 py-16 border-t" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg)' }}>
+        <section className="px-6 py-16 border-t border-border bg-bg">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
             <Motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -565,7 +557,7 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
               <h2 className="t-h1 mt-4">{labels.sellTitle}</h2>
               <p className="t-lead mt-4 max-w-[620px]">{labels.sellLead}</p>
 
-              <div className="mt-8 grid gap-5 rounded-[16px] border p-6 md:grid-cols-[0.62fr_1fr] md:p-8" style={{ borderColor: 'var(--color-border)' }}>
+              <div className="mt-8 grid gap-5 rounded-[16px] border p-6 md:grid-cols-[0.62fr_1fr] md:p-8 border-border">
                 <div>
                   <div className="t-eyebrow">{labels.price}</div>
                   <div className="mt-2 font-serif italic text-4xl font-light line-through text-fg-subtle">{formatPrice(product.listPrice, lang)}</div>
@@ -574,16 +566,16 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
                 <div className="grid gap-4 self-center">
                   <ReferencePriceOptions listPrice={product.listPrice} lang={lang} />
                   <div className="grid gap-2 sm:grid-cols-2">
-                    <Link to="/#pakiety" className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-center text-[13px] font-medium no-underline" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+                    <Link to="/#pakiety" className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-center text-[13px] font-medium no-underline bg-fg text-bg">
                       {labels.add} <ArrowRight size={13} />
                     </Link>
-                    <Link to="/pakiety/wlasna-paczka/4" className="inline-flex min-h-11 items-center justify-center rounded-full border px-5 py-2.5 text-center text-[13px] font-medium no-underline" style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}>
+                    <Link to="/pakiety/wlasna-paczka/4" className="inline-flex min-h-11 items-center justify-center rounded-full border px-5 py-2.5 text-center text-[13px] font-medium no-underline border-border-strong text-fg">
                       {labels.box4}
                     </Link>
-                    <Link to="/pakiety/wlasna-paczka/8" className="inline-flex min-h-11 items-center justify-center rounded-full border px-5 py-2.5 text-center text-[13px] font-medium no-underline" style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}>
+                    <Link to="/pakiety/wlasna-paczka/8" className="inline-flex min-h-11 items-center justify-center rounded-full border px-5 py-2.5 text-center text-[13px] font-medium no-underline border-border-strong text-fg">
                       {labels.box8}
                     </Link>
-                    <Link to="/pakiety/wlasna-paczka/12" className="inline-flex min-h-11 items-center justify-center rounded-full border px-5 py-2.5 text-center text-[13px] font-medium no-underline" style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}>
+                    <Link to="/pakiety/wlasna-paczka/12" className="inline-flex min-h-11 items-center justify-center rounded-full border px-5 py-2.5 text-center text-[13px] font-medium no-underline border-border-strong text-fg">
                       {labels.box12}
                     </Link>
                   </div>
@@ -592,7 +584,7 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
             </Motion.div>
             <aside className="grid content-start gap-4">
               <QrPlaceholder src={product.qrImage} targetUrl={product.qrTargetUrl} lang={lang} />
-              <article className="rounded-[16px] border p-5" style={{ borderColor: 'var(--color-border)' }}>
+              <article className="rounded-[16px] border p-5 border-border">
                 <div className="t-eyebrow">{labels.store}</div>
                 <p className="mb-4 mt-3 text-[13px] leading-relaxed text-fg-muted">{labels.storeNote}</p>
                 <StoreButton lang={lang} href={getProductStoreHref(product)} items={getProductCartItems(product)} />

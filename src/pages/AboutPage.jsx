@@ -86,7 +86,7 @@ export default function AboutPage({ lang = 'pl' }) {
   const currentValues = values[lang] ?? values.pl;
 
   return (
-    <main className="min-h-[70vh] pb-24 pt-[120px]" style={{ background: 'var(--color-bg)' }}>
+    <main className="min-h-[70vh] pb-24 pt-[120px] bg-bg">
       <div className="mx-auto max-w-7xl px-6">
         <Breadcrumbs lang={lang} items={[{ label: t.breadcrumb }]} />
         <Link to="/" className="mb-10 mt-4 inline-flex items-center gap-1.5 text-[12px] font-medium text-fg-muted no-underline transition-opacity hover:opacity-60 tracking-wide uppercase">
@@ -103,7 +103,7 @@ export default function AboutPage({ lang = 'pl' }) {
             </p>
           </Motion.div>
 
-          <Motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.55, delay: 0.08 }} className="rounded-[24px] border p-6" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
+          <Motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.55, delay: 0.08 }} className="rounded-[24px] border p-6 border-border bg-bg-muted">
             <img src="/logo-black.svg" alt="PŁYN DO" className="h-8 w-auto" />
             <p className="mt-6 text-[14px] leading-relaxed text-fg-muted">
               {t.sideCard}
@@ -111,7 +111,7 @@ export default function AboutPage({ lang = 'pl' }) {
           </Motion.div>
         </section>
 
-        <section className="mb-24 rounded-[24px] border p-8 md:p-12 lg:p-14" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
+        <section className="mb-24 rounded-[24px] border p-8 md:p-12 lg:p-14 border-border bg-bg-muted">
           <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
             <div>
               <span className="t-eyebrow inline-flex items-center gap-2">
@@ -126,13 +126,13 @@ export default function AboutPage({ lang = 'pl' }) {
                 <p>{t.p4}</p>
               </div>
             </div>
-            <div className="rounded-[20px] border bg-white p-8" style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
-              <div className="flex min-h-[150px] items-center justify-center rounded-[16px]" style={{ background: 'var(--color-bg-muted)' }}>
+            <div className="rounded-[20px] border bg-white p-8 border-border shadow-sm">
+              <div className="flex min-h-[150px] items-center justify-center rounded-[16px] bg-bg-muted">
                 <img src="/images/partners/jax-professional-logo.png" alt="JAX Professional" className="max-h-16 w-auto" />
               </div>
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 {t.tags.map((item) => (
-                  <span key={item} className="rounded-full border px-3 py-2 text-center text-[11px] font-medium uppercase tracking-[0.1em] text-fg-muted" style={{ borderColor: 'var(--color-border)' }}>
+                  <span key={item} className="rounded-full border px-3 py-2 text-center text-[11px] font-medium uppercase tracking-[0.1em] text-fg-muted border-border">
                     {item}
                   </span>
                 ))}
@@ -150,8 +150,8 @@ export default function AboutPage({ lang = 'pl' }) {
             {currentValues.map((value) => {
               const Icon = value.icon;
               return (
-                <article key={value.title} className="group rounded-[20px] border bg-white p-8 transition-all duration-500 hover:-translate-y-1" style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
-                  <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-full transition-transform duration-500 group-hover:scale-105" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+                <article key={value.title} className="group rounded-[20px] border bg-white p-8 transition-all duration-500 hover:-translate-y-1 border-border shadow-sm">
+                  <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-full transition-transform duration-500 group-hover:scale-105 bg-fg text-bg">
                     <Icon size={20} />
                   </div>
                   <h3 className="t-h4">{value.title}</h3>
@@ -162,12 +162,12 @@ export default function AboutPage({ lang = 'pl' }) {
           </div>
         </section>
 
-        <section className="rounded-[24px] border p-8 md:flex md:items-center md:justify-between md:gap-10" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
+        <section className="rounded-[24px] border p-8 md:flex md:items-center md:justify-between md:gap-10 border-border bg-bg-muted">
           <div>
             <span className="t-eyebrow">{t.footerEyebrow}</span>
             <h2 className="t-h3 mt-3">{t.footerTitle}</h2>
           </div>
-          <Link to="/#pakiety" className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-medium no-underline md:mt-0" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+          <Link to="/#pakiety" className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-medium no-underline md:mt-0 bg-fg text-bg">
             {t.footerCta} <ArrowRight size={14} />
           </Link>
         </section>

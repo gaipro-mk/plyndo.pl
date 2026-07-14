@@ -19,7 +19,7 @@ export default function NotFoundPage({ lang = 'pl' }) {
       };
 
   return (
-    <main id="main" className="flex min-h-[70vh] items-center px-6 pb-24 pt-[140px]" style={{ background: 'var(--color-bg)' }}>
+    <main id="main" className="flex min-h-[70vh] items-center px-6 pb-24 pt-[140px] bg-bg">
       <div className="mx-auto max-w-xl text-center">
         <span className="t-eyebrow">{copy.eyebrow}</span>
         <h1 className="t-display-2 mt-4">{copy.title}</h1>
@@ -27,16 +27,14 @@ export default function NotFoundPage({ lang = 'pl' }) {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px] font-medium no-underline"
-            style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}
+            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px] font-medium no-underline bg-fg text-bg"
           >
             <Home size={16} />
             {copy.home}
           </Link>
           <Link
             to="/#pakiety"
-            className="inline-flex items-center gap-2 rounded-full border px-6 py-3 text-[14px] font-medium no-underline"
-            style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}
+            className="inline-flex items-center gap-2 rounded-full border px-6 py-3 text-[14px] font-medium no-underline border-border-strong text-fg"
           >
             {copy.packages}
             <ArrowRight size={16} />

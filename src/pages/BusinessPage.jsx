@@ -27,8 +27,7 @@ function BusinessBundle({ slug, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="grid gap-5 rounded-[20px] border bg-white p-6 transition-all duration-500 hover:-translate-y-1"
-      style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-sm)' }}
+      className="grid gap-5 rounded-[20px] border bg-white p-6 transition-all duration-500 hover:-translate-y-1 border-border shadow-sm"
     >
       <div className="flex items-center justify-between gap-3">
         <span className="t-eyebrow">{bundle.size} produktów</span>
@@ -40,11 +39,11 @@ function BusinessBundle({ slug, index }) {
           Zestaw pod sprzątanie powierzchni wspólnych, sanitariatów, zaplecza i miejsc obsługi klienta.
         </p>
       </div>
-      <div className="rounded-[14px] p-4" style={{ background: 'var(--color-bg-muted)' }}>
+      <div className="rounded-[14px] p-4 bg-bg-muted">
         <div className="text-[11px] font-medium uppercase tracking-[0.12em] text-fg-subtle">Cena paczki</div>
         <div className="mt-1 font-serif italic text-3xl font-light">{formatPln(pricing.bundlePrice, 'pl-PL')}</div>
       </div>
-      <Link to={`/pakiety/${bundle.slug}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-medium no-underline" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+      <Link to={`/pakiety/${bundle.slug}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-medium no-underline bg-fg text-bg">
         Zobacz pakiet <ArrowRight size={14} />
       </Link>
     </Motion.article>
@@ -53,8 +52,8 @@ function BusinessBundle({ slug, index }) {
 
 function ProductLine({ product }) {
   return (
-    <Link to={productRoutePath(product)} className="group flex items-center gap-3 rounded-[14px] border bg-white p-3 no-underline transition-all duration-300 hover:-translate-y-0.5" style={{ borderColor: 'var(--color-border)', color: 'var(--color-fg)', boxShadow: 'var(--shadow-xs)' }}>
-      <span className="h-14 w-11 shrink-0 overflow-hidden rounded-[8px] border" style={{ borderColor: 'var(--color-border)', background: product.color.bg }}>
+    <Link to={productRoutePath(product)} className="group flex items-center gap-3 rounded-[14px] border bg-white p-3 no-underline transition-all duration-300 hover:-translate-y-0.5 border-border text-fg shadow-xs">
+      <span className="h-14 w-11 shrink-0 overflow-hidden rounded-[8px] border border-border" style={{ background: product.color.bg }}>
         <img src={product.image} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
       </span>
       <span>
@@ -69,7 +68,7 @@ export default function BusinessPage() {
   const businessProducts = products.filter((product) => product.audiences?.includes('business'));
 
   return (
-    <main className="pb-24 pt-[120px]" style={{ background: 'var(--color-bg)' }}>
+    <main className="pb-24 pt-[120px] bg-bg">
       <section className="px-6 pb-20">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_430px] lg:items-center">
           <Motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
@@ -80,18 +79,18 @@ export default function BusinessPage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {['4, 8 lub 12 butelek', 'do -40% w największej paczce', 'własna paczka dla stałych potrzeb'].map((item) => (
-                <span key={item} className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[12px] font-medium" style={{ borderColor: 'var(--color-border-strong)' }}>
+                <span key={item} className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[12px] font-medium border-border-strong">
                   <CheckCircle2 size={14} /> {item}
                 </span>
               ))}
             </div>
           </Motion.div>
           <Motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.55, delay: 0.08 }} className="grid gap-4">
-            <div className="overflow-hidden rounded-[24px] border bg-white" style={{ borderColor: 'var(--color-border)' }}>
+            <div className="overflow-hidden rounded-[24px] border bg-white border-border">
               <img src={heroBg} alt="Linia produktów PŁYN DO" className="aspect-[4/3] w-full object-cover" />
             </div>
-            <div className="rounded-[24px] border p-6" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+            <div className="rounded-[24px] border p-6 border-border bg-bg-muted">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-fg text-bg">
                 <Building2 size={22} />
               </div>
               <h2 className="t-h3">Jedno zamówienie, mniej braków na zapleczu.</h2>
@@ -103,7 +102,7 @@ export default function BusinessPage() {
         </div>
       </section>
 
-      <section className="px-6 py-20" style={{ background: 'var(--color-bg-muted)' }}>
+      <section className="px-6 py-20 bg-bg-muted">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 max-w-[700px]">
             <span className="t-eyebrow">Pakiety dla firm</span>
@@ -122,7 +121,7 @@ export default function BusinessPage() {
             <h2 className="t-h1 mt-4">Dla miejsc, w których czystość pracuje codziennie.</h2>
             <div className="mt-8 grid gap-3">
               {businessTypes.map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-[14px] border bg-white p-4" style={{ borderColor: 'var(--color-border)' }}>
+                <div key={item} className="flex items-start gap-3 rounded-[14px] border bg-white p-4 border-border">
                   <ShieldCheck size={17} className="mt-0.5 shrink-0 text-fg-muted" />
                   <span className="text-[14px] leading-relaxed">{item}</span>
                 </div>
@@ -140,12 +139,12 @@ export default function BusinessPage() {
       </section>
 
       <section className="px-6">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 rounded-[24px] border p-8 md:flex-row md:items-center md:justify-between" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
+        <div className="mx-auto flex max-w-7xl flex-col gap-5 rounded-[24px] border p-8 md:flex-row md:items-center md:justify-between border-border bg-bg-muted">
           <div>
             <span className="t-eyebrow">Własna paczka firmowa</span>
             <h2 className="t-h3 mt-3">Powiel produkty, które zużywają się najszybciej.</h2>
           </div>
-          <Link to="/pakiety/wlasna-paczka/12" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-medium no-underline" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+          <Link to="/pakiety/wlasna-paczka/12" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-medium no-underline bg-fg text-bg">
             Skomponuj 12 <ClipboardList size={14} />
           </Link>
         </div>

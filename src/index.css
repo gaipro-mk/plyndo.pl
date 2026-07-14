@@ -251,6 +251,10 @@
   filter: invert(1) brightness(1.08);
 }
 
+:root[data-theme='dark'] img[src*="jax-professional-logo"] {
+  filter: invert(1) brightness(1.2);
+}
+
 /* Font scale */
 :root[data-font-scale='sm'] { font-size: 14px; }
 :root[data-font-scale='md'] { font-size: 15px; }

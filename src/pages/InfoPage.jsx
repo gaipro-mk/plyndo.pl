@@ -222,14 +222,14 @@ export default function InfoPage({ lang = 'pl' }) {
   const isSingleBlock = content.blocks.length === 1;
 
   return (
-    <main id="main" className="min-h-[70vh] px-6 pb-24 pt-[120px]" style={{ background: 'var(--color-bg)' }}>
+    <main id="main" className="min-h-[70vh] px-6 pb-24 pt-[120px] bg-bg">
       <div className="mx-auto max-w-5xl">
         <Breadcrumbs lang={lang} items={[{ label: content.title }]} />
         <Link to="/" className="mb-8 mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium text-fg-muted no-underline transition-opacity hover:opacity-60 tracking-wide uppercase">
           <ArrowLeft size={16} />
           {lang === 'en' ? 'Back to home' : 'Wróć na stronę główną'}
         </Link>
-        <section className="grid gap-8 border-b pb-12 lg:grid-cols-[1fr_220px]" style={{ borderColor: 'var(--color-border)' }}>
+        <section className="grid gap-8 border-b pb-12 lg:grid-cols-[1fr_220px] border-border">
           <div>
             <span className="t-eyebrow">{content.eyebrow}</span>
             <h1 className="t-display-2 mt-4">{content.title}</h1>
@@ -241,7 +241,7 @@ export default function InfoPage({ lang = 'pl' }) {
             )}
           </div>
           {Icon && (
-            <div className="flex aspect-square max-w-[220px] items-center justify-center rounded-[20px]" style={{ background: 'var(--color-bg-muted)', color: 'var(--color-fg-subtle)' }}>
+            <div className="flex aspect-square max-w-[220px] items-center justify-center rounded-[20px] bg-bg-muted text-fg-subtle">
               <Icon size={64} strokeWidth={1.5} />
             </div>
           )}
@@ -249,7 +249,7 @@ export default function InfoPage({ lang = 'pl' }) {
         {content.blocks.length > 0 && (
           <div className={`mt-10 grid gap-5 ${isSingleBlock ? 'grid-cols-1 max-w-4xl' : 'md:grid-cols-2'}`}>
             {content.blocks.map((block, i) => (
-              <article key={`${block.title}-${i}`} className={`rounded-[16px] border p-7 md:p-10 ${isSingleBlock ? 'w-full' : ''}`} style={{ borderColor: 'var(--color-border)' }}>
+              <article key={`${block.title}-${i}`} className={`rounded-[16px] border p-7 md:p-10 border-border ${isSingleBlock ? 'w-full' : ''}`}>
                 {block.title && <h2 className="t-h4 mb-4">{block.title}</h2>}
                 <div className="text-[14px] leading-relaxed text-fg-muted">
                   <ReactMarkdown
@@ -262,7 +262,7 @@ export default function InfoPage({ lang = 'pl' }) {
                       ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-6 space-y-2 text-[14px] md:text-base text-fg-muted" {...props} />,
                       ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-6 space-y-2 text-[14px] md:text-base text-fg-muted" {...props} />,
                       li: ({node, ...props}) => <li className="pl-2" {...props} />,
-                      a: ({node, ...props}) => <a className="text-blue-600 hover:text-blue-500 hover:underline transition-colors" {...props} />,
+                      a: ({node, ...props}) => <a className="text-accent hover:opacity-80 hover:underline transition-colors" {...props} />,
                       strong: ({node, ...props}) => <strong className="font-semibold text-fg-base" {...props} />
                       /* eslint-enable no-unused-vars */
                     }}
