@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ArrowRight, Box, Layers3, PackagePlus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion as Motion } from 'framer-motion';
@@ -68,9 +69,10 @@ const customTags = {
 };
 
 function BundleCard({ bundle, featured = false, index = 0, lang = 'pl' }) {
+  const [expanded, setExpanded] = useState(false);
   const pricing = calculateBundlePricing({ bundle, products });
   const accent = accentColors[bundle.slug] ?? accentColors.custom;
-  const previewItems = pricing.lineItems.slice(0, 4);
+  const displayItems = expanded ? pricing.lineItems : pricing.lineItems.slice(0, 4);
   const tags = packageTags[lang] ?? packageTags.pl;
 
   return (
@@ -103,7 +105,7 @@ function BundleCard({ bundle, featured = false, index = 0, lang = 'pl' }) {
       </div>
 
       <div className="grid gap-2">
-        {previewItems.map((item) => (
+        {displayItems.map((item) => (
           <div key={item.productSlug} className="flex items-center justify-between gap-3 border-b pb-2 text-[13px]" style={{ borderColor: 'var(--color-border)' }}>
             <span className="font-medium">
               {item.quantity > 1 ? `${item.quantity}× ` : ''}
@@ -112,10 +114,17 @@ function BundleCard({ bundle, featured = false, index = 0, lang = 'pl' }) {
             <span className="text-fg-subtle">{formatPln(item.listValue, 'pl-PL')}</span>
           </div>
         ))}
-        {pricing.lineItems.length > previewItems.length && (
-          <span className="text-[11px] font-medium text-fg-subtle">
-            + {pricing.lineItems.length - previewItems.length} {lang === 'en' ? 'more' : 'więcej'}
-          </span>
+        {pricing.lineItems.length > 4 && (
+          <button
+            type="button"
+            onClick={() => setExpanded(!expanded)}
+            className="text-[11px] font-semibold hover:underline cursor-pointer border-none bg-transparent text-left p-0 mt-1 flex items-center gap-1 transition-colors"
+            style={{ color: accent }}
+          >
+            {expanded
+              ? (lang === 'en' ? 'Hide details' : 'Ukryj szczegóły')
+              : `+ ${pricing.lineItems.length - 4} ${lang === 'en' ? 'more' : 'więcej'}`}
+          </button>
         )}
       </div>
 
@@ -251,12 +260,12 @@ export default function PlansSection({ lang = 'pl' }) {
             <h3 className="t-h4 mt-5 max-w-[720px]">
               {lang === 'en'
                 ? 'In every package, you can choose a ready-made set or compose your own box of liquids.'
-                : 'W każdym pakiecie możesz wybrać gotowy zestaw albo skomponować własną paczkę płynów.'}
+                : 'Wybierz gotowy pakiet 4, 8 lub 12 butelek albo skomponuj własną paczkę PŁYN DO dokładnie pod to, czego używasz najczęściej.'}
             </h3>
             <p className="mt-3 max-w-[660px] text-[13px] leading-relaxed text-fg-muted">
               {lang === 'en'
                 ? 'For cleaning, laundry, and dishwashing—tailored exactly to your needs.'
-                : 'Do sprzątania, prania i zmywania – dokładnie pod Twoje potrzeby.'}
+                : 'Jedno zamówienie, sensowny zapas i pełna kontrola nad składem.'}
             </p>
           </div>
           <Link

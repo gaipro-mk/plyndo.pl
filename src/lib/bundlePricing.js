@@ -1,9 +1,9 @@
 const PLN_MINOR_UNITS = 100;
 
 export const packageDiscountTiers = Object.freeze([
-  { size: 4, rate: 0.3 },
-  { size: 8, rate: 0.4 },
-  { size: 12, rate: 0.5 }
+  { size: 4, rate: 0.2 },
+  { size: 8, rate: 0.3 },
+  { size: 12, rate: 0.4 }
 ]);
 
 function toMinorUnits(amount) {

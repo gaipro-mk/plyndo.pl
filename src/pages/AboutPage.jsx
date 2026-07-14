@@ -58,10 +58,16 @@ export default function AboutPage() {
               <h2 className="t-h1 mt-4">Ponad 40 lat doświadczenia produkcyjnego.</h2>
               <div className="mt-6 grid gap-4 text-[15px] leading-relaxed text-fg-muted">
                   <p>
-                    Linia PŁYN DO jest produkowana dla EmiChem przez JAX Professional – polskiego producenta rozwijającego środki czystości od 1984 roku.
+                    Za PŁYN DO stoi zaplecze produkcyjne i doświadczenie w chemii gospodarczej. To nie przypadkowa marka z ładną etykietą, tylko produkty oparte na realnym know-how. PŁYN DO jest wytwarzany w zakładach EmiChem w Poznaniu znanego między innymi z linii profesjonalnej JAX Professional, firmie z doświadczeniem produkcyjnym sięgającym 1984 roku.
                   </p>
                   <p>
-                    PŁYN DO to marka stworzona dla osób i małych firm, które chcą kupować litrowe środki czystości w wygodnych pakietach — bez porównywania profesjonalnych, dużych formatów.
+                    EmiChem produkuje szeroką gamę płynów i środków czystości przeznaczonych zarówno do gospodarstw domowych, jak i zastosowań branżowych — od uniwersalnych detergentów po specjalistyczne preparaty przemysłowe. Dzięki pracy z nowoczesnymi technologiami i surowcami z rynku europejskiego tworzymy formuły skuteczne w codziennym użyciu i sprawdzone w małych firmach i lokalach usługowych.
+                  </p>
+                  <p>
+                    Marka PŁYN DO skupia się na prostocie zakupu — oferujemy kompletne pakiety 4, 8 i 12 butelek oraz możliwość skomponowania własnego zestawu, by zamówienia przez sklep online były szybkie i przewidywalne.
+                  </p>
+                  <p>
+                    Wybierając PŁYN DO kupujesz produkty zaprojektowane z myślą o wygodzie i skuteczności: czytelne etykiety, sprawdzone receptury i dostępność pełnej gamy preparatów do kuchni, łazienki, podłóg, zmywarki i prania — wszystko w jednym zamówieniu, z dostawą pod Twoje drzwi.
                   </p>
               </div>
             </div>

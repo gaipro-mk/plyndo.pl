@@ -62,7 +62,8 @@ export default function CustomBundlePage({ lang = 'pl' }) {
   function changeCount(slug, delta) {
     setCounts((current) => {
       const nextQuantity = Math.max(0, (current[slug] ?? 0) + delta);
-      const nextTotal = itemCount + delta;
+      const currentTotal = Object.values(current).reduce((sum, val) => sum + val, 0);
+      const nextTotal = currentTotal + delta;
       if (delta > 0 && nextTotal > size) return current;
       if (nextQuantity === 0) {
         const next = { ...current };

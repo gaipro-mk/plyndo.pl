@@ -20,14 +20,14 @@ export const copy = {
       metrics: [
         { value: '40+', label: 'lat doświadczenia producenta – bez marży pośredników' },
         { value: '4/8/12', label: 'butelek – im większa paczka, tym niższa cena za sztukę' },
-        { value: '1 dzień', label: 'szybka dostawa pod drzwi domu i małej firmy' },
-        { value: '-50%', label: 'zniżki w największej paczce 12 produktów' },
+        { value: '12', label: 'produktów – wszystkie niezbędne środki do utrzymania czystości w domu czy firmie.' },
+        { value: '-40%', label: 'zniżki w największej paczce 12 produktów' },
       ],
     },
     productGrid: {
       title: 'Do czego użyjesz PŁYN DO',
       heading: '12 płynów do domu i firmy',
-      lead: 'PŁYN DO to pełna półka sprawdzonych produktów – od zlewu i kuchenki, przez łazienkę i podłogi, po zmywarkę i biuro.',
+      lead: 'Płyn do to pełna półka sprawdzonych produktów - od zlewu i kuchni, przez łazienkę i podłogi, po zmywarkę, pranie i firmowe zaplecze. PŁYN DO porządkuje codzienną chemię gospodarczą w jeden prosty system, PŁYNy DO domu i firmy, które ogarniają codzienne zadania.',
       cta: 'Przejdź do pakietów',
     },
     value: {
@@ -90,12 +90,22 @@ export const copy = {
       home: {
         title: 'Do domu',
         copy: 'Płyn do naczyń, zmywarki, łazienki, podłóg i kuchni.',
-        bullets: ['Skutecznie usuwa tłuszcz i brud', 'Alternatywa dla drogich kapsułek do zmywarki', 'Pozostawia czyste podłogi bez smug'],
+        bullets: [
+          'Płyn do naczyń skutecznie usuwa tłuszcz i codzienne zabrudzenia.',
+          'Płyn do zmywarki i nabłyszczacz pomagają utrzymać czyste naczynia bez osadów.',
+          'Płyny do łazienki i WC radzą sobie z kamieniem, osadem i bieżącym brudem.',
+          'Płyn do podłóg zostawia czyste powierzchnie bez smug i klejącego filmu.',
+          'Płyny do kuchni i powierzchni pomagają szybko utrzymać porządek tam, gdzie używa się ich najczęściej.'
+        ],
       },
       business: {
         title: 'Do firmy',
         copy: 'Biura, gabinety, małe lokale usługowe, miejsca przyjęć klientów.',
-        bullets: ['Sprzątanie podłóg, biurek i sanitariatów', 'Kuchnia i pomieszczenia socjalne', 'Czystość, która pracuje na wizerunek'],
+        bullets: [
+          'Do biur i coworków — podłogi, kuchnia, sanitariaty i powierzchnie wspólne.',
+          'Do gabinetów i salonów — czystość, która dobrze wygląda przy kliencie.',
+          'Do małych lokali usługowych — wygodny zapas środków do codziennego ogarniania zaplecza.'
+        ],
       },
     },
     heritage: {
@@ -176,8 +186,8 @@ export const copy = {
       metrics: [
         { value: '40+', label: 'years of manufacturing experience—no middleman markup' },
         { value: '4/8/12', label: 'bottles—larger package means a lower price per bottle' },
-        { value: '1 day', label: 'fast delivery to your home or small business door' },
-        { value: '-50%', label: 'discount on the largest package of 12 products' },
+        { value: '12', label: 'products – all essentials for keeping your home or business clean' },
+        { value: '-40%', label: 'discount on the largest package of 12 products' },
       ],
     },
     productGrid: {

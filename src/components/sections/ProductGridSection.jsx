@@ -93,7 +93,7 @@ export default function ProductGridSection({ lang = 'pl' }) {
                     <span className="mx-1.5 opacity-30">·</span>
                     <span className="line-through opacity-60">{formatPln(p.listPrice, 'pl-PL')}</span>
                     <span className="mx-1.5 opacity-30">·</span>
-                    <span>{formatPln(p.listPrice * 0.5, 'pl-PL')} w 12x</span>
+                    <span>{formatPln(p.listPrice * 0.6, 'pl-PL')} w 12x</span>
                   </div>
                 </div>
               </div>

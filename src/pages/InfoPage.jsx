@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowLeft, Mail, MapPin, PackageCheck } from 'lucide-react';
 import Breadcrumbs from '../components/layout/Breadcrumbs';
+import { legalDataMd } from '../data/legalContentMd';
+import ReactMarkdown from 'react-markdown';
 
 const pages = {
   kontakt: {
@@ -42,24 +44,8 @@ const pages = {
       intro: 'Regulamin korzystania ze strony plyndo.pl oraz zasady prezentacji oferty pakietowej marki PŁYN DO.',
       blocks: [
         {
-          title: '1. Postanowienia ogólne',
-          copy: 'Niniejszy regulamin określa zasady korzystania ze strony internetowej plyndo.pl, prowadzonej przez EmiChem Michał Mierzwa P.P. z siedzibą w Poznaniu. Strona służy prezentacji oferty pakietowej marki PŁYN DO – chemii gospodarczej do domu i firmy.',
-        },
-        {
-          title: '2. Oferta i ceny',
-          copy: 'Na stronie prezentujemy pakiety gotowe oraz możliwość skomponowania własnej paczki 4, 8 lub 12 produktów. Ceny produktów mają charakter referencyjny. Rabat i oszczędność dotyczą wyłącznie całej paczki zgodnie z aktualnym cennikiem pakietowym.',
-        },
-        {
-          title: '3. Zamówienia',
-          copy: 'Finalizacja zamówienia odbywa się w sklepie internetowym lub – do czasu jego uruchomienia – po kontakcie mailowym na adres kontakt@plyndo.pl. Składanie zamówienia wymaga akceptacji aktualnych warunków sprzedaży obowiązujących w momencie zakupu.',
-        },
-        {
-          title: '4. Odpowiedzialność',
-          copy: 'Dokładamy starań, aby informacje na stronie były aktualne i rzetelne. Nie ponosimy odpowiedzialności za przerwy techniczne wynikające z przyczyn niezależnych, ani za treści stron zewnętrznych, do których prowadzą linki.',
-        },
-        {
-          title: '5. Prawo właściwe',
-          copy: 'Do korzystania ze strony stosuje się prawo polskie. Spory będą rozstrzygane przez sąd właściwy dla siedziby sprzedawcy, o ile bezwzględnie obowiązujące przepisy nie stanowią inaczej.',
+          title: '',
+          copy: legalDataMd.terms,
         },
       ],
     },
@@ -80,24 +66,8 @@ const pages = {
       intro: 'Informacja o przetwarzaniu danych osobowych użytkowników strony plyndo.pl zgodnie z RODO.',
       blocks: [
         {
-          title: '1. Administrator danych',
-          copy: 'Administratorem danych osobowych jest EmiChem Michał Mierzwa P.P., ul. Wójtowska 16, 61-654 Poznań. Kontakt: kontakt@plyndo.pl.',
-        },
-        {
-          title: '2. Zakres i cele',
-          copy: 'Przetwarzamy dane podane dobrowolnie w korespondencji e-mail (imię, adres e-mail, treść wiadomości) w celu udzielenia odpowiedzi i obsługi zapytań. Podstawą prawną jest art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes) lub lit. b (działania przed zawarciem umowy).',
-        },
-        {
-          title: '3. Pliki cookie',
-          copy: 'Strona może używać niezbędnych plików cookie do prawidłowego działania serwisu oraz zapamiętania preferencji (np. zgoda cookie w localStorage pod kluczem plyndo-cookie-consent). Nie stosujemy cookies marketingowych bez odrębnej zgody.',
-        },
-        {
-          title: '4. Odbiorcy i okres przechowywania',
-          copy: 'Dane mogą być powierzane dostawcom hostingu i poczty elektronicznej działającym jako procesorzy. Przechowujemy je przez czas niezbędny do obsługi zapytania, a następnie przez okres wymagany przepisami.',
-        },
-        {
-          title: '5. Prawa osób',
-          copy: 'Przysługuje Ci prawo dostępu, sprostowania, usunięcia, ograniczenia przetwarzania, sprzeciwu oraz skargi do Prezesa UODO. W sprawach prywatności pisz na kontakt@plyndo.pl.',
+          title: '',
+          copy: legalDataMd.privacy,
         },
       ],
     },
@@ -191,6 +161,8 @@ export default function InfoPage({ lang = 'pl' }) {
     return null;
   }
 
+  const isSingleBlock = content.blocks.length === 1;
+
   return (
     <main id="main" className="min-h-[70vh] px-6 pb-24 pt-[120px]" style={{ background: 'var(--color-bg)' }}>
       <div className="mx-auto max-w-5xl">
@@ -217,11 +189,29 @@ export default function InfoPage({ lang = 'pl' }) {
           )}
         </section>
         {content.blocks.length > 0 && (
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {content.blocks.map((block) => (
-              <article key={block.title} className="rounded-[16px] border p-7" style={{ borderColor: 'var(--color-border)' }}>
-                <h2 className="t-h4">{block.title}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-fg-muted">{block.copy}</p>
+          <div className={`mt-10 grid gap-5 ${isSingleBlock ? 'grid-cols-1 max-w-4xl' : 'md:grid-cols-2'}`}>
+            {content.blocks.map((block, i) => (
+              <article key={`${block.title}-${i}`} className={`rounded-[16px] border p-7 md:p-10 ${isSingleBlock ? 'w-full' : ''}`} style={{ borderColor: 'var(--color-border)' }}>
+                {block.title && <h2 className="t-h4 mb-4">{block.title}</h2>}
+                <div className="text-[14px] leading-relaxed text-fg-muted">
+                  <ReactMarkdown
+                    components={{
+                      /* eslint-disable no-unused-vars */
+                      h1: ({node, ...props}) => <h1 className="text-2xl md:text-3xl font-bold mt-8 mb-6 text-fg-base" {...props} />,
+                      h2: ({node, ...props}) => <h2 className="text-xl md:text-2xl font-semibold mt-8 mb-4 text-fg-base" {...props} />,
+                      h3: ({node, ...props}) => <h3 className="text-lg md:text-xl font-medium mt-6 mb-3 text-fg-base" {...props} />,
+                      p: ({node, ...props}) => <p className="mb-4 leading-relaxed text-[14px] md:text-base text-fg-muted" {...props} />,
+                      ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-6 space-y-2 text-[14px] md:text-base text-fg-muted" {...props} />,
+                      ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-6 space-y-2 text-[14px] md:text-base text-fg-muted" {...props} />,
+                      li: ({node, ...props}) => <li className="pl-2" {...props} />,
+                      a: ({node, ...props}) => <a className="text-blue-600 hover:text-blue-500 hover:underline transition-colors" {...props} />,
+                      strong: ({node, ...props}) => <strong className="font-semibold text-fg-base" {...props} />
+                      /* eslint-enable no-unused-vars */
+                    }}
+                  >
+                    {block.copy}
+                  </ReactMarkdown>
+                </div>
               </article>
             ))}
           </div>

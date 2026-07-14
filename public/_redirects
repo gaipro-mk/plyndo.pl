@@ -36,3 +36,5 @@
 /product/odkamieniania /produkt/plyn-do-odkamieniania 301
 /product/udraznianiarur /produkt/plyn-do-udrazniania-rur 301
 
+# SPA routing fallback for Cloudflare Pages
+/* /200.html 200

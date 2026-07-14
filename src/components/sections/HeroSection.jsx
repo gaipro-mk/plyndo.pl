@@ -65,7 +65,7 @@ export default function HeroSection({ lang = 'pl' }) {
                 return (
                   <span
                     key={i}
-                    style={{ color: 'var(--plyndo-cobalt-deep)', fontStyle: 'italic', fontWeight: 'normal' }}
+                    style={{ color: current.color.bg || current.color.fg, fontStyle: 'italic', fontWeight: 'normal', transition: 'color 0.7s ease' }}
                   >
                     {part}
                   </span>

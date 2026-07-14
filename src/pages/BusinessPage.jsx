@@ -59,7 +59,7 @@ function ProductLine({ product }) {
       </span>
       <span>
         <span className="block text-[13px] font-medium">{product.i18n?.pl?.displayName ?? product.name}</span>
-        <span className="mt-1 block text-[11px] uppercase tracking-[0.1em] text-fg-subtle">1 L · {formatPln(product.listPrice * 0.5, 'pl-PL')} w 12x</span>
+        <span className="mt-1 block text-[11px] uppercase tracking-[0.1em] text-fg-subtle">1 L · {formatPln(product.listPrice * 0.6, 'pl-PL')} w 12x</span>
       </span>
     </Link>
   );
@@ -79,7 +79,7 @@ export default function BusinessPage() {
               Pakiety dla biur, gabinetów, salonów i lokali usługowych. Zamiast chemii pralniczej — środki do podłóg, sanitariatów, szyb, rąk, naczyń i zaplecza.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              {['4, 8 lub 12 butelek', 'do -50% w największej paczce', 'własna paczka dla stałych potrzeb'].map((item) => (
+              {['4, 8 lub 12 butelek', 'do -40% w największej paczce', 'własna paczka dla stałych potrzeb'].map((item) => (
                 <span key={item} className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[12px] font-medium" style={{ borderColor: 'var(--color-border-strong)' }}>
                   <CheckCircle2 size={14} /> {item}
                 </span>
