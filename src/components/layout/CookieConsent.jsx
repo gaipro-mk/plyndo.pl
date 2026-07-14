@@ -40,8 +40,7 @@ export default function CookieConsent({ lang = 'pl' }) {
       role="dialog"
       aria-live="polite"
       aria-label={lang === 'en' ? 'Cookie consent' : 'Zgoda na pliki cookie'}
-      className="fixed bottom-0 left-0 right-0 z-[80] border-t px-6 py-4 shadow-lg"
-      style={{ background: 'var(--color-bg-raised)', borderColor: 'var(--color-border)' }}
+      className="fixed bottom-0 left-0 right-0 z-[80] border-t px-6 py-4 shadow-lg bg-bg border-border"
     >
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <p className="m-0 max-w-[720px] text-[13px] leading-relaxed text-fg-muted">
@@ -53,8 +52,7 @@ export default function CookieConsent({ lang = 'pl' }) {
         <button
           type="button"
           onClick={accept}
-          className="shrink-0 cursor-pointer rounded-full border-none px-5 py-2.5 text-[13px] font-medium"
-          style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}
+          className="shrink-0 cursor-pointer rounded-full border-none px-5 py-2.5 text-[13px] font-medium bg-fg text-bg"
         >
           {copy.accept}
         </button>

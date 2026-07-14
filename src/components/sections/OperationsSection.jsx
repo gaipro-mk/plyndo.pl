@@ -10,7 +10,7 @@ export default function OperationsSection({ lang = 'pl' }) {
   const icons = [Package, SlidersHorizontal, ShoppingCart];
 
   return (
-    <section id="jak-to-dziala" className="py-28 px-6" style={{ background: 'var(--color-bg)' }}>
+    <section id="jak-to-dziala" className="py-28 px-6 bg-bg">
       <div className="max-w-7xl mx-auto">
         <Motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,14 +36,13 @@ export default function OperationsSection({ lang = 'pl' }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="group bg-white border rounded-[20px] px-7 py-8 transition-all duration-500 hover:-translate-y-1"
-                style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-sm)' }}
+                className="group bg-white border rounded-[20px] px-7 py-8 transition-all duration-500 hover:-translate-y-1 border-border shadow-sm"
               >
                 <div className="flex justify-between items-start">
-                  <div className="w-11 h-11 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+                  <div className="w-11 h-11 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105 bg-fg text-bg">
                     <Icon size={18} />
                   </div>
-                  <span className="font-serif italic text-[38px] font-light leading-none" style={{ color: 'var(--color-fg-subtle)' }}>
+                  <span className="font-serif italic text-[38px] font-light leading-none text-fg-subtle">
                     {step.step || (i + 1)}
                   </span>
                 </div>

@@ -33,7 +33,7 @@ export default function Footer({ lang = 'pl', activeTheme }) {
   const isDark = activeTheme === 'dark';
 
   return (
-    <footer id="footer" className="border-t mt-0 pt-20 pb-10 px-6" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg)' }}>
+    <footer id="footer" className="border-t mt-0 pt-20 pb-10 px-6 border-border bg-bg">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr] gap-12">
           <div>
@@ -49,8 +49,8 @@ export default function Footer({ lang = 'pl', activeTheme }) {
                 kontakt@plyndo.pl
               </a>
             </p>
-            <div className="mt-5 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-medium" style={{ borderColor: 'var(--color-border)' }}>
-              <span className="grid h-4 w-6 grid-cols-1 overflow-hidden rounded-[2px] border" style={{ borderColor: 'var(--color-border)' }}>
+            <div className="mt-5 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-medium border-border">
+              <span className="grid h-4 w-6 grid-cols-1 overflow-hidden rounded-[2px] border border-border">
                 <span style={{ background: '#ffffff' }} />
                 <span style={{ background: '#dc143c' }} />
               </span>

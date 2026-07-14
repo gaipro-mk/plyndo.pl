@@ -7,7 +7,7 @@ export default function AboutSection({ lang = 'pl' }) {
   const content = copy[lang]?.about ?? copy.pl.about;
 
   return (
-    <section id="o-marce" className="py-24 px-6 border-t" style={{ background: 'var(--color-bg)', borderColor: 'var(--color-border)' }}>
+    <section id="o-marce" className="py-24 px-6 border-t bg-bg border-border">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <Motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -27,8 +27,7 @@ export default function AboutSection({ lang = 'pl' }) {
           <div className="mt-10">
             <Link 
               to="/dla-firm" 
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px] font-medium transition-all duration-300 hover:scale-[1.01] no-underline"
-              style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}
+              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-[14px] font-medium transition-all duration-300 hover:scale-[1.01] no-underline bg-fg text-bg"
             >
               {content.cta}
               <ArrowRight size={16} />
@@ -41,11 +40,10 @@ export default function AboutSection({ lang = 'pl' }) {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-[24px] border overflow-hidden relative aspect-square lg:aspect-[4/3] flex flex-col justify-end p-8"
-          style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}
+          className="rounded-[24px] border overflow-hidden relative aspect-square lg:aspect-[4/3] flex flex-col justify-end p-8 border-border bg-bg-muted"
         >
           <div className="flex items-center gap-3 mb-2">
-            <span className="w-2 h-2 rounded-full" style={{ background: 'var(--plyndo-cobalt-deep)' }} />
+            <span className="w-2 h-2 rounded-full bg-primary" />
             <span className="text-[12px] font-medium tracking-wider uppercase text-fg-muted">{content.productionLabel}</span>
           </div>
           <div className="font-serif italic text-3xl text-fg-base">{content.productionTitle}</div>

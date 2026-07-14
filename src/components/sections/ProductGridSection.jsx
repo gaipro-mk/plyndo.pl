@@ -11,7 +11,7 @@ export default function ProductGridSection({ lang = 'pl' }) {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <section id="products" className="py-24 px-6" style={{ background: 'var(--color-bg)' }}>
+    <section id="products" className="py-24 px-6 bg-bg">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-end mb-14 gap-6 flex-wrap">
           <div className="max-w-[620px]">
@@ -27,7 +27,7 @@ export default function ProductGridSection({ lang = 'pl' }) {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-16">
-          <div className="rounded-[20px] border p-8" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
+          <div className="rounded-[20px] border p-8 border-border bg-bg-muted">
             <h3 className="t-h3 mb-3">{audience.home.title}</h3>
             <p className="text-[14px] leading-[1.7] text-fg-muted mb-6">{audience.home.copy}</p>
             <ul className="grid gap-3">
@@ -39,7 +39,7 @@ export default function ProductGridSection({ lang = 'pl' }) {
               ))}
             </ul>
           </div>
-          <div className="rounded-[20px] border p-8" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)' }}>
+          <div className="rounded-[20px] border p-8 border-border bg-bg-muted">
             <h3 className="t-h3 mb-3">{audience.business.title}</h3>
             <p className="text-[14px] leading-[1.7] text-fg-muted mb-6">{audience.business.copy}</p>
             <ul className="grid gap-3">
@@ -64,22 +64,17 @@ export default function ProductGridSection({ lang = 'pl' }) {
             >
               {/* White card with product image */}
               <div
-                className="rounded-[16px] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] aspect-[4/5] border"
+                className={`rounded-[16px] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] aspect-[4/5] border ${
+                  hovered === p.id ? 'border-border-strong shadow-md -translate-y-1' : 'border-border shadow-none translate-y-0'
+                }`}
                 style={{
-                  borderColor: hovered === p.id ? 'var(--color-border-strong)' : 'var(--color-border)',
                   background: p.color.bg,
-                  boxShadow: hovered === p.id ? 'var(--shadow-md)' : 'none',
-                  transform: hovered === p.id ? 'translateY(-4px)' : 'translateY(0)',
                 }}
               >
                 <img
                   src={p.image}
                   alt={p.i18n?.pl?.displayName ?? p.name}
-                  className="w-full h-full object-cover transition-transform duration-600 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                  style={{
-                    transform: hovered === p.id ? 'scale(1.04)' : 'scale(1)',
-                    objectPosition: 'top center',
-                  }}
+                  className="w-full h-full object-cover transition-transform duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] object-[top_center]"
                 />
               </div>
               <div className="mt-3.5 flex items-start gap-2">

@@ -7,15 +7,15 @@ export default function BundlePricePanel({ pricing, lang = 'pl', bundle }) {
   const cartItems = getBundleCartItems(bundle);
 
   return (
-    <aside className="grid gap-5 rounded-[20px] border p-6" style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg)' }}>
-      <div className="flex items-start justify-between gap-4 border-b pb-5" style={{ borderColor: 'var(--color-border)' }}>
+    <aside className="grid gap-5 rounded-[20px] border p-6 border-border bg-bg">
+      <div className="flex items-start justify-between gap-4 border-b pb-5 border-border">
         <div>
           <div className="t-eyebrow">{lang === 'en' ? 'Package math' : 'Ekonomia paczki'}</div>
           <div className="mt-2 font-serif italic text-4xl font-light leading-none">
             {formatPln(pricing.bundlePrice, lang === 'en' ? 'en-GB' : 'pl-PL')}
           </div>
         </div>
-        <span className="rounded-full border px-3 py-1.5 text-[12px] font-medium" style={{ borderColor: 'var(--color-border-strong)' }}>
+        <span className="rounded-full border px-3 py-1.5 text-[12px] font-medium border-border-strong">
           -{pricing.savingsPercent}%
         </span>
       </div>
@@ -37,7 +37,7 @@ export default function BundlePricePanel({ pricing, lang = 'pl', bundle }) {
           <dd className="font-medium">{pricing.itemCount}</dd>
         </div>
       </dl>
-      <p className="rounded-[14px] p-4 text-[12px] leading-relaxed text-fg-muted" style={{ background: 'var(--color-bg-muted)' }}>
+      <p className="rounded-[14px] p-4 text-[12px] leading-relaxed text-fg-muted bg-bg-muted">
         {lang === 'en'
           ? 'Product prices are reference values. Discount and saving are presented for the whole package.'
           : 'Ceny produktów są wartościami referencyjnymi. Rabat i oszczędność pokazujemy dla całej paczki.'}

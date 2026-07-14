@@ -74,8 +74,8 @@ function App() {
   const activeTheme = resolveActiveTheme(theme);
 
   return (
-    <div id="top" className="min-h-screen w-full" style={{ background: 'var(--color-bg)', color: 'var(--color-fg)' }}>
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:px-4 focus:py-2 focus:text-[13px] focus:font-medium" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+    <div id="top" className="min-h-screen w-full bg-bg text-fg">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:px-4 focus:py-2 focus:text-[13px] focus:font-medium bg-fg text-bg">
         {lang === 'en' ? 'Skip to content' : 'Przejdź do treści'}
       </a>
       <SchemaMarkup />

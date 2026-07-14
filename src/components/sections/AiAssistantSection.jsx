@@ -62,12 +62,11 @@ function TraitButton({ active, icon, label, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="grid min-h-[84px] content-center justify-items-center gap-2 rounded-[8px] border p-3 text-center text-[12px] font-bold transition duration-300"
-      style={{
-        borderColor: active ? 'var(--color-fg)' : 'var(--color-border)',
-        background: active ? 'var(--color-fg)' : 'var(--color-bg)',
-        color: active ? 'var(--color-bg)' : 'var(--color-fg)',
-      }}
+      className={`grid min-h-[84px] content-center justify-items-center gap-2 rounded-[8px] border p-3 text-center text-[12px] font-bold transition duration-300 ${
+        active
+          ? 'border-fg bg-fg text-bg'
+          : 'border-border bg-bg text-fg'
+      }`}
     >
       {icon}
       {label}
@@ -95,7 +94,7 @@ function AdviceCard({ advice, lang }) {
             {quantityLabel(advice.quantity, lang)} · {pricing.itemCount * advice.quantity} {lang === 'en' ? 'items' : 'sztuk'}
           </div>
         </div>
-        <span className="rounded-full border px-3 py-1 text-[12px] font-bold" style={{ borderColor: 'var(--color-border-strong)' }}>
+        <span className="rounded-full border px-3 py-1 text-[12px] font-bold border-border-strong">
           -{pricing.savingsPercent}%
         </span>
       </div>
@@ -115,7 +114,7 @@ function AdviceCard({ advice, lang }) {
         ))}
       </div>
 
-      <div className="flex flex-wrap items-end justify-between gap-3 border-t pt-4" style={{ borderColor: 'var(--color-border)' }}>
+      <div className="flex flex-wrap items-end justify-between gap-3 border-t pt-4 border-border">
         <div>
           <div className="t-caption font-bold uppercase">{lang === 'en' ? 'Box price' : 'Cena kartonu'}</div>
           <div className="mt-1 text-[28px] font-extrabold leading-none">
@@ -181,7 +180,7 @@ export default function AiAssistantSection({ lang = 'pl' }) {
           <div className="soft-panel grid content-start gap-8 p-5 md:p-8">
             <div>
               <div className="t-eyebrow mb-4">{lang === 'en' ? 'Place' : 'Miejsce'}</div>
-              <div className="grid grid-cols-2 gap-2 rounded-[8px] p-1.5" style={{ background: 'var(--color-bg-muted)' }}>
+              <div className="grid grid-cols-2 gap-2 rounded-[8px] p-1.5 bg-bg-muted">
                 {[
                   { id: 'home', label: lang === 'en' ? 'Home' : 'Dom', icon: Home },
                   { id: 'business', label: lang === 'en' ? 'Business' : 'Firma', icon: Building2 },
@@ -190,11 +189,9 @@ export default function AiAssistantSection({ lang = 'pl' }) {
                     key={option.id}
                     type="button"
                     onClick={() => selectSegment(option.id)}
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] border-0 text-[13px] font-bold transition duration-300"
-                    style={{
-                      background: segment === option.id ? 'var(--color-fg)' : 'transparent',
-                      color: segment === option.id ? 'var(--color-bg)' : 'var(--color-fg)',
-                    }}
+                    className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] border-0 text-[13px] font-bold transition duration-300 ${
+                      segment === option.id ? 'bg-fg text-bg' : 'bg-transparent text-fg'
+                    }`}
                   >
                     <option.icon size={17} />
                     {option.label}

@@ -7,7 +7,7 @@ export default function ValueSection({ lang = 'pl' }) {
   const icons = ['01', '02', '03', '04', '05'];
 
   return (
-    <section className="py-24 px-6" id="dlaczego-plyndo" style={{ background: 'var(--color-bg-muted)' }}>
+    <section className="py-24 px-6 bg-bg-muted" id="dlaczego-plyndo">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-[620px] mx-auto mb-16">
           <span className="t-eyebrow">{content.eyebrow}</span>
@@ -20,8 +20,8 @@ export default function ValueSection({ lang = 'pl' }) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {content.items.map((item, idx) => (
-            <div key={idx} className="group bg-white border rounded-[20px] p-8 transition-all hover:-translate-y-1 duration-500" style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
-              <div className="font-serif italic text-3xl font-light mb-6 transition-colors duration-500" style={{ color: 'var(--color-fg-subtle)' }}>
+            <div key={idx} className="group bg-white border rounded-[20px] p-8 transition-all hover:-translate-y-1 duration-500 border-border shadow-sm">
+              <div className="font-serif italic text-3xl font-light mb-6 transition-colors duration-500 text-fg-subtle">
                 {icons[idx] || `0${idx + 1}`}
               </div>
               <h3 className="t-h4 mb-3">{item.title}</h3>

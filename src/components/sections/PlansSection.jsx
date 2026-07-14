@@ -81,10 +81,9 @@ function BundleCard({ bundle, featured = false, index = 0, lang = 'pl' }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative mt-4 grid min-h-[400px] gap-6 rounded-[20px] border bg-white p-6 pt-8 md:p-7 md:pt-9 transition-all duration-500 hover:-translate-y-1 ${featured ? 'lg:row-span-2' : ''}`}
-      style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-sm)' }}
+      className={`group relative mt-4 grid min-h-[400px] gap-6 rounded-[20px] border bg-white p-6 pt-8 md:p-7 md:pt-9 transition-all duration-500 hover:-translate-y-1 border-border shadow-sm ${featured ? 'lg:row-span-2' : ''}`}
     >
-      <span className="absolute left-6 top-0 -translate-y-1/2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em]" style={{ background: accent, color: 'var(--plyndo-white)' }}>
+      <span className="absolute left-6 top-0 -translate-y-1/2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-white" style={{ background: accent }}>
         {tags[bundle.slug] ?? (lang === 'en' ? 'Package' : 'Pakiet')}
       </span>
       <div>
@@ -92,7 +91,7 @@ function BundleCard({ bundle, featured = false, index = 0, lang = 'pl' }) {
           <span className="t-eyebrow">
             {audienceLabel(bundle.audience, lang)}
           </span>
-          <span className="rounded-full px-3 py-1 text-[11px] font-semibold" style={{ background: accent, color: 'var(--plyndo-white)' }}>
+          <span className="rounded-full px-3 py-1 text-[11px] font-semibold text-white" style={{ background: accent }}>
             do -{percent(bundle.discountRule.rate)}
           </span>
         </div>
@@ -106,7 +105,7 @@ function BundleCard({ bundle, featured = false, index = 0, lang = 'pl' }) {
 
       <div className="grid gap-2">
         {displayItems.map((item) => (
-          <div key={item.productSlug} className="flex items-center justify-between gap-3 border-b pb-2 text-[13px]" style={{ borderColor: 'var(--color-border)' }}>
+          <div key={item.productSlug} className="flex items-center justify-between gap-3 border-b pb-2 text-[13px] border-border">
             <span className="font-medium">
               {item.quantity > 1 ? `${item.quantity}× ` : ''}
               {item.product.i18n?.[lang]?.shortName ?? item.product.i18n?.pl?.shortName ?? item.product.shortName}
@@ -128,7 +127,7 @@ function BundleCard({ bundle, featured = false, index = 0, lang = 'pl' }) {
         )}
       </div>
 
-      <div className="mt-auto grid gap-4 border-t pt-5" style={{ borderColor: 'var(--color-border)' }}>
+      <div className="mt-auto grid gap-4 border-t pt-5 border-border">
         <div className="rounded-[14px] px-4 py-3" style={{ background: `color-mix(in oklab, ${accent} 14%, var(--color-bg-raised))` }}>
           <div className="text-[11px] font-medium uppercase tracking-[0.12em]" style={{ color: accent }}>
             {lang === 'en' ? 'Package savings' : 'Oszczędność pakietu'}
@@ -153,8 +152,7 @@ function BundleCard({ bundle, featured = false, index = 0, lang = 'pl' }) {
         </div>
         <Link
           to={`/pakiety/${bundle.slug}`}
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-medium no-underline transition-all duration-300 hover:scale-[1.01]"
-          style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-medium no-underline transition-all duration-300 hover:scale-[1.01] bg-fg text-bg"
         >
           {lang === 'en' ? 'See package' : 'Zobacz pakiet'}
           <ArrowRight size={14} />
@@ -173,13 +171,12 @@ function CustomCard({ size, discount, index = 0, lang = 'pl' }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative mt-4 grid gap-5 rounded-[20px] border bg-white p-6 pt-8 md:p-7 md:pt-9 transition-all duration-500 hover:-translate-y-1"
-      style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-sm)' }}
+      className="group relative mt-4 grid gap-5 rounded-[20px] border bg-white p-6 pt-8 md:p-7 md:pt-9 transition-all duration-500 hover:-translate-y-1 border-border shadow-sm"
     >
-      <span className="absolute left-6 top-0 -translate-y-1/2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em]" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+      <span className="absolute left-6 top-0 -translate-y-1/2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] bg-fg text-bg">
         {tags[size]}
       </span>
-      <div className="flex h-10 w-10 items-center justify-center rounded-full" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-fg text-bg">
         <PackagePlus size={18} />
       </div>
       <div>
@@ -193,14 +190,13 @@ function CustomCard({ size, discount, index = 0, lang = 'pl' }) {
             : 'Powtórz płyny, które zużywasz najszybciej i zachowaj jeden globalny rabat.'}
         </p>
       </div>
-      <div className="flex items-center justify-between gap-3 rounded-[14px] p-4" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+      <div className="flex items-center justify-between gap-3 rounded-[14px] p-4 bg-fg text-bg">
         <span className="text-[13px] font-medium">{lang === 'en' ? 'Package discount' : 'Rabat paczki'}</span>
         <span className="font-serif italic text-2xl font-light">do -{discount}%</span>
       </div>
       <Link
         to={`/pakiety/wlasna-paczka/${size}`}
-        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-[13px] font-medium no-underline transition-all duration-300 hover:scale-[1.01]"
-        style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}
+        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-[13px] font-medium no-underline transition-all duration-300 hover:scale-[1.01] border-border-strong text-fg"
       >
         {lang === 'en' ? 'Open customizer' : 'Otwórz konfigurator'}
         <ArrowRight size={14} />
@@ -220,7 +216,7 @@ export default function PlansSection({ lang = 'pl' }) {
   const readyBundles = [bundle4x, bundle8x, bundle12x].filter(Boolean);
 
   return (
-    <section id="pakiety" className="px-6 py-24" style={{ background: 'var(--color-bg-muted)' }}>
+    <section id="pakiety" className="px-6 py-24 bg-bg-muted">
       <div className="mx-auto max-w-7xl">
         <Motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -249,8 +245,7 @@ export default function PlansSection({ lang = 'pl' }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-10 grid gap-6 rounded-[20px] border bg-white p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8"
-          style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-sm)' }}
+          className="mt-10 grid gap-6 rounded-[20px] border bg-white p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8 border-border shadow-sm"
         >
           <div>
             <div className="flex items-center gap-2">
@@ -270,8 +265,7 @@ export default function PlansSection({ lang = 'pl' }) {
           </div>
           <Link
             to="/#pakiety"
-            className="flex items-center gap-3 rounded-[14px] border p-4 transition-all duration-300 hover:-translate-y-0.5 no-underline text-inherit" 
-            style={{ borderColor: 'var(--color-border)' }}
+            className="flex items-center gap-3 rounded-[14px] border p-4 transition-all duration-300 hover:-translate-y-0.5 no-underline text-inherit border-border" 
           >
             <Box size={18} className="text-fg-subtle" />
             <div>

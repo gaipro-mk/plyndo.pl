@@ -82,8 +82,7 @@ export default function QrPlaceholder({ src, targetUrl, lang = 'pl', className =
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label={lang === 'en' ? 'Close QR preview' : 'Zamknij podgląd QR'}
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-white"
-                style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border bg-white border-border-strong text-fg"
               >
                 <X size={18} />
               </button>
@@ -94,16 +93,16 @@ export default function QrPlaceholder({ src, targetUrl, lang = 'pl', className =
               className="mx-auto aspect-square w-full max-w-[480px] rounded-[14px] bg-white object-contain"
             />
             <div className="grid gap-2 sm:grid-cols-3">
-              <a href={src} download className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-4 py-2 text-[13px] font-medium no-underline" style={{ background: 'var(--color-fg)', color: 'var(--color-bg)' }}>
+              <a href={src} download className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-4 py-2 text-[13px] font-medium no-underline bg-fg text-bg">
                 <Download size={14} /> PNG
               </a>
               {svgSrc && (
-                <a href={svgSrc} download className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-4 py-2 text-[13px] font-medium no-underline" style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}>
+                <a href={svgSrc} download className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-4 py-2 text-[13px] font-medium no-underline border-border-strong text-fg">
                   <Download size={14} /> SVG
                 </a>
               )}
               {targetUrl && (
-                <a href={targetUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-4 py-2 text-[13px] font-medium no-underline" style={{ borderColor: 'var(--color-border-strong)', color: 'var(--color-fg)' }}>
+                <a href={targetUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-4 py-2 text-[13px] font-medium no-underline border-border-strong text-fg">
                   <ExternalLink size={14} /> {lang === 'en' ? 'Open' : 'Otwórz'}
                 </a>
               )}
