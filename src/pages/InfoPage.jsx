@@ -28,12 +28,21 @@ const pages = {
     },
     en: {
       eyebrow: 'Contact',
-      title: 'Contact',
+      title: 'Contact Us',
       intro: 'Have a question about an order, package, or custom box? Write or call us. We are available on business days.',
       blocks: [
-        { title: 'Customer Support', copy: 'Email: kontakt@plyndo.pl – packages, orders, and inquiries.' },
-        { title: 'Company details', copy: 'EmiChem Michał Mierzwa P.P., Wójtowska 16, 61-654 Poznań, Poland.\nTax ID (NIP): 7811726058, REGON: 383210103' },
-        { title: 'Phone', copy: 'Phone: +48 601 765 163 (available Mon-Fri 8:00 AM – 4:00 PM CET)' },
+        {
+          title: 'Customer Support',
+          copy: 'Email: kontakt@plyndo.pl – we are happy to answer your questions about packages and orders.',
+        },
+        {
+          title: 'Company Details',
+          copy: 'EmiChem Michał Mierzwa P.P., Wójtowska 16, 61-654 Poznań, Poland.\nTax ID (NIP): 7811726058, REGON: 383210103',
+        },
+        {
+          title: 'Phone Support',
+          copy: 'Phone: +48 601 765 163 (customer service available Mon-Fri 8:00 AM – 4:00 PM CET)',
+        },
       ],
     },
   },
@@ -51,11 +60,25 @@ const pages = {
     },
     en: {
       eyebrow: 'Document',
-      title: 'Terms of use',
-      intro: 'Terms for using plyndo.pl and presenting the PŁYN DO package offer.',
+      title: 'Terms of Service',
+      intro: 'Terms and conditions for using the plyndo.pl website and the rules for presenting the PŁYN DO package-based offer.',
       blocks: [
-        { title: '1. General', copy: 'These terms govern use of plyndo.pl operated by EmiChem Michał Mierzwa P.P. in Poznań.' },
-        { title: '2. Offer', copy: 'Reference prices apply to products; package discounts apply to the whole box only.' },
+        {
+          title: '1. General Provisions',
+          copy: 'These Terms of Service define the terms and conditions for using the website plyndo.pl, operated by Michał Mierzwa, conducting business under the name EmiChem Michał Mierzwa P.P. with its registered office in Poznań, Poland (Tax ID / NIP: 7811726058, REGON: 383210103).\n\nBy using the website, you agree to these Terms of Service. The website is optimized for general informational purposes and presenting the package-based product range of PŁYN DO.'
+        },
+        {
+          title: '2. Product Presentation and Pricing',
+          copy: 'All prices listed on plyndo.pl are reference prices. Product descriptions, specifications, and images represent the actual manufacturer standards of EmiChem.\n\nThe final package prices and discounts (20% for 4 bottles, 30% for 8 bottles, and 40% for 12 bottles) apply only to complete boxes of 4, 8, or 12 products. Individual items are not sold separately.'
+        },
+        {
+          title: '3. Hand Off to the Online Store',
+          copy: 'The website plyndo.pl acts as a catalog and configurator. Actual purchases, shipping selection, and payments are finalized in our official online store at **sklep.plyndo.pl**.\n\nWhen you select a ready-made package or complete a custom box, you will be redirected to a pre-filled shopping cart in the store with the appropriate global package discount applied.'
+        },
+        {
+          title: '4. Intellectual Property',
+          copy: 'All content, logo designs, layout structures, trade names, and label designs displayed on plyndo.pl are the sole intellectual property of EmiChem. Any unauthorized reproduction, copying, or use of these assets without prior written consent is strictly prohibited.'
+        }
       ],
     },
   },
@@ -73,10 +96,25 @@ const pages = {
     },
     en: {
       eyebrow: 'Document',
-      title: 'Privacy policy',
-      intro: 'Information on personal data processing under GDPR.',
+      title: 'Privacy Policy',
+      intro: 'Information regarding the processing of personal data of plyndo.pl users in accordance with the General Data Protection Regulation (GDPR).',
       blocks: [
-        { title: 'Controller', copy: 'EmiChem Michał Mierzwa P.P., kontakt@plyndo.pl.' },
+        {
+          title: '1. Data Controller',
+          copy: 'The administrator of your personal data is Michał Mierzwa, conducting business under the name EmiChem Michał Mierzwa P.P., based at ul. Wójtowska 16, 61-654 Poznań, Poland. You can contact us regarding privacy matters at **kontakt@plyndo.pl**.'
+        },
+        {
+          title: '2. Scope and Purpose of Processing',
+          copy: 'We collect and process personal data (such as names, email addresses, and phone numbers) to:\n- Respond to your inquiries sent via email or contact forms.\n- Finalize transactions and deliver package orders.\n- Send marketing newsletters (only with your explicit prior consent).\n\nAdditionally, server logs and anonymous cookies may be processed to optimize website performance and user experience.'
+        },
+        {
+          title: '3. Your Rights under GDPR',
+          copy: 'Under the General Data Protection Regulation (GDPR), you have the following rights:\n- **Right of access:** Request a copy of your personal data.\n- **Right to rectification:** Correct any inaccurate or incomplete data.\n- **Right to erasure ("right to be forgotten"):** Request deletion of your data when it is no longer needed.\n- **Right to withdraw consent:** Withdraw your marketing consent at any time.\n\nTo exercise any of these rights, please contact us at **kontakt@plyndo.pl**.'
+        },
+        {
+          title: '4. Cookies and Security',
+          copy: 'We use cookies to secure session integrity, remember your language preferences, and compile anonymous website traffic statistics using Google Analytics. You can restrict or disable cookie usage in your browser settings at any time.'
+        }
       ],
     },
   },
@@ -106,10 +144,25 @@ const pages = {
     },
     en: {
       eyebrow: 'Support',
-      title: 'Complaints',
-      intro: 'Complaints and returns procedure.',
+      title: 'Complaints & Returns',
+      intro: 'Complaints, returns, and refund procedures for orders placed with EmiChem under the PŁYN DO brand.',
       blocks: [
-        { title: 'Contact', copy: 'Email kontakt@plyndo.pl with order number and issue description.' },
+        {
+          title: '1. How to File a Complaint',
+          copy: 'You can submit a complaint by email to **kontakt@plyndo.pl**. Please include your order number, a detailed description of the issue, and – in the case of damaged or defective items – photos of the packaging and label.'
+        },
+        {
+          title: '2. Resolution Timeframe',
+          copy: 'We will review and respond to your complaint without undue delay, and no later than 14 days from receiving a complete submission, in accordance with applicable consumer protection laws.'
+        },
+        {
+          title: '3. Returns and Refunds',
+          copy: 'In the case of contract withdrawal or an approved complaint, refunds are processed using the same payment method as the original transaction, unless otherwise agreed. Return shipping costs are handled in accordance with local regulations.'
+        },
+        {
+          title: '4. Correspondence Address',
+          copy: 'EmiChem Michał Mierzwa P.P., ul. Wójtowska 16, 61-654 Poznań, Poland.'
+        }
       ],
     },
   },
@@ -126,9 +179,12 @@ const pages = {
     },
     en: {
       eyebrow: 'Producer',
-      title: 'Producer details',
+      title: 'Producer Details',
       intro: 'Michał Mierzwa EmiChem P.P., Wójtowska 16, 61-654 Poznań, Poland.',
-      blocks: [{ title: 'Scope', copy: 'This landing presents the Plyndo.pl line and package buying model.' }],
+      blocks: [
+        { title: 'Website Scope', copy: 'This landing page presents the PŁYN DO product range and the package-based purchase model (4, 8, or 12 bottles).' },
+        { title: 'Contact', copy: 'kontakt@plyndo.pl' },
+      ],
     },
   },
   prasa: {
@@ -143,9 +199,11 @@ const pages = {
     },
     en: {
       eyebrow: 'Press',
-      title: 'Brand materials',
-      intro: 'Press materials available on request at kontakt@plyndo.pl.',
-      blocks: [],
+      title: 'Brand Materials',
+      intro: 'Press materials and information about the PŁYN DO brand are available upon request.',
+      blocks: [
+        { title: 'Media Contact', copy: 'Please email us at kontakt@plyndo.pl with the subject “PŁYN DO Press Materials”.' },
+      ],
     },
   },
 };

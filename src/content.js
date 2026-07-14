@@ -256,12 +256,22 @@ export const copy = {
       home: {
         title: 'For Home',
         copy: 'Dishwashing, dishwasher, bathroom, floor, and kitchen liquids.',
-        bullets: ['Effectively removes grease and dirt', 'An alternative to expensive dishwasher capsules', 'Leaves clean, streak-free floors'],
+        bullets: [
+          'Dishwashing liquid effectively cuts through grease and everyday food soil.',
+          'Dishwasher gel and rinse aid help keep tableware spotless and free of mineral deposits.',
+          'Bathroom and toilet cleaners easily handle limescale, soap scum, and daily dirt.',
+          'Floor cleaner leaves all surfaces sparkling clean without streaks or sticky residue.',
+          'Kitchen and surface cleaners help maintain quick hygiene in high-use areas.'
+        ],
       },
       business: {
         title: 'For Business',
         copy: 'Offices, clinics, small service premises, customer reception areas.',
-        bullets: ['Cleaning floors, desks, and sanitary facilities', 'Kitchen and staff social rooms', 'Cleanliness that builds a professional image'],
+        bullets: [
+          'For offices and co-working spaces — floors, kitchens, toilets, and shared common areas.',
+          'For clinics and beauty salons — impeccable cleanliness that builds trust with clients.',
+          'For small retail and service venues — a reliable stock of cleaners for daily backroom upkeep.'
+        ],
       },
     },
     heritage: {
