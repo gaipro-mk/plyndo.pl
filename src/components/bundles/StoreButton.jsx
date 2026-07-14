@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getLeadCaptureHref, getStoreHref, getStoreLabel, isStoreLive } from '../../lib/storeCta';
 import { createShoperBasketAndRedirect } from '../../lib/shoperApi';
 
-export default function StoreButton({ lang = 'pl', className = '', note, href, items }) {
+export default function StoreButton({ lang = 'pl', className = '', note, href, items, disabled }) {
   const label = getStoreLabel(lang);
   const storeHref = href ?? getStoreHref();
   const isExternal = storeHref ? storeHref.startsWith('http') : false;
@@ -15,13 +15,21 @@ export default function StoreButton({ lang = 'pl', className = '', note, href, i
     : 'Sklep internetowy startuje wkrótce. Zostaw zainteresowanie przez e-mail.';
 
   const handleApiClick = (e) => {
+    if (disabled) {
+      e.preventDefault();
+      return;
+    }
     if (items && items.length > 0) {
       e.preventDefault();
       createShoperBasketAndRedirect(items);
     }
   };
 
-  const activeBtnClass = "inline-flex w-full min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-[13px] font-medium transition-all duration-300 hover:opacity-90 no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border-border-strong bg-fg text-bg";
+  const activeBtnClass = `inline-flex w-full min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-[13px] font-medium transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border-border-strong ${
+    disabled
+      ? 'opacity-40 cursor-not-allowed bg-fg-muted text-bg border-none pointer-events-none'
+      : 'cursor-pointer hover:opacity-90 bg-fg text-bg'
+  }`;
 
   if (isStoreLive() && items && items.length > 0) {
     return (
@@ -29,6 +37,7 @@ export default function StoreButton({ lang = 'pl', className = '', note, href, i
         <button
           type="button"
           onClick={handleApiClick}
+          disabled={disabled}
           className={activeBtnClass}
         >
           <ShoppingCart size={17} aria-hidden="true" />

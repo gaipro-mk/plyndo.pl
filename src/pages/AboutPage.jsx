@@ -86,7 +86,7 @@ export default function AboutPage({ lang = 'pl' }) {
   const currentValues = values[lang] ?? values.pl;
 
   return (
-    <main className="min-h-[70vh] pb-24 pt-[120px] bg-bg">
+    <main id="main" className="min-h-[70vh] pb-24 pt-[120px] bg-bg">
       <div className="mx-auto max-w-7xl px-6">
         <Breadcrumbs lang={lang} items={[{ label: t.breadcrumb }]} />
         <Link to="/" className="mb-10 mt-4 inline-flex items-center gap-1.5 text-[12px] font-medium text-fg-muted no-underline transition-opacity hover:opacity-60 tracking-wide uppercase">

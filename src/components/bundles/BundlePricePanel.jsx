@@ -6,17 +6,26 @@ export default function BundlePricePanel({ pricing, lang = 'pl', bundle }) {
   const storeHref = getBundleStoreHref(bundle);
   const cartItems = getBundleCartItems(bundle);
 
+  const isFull = bundle?.isCustomizable ? (pricing.itemCount === bundle.size) : true;
+  const displayPrice = isFull ? pricing.bundlePrice : pricing.listValue;
+  const displaySavingsPercent = isFull ? pricing.savingsPercent : 0;
+  const displaySavingsAmount = isFull ? pricing.savingsAmount : 0;
+
+  const incompleteNote = lang === 'en'
+    ? `Add ${bundle.size - pricing.itemCount} more bottle(s) to complete the box and order.`
+    : `Dobierz jeszcze ${bundle.size - pricing.itemCount} szt., aby skompletować paczkę i zamówić.`;
+
   return (
     <aside className="grid gap-5 rounded-[20px] border p-6 border-border bg-bg">
       <div className="flex items-start justify-between gap-4 border-b pb-5 border-border">
         <div>
           <div className="t-eyebrow">{lang === 'en' ? 'Package math' : 'Ekonomia paczki'}</div>
           <div className="mt-2 font-serif italic text-4xl font-light leading-none">
-            {formatPln(pricing.bundlePrice, lang === 'en' ? 'en-GB' : 'pl-PL')}
+            {formatPln(displayPrice, lang === 'en' ? 'en-GB' : 'pl-PL')}
           </div>
         </div>
         <span className="rounded-full border px-3 py-1.5 text-[12px] font-medium border-border-strong">
-          -{pricing.savingsPercent}%
+          -{displaySavingsPercent}%
         </span>
       </div>
       <dl className="grid gap-3 text-[13px]">
@@ -29,7 +38,7 @@ export default function BundlePricePanel({ pricing, lang = 'pl', bundle }) {
         <div className="flex items-center justify-between gap-3">
           <dt className="text-fg-muted">{lang === 'en' ? 'Whole-box saving' : 'Oszczędność całej paczki'}</dt>
           <dd className="font-medium">
-            {formatPln(pricing.savingsAmount, lang === 'en' ? 'en-GB' : 'pl-PL')}
+            {formatPln(displaySavingsAmount, lang === 'en' ? 'en-GB' : 'pl-PL')}
           </dd>
         </div>
         <div className="flex items-center justify-between gap-3">
@@ -42,7 +51,13 @@ export default function BundlePricePanel({ pricing, lang = 'pl', bundle }) {
           ? 'Product prices are reference values. Discount and saving are presented for the whole package.'
           : 'Ceny produktów są wartościami referencyjnymi. Rabat i oszczędność pokazujemy dla całej paczki.'}
       </p>
-      <StoreButton lang={lang} href={storeHref} items={cartItems} />
+      <StoreButton 
+        lang={lang} 
+        href={storeHref} 
+        items={cartItems} 
+        disabled={!isFull}
+        note={isFull ? undefined : incompleteNote}
+      />
     </aside>
   );
 }

@@ -82,7 +82,7 @@ export default function CustomBundlePage({ lang = 'pl' }) {
   }
 
   return (
-    <main className="px-6 pb-24 pt-[120px] bg-bg">
+    <main id="main" className="px-6 pb-24 pt-[120px] bg-bg">
       <div className="mx-auto max-w-7xl">
         <Breadcrumbs
           lang={lang}

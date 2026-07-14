@@ -334,7 +334,7 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
       {/* Thin product-color accent strip at the very top */}
       <div className="h-[3px] w-full" style={{ background: product.color.bg }} />
       
-      <main className="relative z-10 flex-grow pt-[100px]">
+      <main id="main" className="relative z-10 flex-grow pt-[100px]">
         <div className="mx-auto w-full max-w-7xl px-6">
           {/* Header with breadcrumbs */}
           <Motion.header

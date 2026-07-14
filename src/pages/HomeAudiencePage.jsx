@@ -62,7 +62,7 @@ export default function HomeAudiencePage() {
   const homeProducts = products.filter((product) => product.audiences?.includes('home'));
 
   return (
-    <main className="pb-24 pt-[120px] bg-bg">
+    <main id="main" className="pb-24 pt-[120px] bg-bg">
       <section className="px-6 pb-20">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_420px] lg:items-center">
           <Motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
