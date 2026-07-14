@@ -239,9 +239,9 @@ export default function PlansSection({ lang = 'pl' }) {
         </div>
         
         <div className="mt-8 grid gap-5 lg:grid-cols-[1fr_1fr_1fr]">
-          <CustomCard size={4} discount={30} index={3} lang={lang} />
-          <CustomCard size={8} discount={40} index={4} lang={lang} />
-          <CustomCard size={12} discount={50} index={5} lang={lang} />
+          <CustomCard size={4} discount={20} index={3} lang={lang} />
+          <CustomCard size={8} discount={30} index={4} lang={lang} />
+          <CustomCard size={12} discount={40} index={5} lang={lang} />
         </div>
 
         <Motion.div
