@@ -71,6 +71,7 @@ function MediaSlot({ title, note, videoSrc }) {
       <video
         ref={videoRef}
         src={videoSrc}
+        preload="none"
         muted
         playsInline
         loop
@@ -115,7 +116,7 @@ function HeroVideo({ videoSrc, className = '' }) {
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      <video ref={videoRef} src={videoSrc} muted playsInline loop
+      <video ref={videoRef} src={videoSrc} preload="none" muted playsInline loop
         className="absolute inset-0 h-full w-full object-cover opacity-80 transition-opacity duration-500 group-hover:opacity-100"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-30" />

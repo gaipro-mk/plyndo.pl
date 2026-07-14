@@ -78,7 +78,7 @@ async function prerender() {
 
   for (const route of routes) {
     const url = `${origin}${route}`;
-    await page.goto(url, { waitUntil: 'networkidle0', timeout: 60000 });
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
     await page.waitForSelector('#top', { timeout: 15000 }).catch(() => {});
     const html = await page.content();
     const outPath = route === '/'
