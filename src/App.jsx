@@ -12,7 +12,7 @@ import ProductGridSection from './components/sections/ProductGridSection';
 import ValueSection from './components/sections/ValueSection';
 import AboutSection from './components/sections/AboutSection';
 import TrustSection from './components/sections/TrustSection';
-import AiAssistantSection from './components/sections/AiAssistantSection';
+
 import FaqSection from './components/sections/FaqSection';
 
 const BundlePage = lazy(() => import('./pages/BundlePage'));
@@ -49,7 +49,7 @@ function HomePage({ lang }) {
       <ValueSection lang={lang} />
       <TrustSection lang={lang} />
       <AboutSection lang={lang} />
-      <AiAssistantSection lang={lang} />
+
       <FaqSection lang={lang} />
     </main>
   );

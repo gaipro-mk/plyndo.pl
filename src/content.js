@@ -8,7 +8,7 @@ export const copy = {
       products: 'Produkty',
       bundles: 'Pakiety',
       useCases: 'Dom i firma',
-      advisor: 'Doradca',
+
       faq: 'FAQ',
     },
     hero: {
@@ -174,7 +174,7 @@ export const copy = {
       products: 'Products',
       bundles: 'Packages',
       useCases: 'Home & Business',
-      advisor: 'Advisor',
+
       faq: 'FAQ',
     },
     hero: {
