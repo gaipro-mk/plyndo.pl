@@ -32,7 +32,11 @@ const codeFile = path.resolve(__dirname, '../scratch_code.txt');
 if (fs.existsSync(codeFile)) fs.unlinkSync(codeFile);
 
 async function run() {
-  console.log('🚀 Wyłączanie weryfikacji dwuetapowej 2FA (ip_verify=0) w profilu administratora...');
+  console.log('🚀 Uruchamianie sesji logowania Shoper...');
+  const jsPath = path.resolve(__dirname, '../shoper-theme/custom-js/plyndo-storefront.js');
+  const jsCode = fs.readFileSync(jsPath, 'utf8');
+  const scriptTag = `<script>\n${jsCode}\n</script>`;
+
   const sessionDir = path.resolve(__dirname, '.browser_session');
   const context = await chromium.launchPersistentContext(sessionDir, {
     headless: true,
@@ -41,10 +45,11 @@ async function run() {
 
   const page = context.pages()[0] || await context.newPage();
 
+  console.log('1. Otwieranie strony logowania...');
   await page.goto('https://sklep562393.shoparena.pl/admin', { waitUntil: 'networkidle' });
 
   if (await page.locator('input[name="login"]').isVisible()) {
-    console.log('Wprowadzanie loginu i hasła...');
+    console.log('2. Wprowadzanie danych konta (mk)...');
     await page.locator('input[name="login"]').fill(user);
     await page.locator('input[name="password"]').fill(pass);
     await page.locator('button[type="submit"]').click();
@@ -53,7 +58,9 @@ async function run() {
 
   const codeInput = page.locator('#code, input[name="code"]');
   if (await codeInput.isVisible()) {
-    console.log('📧 Oczekiwanie na scratch_code.txt...');
+    console.log('📧 E-mail z kodem 2FA został właśnie wysłany na Twój e-mail!');
+    console.log('Oczekiwanie na zapisanie kodu w scratch_code.txt (max 120 sek)...');
+
     let code = null;
     const start = Date.now();
     while (Date.now() - start < 120000) {
@@ -63,35 +70,47 @@ async function run() {
       }
       await new Promise(r => setTimeout(r, 1000));
     }
-    if (!code) process.exit(1);
-    console.log(`🔑 Wprowadzanie kodu 2FA: ${code}...`);
+
+    if (!code) {
+      console.error('❌ Nie podano kodu w wyznaczonym czasie.');
+      await context.close();
+      process.exit(1);
+    }
+
+    console.log(`🔑 Otrzymano kod 2FA (${code}). Wprowadzam w aktywnej sesji...`);
     await codeInput.fill(code);
-    await page.locator('button:has-text("Weryfikuj"), button[type="submit"]').first().click();
-    await page.waitForTimeout(5000);
+    const submitBtn = page.locator('button[type="submit"]').first();
+    await Promise.all([
+      page.waitForNavigation({ waitUntil: 'networkidle', timeout: 15000 }).catch(() => {}),
+      submitBtn.click()
+    ]);
   }
 
-  console.log('Nawigacja do edycji konta administratora (ID 4)...');
-  await page.goto('https://sklep562393.shoparena.pl/admin/admin/edit/id/4', { waitUntil: 'networkidle' });
+  console.log('URL po weryfikacji 2FA:', page.url());
 
-  await page.evaluate(() => {
-    // Uncheck ip_verify or set value 0
-    const ipInput = document.querySelector('input[name="ip_verify"]');
-    if (ipInput) ipInput.value = '0';
-    const ipCb = document.querySelector('#ip_verify');
-    if (ipCb) ipCb.checked = false;
-  });
+  if (page.url().includes('auth')) {
+    console.error('❌ Błąd autoryzacji 2FA.');
+    await context.close();
+    process.exit(1);
+  }
 
-  const saveBtn = page.locator('button[type="submit"]').first();
-  await Promise.all([
-    page.waitForNavigation({ waitUntil: 'networkidle', timeout: 15000 }).catch(() => {}),
-    saveBtn.click()
-  ]);
+  console.log('Nawigacja do /admin/webmaster...');
+  await page.goto('https://sklep562393.shoparena.pl/admin/webmaster', { waitUntil: 'networkidle' });
 
-  console.log('🎉 Pomyślnie wyłączono 2FA ip_verify=0!');
+  const siteBodyField = page.locator('#site_body, textarea[name="site_body"]');
+  if (await siteBodyField.count() > 0) {
+    console.log('Wklejanie skryptu do pola site_body...');
+    await siteBodyField.first().fill(scriptTag);
 
-  // Now navigate to Skins List and click CLI token if present
-  await page.goto('https://sklep562393.shoparena.pl/admin/skins/list', { waitUntil: 'networkidle' });
-  await page.screenshot({ path: path.resolve(__dirname, '../docs/screenshots/skins-list-after-2fa.png'), fullPage: true });
+    const saveBtn = page.locator('button[type="submit"]').first();
+    await Promise.all([
+      page.waitForNavigation({ waitUntil: 'networkidle', timeout: 15000 }).catch(() => {}),
+      saveBtn.click()
+    ]);
+    console.log('🎉 POMYŚLNIE ZAPISANO SKRYPT W SITE_BODY NA SKLEPIE!');
+  } else {
+    console.error('❌ Nie znaleziono pola #site_body!');
+  }
 
   await context.close();
 }

@@ -1,0 +1,380 @@
+<!DOCTYPE html><html data-version="5.26.41" class="ctrl-auth actn-login browser_chrome browser_chrome_151 browser_mobile_0 browser_ie67_0 browser_ie678_0" lang="pl" slick-uniqueid="3"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="language" content="pl">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+        <title>Panel administratora - Panel Administracyjny</title>
+
+        <!-- generics -->
+        <link rel="icon" href="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Images/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" href="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Images/favicon-128x128.png" sizes="128x128">
+        <link rel="icon" href="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Images/favicon-192x192.png" sizes="192x192">
+
+        <!-- Android -->
+        <link rel="shortcut icon" sizes="196x196" href="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Images/favicon-196x196.png">
+
+        <!-- iOS -->
+        <link rel="apple-touch-icon" href="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Images/favicon-152x152.png" sizes="152x152">
+        <link rel="apple-touch-icon" href="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Images/favicon-167x167.png" sizes="167x167">
+        <link rel="apple-touch-icon" href="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Images/favicon-180x180.png" sizes="180x180">
+
+        <link rel="manifest" href="/userdata/public/admin-manifest.json">
+        <link rel="home" href="/">
+        <link rel="dns-prefetch" href="//dcsaascdn.net">
+        <link rel="preconnect" href="//dcsaascdn.net">
+		<link rel="stylesheet" id="aurora-styles" href="//dcsaascdn.net/aurora/dist/mitra/shoper_clarity/2.0.1.893/css/aurora.min.css" type="text/css">
+
+                        
+            <script type="text/javascript" async="" src="https://widget.intercom.io/widget/r48mou72"></script><script async="" src="https://scripts.clarity.ms/0.8.69/clarity.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-227L68SDYJ&amp;cx=c&amp;gtm=4e68b1h2"></script><script async="" src="https://www.clarity.ms/tag/t7yeo2w1pz"></script><script async="" src="//www.googletagmanager.com/gtm.js?id=GTM-MTHHDW"></script><script>
+                (function() {
+                    var encodedAnalyticsConfig = 'eyJ0b2tlbiI6ImM0NzRkMjQ5ZTRmNGE0ODBkZDNhMDE0N2Y1NTM1ODU3IiwiYXBpSG9zdCI6Imh0dHBzOi8vYXBpLWV1Lm1peHBhbmVsLmNvbSIsImRlYnVnIjpmYWxzZSwiZGF0YUVuYWJsZWQiOnRydWV9';
+                    var runtimeAnalyticsConfig = {};
+
+                    if (encodedAnalyticsConfig) {
+                        try {
+                            runtimeAnalyticsConfig = JSON.parse(window.atob(encodedAnalyticsConfig));
+                        } catch (error) {
+                            runtimeAnalyticsConfig = {};
+                        }
+                    }
+
+                    window.__ADMIN_MIXPANEL_ANALYTICS__ = {
+                        token: typeof runtimeAnalyticsConfig.token === 'string'
+                            ? runtimeAnalyticsConfig.token
+                            : '__ADMIN_MIXPANEL_ANALYTICS_TOKEN__',
+                        apiHost: typeof runtimeAnalyticsConfig.apiHost === 'string'
+                            ? runtimeAnalyticsConfig.apiHost
+                            : '__ADMIN_MIXPANEL_ANALYTICS_API_HOST__',
+                        debug: runtimeAnalyticsConfig.debug === true,
+                        dataEnabled: runtimeAnalyticsConfig.dataEnabled === true
+                    };
+                })();
+            </script>
+        
+                <script src="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Js/preinit.bundle.js?5.26.41"></script>
+        <style>
+    .moxman-floatpanel.moxman-menu-has-icons .moxman-container-body.moxman-stack-layout > div:nth-child(5), 
+    .moxman-floatpanel.moxman-menu-has-icons .moxman-container-body.moxman-stack-layout > div:nth-child(6), 
+    .moxman-floatpanel.moxman-menu-has-icons .moxman-container-body.moxman-stack-layout > div:nth-child(8), 
+    .moxman-floatpanel.moxman-menu-has-icons .moxman-container-body.moxman-stack-layout > div:nth-child(9), 
+    .moxman-floatpanel.moxman-menu-has-icons .moxman-container-body.moxman-stack-layout > div:nth-child(10), 
+    .moxman-floatpanel.moxman-menu-has-icons .moxman-container-body.moxman-stack-layout > div:nth-child(11) {
+        display: none;
+    }
+</style>
+    <script charset="utf-8" src="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Js/module.1573.8ce1f9.bundle.js"></script><script charset="utf-8" src="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Js/module.1815.eef33f.bundle.js"></script></head>
+
+    <body data-decimal-sep="," data-thousand-sep="" data-domain="sklep562393.shoparena.pl" data-shop="17865660121567399" data-license-id="567399" data-domain-name="sklep.plyndo.pl" data-license-domain="sklep562393.shoparena.pl" data-features="WyJPbmxpbmVQYXltZW50X1BheVBvX0ludGVncmF0aW9uIiwiYWRtaW5fYW5hbHl0aWNzX2NzdiIsImFkbWluX2FuYWx5dGljc19lbmFibGVkIiwiYWRtaW5fYW5hbHl0aWNzX3JlcG9ydF9vcmRlcnNfc2FsZXMiLCJhbGxlZ3JvX2Fzc2lnbl9hbGxlZ3JvX3Byb2R1Y3RfbXVsdGlhY3Rpb24iLCJhbGxlZ3JvX2Fzc2lnbl90YXhfdmFsdWVfbXVsdGlhY3Rpb24iLCJhbGxlZ3JvX2F1Y3Rpb25zX2hhc19hbGxlZ3JvX3Byb2R1Y3RfZmlsdGVycyIsImFsbGVncm9fYXVjdGlvbnNfdGF4X3ZhbHVlX2ZpbHRlcnMiLCJhbGxlZ3JvX2F1dG9faW1wb3J0X2F1Y3Rpb25zIiwiYWxsZWdyb19jcmVhdG9yX3RheF9zZWxlY3Rpb25fbGlzdCIsImFsbGVncm9fZGV0ZWN0X2FsbGVncm9fcHJvZHVjdF9tdWx0aWFjdGlvbiIsImFsbGVncm9fZG93bmxvYWRfb3JkZXJzIiwiYWxsZWdyb19kb3dubG9hZF9vcmRlcnNfYWRkaXRpb25hbF9zZXJ2aWNlcyIsImFsbGVncm9fZG93bmxvYWRfb3JkZXJzX3N1cmNoYXJnZXMiLCJhbGxlZ3JvX2VycGJveCIsImFsbGVncm9faW1wb3J0X2F1Y3Rpb25zIiwiYWxsZWdyb19sb2NrX3Byb2Nlc3MiLCJhbGxlZ3JvX29yZGVyX2FuZF90cmFuc2FjdGlvbl91aWRfZmlsdGVycyIsImFsbGVncm9fcHJvZHVjdGl6YXRpb24iLCJhbGxlZ3JvX3Byb2R1Y3RzX2hhc19hbGxlZ3JvX3Byb2R1Y3RfZmlsdGVycyIsImFsbGVncm9fcHJvZ3Jlc3NfdmFsaWRhdGlvbl9lcnJvciIsImFsbGVncm9fcHJvbW9fb3B0aW9ucyIsImFsbGVncm9fc2VuZF9zaGlwcGluZ19udW1iZXIiLCJhbGxlZ3JvX3N0YXR1c19tYXAiLCJhbGxlZ3JvX3RlbXBsYXRlX2V4dGVuZGVkIiwiYWxsZWdyb191cGRhdGVfYXVjdGlvbnMiLCJhbGxlZ3JvX3VwZGF0ZV9wcmljZV9tdWx0aWFjdGlvbiIsImFsbGVncm9fdXBkYXRlX3F1YW50aXR5X211bHRpYWN0aW9uIiwiYXBpX29yZGVyX29yaWdpbl9zcGVjaWFsX3Njb3BlIiwiYXBpX29yZGVyc19jcmVhdGVfY3VycmVuY3lfcmF0ZSIsImFwaV9zcGVjaWFsX3Njb3BlcyIsImFwaV90b2tlbnNfYWRtaW5fbWFuYWdlX2dhbW1hIiwiYXBwbGljYXRpb25fcGF5bWVudF9zdXBwb3J0ZWRjdXJyZW5jaWVzX2lwYSIsImFwcGxpY2F0aW9uX3BheW1lbnRfc3VwcG9ydGVkY3VycmVuY2llc193aXRoX2RlZmF1bHRfaXBhIiwiYXBwbGljYXRpb25zX3Nzb19sb2dpbiIsImFwcHN0b3JlX2FwaWxvIiwiYXBwc3RvcmVfYXBpbG9fbXVsdGlfY2hhbm5lbCIsImFwcHN0b3JlX2FwcGxpY2F0aW9uX3JlZGlyZWN0IiwiYXBwc3RvcmVfbGlua3NfbWFrZV9pbnRlcm5hbGx5IiwiYXBwc3RvcmVfbmV3X3VybF9nZW5lcmF0aW9uX2lwYSIsImFwcHN0b3JlX3JldHVybnMiLCJhcHBzdG9yZV9zaG9wZXJfY29ubmVjdCIsImFyaWFfbGl2ZV9yd2QiLCJhdXJvcmFfcmVmYWN0b3JpbmciLCJhdXRvX25icF91cGRhdGVzX2dhbW1hIiwiYmFza2V0X2FkZHJlc3NfcGx1Z2lucyIsImJlbGxfbWVzc2FnZXMiLCJiaWdkYXRhX2luZGV4X29yZGVycyIsImJpZ2RhdGFfaW5kZXhfb3JkZXJzX3Byb2R1Y3RzIiwiYmlnZGF0YV9pbmRleF9vcmRlcnNfdHJhbnNhY3Rpb25zIiwiYmlnZGF0YV9pbmRleF9wYXJjZWxzIiwiYmlnZGF0YV9pbmRleF9wcm9kdWN0cyIsImJpZ2RhdGFfaW5kZXhfcHJvZHVjdHNfdmFyaWFudHMiLCJiaWdkYXRhX2luZGV4X3NlYXJjaF9oaXN0b3J5IiwiYmlnZGF0YV9pbmRleF9zZXNzaW9ucyIsImJ1Z3RyYWNrZXJfZXMiLCJieV9kYXRlX2FkZF9zb3J0X3R5cGVzIiwiY2FjaGVfdGFnc19vcHRpbWl6ZXIiLCJjYWNoZV90aHVtYm5haWxzX2tvam90eSIsImNhbXBhZ2luc19tc2FkcyIsImNhbXBhZ2luc190aWt0b2siLCJjYW1wYWdpbnNfd3BhZHMiLCJjbGVhbl91cF9tYWlsX2xvZ3MiLCJjbGllbnRfZmlsdGVyX2NsZWFuX2FzY2lpIiwiY29sbGVjdGlvbnMiLCJjb25kaXRpb25fb25fcHJvbW9jb2Rlc2xpc3QiLCJjb25maWdfZ29vZ2xlX3JlbWFya2V0aW5nIiwiY29udHJvbF9jYXRlZ29yeV9yZWZhY3RvciIsImNvb2tpZV9zZXR0aW5nc19saW5rIiwiY29yZV9jdXJyZW5jeV9tZW1vcnlfY2FjaGUiLCJjb3JlX2VudGl0eV9yb3dfY2FjaGUiLCJjb3JlX3NraXBfYWRtaW5fbG9nc19mb3JfdXNlcm9ubGluZSIsImNvdW50X3Byb2R1Y3RzX2luX29wdGlvbl92YWx1ZXNfZmlsdGVyX2F0X29uY2UiLCJjcmVhdGVfbWFpbF9tZXNzYWdlX2lkIiwiY3VzdG9tZXJfcHJpdmFjeSIsImN1c3RvbWVyX3ByaXZhY3lfdjIiLCJkYl90YWJsZV9jb21wYXJlX251bWVyaWNfZGF0YV90eXBlcyIsImRlZmF1bHRfZmlsdGVyX3Byb2ZpbGVzIiwiZGV2X2FjY29yZGlvbl9oZWlnaHRfZml4IiwiZGV2X2FkZGl0aW9uYWxfZmllbGRzX2NoYW5nZV9vcHRpbWl6YXRpb24iLCJkZXZfYWRtaW5fYW5hbHl0aWNzIiwiZGV2X2FkbWluX2FuYWx5dGljc19hcHBfc3RvcmVfYnJvd3NlIiwiZGV2X2FkbWluX2Zvcm1fY2hhbmdlX2RldGVjdGlvbiIsImRldl9hZG1pbl9taXhwYW5lbF9hbmFseXRpY3NfY2xpZW50IiwiZGV2X2FkbWluX3NpZGViYXJfZGJfc3RhdGVfc3NyIiwiZGV2X2FwcHRvb2xzX2NhY2hlX3JlZmFjdG9yX2tvam90eSIsImRldl9iYWNrZ3JvdW5kX2ltYWdlIiwiZGV2X2Jhc2tldF9pZCIsImRldl9iYXNrZXRfdXNlX2RvbWFpbl9sb2NhbGUiLCJkZXZfYnVuZGxlX3NlbGVjdF9maXgiLCJkZXZfYnVuZGxlX3dpdGhfc2FtZV92YXJpYW50c18yX2ZpeCIsImRldl9idW5kbGVfd2l0aF9zYW1lX3ZhcmlhbnRzX2ZpeCIsImRldl9jYWNoZV9zZWFyY2hfcHJvZHVjdHMiLCJkZXZfY2hhbmdlX2VzX21heF9oaXRzX3NpemVfdXBfdG9fMTAwMDAiLCJkZXZfY2hlY2tfaWZfbG9jYWxlX2V4aXN0cyIsImRldl9jbGFyaXR5X3N3aXRjaCIsImRldl9jb3JlX2hpZGVfZmlsdGVycyIsImRldl9jb3Vwb25fY29kZXNfZml4IiwiZGV2X2Nzc19jbGFzc19vbl9mb3JtX2Vycm9ycyIsImRldl9jdXN0b21faWNvbnNfZml4IiwiZGV2X2RhcmtfbW9kZV9ub3ZlbHR5IiwiZGV2X2RlZmF1bHRfdmFyaWFudHNfZml4IiwiZGV2X2Rpc2NvdW50c19maXgiLCJkZXZfZGl2aXNpb25fYnlfemVyb19maXgiLCJkZXZfZW1wdHlfZmlsdGVyc19maXgiLCJkZXZfZmFxX2pzb25fbGQiLCJkZXZfZmlsZV9zaXplX2xpbWl0IiwiZGV2X2ZpbHRlcl9vcHRpb25zX3N0b2NrX2ZpeCIsImRldl9maWx0ZXJfb3B0aW9uc190b19zdG9ja19vbmx5IiwiZGV2X2ZpbHRlcnNfc3ViY2F0ZWdvcmllc193Y2FnIiwiZGV2X2ZpeF9mYmVfYmFza2V0X3ZhbHVlX3J3ZCIsImRldl9maXhfZmJlX2Jhc2tldF92YWx1ZV9zdG9yZWZyb250IiwiZGV2X2ZpeF9mYmVfcHVyY2hhc2VfdmFsdWVfcndkIiwiZGV2X2ZpeF92YXJpYW50X3ByaWNlcyIsImRldl9maXhfd2VicF90aHVtYm5haWxzIiwiZGV2X2Zvcm1fY29udGFpbmVyIiwiZGV2X2Zyb250YXBpX3N3aXRjaF90cmFuc2xhdGlvbnMiLCJkZXZfZ2FfdXNlcl9kYXRhX2ZpeCIsImRldl9nZW9sb2MiLCJkZXZfZ2VvbG9jX2N1cnJlbmN5X3BhcmFtX2ZpeCIsImRldl9naWZfc3dpZnRfcHJvZHVjdF9maXgiLCJkZXZfZ2lmdF9jYXJkc19zb29uIiwiZGV2X2dvb2dsZV9jdXN0b21lcl9yZXZpZXdzX3dpZGdldF9maXgiLCJkZXZfZ3Bzcl9jb250YWN0X2Zvcm1fdXJsICIsImRldl9ncmlkX21vYmlsZV93cmFwIiwiZGV2X2ltYWdlc191cGxvYWRzX3RvX2NvbGxlY3Rpb25zX2FuZF9jYXRlZ29yaWVzIiwiZGV2X2luYWN0aXZlX2luX29iamVjdF9hcGlfZml4IiwiZGV2X2luY29ycmVjdF92YXJpYW50c19maXgiLCJkZXZfaW5wb3N0X2J1eSIsImRldl9pbnBvc3RfZGVsaXZlcnlfbWFpbCIsImRldl9pbnBvc3RfZGVsaXZlcnlfbWFpbF9zaGlwbWVudCIsImRldl9pbnBvc3RfcGF5X2J1dHRvbl92aXNpYmlsaXR5IiwiZGV2X2ludGVybmF0aW9uYWxfY3VzdG9tZXJfaW5kaWNhdG9ycyIsImRldl9pbnRlcm5hdGlvbmFsX29yZGVyX2luZGljYXRvcnMiLCJkZXZfbGlzdF9kZXNjcmlwdGlvbl9wYWdpbmF0aW9uIiwiZGV2X25hdGl2ZV9sYW5nX2Rpc3BsYXkiLCJkZXZfbmV3X2xhbmd1YWdlX2NvcHlpbmciLCJkZXZfbm90X2NsZWFuX21hcF90cmVlIiwiZGV2X29wdGlvbl9kaXNwbGF5X2ZpeCIsImRldl9vcHRpb25zX2ZpbHRlcl9zZWxlY3QiLCJkZXZfb3B0aW9uc19zZWxlY3RsaWtlX3JlZmFjdG9yIiwiZGV2X3BheW1lbnRfdmlzaWJpbGl0eV9hbW91bnRfaXBhIiwiZGV2X3BheW1lbnRzX2Jhc2tldF9zdHJpcGVfY2FyZF9zdG9yZWZyb250IiwiZGV2X3BheXBhbGVjX2J1dHRvbl92aXNpYmlsaXR5IiwiZGV2X3ByZXNlcnZlX3dlYnBfYWxwaGEiLCJkZXZfcHJpY2VfYnV5aW5nX25ldCIsImRldl9wcm9tb2NvZGVfY2FzZV9pbnNlbnNpdGl2ZSIsImRldl9yZWFjdGl2ZV9zZWxlY3RlZF9pbmRleCIsImRldl9yZWNvbW1lbmRhdGlvbl9ub2ZvbGxvdyIsImRldl9yZWZlcmVyX2hvc3RfYW5hbHl6ZXIiLCJkZXZfcmVwb3J0c19ub3ZlbHR5IiwiZGV2X3Jlc2VuZF9jb25maXJtX3JlZ2lzdGVyX2VtYWlsIiwiZGV2X3NlYXJjaF80MDRfaGlzdG9yeV9maXgiLCJkZXZfc2VhcmNoX2hpc3RvcnlfaW5kZXhpbmdfZWxhc3RpYyIsImRldl9zZWFyY2hfaWNvbl9maXgiLCJkZXZfc2VhcmNoX3BvcHVwX2ZpeGVzIiwiZGV2X3NlYXJjaF91eF9maXhlcyIsImRldl9zZWxlY3RfcGxhY2Vob2xkZXIiLCJkZXZfc2VsZWN0X3ZhcmlhbnRfd2lkdGhfZml4IiwiZGV2X3Nlc3Npb25fYmFza2V0X2ZpeCIsImRldl9zZXNzaW9uX21ldHJpY3Nfb3JkZXJfZml4IiwiZGV2X3Nob3Blcl9zc29fd3d3IiwiZGV2X3NraW5zdG9yZV9pbWFnZV92YWxpZGF0b3IiLCJkZXZfc2tpbnN0b3JlX3ByaWNpbmciLCJkZXZfc29jaWFsX3Byb3ZpZGVyc191c2VyX2NhY2hlIiwiZGV2X3NwbGl0X2FkZGl0aW9uYWxfdGF4X2luZm8iLCJkZXZfc3RmXzQ0NzciLCJkZXZfc3RmX3VwZ3JhZGVfc2tpbl9maXgiLCJkZXZfc3RvcmVmcm9udF9hYnNfZmlsdGVyIiwiZGV2X3N0b3JlZnJvbnRfYmFza2V0X2dhdWdlcyIsImRldl9zdG9yZWZyb250X2Jhc2tldF93YXJpYW50c19maXgiLCJkZXZfc3RvcmVmcm9udF9jYXRjaF9leGNlcHRpb25faW5fb2JqZWN0X2FwaSIsImRldl9zdG9yZWZyb250X2NhdGNoX21vZHVsZV9yZW5kZXJfZXJyb3IiLCJkZXZfc3RvcmVmcm9udF9kb250X3JlbmRlcl93aGVuX25vX2NvbnRleHQiLCJkZXZfc3RvcmVmcm9udF9mb3JtX2hvbmV5cG90IiwiZGV2X3N0b3JlZnJvbnRfbWVudV9vcHRpbWl6YXRpb24iLCJkZXZfc3RvcmVmcm9udF9tb2R1bGVzX2xpc3QiLCJkZXZfc3RvcmVmcm9udF9wYW5lbF9jdXJyZW5jeSIsImRldl9zdG9yZWZyb250X3JlbW92ZV9tYWNybyIsImRldl9zdG9yZWZyb250X3NpbXBsZV9iYXNrZXRfYWRkcmVzcyIsImRldl9zdG9yZWZyb250X3R1cmJvX3Jlc3RvcmVfbG9hZGVkX2V2ZW50IiwiZGV2X3N0b3JlZnJvbnRfdmFsaWRhdGVfYmFza2V0X2lkIiwiZGV2X3N0b3JlZnJvbnRfdml0ZV9idWlsZCIsImRldl9zdmUtdG9nZ2xlLXNraW4tdHJlZS1lbGVtZW50cyIsImRldl9zdmVfZGF0ZS10aW1lLXBpY2tlcnMiLCJkZXZfc3ZlX2RlZmF1bHRfdmFsdWVfbnVsbCIsImRldl9zdmVfZGl2aWRlciIsImRldl9zdmVfZWRpdGFibGVfbGFiZWwiLCJkZXZfc3ZlX2hvdC1lZGdlcyIsImRldl9zdmVfaW1hZ2UtYmFja2dyb3VuZCIsImRldl9zdmVfbW9kdWxlX3RyYW5zbGF0aW9ucyIsImRldl9zdmVfbmV3LWZvcm1zLWdyaWQiLCJkZXZfc3ZlX25ldy1mb3Jtcy1tb2R1bGVzIiwiZGV2X3N2ZV9uZXctZm9ybXMtc2V0dGluZ3MiLCJkZXZfc3ZlX3BhcmVudF9mb3JjZWRfaGlkZGVuX2luZGljYXRvciIsImRldl9zdmVfcGVyZl9tb2R1bGVfZWRpdCIsImRldl9zdmVfcGVyc2lzdF96b29tX2RldmljZSIsImRldl9zdmVfcG9pbnRfcGlja2VyIiwiZGV2X3N2ZV9wb2ludF9waWNrZXJfdjIiLCJkZXZfc3ZlX3ByZXZpZXctbW9kZSIsImRldl9zdmVfcHJvamVjdC1taWdyYXRpb24iLCJkZXZfc3ZlX3JlcGVhdGVyX2RyYWdfYW5kX2Ryb3AiLCJkZXZfc3ZlX3JlcGVhdGVyX2VkaXRfbGFiZWwiLCJkZXZfc3ZlX3Jlc2l6YWJsZS1zaWRlYmFyIiwiZGV2X3N2ZV91bmRvX3JlZG8iLCJkZXZfc3ZlX3ZhbGlkYXRlX21vZHVsZV9odG1sIiwiZGV2X3N2ZV93ZXN0LWJ5LWRlZmF1bHQiLCJkZXZfc3ZlX3dlc3Qtb25seSIsImRldl9zd2FwX2Jhc2tldF9hbmFseXRpY3NfZXZlbnRzIiwiZGV2X3N5c3RlbV9pY29ucyIsImRldl90YWdfbGFiZWxfcmVkZXNpZ24iLCJkZXZfdGFza19oaXN0b3J5X3VwZGF0ZSIsImRldl92aWRlb19sYXp5X2xvYWQiLCJkZXZfdmlzdWFsX3N1YmNhdGVnb3JpZXMiLCJkZXZfd2ViaG9va3NfeWVhcmx5X2luZGV4aW5nX2VsYXN0aWMiLCJkaWdpdGFsX2xpbmtzIiwiZGlzYWJsZV9jbGllbnRfc2Vzc2lvbl91YV9yZXZhbGlkYXRlIiwiZGlzYWJsZV9kb3RwYXkiLCJkaXNhYmxlX3ByaWNlX2ZpbHRlcl9yYW5nZXMiLCJkaXNhYmxlX3J3ZF90aGVtZXMiLCJkb21haW5fbWFuYWdlcl9zeW5jX2RvbWFpbnNfcmVmYWN0b3IiLCJkeW5hbWljX29wdGlvbnNfZm9yX25ld19hY2NvdW50cyIsImV4dGVybmFsX2ludGVncmF0aW9uc19hcGlfdG9rZW5zX2dhbW1hIiwiZXh0ZXJuYWxfc3lzdGVtX25vdGlmaWNhdGlvbiIsImZhY2Vib29rX2J1c2luZXNzX2V4dGVuc2lvbiIsImZhY2Vib29rX2J1c2luZXNzX2V4dGVuc2lvbl9zaW1wbGVfZ2FtbWEiLCJmYWNlYm9va19jYXBpIiwiZmlsZV9tYW5hZ2VtZW50IiwiZmlsZV9yb3RhdGVfa29qb3R5IiwiZmlsdGVyX29wdGlvbnNfYXZhaWxhYmlsaXR5IiwiZmlsdGVyX29wdGlvbnNfYXZhaWxhYmlsaXR5X2ZpeF9ub25fc3RvY2siLCJmaWx0ZXJfcHJvZHVjdF9hdHRyaWJ1dGVzX3ZhbHVlc19pcGEiLCJmaWx0ZXJzX2Rpc2FibGVfZnV6enlfc2VhcmNoIiwiZmlsdGVyc19yZWZhY3RvciIsImZpbmFuY2luZ19uZXdfb2ZmZXIiLCJmbWNfbG9jYWxfY291bnRlciIsImZtY19zdGFydGluZ19jb3VudGVyX3ZhbHVlIiwiZnJvbnRfYXBpX3JlZ2lzdGVyX2ZpeCIsImZyb250c2tpbl9jb25maWd1cmF0b3IiLCJnYV9jYW1wYWlnbl9tb3ZlX2Zyb21fcGx1Z2lucyIsImdhbGxlcnlfbGlzdCIsImdmeF9tZXRhZGF0YSIsImdvb2dsZV8yZmFfcXJfY29kZV9nZW5lcmF0ZV9sb2NhbGx5IiwiZ29vZ2xlX2FuYWx5dGljc192NCIsImdvb2dsZV9hbmFseXRpY3NfdjRfY2FtcGFpZ24iLCJncGF5X2NsZWFuX3Bob25lX251bWJlciIsImdwYXlfZXNjYXBlX21lcmNoYW50X2RhdGEiLCJncHNyX3Byb2R1Y3RfaW5mb3JtYXRpb24iLCJncHNyX3Byb2R1Y3RfaW5mb3JtYXRpb25fcG9zdF9kZXBsb3kiLCJncHNyX3Byb2R1Y3RfaW5mb3JtYXRpb25feG1sIiwiZ3RhZ19lbWl0X2V2ZW50IiwiZ3R1X2NvZGUiLCJoZXJtZXNfc2hvcGVyX2luaG91c2VfcmV0dXJuc19hcHAiLCJodHRwc19yZWRpcmVjdF8zMDgiLCJpbWFnZV9lZGl0b3IiLCJpbWFnZXNfY2FjaGVfbmFtZV9yZXZlcnNhbCIsImltZ19zaXplX2VkaXRhYmxlIiwiaW1wb3J0X2dmeF9mcm9tX3VybF9tb3ZlX291dF9vZl90cmFuc2FjdGlvbiIsImlubGluZV9lZGl0X3RleHRhcmVhX2tvam90eSIsImlucG9zdF9pbnRlcm5hdGlvbmFsIiwiaW5wb3N0X21hcCIsImlucG9zdF9uZXdfZ2Vvd2lkZ2V0X2tvam90eSIsImlucG9zdF9wYXkiLCJpbnBvc3RfcGF5X2NvZCIsImlucG9zdF9wYXlfZGVidWciLCJpbnBvc3RfcGF5X2ZyZWVfZGVsaXZlcnlfbWluaW11bV9wcmljZSIsImlucG9zdF9wYXlfZ2FsbGVyeSIsImlucG9zdF9wYXlfcmVmdW5kcyIsImlucG9zdF9wYXlfdjIiLCJpbnBvc3RfcGF5X3YyX3Vuc2V0IiwiaW5wb3N0X3B3dyIsImtsYXJuYV9keW5hbWljX2Jhbm5lciIsImxpbWl0X3Byb2R1Y3RfaW1hZ2VzX2NvdW50X2FwaSIsImxveWFsdHlfbWFpbF9wZXJfdXNlciIsIm1haW5fcGFnZV9jb2xsZWN0aW9uIiwibWVudV9uYXZpZ2F0aW9uX3J3ZCIsIm1lcmNoYW50X3RyYWNraW5nIiwibWV0YWZpZWxkc19iaW5kIiwibWV0YWZpZWxkc19jYW5fYXNzaWduX3RvX2FwcCIsIm1ldGFmaWVsZHNfaGlkZV9zY29wZSIsIm1pY3Jvc29mdF9hZHMiLCJtaWdyYXRlX3NlYXJjaF9zZXR0aW5nc19mcm9tX3NraW4iLCJtaW5pbXVtX2NhcnRfdmFsdWVfZm9yX3NoaXBtZW50c19taW5fY29zdCIsIm5icF9jdXJyZW5jaWVzIiwibmJwX3RhYmxlX2JfdXBkYXRlc19rb2pvdHkiLCJuZXdfYWxsZWdyb190ZW1wbGF0ZV9jcmVhdG9yIiwibmV3X2NhcmRzX3ZpZXciLCJuZXdfY29sbGVjdGlvbl9sYXlvdXQiLCJuZXdfZGF0ZXBpY2tlciIsIm5ld19maWx0ZXJzX2NvbmZpZyIsIm5ld19nYWxsZXJ5IiwibmV3X29yZGVyX25vdGVzIiwibmV3X3Byb2R1Y3RzX21hbnVhbF9vcmRlciIsIm5vbl9zdG9ja192YXJpYW50c19pcGEiLCJvYmplY3RzX3N0YXRzX2FuYWx5emVyIiwib21uaWJ1c19iYWNrZW5kIiwib21uaWJ1c19iYWNrZW5kX3YyIiwib21uaWJ1c19mcm9udGVuZCIsIm9tbmlidXNfcHJpY2VzIiwib25saW5lcGF5bWVudF9kaXNhYmxlX2FjY291bnRfbnVtYmVyX3R5cGUiLCJvbmxpbmVwYXltZW50X3Bob25lX3ZhbGlkIiwib25saW5lcGF5bWVudF9yZWZ1bmRzX2RiX3RyYW5zYWN0aW9uIiwib25saW5lcGF5bWVudF96aXBjb2RlX3ZhbGlkIiwib3B0aW1pemVkX3BsYWNlX29yZGVyX3RyYW5zYWN0aW9uIiwib3JkZXJfcGF5bWVudF9tYWlscyIsIm9yZGVyX3BpY2t1cF9wb2ludF9jb21wYXRpYmlsaXR5Iiwib3JkZXJfcGlja3VwX3BvaW50X2RiX2RlZGljYXRlZF9yZWFkIiwib3JkZXJfcGlja3VwX3BvaW50X2RiX2RlZGljYXRlZF9zYXZlIiwib3JkZXJfcGlja3VwX3BvaW50X2luX2NvcmUiLCJvcmRlcnNfcHJvcGVydGllc19hbGxlZ3JvX3NtYXJ0IiwicDI0X3BheW1lbnRfYXBwbGVfcGF5IiwicDI0X3BheW1lbnRfZ3BheSIsInAyNF9wYXltZW50X2hpZGVfbm9uZV9wbG5fcGF5bWVudHMiLCJwYWN6a29tYXR5X2Rpc2FibGUiLCJwYWxsZXRfcGFja2FnZSIsInBhcmNlbHNfY3JlYXRlX29yZGVyX2lkX25vdGVzIiwicGFyY2Vsc19wcmludF9kb2N1bWVudHNfbmV3X2ZpbGVuYW1lIiwicGFydG5lcl9nb29nbGVfYW5hbHl0aWNzX3Y0IiwicGF5X3BhbF9leHByZXNzX2NoZWNrb3V0X3JlcGFpciIsInBheW1lbnRfYXBwbGVfcGF5IiwicGF5bWVudF9hcHBsZV9wYXlfaW5fc2V0dGluZ3MiLCJwYXltZW50X2JsaWswIiwicGF5bWVudF9ibGlrbCIsInBheW1lbnRfYm1fcGhvdG9fdmVyaWZpY2F0aW9uIiwicGF5bWVudF9jcmVhdGVfc2luZ2xlX3RyYW5zYWN0aW9ucyIsInBheW1lbnRfY3VzdG9tX25hbWVfbGltaXQiLCJwYXltZW50X2RvY3VtZW50X251bWJlciIsInBheW1lbnRfZXh0ZW5kX3N5bmNzIiwicGF5bWVudF9maW5hbmNpbmdfYnJ1dHRvIiwicGF5bWVudF9maW5hbmNpbmdfbmV3X2Rlc2NyaXB0aW9uIiwicGF5bWVudF9ncGF5IiwicGF5bWVudF9ncGF5X2RiX2NvbmZpZyIsInBheW1lbnRfa2xhcm5hX2Zsb2F0X3Byb2R1Y3RfcXVhbnRpdHkiLCJwYXltZW50X25ld19mb3JtX2JhY2tlbmQiLCJwYXltZW50X25ld19vbmxpbmVwYXltZW50X2Zvcm1fdXBkYXRlIiwicGF5bWVudF9uZXdfc2VydmljZV9leGlzdHMiLCJwYXltZW50X25vbl9hY2NvdW50ZWRfYWN0aXZpdHlfc2V0dGluZ3MiLCJwYXltZW50X3AyNF9kaXNjbGFpbWVyIiwicGF5bWVudF9wMjRfZ3BheV9hc3luYyIsInBheW1lbnRfcDI0X25ld19zZXR0aW5nc19wYXltZW50X2NoYW5uZWxzX3ZpZXciLCJwYXltZW50X3AyNF9yZWZlcnJhbF9saW5rIiwicGF5bWVudF9wYXlwYWxlY19uZXdfYnV0dG9uIiwicGF5bWVudF9wYXl1X3BlbmRpbmdfdHJhbnNhY3Rpb25zX3N5bmNocm9uaXphdGlvbiIsInBheW1lbnRfcmVmdW5kX3Byb2Nlc3Nfam9iIiwicGF5bWVudF9zaG9wZXJQMjRfYmVsbCIsInBheW1lbnRfc3RyaXBlX3ZlcmlmaWNhdGlvbnMiLCJwYXltZW50c19hcF92ZXJpZmljYXRpb25fdHJhbnNmZXIiLCJwYXltZW50c19hdXRvcGF5X2dwYXlfdG9rZW4iLCJwYXltZW50c19hdXRvcGF5X29uYm9hcmRpbmdfdmVyaWZpY2F0aW9uIiwicGF5bWVudHNfYXV0b3BheV92YWxpZGF0ZV9kb2N1bWVudF9udW1iZXIiLCJwYXltZW50c19ibV90b19hdXRvcGF5IiwicGF5bWVudHNfYm1fdG9fYXV0b3BheV9saW5rcyIsInBheW1lbnRzX2JyYWludHJlZV9jb25zb2xlIiwicGF5bWVudHNfZGVmYXVsdF9wYXlwb19wcm92aWRlciIsInBheW1lbnRzX2V4dGVybmFsX2lmcmFtZV9pcGEiLCJwYXltZW50c19maW5hbmNpbmciLCJwYXltZW50c19maW5hbmNpbmdfYnJ1dHRvXzIiLCJwYXltZW50c19maW5hbmNpbmdfZGlzYWJsZV9lcmJlbyIsInBheW1lbnRzX2ZpbmFuY2luZ19uZXN0X2Jpem5lc3QiLCJwYXltZW50c19maW5hbmNpbmdfeW91bGVuZCIsInBheW1lbnRzX2lucG9zdF9wYXlfc2F2ZWRfa2V5IiwicGF5bWVudHNfaW5wb3N0X3BheV90cmFuc2FjdGlvbnNfc2V0dGxlbWVudCIsInBheW1lbnRzX3AyNF9pbnN0YWxsbWVudHNfaHViIiwicGF5bWVudHNfcDI0X3RvcF91cF9iYWxhbmNlIiwicGF5bWVudHNfcDI0X3RvcF91cF9iYWxhbmNlX3Blcl9jdXJyZW5jeSIsInBheW1lbnRzX3BheW1lbnRfY2hhbm5lbHNfbmFtZSIsInBheW1lbnRzX3NhbnRhbmRlcl9pbnN0YWxsbWVudHNfY2FsY3VsYXRvciIsInBheW1lbnRzX3N0cmlwZSIsInBheW1lbnRzX3N0cmlwZV9kZWxldGVfY29uZmlndXJhdGlvbiIsInBheW1lbnRzX3N0cmlwZV9kaXNhYmxlX2V4cHJlc3NfY2hlY2tvdXQiLCJwYXltZW50c19zdHJpcGVfb25ib2FyZGluZ192ZXJpZmljYXRpb24iLCJwYXltZW50c19zdHJpcGVfcmVmdW5kc19mcm9tX3N0cmlwZSIsInBheXBvX2Jhbm5lciIsInBlcmZvcm1hbmNlX2xvYWRfcmVwb3J0cyIsInBlcmZvcm1hbmNlX3JlcG9ydHMiLCJwaG9uZV92YWxpZGF0aW9uIiwicG9jenRhX3BvbHNrYV9pbnN1cmFuY2UiLCJwcm9kdWN0X2J1bmRsZXMiLCJwcm9kdWN0X2NhcmRfYWRkaXRpb25hbF93YXJlaG91c2VzX3NoaXBwaW5nX3RpbWUiLCJwcm9kdWN0X2R1cGxpY2F0ZV9jb2xsZWN0aW9ucyIsInByb2R1Y3RfZHVwbGljYXRlX25ld19vcHRpb25zIiwicHJvZHVjdF9lZGl0X2RhdGVfZ2FtbWEiLCJwcm9kdWN0X2ltYWdlX3djYWdfa29qb3R5IiwicHJvZHVjdF9vcHRpb25fY29sb3Jfc3RydWN0X2FnZ3JlZ2F0ZV9kYXRhIiwicHJvZHVjdF9vcHRpb25fc2VsZWN0X3N0cnVjdF9hZ2dyZWdhdGVfZGF0YSIsInByb2R1Y3RzX29yZGVyIiwicHJvZ3Jlc3NpdmVfZGlzY291bnRzIiwicHJvbW9fY29kZXNfZGJfdGltZV9lbmFibGVkIiwicHJvbW9jb2RlX3RpbWUiLCJwcm9tb3Rpb25fdGltZSIsInByb21vdGlvbnNfcHJvZHVjdHNfbWFudWFsX29yZGVyIiwicHdhIiwicmVicmFuZGluZ19hcGlsbyIsInJlY29tbWVuZGF0aW9uc19hZG1pbiIsInJlY29tbWVuZGF0aW9uc19jb21wdXRlX3N1bXNfb3B0aW1pemF0aW9uIiwicmVjb21tZW5kYXRpb25zX21vZGVsX2ZpdCIsInJlY29tbWVuZGF0aW9uc19zdGF0c19hbmFseXplciIsInJlY29tbWVuZGF0aW9uc19zdW1zX29wdGltaXphdGlvbiIsInJlY29tbWVuZGF0aW9uc190cmFja2luZyIsInJlZGlyZWN0c19hcGkiLCJyZWRpcmVjdHNfY29uZmlnIiwicmVkaXJlY3RzX2RvbWFpbnMiLCJyZWRpcmVjdHNfb2JqZWN0cyIsInJlZGlyZWN0c19yb3V0ZXIiLCJyZXBlYXRpbmdfcGF5cG9fdHJhbnNhY3Rpb25zIiwicmVzdGFwaV93aXRob3V0X2xvY2tzIiwicmV0dXJuX3F1YW50aXR5X3RvX3N0b2NrX2FmdGVyX2NhbmNlbGVkX29yZGVyIiwicmV2ZXJzZV9wYXltZW50X25hbWVfZGlzcGxheSIsInJvdXRlcl91cmxfYWRkX3F1ZXJ5X3BhcmFtcyIsInJ3ZF9zb2NpYWxfbG9naW5fc2hvcGVyX3NzbyIsInNhYXNfYmlsbGluZyIsInNlYXJjaF9hZG1pbiIsInNlYXJjaF9hZG1pbl9leGNlcnB0X3N1cHBvcnQiLCJzZWFyY2hfY2xpZW50Iiwic2VhcmNoX2luZGV4ZXIiLCJzZW9fZ2Z4Iiwic2Vzc2lvbl9zdGFydHNfaW5fcmVhZF9vbmx5X21vZGUiLCJzaGlwbWVudF9jcmVhdGVfaW52ZXJ0X2FsbGVncm8iLCJzaGlwbWVudF9jcmVhdGVfaW52ZXJ0X2FwYWN6a2EiLCJzaGlwbWVudF9jcmVhdGVfaW52ZXJ0X2lucG9zdCIsInNoaXBtZW50X2NyZWF0ZV9pbnZlcnRfcGFjemtvbWF0eSIsInNoaXBtZW50X2NyZWF0ZV9pbnZlcnRfc2hvcGVyc2hpcG1lbnQiLCJzaG9wX2Rpc2FibGVfb25lX2RheV9hZnRlcl9ob2xpZGF5Iiwic2hvcGVyUDI0X3BheW1lbnRzIiwic2hvcGVyX2NhbXBhaWduc19hcHBzdG9yZV9saW5rcyIsInNob3Blcl9jYW1wYWlnbnNfYnV5X2NhbXBhaWduIiwic2hvcGVyX2NhbXBhaWduc19kaXNhYmxlX3Nob3Blcl90cmFmZmljIiwic2hvcGVyX2NhbXBhaWduc19mYWNlYm9va19hcHAiLCJzaG9wZXJfY2FtcGFpZ25zX2ZhY2Vib29rX2ZlZWRfY2FtcGFpZ25faWQiLCJzaG9wZXJfY2FtcGFpZ25zX2dvb2dsZV9hcHAiLCJzaG9wZXJfY2FtcGFpZ25zX2dvb2dsZV9nbWNfbmV3X3JlcXVlc3RfaGFzaCIsInNob3Blcl9jYW1wYWlnbnNfbWVudV9jYW1wYWlnbnNfZGlzYWJsZWQiLCJzaG9wZXJfY2FtcGFpZ25zX21lbnVfZmFjZWJvb2tfZGlzYWJsZWQiLCJzaG9wZXJfY2FtcGFpZ25zX21lbnVfZ29vZ2xlX2Rpc2FibGVkIiwic2hvcGVyX2NhbXBhaWduc19uZXdfZGF0YV9zb3VyY2UiLCJzaG9wZXJfY2FtcGFpZ25zX29yZGVyX2FwaV91dG0iLCJzaG9wZXJfY2FtcGFpZ25zX29yZGVyX2NyZWF0ZWQiLCJzaG9wZXJfY2FtcGFpZ25zX29yZGVyX2VtYWlsIiwic2hvcGVyX2NhbXBhaWduc19vcmRlcl9maWx0ZXJfcmVmYWN0b3IiLCJzaG9wZXJfY2FtcGFpZ25zX3JlcG9ydHMiLCJzaG9wZXJfY2xpIiwic2hvcGVyX3NoaXBtZW50cyIsInNob3Blcl9zaGlwbWVudHNfcGhvbmVfcHJlZml4X2tvam90eSIsInNob3Blcl9zc29faW50ZWdyYXRpb24iLCJzaG9wZXJfc3NvX3Byb3ZpZGVycyIsInNob3Blcl9zc29fc2VuZF9jaGVja291dF9kYXRhIiwic2hvcGlsb19oaWRlX29sZF9tZW51Iiwic2hvcGlsb19uZXdfbWVudSIsInNob3dfcHJlbWl1bV9mZWF0dXJlcyIsInNpdGVtYXBfYWRkaXRpb25hbF9vcHRpb25zIiwic2tpbnN0b3JlX3NraW5fY29weSIsInNvYXBfYXBpX2F1dGhlbnRpY2F0ZV9ieV90b2tlbl9nYW1tYSIsInNwX2lucG9zdF9wb2ludF90b19kb29yIiwic3BlY2lhbF9vZmZlcnNfZGVmYXVsdF9zdG9ja19maXhfZ2FtbWEiLCJzcGVjaWFsX29mZmVyc19tYW51YWxfcHJvbW8iLCJzcGVjaWFsX29mZmVyc19wZXJjZW50YWdlIiwic3BlY2lhbF9vZmZlcnNfc3RvY2tzX3YwIiwic3BlY2lhbF9vZmZlcnNfc3RvY2tzX3YxIiwic3BmX3ZhbGlkYXRpb25fZ2FtbWEiLCJzdGZfZGVmYXVsdF9zb3J0X2ZpeCIsInN0b2NrMCIsInN0b2NrMF9zeW5jIiwic3RvY2tfYWRkaXRpb25hbF9jb2Rlc19pcGEiLCJzdG9ja19mcm9udF9jYWNoZV9rZXkiLCJzdG9ja19vcHRpbWl6YXRpb24iLCJzdG9yZWZyb250Iiwic3RvcmVmcm9udF9hZG1pbl9wcmV2aWV3X2luYWN0aXZlX3Byb2R1Y3RzIiwic3RvcmVmcm9udF9iYXNrZXRfaGlkZV9jb3N0X3Blcl9jb3VudHJ5Iiwic3RvcmVmcm9udF9iYXNrZXRfbGlzdCIsInN0b3JlZnJvbnRfY2xpX3NraW5zdG9yZSIsInN0b3JlZnJvbnRfY29weV9za2luX2luX2JhY2tncm91bmQiLCJzdG9yZWZyb250X2VuYWJsZV90dXJib19wcmVmZXRjaCIsInN0b3JlZnJvbnRfZmlsdGVyc19jaGVja3N1bSIsInN0b3JlZnJvbnRfZnVsbF9yZWdpc3RyYXRpb24iLCJzdG9yZWZyb250X2Z1bGxfcmVnaXN0cmF0aW9uX2ZvcmNlIiwic3RvcmVmcm9udF9ncHNyIiwic3RvcmVmcm9udF9qc19uZXciLCJzdG9yZWZyb250X2pzX25ld19zYXZlIiwic3RvcmVmcm9udF9tYWNyb3MiLCJzdG9yZWZyb250X21hY3Jvc19hZGQiLCJzdG9yZWZyb250X21hY3Jvc19jYW5fYWNjZXNzX29yaWdpbmFsIiwic3RvcmVmcm9udF9tYWNyb3NfZGVsZXRlIiwic3RvcmVmcm9udF9tYWNyb3NfZWRpdCIsInN0b3JlZnJvbnRfbWFjcm9zX2hpc3RvcnkiLCJzdG9yZWZyb250X21hY3Jvc19oaXN0b3J5X3NhdmUiLCJzdG9yZWZyb250X21vZHVsZXNfY29udGV4dHMiLCJzdG9yZWZyb250X25ld19zY2hlbWFfdmFsaWRhdGlvbiIsInN0b3JlZnJvbnRfb3JkZXJfaW5fdHJhbnNhY3Rpb24iLCJzdG9yZWZyb250X3JlZ2lzdHJhdGlvbiIsInN0b3JlZnJvbnRfc2tpbnN0b3JlX3VwZGF0ZXMiLCJzdG9yZWZyb250X3NvY2lhbF9sb2dpbiIsInN0b3JlZnJvbnRfc29jaWFsX2xvZ2luX2ZhY2Vib29rIiwic3RvcmVmcm9udF9zb2NpYWxfbG9naW5fZ29vZ2xlIiwic3RvcmVmcm9udF9zb2NpYWxfbG9naW5fc2hvcGVyX3NzbyIsInN0b3JlZnJvbnRfdXBkYXRlIiwic3ZlLXd5c2l3eWdfZnJvYWxhIiwic3ZlX2NvbHVtbi1zcGxpdCIsInN2ZV9kdXBsaWNhdGlvbnMiLCJzdmVfZWRpdG9ycy1icmVhZGNydW1icyIsInN2ZV9ncmlkLWxhYmVscy12MiIsInN2ZV9ob3Qta2V5cyIsInN2ZV9pbWFnZS1lZGl0b3IiLCJzdmVfbmV3LWNvbG9yLXBpY2tlciIsInN2ZV9wcmVkZWZpbmVkLWNvbHVtbnMiLCJzdmVfcmVwZWF0ZXIiLCJzdmVfc3RydWN0dXJlLWRyYWdhbmRkcm9wIiwic3ZlX3dlc3QiLCJzdmVfem9vbSIsInN3aWZ0X3Byb2R1Y3RfZ2Z4X25vX2NoZWNrIiwidGFza19tYWlsX3NlbmRfYnlfbWFuYWdlciIsInRyYWNraW5nX3NtYWxsX3Nlc3Npb25fd2luZG93IiwidHJhZmZpY19hbmFseXplciIsInRyYWZmaWNfbG9hZF9hZ2dyZWdhdG9yIiwidHJhZmZpY19uZXdfcmVwb3J0cyIsInRyaWFsX21haWxfc2VuZGluZ19ibG9ja2VkX2tvam90eSIsInR3b19mYWN0b3IiLCJ0d29fZmFjdG9yX3NtcyIsInVwZGF0ZV9nYXRld2F5X2lkIiwidXJsX3JlcGFpcl9zdHJpbmdfZGlzYWJsZSIsInVzZV9vYmplY3Rfc3RvcmFnZV9mb3JfdGh1bWJzIiwidmF0X2V1Iiwid2FyZWhvdXNlcyIsIndhcmVob3VzZXNfbG9ncyIsIndlYmRhdiIsIndlYmhvb2tzX2Zvcl9leHRlcm5hbF9wYXltZW50c19pcGEiLCJ3ZWJwdXNoX2FkbWluIiwid2Zpcm1hX2FwaV9hdXRoIiwieG1sX2NhbXBhaWduc19rb2pvdHkiLCJmZWF0dXJlX2ZsYWdzX2FjayIsInN0b3JlZnJvbnRfbGFuZ3VhZ2VzIiwic3RvcmVmcm9udF9iZWxsX21lc3NhZ2UiLCJzd2lmdF9wcm9kdWN0X2dmeF93cml0ZSIsInN3aWZ0X3Byb2R1Y3RfZ2Z4X3JlYWQiLCJzd2lmdF9wcm9kdWN0X2dmeF9mc19kaXNhYmxlZCIsImRldl9mcmVlX29yZGVyc19jc3JmX2ZpeCIsImRldl9zdG9yZWZyb250X3N0b2NrX29wdGltaXphdGlvbiIsImRldl9zdmVfc29ydGFibGVfbGlzdCIsImFkbWluX3NraW5fY2hhbmdlIiwiZGV2X3N0Zl9zb3J0X2l0ZW1zIiwibWFpbF9vdHAiLCJkZXZfc3RvcmVmcm9udF9haV9zZW8iLCJkZXZfcGF5bWVudHNfYmFza2V0X3AyNF9hcHBsZV9wYXkiLCJkZXZfcGF5bWVudHNfYmFza2V0X2FwcGxlX3BheSIsImRldl9leHBvcnRfZmlsdGVyZWRfcHJvZHVjdHMiLCJkZXZfc3ZlX2luYWN0aXZlX2xhbmd1YWdlcyIsImRldl9qb2JfcXVldWVfb3B0aW1pemF0aW9ucyIsImRldl9wcmljZV9maWx0ZXJfc29ydF9kZWZhdWx0X3N0b2NrX29ubHkiLCJjb2RlX21pcnJvcl82IiwiZGV2X21vdmVfR0E0X3RvX21vZHVsZSIsImRldl9naWZ0X2NhcmRzX3BheW1lbnRfY2hlY2siLCJkZXZfZ2lmdF9jYXJkcyIsImRldl9wYXltZW50X2dpZnRfY2FyZCIsImRldl9jb25zZW50X21vZGVfaW5pdF9maXgiLCJkZXZfZnJvbnRfYXBpX3Byb2R1Y3RfbGlzdF9vcHRpbWl6YXRpb24iLCJkZXZfZnJvbnRfYXBpX3Byb2R1Y3RfbGlzdF9vcHRpbWl6YXRpb25fY2FjaGUiLCJkZXZfZnJvbnRfYXBpX3Byb2R1Y3RfbGlzdF90aW1lIiwiZGV2X2N1c3RvbV9mbWMiLCJkZXZfc2VvX2NhdGVnb3J5X2hlYWRpbmciLCJkZXZfc2VvX2NvbGxlY3Rpb25faGVhZGluZyIsImRldl9zd2lmdF9kZWxldGVfb2JqZWN0X2FzeW5jIiwiZGV2X3BheW1lbnRzX3AyNF9nb3BheV9nb29nbGVwYXlfaW5fYWxsX2N1cnJlbmNpZXMiLCJkZXZfbG95YWx0eV9leHBpcmF0aW9uX3Rhc2tfb3B0aW1pemF0aW9uIiwiZGV2X2dvb2dsZV9yZXZpZXdzX3N0aWNreV9iYXJzX2ZpeCIsImRldl9kcm9wZG93bl9maXRfdmlld3BvcnRfcG9zaXRpb25pbmciLCJkZXZfZW5hYmxlX2FuYWx5dGljc19ldmVudHNfd2l0aF9wcmVmaXgiLCJkZXZfc3RmX3VwZ3JhZGVfc2tpbl9qb2IiLCJkZXZfaW5wb3N0cGF5X25ld19jcmVhdGVfYWNjb3VudF91cmwiLCJkZXZfbm90aWZpY2F0aW9ucyIsImRldl9zbGlkZXJfb3B0aW1pemF0aW9uIiwiZGV2X2h5ZHJhdGlvbl9hdHRyaWJ1dGVzIiwiZGV2X2J1Z3RyYWNrZXJfZXNfYWNsIl0=" data-locale="pl">    <!-- Google Tag Manager -->
+
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MTHHDW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MTHHDW');</script>
+
+<!-- End Google Tag Manager -->
+
+            <main class="container container_full">
+                <div class="row">
+                    <div class="ui__main ui__auth-main col_lg-9 col_md-8 col_xs-12 col_order-md-1">
+                        <div class="box box_spacing-s">
+                            <div class="hidden-sm-md-up mb-6">
+                                <figure>
+                                                                            <img class="ui__logo" src="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Images/logo-on-dark.svg" alt="Panel administracyjny">
+                                                                                                        </figure>
+                            </div>
+
+                            <form class="form_block" action="/admin/auth/login" method="post">
+                                    <input type="hidden" name="redirect" value="">
+
+                                    <noscript id="nojs-alert">
+                                        <p class="active size_xl">
+                                            Do pracy w panelu administacyjnym wymagana jest przeglądarka z włączoną obsługą JavaScript.
+                                        </p>
+                                    </noscript>
+
+                                    <ul class="langs"><li><a href="?language=pl_PL" class="active-lang">Polski</a></li><li><a href="?language=en_US">English</a></li></ul>
+
+                                    <h1>
+                                        Zaloguj się
+                                    </h1>
+
+                                    <div class="mb-6">
+                                        <p class="size_xl">
+                                            do Panelu administracyjnego sklepu
+                                        </p>
+                                    </div>
+
+                                    
+                                    
+                                    <div class="controls">
+                                        <div class="controls__content">
+                                            <div class="controls__element controls__element_with-icon">
+                                                <span class="icon icon-user color_dark controls__icon"></span>
+
+                                                <input class="control control_with-icon" name="login" type="text" title="Login" placeholder="Login">
+                                            </div>
+                                        </div>
+
+                                                                            </div>
+
+                                    <div class="controls">
+                                        <div class="controls__content">
+                                            <div class="controls__element controls__element_with-icon">
+                                                <span class="icon icon-key color_dark controls__icon"></span>
+
+                                                <input class="control control_with-icon" name="password" type="password" title="Hasło" placeholder="Hasło">
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-1 mb-1 align_right">
+                                            <a class="link size_s" href="/admin/auth/reminder">
+                                                    Nie pamiętam hasła
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="buttons buttons_hright">
+                                        <button class="btn btn_bg" type="submit">
+                                                Zaloguj się
+                                        </button>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="ui__sidebar ui__auth-sidebar col_lg-3 col_md-4 col_xs-12">
+                        <div class="box box_spacing-s hidden-sm-down">
+                            <figure>
+                                                                <img class="ui__logo" src="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Images/logo-on-dark.svg" alt="Panel administracyjny">
+                                                                                            </figure>
+                        </div>
+
+                        <div class="ui__auth-content box box_spacing align_center">
+                            <div class="js__auth-sidebox hide">
+    <h3 class="head_box color_dark-2 weight_semibold size_xs">
+        Przesyłki
+    </h3>
+
+    <p class="color_dark-2 size_l">
+        <span class="weight_semibold block color_dark mb-2">
+            Wysyłaj szybciej i wygodniej
+        </span>
+
+        Prosta rejestracja, bez stałych opłat i limitów wysyłkowych. Korzystaj z gotowej integracji i udostępniaj klientom szeroki wybór dostaw.
+    </p>
+
+    <p class="mt-4">
+        <a href="https://www.shoper.pl/kurierzy?utm_source=panel-admin&amp;utm_medium=baner-logowanie&amp;utm_campaign=shoper-przesylki" target="_blank" rel="noopener" class="btn btn_outline">
+                Aktywuj Shoper Przesyłki
+        </a>
+    </p>
+</div> 
+
+<div class="js__auth-sidebox">
+    <h3 class="head_box color_dark-2 weight_semibold size_xs">
+        Shoper kampanie
+    </h3>
+
+    <p class="color_dark-2 size_l">
+        <span class="weight_semibold block color_dark mb-2">
+            Zarabiaj więcej, pewniej i nie martw się o zamówienia
+        </span>
+
+        Prowadząc sklep Shoper możesz uruchomić profesjonalną kampanię reklamową w Google lub na Facebooku na preferencyjnych warunkach.
+    </p>
+
+    <p class="mt-4">
+        <a href="https://www.shoper.pl/shoper-kampanie?utm_source=panel-admin&amp;utm_medium=baner-logowanie&amp;utm_campaign=shoper-kampanie" target="_blank" rel="noopener" class="btn btn_outline">
+                Zamów darmową konsultację
+        </a>
+    </p>
+</div>
+
+<div class="js__auth-sidebox hide">
+    <h3 class="head_box color_dark-2 weight_semibold size_xs">
+        Płatności
+    </h3>
+
+    <p class="color_dark-2 size_l">
+        <span class="weight_semibold block color_dark mb-2">
+            Nowoczesne, bezpieczne i zintegrowane płatności online
+        </span>
+
+        W tym integracja z Google Pay, BLIK, płatności ratalne.
+    </p>
+
+    <p class="mt-4">
+        <a href="https://www.shoper.pl/systemy-platnosci?utm_source=panel-admin&amp;utm_medium=baner-logowanie&amp;utm_campaign=shoper-platnosci" target="_blank" rel="noopener" class="btn btn_outline">
+                Aktywuj płatności
+        </a>
+    </p>
+</div>
+
+<div class="js__auth-sidebox hide">
+    <h3 class="head_box color_dark-2 weight_semibold size_xs">
+        Usługi finansowe
+    </h3>
+
+    <p class="color_dark-2 size_l weight_semibold block color_dark mb-2">
+        Zwiększ sprzedaż dzięki dodatkowym środkom na rozwój sklepu
+    </p>
+
+    <p class="color_dark-2 size_l">
+        Usługi finansowe idealnie dopasowane do Twojego sklepu Shoper. Wszystko w jednym miejscu.
+    </p>
+
+    <p class="color_dark-2 size_l">
+        Pozyskaj dodatkowe środki na rozwój biznesu, zwiększaj sprzedaż i satysfakcję klientów - szybko i wygodnie.
+    </p>
+
+    <p class="mt-4">
+        <a href="https://www.shoper.pl/uslugi-finansowe?utm_source=panel-admin&amp;utm_medium=baner-logowanie&amp;utm_campaign=shoper-finanse" target="_blank" rel="noopener" class="btn btn_outline">
+                Zamów darmową konsultację
+        </a>
+    </p>
+</div>
+
+<div class="js__auth-sidebox hide">
+    <figure>
+        <img class="img" src="//dcsaascdn.net/aurora/assets/aryman/rebranding/shoper-premium-primary-no-bg.svg" alt="Shoper Premium logo">
+    </figure>
+
+    <h3 class="head_box color_dark-2 weight_semibold size_xs">
+        Shoper Premium
+    </h3>
+
+    <p class="color_dark-2 size_l">
+        <span class="weight_semibold block color_dark mb-2">
+            Skorzystaj z dodatkowych <br> funkcji i najlepszego wsparcia
+        </span>
+
+        W ciągu 24 godzin jesteśmy w stanie <br> przyspieszyć działanie twojego sklepu <br> nawet 10-krotnie.
+    </p>
+
+    <p class="mt-4">
+        <a href="https://www.shoper.pl/premium?utm_source=panel-admin&amp;utm_medium=baner-logowanie&amp;utm_campaign=shoper-premium" target="_blank" rel="noopener" class="btn btn_outline">
+                Zapytaj o sklep
+        </a>
+    </p>
+</div>
+
+<div class="js__auth-sidebox hide">
+    <h3 class="head_box color_dark-2 weight_semibold size_xs">
+        Społeczność
+    </h3>
+
+    <p class="color_dark-2 size_l">
+        <span class="weight_semibold block color_dark mb-2">
+            Oficjalna Grupa Shoper
+        </span>
+
+        To miejsce, gdzie sprzedawcy wymieniają się doświadczeniami, inspirują i wspierają. Możesz tam opowiedzieć o sobie i swoim biznesie, poznać innych przedsiębiorców i zbudować cenne kontakty. Dołącz do nas i pochwal się swoim biznesem!
+    </p>
+
+    <p class="mt-4">
+        <a href="https://www.facebook.com/groups/2880049242109177" target="_blank" rel="noopener" class="btn btn_outline">
+                Dołącz do społeczności
+        </a>
+    </p>
+</div>
+
+<div class="js__auth-sidebox hide">
+    <h3 class="head_box color_dark-2 weight_semibold size_xs">
+        Bezpłatne szablony graficzne
+    </h3>
+
+    <p class="color_dark-2 size_l">
+        Sprawdź najnowsze <strong>darmowe szablony graficzne</strong>. Wraz z nimi - nowe moduły, lepsza wydajność i więcej dodatkowych opcji prezentacji produktów.
+    </p>
+
+    <p class="mt-4">
+        <a href="https://www.shoper.pl/szablony-graficzne?utm_source=panel-admin&amp;utm_medium=baner-logowanie&amp;utm_campaign=bezplatne-szablony" target="_blank" rel="noopener" class="btn btn_outline">
+                Sprawdź darmowe szablony
+        </a>
+    </p>
+</div>
+
+
+    <script>
+        (() => {
+            const adLength = document.querySelectorAll('.js__auth-sidebox').length;
+            const randomAd = Math.floor(Math.random() * adLength) + 1;
+            const $ad = document.querySelector(`.js__auth-sidebox:nth-of-type(${randomAd})`);
+            $ad.classList.remove('hide');
+        })();
+    </script>
+
+                        </div>
+                    </div>
+                </div>
+
+                        </main>
+    				
+                
+                
+                <div data-test-class="flash-messenger__message-container" class="flash-messenger"><div></div></div>
+			
+		
+
+        
+        <span class="js__allegro-xhr-run-url" data-allegro-xhr-run-url="/console/plugin/execute/plugin/Allegro-Queue/act/run" data-allegro-xhr-pending-jobs="0" data-allegro-xhr-enable="0">
+</span>
+
+ 
+		<script>
+            $registerScript('/libraries/MooTools/mootools.js?5.26.41', false);
+            
+                        $registerScript('/libraries/AdminPanel/Lang/pl_PL.js?1786366201', false);
+
+                        
+            $registerScript('/libraries/AdminPanel/Skins/mitra_clarity_rwd/Js/main.bundle.js?1786366579', false);
+            
+            
+               (function waitForMooTools() {
+                    const checkMooTools = setInterval(() => {
+                        if (window.addEvent && window.removeEvent) {
+                            clearInterval(checkMooTools);
+                            trackMooToolsEvents();
+                        }
+                    }, 100);
+                })();
+
+                function trackMooToolsEvents() {
+                    const mooToolsEvents = {};
+                    const originalAddEvent = window.addEvent;
+                    const originalRemoveEvent = window.removeEvent;
+
+                    window.addEvent = function (event, fn) {
+                        if (!mooToolsEvents[event]) {
+                            mooToolsEvents[event] = [];
+                        }
+                        mooToolsEvents[event].push(fn);
+                        return originalAddEvent.call(this, event, fn);
+                    };
+
+                    window.removeEvent = function (event, fn) {
+                        if (mooToolsEvents[event]) {
+                            mooToolsEvents[event] = mooToolsEvents[event].filter(f => f !== fn);
+                        }
+                        return originalRemoveEvent.call(this, event, fn);
+                    };
+
+                    window.getMooToolsEvents = function () {
+                        return { ...mooToolsEvents };
+                    };
+                }
+            
+
+     
+        </script>
+        
+        
+
+        <div id="aurora"><div class="vue-portal-target"></div></div>
+	
+	<script src="/libraries/MooTools/mootools.js?5.26.41"></script><script type="text/javascript" id="" charset="">(function(){var b=window,a=b.Intercom;if("function"===typeof a)a("reattach_activator"),a("update",b.intercomSettings);else{var e=document,d=function(){d.c(arguments)};d.q=[];d.c=function(c){d.q.push(c)};b.Intercom=d;a=function(){var c=e.createElement("script");c.type="text/javascript";c.async=!0;c.src="https://widget.intercom.io/widget/r48mou72";var f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(c,f)};"complete"===document.readyState?a():b.attachEvent?b.attachEvent("onload",a):b.addEventListener("load",
+a,!1)}})();</script><script type="text/javascript" id="" charset="">$postLaunch(function(){dataLayer.push({event:"admin.ready"})});</script><script type="text/javascript" id="" charset="">(function(a,e,b,f,g,c,d){a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)};c=e.createElement(f);c.async=1;c.src="https://www.clarity.ms/tag/"+g;d=e.getElementsByTagName(f)[0];d.parentNode.insertBefore(c,d)})(window,document,"clarity","script","t7yeo2w1pz");</script><script src="/libraries/AdminPanel/Lang/pl_PL.js?1786366201"></script><script src="/libraries/AdminPanel/Skins/mitra_clarity_rwd/Js/main.bundle.js?1786366579"></script><div class="modal-wrapper hide"></div><div class="mask hide"></div></body></html>
