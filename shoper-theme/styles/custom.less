@@ -1,0 +1,273 @@
+/* ============================================================
+   PŁYN DO (sklep.plyndo.pl) — Complete Shoper Design System Override
+   100% Clean Visual Alignment with Landing Page
+   ============================================================ */
+
+/* 1. WEBFONTS IMPORT */
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@200,300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* 2. DESIGN TOKENS */
+:root {
+  --plyndo-black:       #000000;
+  --plyndo-white:       #ffffff;
+  --plyndo-ink:         #1a1918;
+  --plyndo-bone:        #faf9f6;
+
+  --plyndo-cobalt:      #5c77b7;
+  --plyndo-green:       #276142;
+
+  --n-0:    #ffffff;
+  --n-50:   #faf9f6;
+  --n-100:  #f5f4f1;
+  --n-200:  #e7e6e3;
+  --n-500:  #6b6a67;
+  --n-700:  #555452;
+  --n-900:  #1a1918;
+
+  --color-border:        rgba(0, 0, 0, 0.08);
+  --color-border-strong: rgba(0, 0, 0, 0.15);
+
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-xl:   24px;
+  --radius-pill: 9999px;
+
+  --font-sans:   'Switzer', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif:  'Lora', Georgia, serif;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, .05);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, .06);
+}
+
+/* 3. GLOBAL BASE RESET */
+html, body, .shoper-theme, #main, .container, main {
+  font-family: var(--font-sans) !important;
+  background-color: var(--n-50) !important;
+  color: var(--n-900) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 4. PERMANENT REMOVAL OF UNWANTED SLIDERS / SCROLLERS / BLOG */
+[id*="scroller-scroller"],
+.box_scroller,
+.box_slider,
+.box_news,
+.box_blog,
+#box_news,
+#box_blog,
+.news-list,
+.blog-list,
+.blog-post,
+.box_special,
+.box_poll,
+#box_newsletter,
+.breadcrumbs,
+.banner-widget,
+.side-menu,
+.splide:not(.product-gallery__slider),
+.slider:not(.product-gallery__slider),
+.slider__arrow,
+.splide__arrow,
+a[href*="/n/"],
+a[href*="blog"],
+a[href*="news"],
+li:has(a[href*="/n/"]),
+li:has(a[href*="blog"]) {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+/* 5. TYPOGRAPHY & VISIBILITY FIXES */
+h1, h2, h3, h4, h5, h6,
+.product-name, .header-title, .page-title, .box-title, .category-name {
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--n-900) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.t-editorial, .editorial-quote, em, i {
+  font-family: var(--font-serif) !important;
+  font-style: italic !important;
+}
+
+/* 6. HEADER & NAVIGATION CLEANUP */
+header, .header, #header, .navbar {
+  background-color: var(--n-0) !important;
+  border-bottom: 1px solid var(--color-border) !important;
+  box-shadow: var(--shadow-sm) !important;
+  padding: 16px 0 !important;
+}
+
+.logo img, header .brand img {
+  max-height: 38px !important;
+  width: auto !important;
+}
+
+header a, nav a, .menu a {
+  font-family: var(--font-sans) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--n-900) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  text-decoration: none !important;
+}
+
+header a:hover, nav a:hover, .menu a:hover {
+  color: var(--plyndo-green) !important;
+}
+
+/* 7. UNIFIED BUTTONS & CTAs (PILL SHAPE) */
+button,
+.btn,
+.add-to-cart,
+.btn-primary,
+input[type="submit"],
+input[type="button"],
+.basket-checkout,
+a.btn {
+  border-radius: var(--radius-pill) !important;
+  background-color: var(--plyndo-black) !important;
+  color: var(--plyndo-white) !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  padding: 14px 28px !important;
+  border: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
+  box-shadow: var(--shadow-sm) !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+button:hover,
+.btn:hover,
+.add-to-cart:hover,
+.btn-primary:hover,
+input[type="submit"]:hover,
+.basket-checkout:hover {
+  background-color: #2e2d2b !important;
+  color: var(--plyndo-white) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* Final Checkout Green CTA Button */
+.btn-checkout,
+#basket_step1_submit,
+.order-summary-submit,
+button.button-primary {
+  background-color: var(--plyndo-green) !important;
+  color: var(--plyndo-white) !important;
+}
+
+.btn-checkout:hover, #basket_step1_submit:hover {
+  background-color: #1c623b !important;
+}
+
+/* Secondary / Back Buttons */
+a.back-to-shop, .continue-shopping, .btn-secondary {
+  background-color: transparent !important;
+  color: var(--n-900) !important;
+  border: 1px solid var(--color-border-strong) !important;
+}
+
+a.back-to-shop:hover, .continue-shopping:hover {
+  background-color: var(--n-100) !important;
+}
+
+/* 8. FORM INPUTS & CHECKOUT FIELDS */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+select,
+textarea {
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--color-border-strong) !important;
+  background-color: var(--n-0) !important;
+  color: var(--n-900) !important;
+  padding: 12px 16px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 14px !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--plyndo-cobalt) !important;
+  box-shadow: 0 0 0 3px rgba(92, 119, 183, 0.15) !important;
+}
+
+/* 9. CARDS & CONTAINER SPACING */
+.product,
+.product-card,
+.basket-page,
+#box_basket,
+.cart-container,
+.checkout-box,
+.box-product {
+  background: var(--n-0) !important;
+  border-radius: var(--radius-xl) !important;
+  border: 1px solid var(--color-border) !important;
+  padding: 24px !important;
+  box-shadow: var(--shadow-sm) !important;
+  margin-bottom: 24px !important;
+}
+
+/* 10. BASKET & PRICE VISIBILITY */
+.price, .product-price, .total-price, .cart-total {
+  color: var(--n-900) !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.promo-discount, .discount-value {
+  color: var(--plyndo-green) !important;
+  font-weight: 600 !important;
+}
+
+/* 11. FOOTER CLEANUP */
+footer, #footer, .footer {
+  background-color: var(--n-900) !important;
+  color: var(--n-50) !important;
+  padding: 48px 0 24px 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+footer a, .footer a {
+  color: var(--n-200) !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+}
+
+footer a:hover, .footer a:hover {
+  color: var(--n-0) !important;
+}
+
+footer h3, footer h4, .footer-title {
+  color: var(--n-0) !important;
+  font-size: 15px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  margin-bottom: 16px !important;
+}

@@ -1,0 +1,21 @@
+{
+    "system": {
+        "xsSize": "88",
+        "sSize": "150",
+        "mSize": "300",
+        "lSize": "500",
+        "xlSize": "616",
+        "productsCount": "12",
+        "customIcons": "1",
+        "systemIcons": {
+            "file_name": "solar-icons.svg",
+            "uploaded_file": "2a2c46b3-ca8e-4dbb-bfab-99bda365cda6.svg",
+            "width": 300,
+            "height": 150
+        },
+        "systemFavicon": null,
+        "loginDisplayMode": "sheet",
+        "viewTransition": "1"
+    },
+    "theme": []
+}
