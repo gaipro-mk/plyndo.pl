@@ -1,10 +1,13 @@
 import { formatPln } from '../../lib/bundlePricing';
-import { getBundleCartItems, getBundleStoreHref } from '../../lib/storeCta';
 import StoreButton from './StoreButton';
 
 export default function BundlePricePanel({ pricing, lang = 'pl', bundle }) {
-  const storeHref = getBundleStoreHref(bundle);
-  const cartItems = getBundleCartItems(bundle);
+  const items = (pricing?.composition || []).map((c) => ({
+    stockId: c.product?.stockId ?? c.stockId,
+    quantity: c.quantity || 1,
+  }));
+  const packSize = bundle?.size ?? pricing?.bundle?.size ?? pricing?.itemCount;
+  const bundleLabel = bundle?.name ?? bundle?.slug ?? pricing?.bundle?.name ?? pricing?.bundle?.slug;
 
   const isFull = bundle?.isCustomizable ? (pricing.itemCount === bundle.size) : true;
   const displayPrice = isFull ? pricing.bundlePrice : pricing.listValue;
@@ -12,8 +15,8 @@ export default function BundlePricePanel({ pricing, lang = 'pl', bundle }) {
   const displaySavingsAmount = isFull ? pricing.savingsAmount : 0;
 
   const incompleteNote = lang === 'en'
-    ? `Add ${bundle.size - pricing.itemCount} more bottle(s) to complete the box and order.`
-    : `Dobierz jeszcze ${bundle.size - pricing.itemCount} szt., aby skompletować paczkę i zamówić.`;
+    ? `Add ${bundle?.size - pricing.itemCount} more bottle(s) to complete the box and order.`
+    : `Dobierz jeszcze ${bundle?.size - pricing.itemCount} szt., aby skompletować paczkę i zamówić.`;
 
   return (
     <aside className="grid gap-5 rounded-[20px] border p-6 border-border bg-bg">
@@ -51,10 +54,11 @@ export default function BundlePricePanel({ pricing, lang = 'pl', bundle }) {
           ? 'Product prices are reference values. Discount and saving are presented for the whole package.'
           : 'Ceny produktów są wartościami referencyjnymi. Rabat i oszczędność pokazujemy dla całej paczki.'}
       </p>
-      <StoreButton 
-        lang={lang} 
-        href={storeHref} 
-        items={cartItems} 
+      <StoreButton
+        items={items}
+        packSize={packSize}
+        bundleLabel={bundleLabel}
+        lang={lang}
         disabled={!isFull}
         note={isFull ? undefined : incompleteNote}
       />

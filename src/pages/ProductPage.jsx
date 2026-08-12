@@ -586,8 +586,18 @@ export default function ProductPage({ lang = 'pl', activeTheme }) {
               <QrPlaceholder src={product.qrImage} targetUrl={product.qrTargetUrl} lang={lang} />
               <article className="rounded-[16px] border p-5 border-border">
                 <div className="t-eyebrow">{labels.store}</div>
-                <p className="mb-4 mt-3 text-[13px] leading-relaxed text-fg-muted">{labels.storeNote}</p>
-                <StoreButton lang={lang} href={getProductStoreHref(product)} items={getProductCartItems(product)} />
+                <p className="mb-4 mt-3 text-[13px] leading-relaxed text-fg-muted">
+                  {lang === 'en'
+                    ? 'Minimum order is 4 items. Select a package above to configure your box.'
+                    : 'Minimalny zakup to paczka 4 szt. Wybierz pakiet powyżej, aby skompletować zamówienie.'}
+                </p>
+                <Link
+                  to="/#pakiety"
+                  className="inline-flex w-full min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-[13px] font-medium transition-all duration-300 hover:opacity-90 no-underline"
+                  style={{ borderColor: 'var(--color-border-strong)', background: 'var(--color-fg)', color: 'var(--color-bg)' }}
+                >
+                  {lang === 'en' ? 'Choose package' : 'Wybierz pakiet (min. 4 szt.)'}
+                </Link>
               </article>
             </aside>
           </div>

@@ -1,39 +1,33 @@
-/**
- * Shoper cart handoff helper.
- *
- * Cross-origin fetch (plyndo.pl → sklep.plyndo.pl) cannot share cookies/session,
- * so we do NOT call the basket API here.
- *
- * Strategy:
- * 1. Build ?add=stockId:qty,stockId:qty query string.
- * 2. Navigate to sklep.plyndo.pl with that query string.
- * 3. GTM tag on sklep.plyndo.pl intercepts the parameter and
- *    calls POST /api/basket/{basket_id}/item/{stock_id} same-origin
- *    using the basket_id from localStorage.
- */
+const MIN_STOCK = 182, MAX_STOCK = 193;
+const PACK_SIZES = [4, 8, 12];
 
-const SHOPER_STORE_URL = 'https://sklep.plyndo.pl';
+export function buildShoperHandoffUrl(items, packSize, { label, mode = 'replace' } = {}) {
+  const valid = (items || [])
+    .map(i => ({ variantId: Number(i.stockId ?? i.variantId ?? i.id), quantity: Number(i.quantity || 1) }))
+    .filter(i => Number.isInteger(i.variantId) && i.variantId >= MIN_STOCK && i.variantId <= MAX_STOCK && i.quantity > 0);
 
-export function createShoperBasketAndRedirect(items) {
-  if (!items || items.length === 0) {
-    window.open(SHOPER_STORE_URL, '_blank');
-    return;
+  const total = valid.reduce((s, i) => s + i.quantity, 0);
+  const pack  = packSize ?? total;
+  if (!PACK_SIZES.includes(pack) || total !== pack) {
+    throw new Error(`[plyndo] Nieprawidłowa paczka: ${total} szt. Dozwolone: 4, 8, 12.`);
   }
 
-  const totalQty = items.reduce((sum, item) => sum + (item.quantity || 1), 0);
-  let promoParam = '';
-  if (totalQty === 12) {
-    promoParam = '&promo=PlynDo_x12';
-  } else if (totalQty === 8) {
-    promoParam = '&promo=PlynDo_x8';
-  } else if (totalQty === 4) {
-    promoParam = '&promo=PlynDo_x4';
+  const p = new URLSearchParams({
+    pd_v: '2',
+    pd_items: valid.map(i => `${i.variantId}:${i.quantity}`).join(','),
+    pd_pack: String(pack),
+    pd_mode: mode,
+    pd_sid: (crypto?.randomUUID?.() ?? Date.now().toString(36) + Math.random().toString(36).slice(2)).slice(0, 8)
+  });
+  if (label) p.set('pd_label', label.slice(0, 120));
+  return `https://sklep.plyndo.pl/pl/basket?${p}`;
+}
+
+export function createShoperBasketAndRedirect(items, packSize, options) {
+  try {
+    const url = buildShoperHandoffUrl(items, packSize, options);
+    window.location.href = url;
+  } catch (err) {
+    window.open('https://sklep.plyndo.pl', '_blank');
   }
-
-  const stockParams = items
-    .filter((item) => item.stockId)
-    .map((item) => `${item.stockId}:${parseInt(item.quantity || 1, 10)}`)
-    .join(',');
-
-  window.open(`${SHOPER_STORE_URL}/?add=${stockParams}${promoParam}`, '_blank');
 }

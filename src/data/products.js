@@ -1,6 +1,7 @@
 const productCatalog = [
   {
     id: 1,
+    stockId: 182,
     slug: 'naczyn',
     urlSlug: 'plyn-do-naczyn',
     name: 'PŁYN DO naczyń',
@@ -20,6 +21,7 @@ const productCatalog = [
   },
   {
     id: 2,
+    stockId: 183,
     slug: 'zmywarki',
     urlSlug: 'plyn-do-zmywarki',
     name: 'PŁYN DO zmywarki',
@@ -40,6 +42,7 @@ const productCatalog = [
   },
   {
     id: 3,
+    stockId: 184,
     slug: 'prania',
     urlSlug: 'plyn-do-prania',
     name: 'PŁYN DO prania',
@@ -60,6 +63,7 @@ const productCatalog = [
   },
   {
     id: 4,
+    stockId: 185,
     slug: 'plukania',
     urlSlug: 'plyn-do-plukania',
     name: 'PŁYN DO płukania',
@@ -80,6 +84,7 @@ const productCatalog = [
   },
   {
     id: 5,
+    stockId: 186,
     slug: 'podlog',
     urlSlug: 'plyn-do-podlog',
     name: 'PŁYN DO podłóg',
@@ -100,6 +105,7 @@ const productCatalog = [
   },
   {
     id: 6,
+    stockId: 187,
     slug: 'wc',
     urlSlug: 'plyn-do-wc',
     name: 'PŁYN DO WC',
@@ -120,6 +126,7 @@ const productCatalog = [
   },
   {
     id: 7,
+    stockId: 188,
     slug: 'myciarak',
     urlSlug: 'plyn-do-mycia-rak',
     name: 'PŁYN DO mycia rąk',
@@ -140,6 +147,7 @@ const productCatalog = [
   },
   {
     id: 8,
+    stockId: 189,
     slug: 'myciaszyb',
     urlSlug: 'plyn-do-mycia-szyb',
     name: 'PŁYN DO mycia szyb',
@@ -160,6 +168,7 @@ const productCatalog = [
   },
   {
     id: 9,
+    stockId: 190,
     slug: 'lazienki',
     urlSlug: 'plyn-do-lazienki',
     name: 'PŁYN DO łazienki',
@@ -180,6 +189,7 @@ const productCatalog = [
   },
   {
     id: 10,
+    stockId: 191,
     slug: 'nablyszczania',
     urlSlug: 'plyn-do-nablyszczania',
     name: 'PŁYN DO nabłyszczania',
@@ -200,6 +210,7 @@ const productCatalog = [
   },
   {
     id: 11,
+    stockId: 192,
     slug: 'odkamieniania',
     urlSlug: 'plyn-do-odkamieniania',
     name: 'PŁYN DO odkamieniania',
@@ -220,6 +231,7 @@ const productCatalog = [
   },
   {
     id: 12,
+    stockId: 193,
     slug: 'udraznianiarur',
     urlSlug: 'plyn-do-udrazniania-rur',
     name: 'PŁYN DO udrażniania rur',
