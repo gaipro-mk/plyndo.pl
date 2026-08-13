@@ -1,9 +1,18 @@
 # Dokonanie Integracji i Handoff Projektu: PŁYN DO → Shoper (sklep.plyndo.pl)
 
-Data przekazania: 12 sierpnia 2026 r.  
-Projekt: **PŁYN DO** (`plyndo.pl` → `sklep.plyndo.pl` / `sklep562393.shoparena.pl`)
+Data przekazania: 13 sierpnia 2026 r. (Aktualizacja: Odzyskanie po botched rebase, synchronizacja 3 kont GitHub)  
+Projekt: **PŁYN DO** (`plyndo.pl` → `sklep.plyndo.pl` / `sklep562393.shoparena.pl`)  
+Dokumentacja workspace & kont GitHub: [workspace_architecture_and_remotes.md](file:///Users/mk/Dev_Env/Plyn_DO/plyndo.pl/docs/workspace_architecture_and_remotes.md)
 
 ---
+
+## 0. Konfiguracja Repozytoriów i Workspace (`~/Dev_Env/Plyn_DO`)
+
+* **`plyndo.pl` (PRODUKCJA):** Główny projekt i repozytorium git. Połączone produkcyjnie z Cloudflare Pages na koncie **`mierzwixjr`**. Kopia zapasowa utrzymywana jest na kontach **`KasprowiczM`** i **`gaipro-mk`**.
+* **`plyndo.pl_v1` (ARCHIWUM v1):** Pierwsza wersja projektu (wersja historyczna).
+* **`plyndo.pl_v2` (ARCHIWUM v2):** Druga wersja projektu po zmianach wizualnych przez grafik Abigail.
+* **`Plyndo.PL_DS` (DESIGN SYSTEM):** Katalog zasobów Design Systemu (tokeny, UI kit, makiety ZIP) dla wszystkich wersji.
+* **`materialy` (MATERIAŁY KLIENTA):** Surowe pliki etykiet, materiały graficzne, filmy Exploded butelek i teksty źródłowe.
 
 ## 1. Cel i Koncepcja Architektoniczna ("Lean Checkout Engine")
 
