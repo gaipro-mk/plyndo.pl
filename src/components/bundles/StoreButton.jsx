@@ -48,18 +48,22 @@ export default function StoreButton({ items, packSize, bundleLabel, lang = 'pl',
   }
 
   if (handoffError) {
+    console.error('[plyndo] handoff error:', handoffError);
+    const errorFallbackLabel = lang === 'en' ? 'Choose package' : 'Wybierz pakiet';
+    const errorFallbackNote = lang === 'en'
+      ? 'Unable to prepare package. Please select a package or refresh the page.'
+      : 'Nie udało się przygotować paczki. Odśwież stronę lub wybierz pakiet z listy.';
+
     return (
       <div className={`grid gap-2 ${className}`}>
-        <button
-          disabled
-          type="button"
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-[13px] font-medium opacity-50 cursor-not-allowed"
-          style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg-muted)', color: 'var(--color-fg-muted)' }}
+        <Link
+          to="/#pakiety"
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-[13px] font-medium transition-all duration-300 hover:opacity-90 no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border-border-strong bg-fg text-bg"
         >
           <ShoppingCart size={17} aria-hidden="true" />
-          {defaultLabel}
-        </button>
-        <span className="text-xs text-red-600 dark:text-red-400 leading-relaxed font-medium">{handoffError}</span>
+          {errorFallbackLabel}
+        </Link>
+        <span className="text-xs text-fg-muted leading-relaxed">{errorFallbackNote}</span>
       </div>
     );
   }

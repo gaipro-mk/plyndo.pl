@@ -191,7 +191,14 @@ export function calculateBundlePricing({
   const savings = calculateSavings(listValue, bundlePrice);
 
   return {
-    composition: lineItems.map(({ productSlug, quantity }) => ({ productSlug, quantity })),
+    composition: lineItems.map(({ product, productSlug, quantity, unitListPrice, listValue }) => ({
+      product,
+      productSlug,
+      stockId: product.shoperStockId ?? product.stockId,
+      quantity,
+      unitListPrice,
+      listValue
+    })),
     lineItems,
     itemCount: lineItems.reduce((total, lineItem) => total + lineItem.quantity, 0),
     listValue,

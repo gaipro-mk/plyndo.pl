@@ -2,8 +2,8 @@ import { formatPln } from '../../lib/bundlePricing';
 import StoreButton from './StoreButton';
 
 export default function BundlePricePanel({ pricing, lang = 'pl', bundle }) {
-  const items = (pricing?.composition || []).map((c) => ({
-    stockId: c.product?.stockId ?? c.stockId,
+  const items = (pricing?.composition || pricing?.lineItems || []).map((c) => ({
+    stockId: c.stockId ?? c.product?.shoperStockId ?? c.product?.stockId,
     quantity: c.quantity || 1,
   }));
   const packSize = bundle?.size ?? pricing?.bundle?.size ?? pricing?.itemCount;

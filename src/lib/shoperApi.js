@@ -28,6 +28,7 @@ export function createShoperBasketAndRedirect(items, packSize, options) {
     const url = buildShoperHandoffUrl(items, packSize, options);
     window.location.href = url;
   } catch (err) {
+    console.error('[plyndo] redirect error:', err);
     window.open('https://sklep.plyndo.pl', '_blank');
   }
 }
