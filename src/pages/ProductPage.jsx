@@ -5,8 +5,6 @@ import { motion as Motion } from 'framer-motion';
 import { getProductByRouteSlug } from '../data/products';
 import Breadcrumbs from '../components/layout/Breadcrumbs';
 import QrPlaceholder from '../components/bundles/QrPlaceholder';
-import StoreButton from '../components/bundles/StoreButton';
-import { getProductCartItems, getProductStoreHref } from '../lib/storeCta';
 import { calculateDiscountedUnitPrice, packageDiscountTiers } from '../lib/bundlePricing';
 
 function formatPrice(value, lang) {
