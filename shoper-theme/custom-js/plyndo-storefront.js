@@ -91,10 +91,16 @@
     } catch (e) { console.warn('[plyndo] cleanUrl', e); }
   }
 
+  function checkCategoryRedirect() {
+    if (window.location.pathname.includes('/pl/c/Pakiety/40') || window.location.pathname.includes('/pl/c/pakiety/40')) {
+      window.location.replace('https://plyndo.pl/#pakiety');
+    }
+  }
+
   function applyCheckoutGuard(count) {
     const isAllowed = count === 4 || count === 8 || count === 12;
     const checkoutBtns = document.querySelectorAll(
-      'a[href*="/pl/order"], a[href*="/basket/step"], button.checkout, .btn_to-checkout, [class*="to-checkout"], [data-action="checkout"], .btn-checkout'
+      'a[href*="/pl/order"], a[href*="/basket/step"], button.checkout, .btn_to-checkout, [class*="to-checkout"], [data-action="checkout"], .btn-checkout, .btn_order, .btn-order, .basket-step__btn--next'
     );
 
     let lockBox = document.getElementById('pd-checkout-lock-msg');
@@ -102,6 +108,9 @@
     if (!isAllowed) {
       checkoutBtns.forEach(btn => {
         btn.setAttribute('data-pd-disabled', 'true');
+        btn.setAttribute('disabled', 'disabled');
+        btn.setAttribute('aria-disabled', 'true');
+        btn.classList.add('disabled');
         btn.style.setProperty('pointer-events', 'none', 'important');
         btn.style.setProperty('opacity', '0.35', 'important');
         btn.style.setProperty('cursor', 'not-allowed', 'important');
@@ -123,21 +132,27 @@
       if (!lockBox) {
         lockBox = document.createElement('div');
         lockBox.id = 'pd-checkout-lock-msg';
+        lockBox.className = 'plyndo-checkout-guard plyndo-guard-banner';
         lockBox.style.cssText = `
           margin: 16px 0; padding: 14px 18px; border-radius: 12px;
           background: #fff8eb; border: 1px solid #fed7aa; color: #9a3412;
           font-family: 'Switzer', sans-serif; font-size: 13px; font-weight: 500;
           line-height: 1.5; text-align: center;
         `;
-        const summaryContainer = document.querySelector('.basket-summary, .basket__summary, .summary, .cart-summary') || document.querySelector('.basket-table');
+        const summaryContainer = document.querySelector('.basket-summary, .basket__summary, .summary, .cart-summary, .basket-step') || document.querySelector('.basket-table, main');
         if (summaryContainer && summaryContainer.parentNode) {
           summaryContainer.parentNode.insertBefore(lockBox, summaryContainer);
+        } else {
+          document.body.appendChild(lockBox);
         }
       }
       if (lockBox) lockBox.innerText = msg;
     } else {
       checkoutBtns.forEach(btn => {
         btn.removeAttribute('data-pd-disabled');
+        btn.removeAttribute('disabled');
+        btn.removeAttribute('aria-disabled');
+        btn.classList.remove('disabled');
         btn.style.removeProperty('pointer-events');
         btn.style.removeProperty('opacity');
         btn.style.removeProperty('cursor');
@@ -295,6 +310,9 @@
       if (cfg.sid) {
         sessionStorage.setItem(guard, '1');
       }
+      if (basketId) {
+        sessionStorage.setItem('pd_basket_id', basketId);
+      }
 
       cleanUrl();
       console.log('[plyndo-direct] handoff complete, reloading basket view...');
@@ -360,5 +378,14 @@
     });
   }
 
-  try { patchDom(); } catch (e) { console.warn('[plyndo] dom patch init', e); }
+  try {
+    checkCategoryRedirect();
+    patchDom();
+    if (window.location.pathname.includes('/basket')) {
+      fetch('/api/basket').then(r => r.json()).then(d => {
+        const c = d.basket?.items?.count || d.basket?.items?.list?.length || 0;
+        applyCheckoutGuard(c);
+      }).catch(() => {});
+    }
+  } catch (e) { console.warn('[plyndo] dom patch init', e); }
 })();

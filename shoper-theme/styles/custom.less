@@ -189,3 +189,64 @@ input:focus, select:focus, textarea:focus {
   color: var(--n-400);
   font-size: 12px;
 }
+
+/* ============================================================
+   LEAN CHECKOUT SKIN & DEMO HIDING (DECYZJA D5)
+   ============================================================ */
+
+/* Hide demo modules, blogs, tickers, demo opinions */
+.blog-articles-list,
+.module[data-module-name="blog_articles_slider"],
+.sft-text-and-images,
+.sft-opinions,
+.sft-opinion,
+.opinions,
+.marquee,
+.ticker,
+a[href*="/pl/n/list"],
+.blog-posts-slider {
+  display: none !important;
+}
+
+/* Checkout step & radio button styling */
+.basket-step, .order-step {
+  border-radius: var(--pd-radius-card);
+  border: 1px solid var(--pd-border);
+  padding: 24px;
+  background: var(--pd-bg);
+  margin-bottom: 24px;
+}
+
+.radio-control, .checkbox-control, .payment-option, .shipping-option {
+  border: 1px solid var(--pd-border);
+  border-radius: var(--pd-radius-md);
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.radio-control:hover, .checkbox-control:hover, .payment-option:hover, .shipping-option:hover {
+  border-color: var(--pd-border-strong);
+  background: var(--n-50);
+}
+
+.radio-control.is-active, .radio-control.selected, .payment-option.selected, .shipping-option.selected {
+  border-color: var(--pd-ink) !important;
+  background: var(--n-50) !important;
+}
+
+/* Checkout guard notification banner */
+.plyndo-checkout-guard, #pd-checkout-lock-msg {
+  margin: 16px 0 !important;
+  padding: 14px 18px !important;
+  border-radius: var(--pd-radius-md) !important;
+  background: #fff8eb !important;
+  border: 1px solid #fed7aa !important;
+  color: #9a3412 !important;
+  font-family: var(--pd-sans) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+}
