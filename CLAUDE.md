@@ -8,10 +8,11 @@
 - App UI: `src/App.jsx` · Styl: `src/index.css` · Config: `vite.config.js`
 
 ## Aktualny zakres produktu
-- Jedynym zakresem sprzedażowym landingu są gotowe pakiety i paczki własne.
-- Oferta landing page'a opiera się na pakietach gotowych, paczkach własnych `4` i `8`, aktualnym `Starter 10` oraz docelowym `Starter 12`.
+- Jedynym zakresem sprzedażowym landingu są gotowe pakiety i paczki własne (4, 8 oraz 12 sztuk).
+- Katalog produktów: 12 fizycznych produktów (stockId 182–193).
+- Rabaty pakietowe: Paczka 4 (−20%), Paczka 8 (−30%), Paczka 12 (−40%).
 - Pokazuj ceny referencyjne produktów, ale rabat i oszczędność tylko dla całej paczki.
-- Obecne CTA do Shopera jest nieaktywnym placeholderem; docelowo gotowy pakiet i paczka własna przekazują pełny skład koszyka oraz rabat pakietowy.
+- Przekazanie do Shopera: protokół v2 (WebAPI multi-item handoff + kupon `PLYNDO-PACK-*`). Twarda blokada na Shoperze poza 4/8/12 sztuk.
 - `JAX Professional` może być publicznie przywołane tylko na stronie `O marce`, nie w hero, trust, footerze ani na każdej stronie produktu.
 
 ## Hierarchia Modeli (Claude Code)

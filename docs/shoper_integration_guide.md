@@ -1,4 +1,10 @@
-# Przewodnik Integracji Landing Page z Shoper (sklep.plyndo.pl)
+> [!CAUTION]
+> **DOKUMENT ARCHIWALNY (STAN: 13.08.2026 / KONTO STANDARD)**
+> Ten dokument opisuje historyczną koncepcję przekazywania parametrów URL `?add=` i kuponów `PlynDo_x*` z planu Standard.
+> Od 17.08.2026 sklep działa na koncie Shoper Premium w oparciu o protokół v2 (`src/lib/shoperApi.js` + `shoper-theme/custom-js/plyndo-storefront.js`).
+> Aktualne źródło prawdy: `docs/shoper_deployment_channels.md` oraz `docs/shoper_inventory_2026-08-17.md`.
+
+# Przewodnik Integracji Landing Page z Shoper (sklep.plyndo.pl) [ARCHIVAL]
 
 Niniejszy dokument przedstawia wytyczne i gotowy kod integracyjny, który należy wdrożyć w panelu administracyjnym Shoper (`sklep.plyndo.pl`), aby automatycznie obsługiwać koszyki i rabaty przesyłane z landing page `plyndo.pl`.
 

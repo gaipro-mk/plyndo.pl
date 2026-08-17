@@ -1,4 +1,9 @@
-# Dokonanie Integracji i Handoff Projektu: PŁYN DO → Shoper (sklep.plyndo.pl)
+> [!CAUTION]
+> **DOKUMENT ARCHIWALNY (STAN: 13.08.2026 / KONTO STANDARD)**
+> Ten dokument opisuje stan integracji z konta Standard przed migracją do konta Shoper Premium i wdrożeniem protokołu integracji v2 (17.08.2026).
+> Aktualne źródło prawdy: `docs/shoper_inventory_2026-08-17.md`, `docs/shoper_deployment_channels.md` oraz `PRD.md`.
+
+# Dokonanie Integracji i Handoff Projektu: PŁYN DO → Shoper (sklep.plyndo.pl) [ARCHIVAL]
 
 Data przekazania: 13 sierpnia 2026 r. (Aktualizacja: Odzyskanie po botched rebase, synchronizacja 3 kont GitHub)  
 Projekt: **PŁYN DO** (`plyndo.pl` → `sklep.plyndo.pl` / `sklep562393.shoparena.pl`)  

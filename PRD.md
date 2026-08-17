@@ -25,17 +25,19 @@ Konwencja nazewnicza:
 - w URL-ach, kodzie, SEO slugach i adresach e-mail używamy ASCII `plyndo.pl` lub `plyndo`,
 - znak słowny `Płyn DO` pozostaje częścią obecnego logo i systemu etykiet; poza logo, etykietą albo nazwą zasobu nie jest tekstowym zamiennikiem marki `Płyndo.pl`.
 
-### 1.1 Rozróżnienie MVP i celu docelowego
+### 1.1 Katalog produktów i architektura pakietów
 
-Aktualny katalog frontendowy zawiera 10 gotowych produktów. Dlatego pierwsza wersja strony i pakietu startowego ma pracować na **Starter 10**.
+Aktualny katalog produktowy zawiera **12 gotowych produktów fizycznych** (ID 94–105, stockId 182–193 w Shoperze, kat. 38).
 
-Docelowa architektura oferty zakłada 12 produktów i **Starter 12**. Starter 12 jest zgodny z logistycznym modelem paczek po 4 i 8 sztuk, bo może być realizowany jako komplet `4 + 8`.
+Sprzedaż odbywa się w modelu pakietowym:
+- **Paczka 4** (4 sztuki, rabat −20%, kupon `PLYNDO-PACK-4`)
+- **Paczka 8** (8 sztuk, rabat −30%, kupon `PLYNDO-PACK-8`)
+- **Paczka 12 / Starter** (12 sztuk, rabat −40%, kupon `PLYNDO-PACK-12`)
 
 Zasada wdrożeniowa:
-
-- nie pokazujemy jako kupowalnych dwóch produktów, których jeszcze nie ma,
-- nie udajemy pełnego `Starter 12` przed finalizacją dwóch brakujących produktów,
-- projekt UI, dane i copy mają umożliwić prostą migrację z `Starter 10` do `Starter 12`.
+- Brak sprzedaży pojedynczych sztuk (twarda blokada na poziomie storefrontu Shopera dla koszyków o liczbie sztuk innej niż 4, 8 lub 12).
+- Skład koszyka z landingu `plyndo.pl` jest jedynym źródłem prawdy i jest przekazywany do Shoper via protokół v2 (WebAPI multi-item handoff + kupon rabatowy).
+- Shoper pełni funkcję silnika zakupowego (Lean Checkout Engine).
 
 ## 2. Product Summary
 
@@ -254,13 +256,13 @@ Pierwsza wersja oferty pracuje na 10 istniejących produktach:
 
 ### 8.2 Docelowy katalog
 
-Docelowo linia ma liczyć 12 produktów.
+Katalog linii liczy 12 produktów.
 
-Wymagania dla dwóch przyszłych produktów:
+Wymagania dla produktów w katalogu:
 
-- nie rozbijają modelu paczek,
-- mają metadane, ceny, instrukcje, media i zasady doradcy tak samo jak obecne produkty,
-- mogą zostać dodane do `Starter 12` bez przebudowy całej strony.
+- nie rozbijają modelu paczek 4, 8 i 12,
+- mają metadane, ceny, instrukcje, media i zasady doradcy,
+- wchodzą w skład pakietu `Komplet 12` oraz paczek własnych.
 
 ## 9. Architektura Pakietów
 
@@ -268,42 +270,30 @@ Wymagania dla dwóch przyszłych produktów:
 
 Płyndo sprzedaje:
 
-- paczki po 4 sztuki,
-- paczki po 8 sztuk,
-- kombinacje tych paczek,
-- starter całej linii.
+- paczki po 4 sztuki (−20%),
+- paczki po 8 sztuk (−30%),
+- paczki po 12 sztuk / Komplet 12 (−40%).
 
 Pojedynczy produkt:
 
 - ma swoją cenę referencyjną,
-- może mieć własną podstronę i link docelowy,
-- nie jest kupowany samodzielnie przez landing.
+- ma własną podstronę informacyjną,
+- nie jest kupowany samodzielnie (brak zakupu 1 szt.).
 
-### 9.2 Pakiety MVP
-
-| Pakiet | Liczba sztuk | Skład MVP | Cel |
-| --- | ---: | --- | --- |
-| `Starter 10` | 10 | po 1 sztuce każdego obecnego produktu | poznanie pełnej aktualnej linii |
-| `Wybierz Sam 4` | 4 | dowolne produkty i duplikaty | małe uzupełnienie lub wejście bez startera |
-| `Wybierz Sam 8` | 8 | dowolne produkty i duplikaty | główny pakiet uzupełniający |
-| `Dom Codzienny 4` | 4 | naczynia, podłogi, WC, łazienka | szybki pakiet domu |
-| `Dom Pełny 8` | 8 | naczynia, pranie, płukanie, podłogi, WC, ręce, szyby, łazienka | gotowy domowy koszyk |
-| `Firma Podstawowa 4` | 4 | podłogi, WC, ręce, łazienka | małe biuro lub lokal |
-| `Firma Operacyjna 8` | 8 | podłogi x2, WC, łazienka, ręce, szyby, dezynfekcja, naczynia | częste sprzątanie firmy |
-
-### 9.3 Pakiet docelowy
-
-Po finalizacji katalogu:
+### 9.2 Pakiety w ofercie
 
 | Pakiet | Liczba sztuk | Skład | Cel |
 | --- | ---: | --- | --- |
-| `Starter 12` | 12 | po 1 sztuce każdego produktu docelowej linii | pełny pierwszy zakup |
-
-Migracja:
-
-- karta i strona `Starter 10` powinny mieć architekturę umożliwiającą zmianę liczby produktów,
-- layout musi wspierać 10 i 12 pozycji,
-- ceny i oszczędności muszą być obliczane z zawartości pakietu, nie z hardcoded tekstu.
+| `Komplet 12` | 12 | po 1 sztuce każdego produktu z 12 w katalogu | pełny zestaw / poznanie całej linii (−40%) |
+| `Wybierz Sam 4` | 4 | dowolne 4 produkty (w tym duplikaty) | małe uzupełnienie (−20%) |
+| `Wybierz Sam 8` | 8 | dowolne 8 produktów (w tym duplikaty) | główny pakiet uzupełniający (−30%) |
+| `Wybierz Sam 12` | 12 | dowolne 12 produktów (w tym duplikaty) | duży zestaw własny (−40%) |
+| `Dom Codzienny 4` | 4 | naczynia, podłogi, WC, łazienka | szybki pakiet domu (−20%) |
+| `Dom Pełny 8` | 8 | naczynia, pranie, płukanie, podłogi, WC, ręce, szyby, łazienka | gotowy domowy koszyk (−30%) |
+| `Dom Komplet 12` | 12 | pełna linia domowa (12 butelek) | pełny domowy zestaw (−40%) |
+| `Firma Podstawowa 4` | 4 | podłogi, WC, ręce, łazienka | małe biuro lub lokal (−20%) |
+| `Firma Operacyjna 8` | 8 | podłogi x2, WC, łazienka, ręce, szyby, dezynfekcja, naczynia | częste sprzątanie firmy (−30%) |
+| `Firma Gastro 12` | 12 | zestaw 12 butelek dla gastronomii | gastronomia i duży obiekt (−40%) |
 
 ### 9.4 Zasady kompozycji
 
@@ -348,22 +338,21 @@ Poniższe wartości są danymi tymczasowymi do projektu UX i testów frontendowy
 | Płyn do łazienki | 24,90 zł |
 | Płyn do dezynfekcji | 39,90 zł |
 
-Wartość `Starter 10` przy tym dummy cenniku:
+Wartość `Komplet 12` przy tym dummy cenniku:
 
-- suma cen referencyjnych: `267,00 zł`,
-- globalny rabat pakietowy `45%`: `120,15 zł`,
-- cena wynikająca z rabatu: `146,85 zł` przed ewentualną decyzją o finalnym cenniku.
+- suma cen referencyjnych: `320,80 zł`,
+- globalny rabat pakietowy `40%`: `128,32 zł`,
+- cena wynikająca z rabatu: `192,48 zł` przed ewentualną decyzją o finalnym cenniku.
 
 ### 10.3 Architektura rabatów
 
 Rabat jest liczony od sumy cen referencyjnych całej paczki:
 
-| Typ paczki | Globalny rabat pakietowy |
-| --- | ---: |
-| Paczka 4 | 30% od sumy cen wybranych produktów |
-| Paczka 8 | 40% od sumy cen wybranych produktów |
-| Starter 10 | 45% od sumy cen produktów w pakiecie |
-| Starter 12 | 50% od sumy cen produktów w pakiecie |
+| Typ paczki | Liczba sztuk | Globalny rabat pakietowy | Kod kuponu Shoper |
+| --- | :---: | ---: | --- |
+| Paczka 4 | 4 | −20% od sumy cen produktów | `PLYNDO-PACK-4` |
+| Paczka 8 | 8 | −30% od sumy cen produktów | `PLYNDO-PACK-8` |
+| Paczka 12 / Starter | 12 | −40% od sumy cen produktów | `PLYNDO-PACK-12` |
 
 Finalny cennik musi uwzględnić:
 
@@ -523,22 +512,19 @@ FAQ musi odpowiedzieć co najmniej na:
 
 ## 13. Wymagania Dla Stron Pakietów
 
-### 13.1 Strona startera
+### 13.1 Strona startera / Komplet 12
 
-Strona `Starter 10` musi zawierać:
+Strona `Komplet 12` musi zawierać:
 
 - hero pakietu,
-- listę 10 produktów,
+- listę 12 produktów,
 - ceny referencyjne produktów,
 - sumę wartości,
 - cenę pakietu,
-- oszczędność kwotową i procentową,
-- uzasadnienie pierwszego zakupu,
+- oszczędność kwotową i procentową (−40%),
+- uzasadnienie zakupu pełnej linii,
 - informację, że później można kupować paczki uzupełniające 4 i 8,
-- nieaktywne CTA placeholder do Shopera do czasu integracji,
-- CTA do Shopera po integracji przekazujące cały skład startera oraz rabat pakietowy.
-
-Po przejściu na `Starter 12` ta sama konstrukcja ma obsłużyć 12 produktów.
+- CTA do Shopera przekazujące cały skład zestawu oraz rabat pakietowy.
 
 ### 13.2 Strony gotowych pakietów
 
@@ -816,8 +802,8 @@ Pierwsza wersja jest gotowa, gdy:
 - publiczne polskie copy przedstawia markę jako `Płyndo.pl`, dopuszcza `Płyndo` tylko jako skrót po przedstawieniu marki, nie używa `Płyn DO` jako tekstowego zamiennika marki poza logo i etykietami, a domena pozostaje `plyndo.pl`,
 - strona `O marce` kontroluje referencję do `JAX Professional`, a hero, trust, footer i strony produktów nie powielają jej,
 - footer zachowuje dane producenta lub sprzedawcy z repo jako dane podmiotu bez dominowania marki Płyndo,
-- klient rozumie paczki 4, 8 i starter,
-- Starter 10 pokazuje pełną aktualną zawartość i realne oszczędności z danych,
+- klient rozumie paczki 4, 8 i Komplet 12,
+- Komplet 12 pokazuje pełną aktualną zawartość i realne oszczędności z danych (−40%),
 - gotowe pakiety domu i firmy mają jasny skład,
 - własna paczka wspiera wybór duplikatów,
 - podstrony produktów pokazują, w jakich pakietach produkt jest kupowany,
@@ -847,7 +833,6 @@ Pierwsza wersja jest gotowa, gdy:
 
 ### 21.4 Operacyjne
 
-- starter 10 jest przejściowy wobec docelowego modelu 12,
 - ciężkie płyny wymagają wiarygodnego modelu pakowania i wysyłki,
 - własne paczki z drogimi produktami mogą wymagać ograniczeń cenowych lub innego rabatu.
 
@@ -855,8 +840,8 @@ Pierwsza wersja jest gotowa, gdy:
 
 ### Etap A: uporządkowanie oferty
 
-- zatwierdzić pakiety MVP,
-- zatwierdzić dummy ceny do projektu,
+- zatwierdzić pakiety 4/8/12,
+- zatwierdzić cennik i rabaty (−20%, −30%, −40%),
 - zweryfikować marżę przy zatwierdzonych globalnych rabatach pakietowych,
 - przygotować model danych produktów, pakietów i rekomendacji.
 
@@ -870,8 +855,8 @@ Pierwsza wersja jest gotowa, gdy:
 ### Etap C: strony sprzedażowe
 
 - zbudować strony pakietów,
-- zbudować `Starter 10`,
-- zbudować konfiguratory paczek 4/8,
+- zbudować `Komplet 12`,
+- zbudować konfiguratory paczek 4/8/12,
 - rozbudować strony produktów o cenę, QR i video placeholders.
 
 ### Etap D: doradca
@@ -888,20 +873,12 @@ Pierwsza wersja jest gotowa, gdy:
 - potwierdzić płatności i dostawę,
 - przetestować przejścia z landingu do checkoutu.
 
-### Etap F: Starter 12
-
-- dodać dwa finalne produkty,
-- zmigrować katalog i starter do 12 produktów,
-- przeliczyć cennik i rabaty,
-- zaktualizować strony pakietów i rekomendacje.
-
 ## 23. Otwarte Decyzje
 
 Do zatwierdzenia przed kodowaniem finalnej sprzedaży:
 
 - finalne ceny referencyjne każdego produktu,
 - margines bezpieczeństwa dla zatwierdzonych rabatów w paczkach z duplikatami,
-- fizyczny sposób realizacji `Starter 10` przed wejściem `Starter 12`,
 - docelowe nazwy gotowych pakietów domu i firmy,
 - lista potwierdzonych metod płatności i dostawy w Shoperze,
 - model URL-i dla wielu języków,
@@ -913,11 +890,10 @@ Do zatwierdzenia przed kodowaniem finalnej sprzedaży:
 Najbliższe wdrożenie ma dostarczyć premium landing page i powiązane widoki, które:
 
 - zachowują istniejący klimat wizualny, logo i kierunek etykiet,
-- pokazują obecne 10 produktów,
-- sprzedają model paczek 4, 8 i `Starter 10`,
-- przygotowują strukturę pod docelowy `Starter 12`,
+- pokazują 12 produktów,
+- sprzedają model paczek 4, 8 i `Komplet 12`,
 - obsługują dom i firmę,
-- używają dummy danych dla Shopera,
+- używają integracji ze sklepem Shoper,
 - utrzymują jednolity model sprzedaży pakietowej.
 
 ## 25. Źródła I Założenia Do Weryfikacji
