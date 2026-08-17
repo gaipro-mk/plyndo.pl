@@ -1,4 +1,11 @@
-/* plyndo-storefront.js — handoff v2 + coupon sync + DOM patch */
+/* global useStorefront */
+/* ŹRÓDŁO PRAWDY dla modułu własnego "PlynDo Handoff" w panelu Shoper.
+   Ten plik NIE jest wdrażany przez `theme push` — jest wykluczony przez
+   .shoperignore i nieobecny w .shoper/filesStructure.json.
+   Po każdej zmianie: skopiuj zawartość do panelu ręcznie.
+   Wygląd i treści → Wygląd sklepu → Edycja szablonu graficznego
+   → Moduły własne → PlynDo Handoff → pole JS. */
+
 (function () {
   'use strict';
 
@@ -6,6 +13,7 @@
   const ALLOWED = new Set([182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193]);
   const LANDING = 'https://plyndo.pl';
   let syncing = false;
+  let syncDebounceTimer = null;
 
   function parseHandoff() {
     const q = new URLSearchParams(location.search);
@@ -83,11 +91,66 @@
     } catch (e) { console.warn('[plyndo] cleanUrl', e); }
   }
 
+  function applyCheckoutGuard(count) {
+    const isAllowed = count === 4 || count === 8 || count === 12;
+    const checkoutBtns = document.querySelectorAll(
+      'a[href*="/pl/order"], a[href*="/basket/step"], button.checkout, .btn_to-checkout, [class*="to-checkout"], [data-action="checkout"], .btn-checkout'
+    );
+
+    let lockBox = document.getElementById('pd-checkout-lock-msg');
+
+    if (!isAllowed) {
+      checkoutBtns.forEach(btn => {
+        btn.setAttribute('data-pd-disabled', 'true');
+        btn.style.setProperty('pointer-events', 'none', 'important');
+        btn.style.setProperty('opacity', '0.35', 'important');
+        btn.style.setProperty('cursor', 'not-allowed', 'important');
+      });
+
+      let msg = '';
+      if (count === 0) {
+        msg = 'Twój koszyk jest pusty. Skompletuj paczkę 4, 8 lub 12 butelek.';
+      } else if (count < 4) {
+        msg = `Dobierz jeszcze ${4 - count} szt., aby skompletować paczkę 4 i złożyć zamówienie.`;
+      } else if (count < 8) {
+        msg = `Masz ${count} szt. Dobierz jeszcze ${8 - count} szt. do paczki 8 lub usuń ${count - 4} szt. do paczki 4.`;
+      } else if (count < 12) {
+        msg = `Masz ${count} szt. Dobierz jeszcze ${12 - count} szt. do paczki 12 lub usuń ${count - 8} szt. do paczki 8.`;
+      } else {
+        msg = `Masz ${count} szt. Maksymalny rozmiar pojedynczej paczki to 12 szt. Zmniejsz ilość lub skompletuj wielokrotność (np. 12 + 4).`;
+      }
+
+      if (!lockBox) {
+        lockBox = document.createElement('div');
+        lockBox.id = 'pd-checkout-lock-msg';
+        lockBox.style.cssText = `
+          margin: 16px 0; padding: 14px 18px; border-radius: 12px;
+          background: #fff8eb; border: 1px solid #fed7aa; color: #9a3412;
+          font-family: 'Switzer', sans-serif; font-size: 13px; font-weight: 500;
+          line-height: 1.5; text-align: center;
+        `;
+        const summaryContainer = document.querySelector('.basket-summary, .basket__summary, .summary, .cart-summary') || document.querySelector('.basket-table');
+        if (summaryContainer && summaryContainer.parentNode) {
+          summaryContainer.parentNode.insertBefore(lockBox, summaryContainer);
+        }
+      }
+      if (lockBox) lockBox.innerText = msg;
+    } else {
+      checkoutBtns.forEach(btn => {
+        btn.removeAttribute('data-pd-disabled');
+        btn.style.removeProperty('pointer-events');
+        btn.style.removeProperty('opacity');
+        btn.style.removeProperty('cursor');
+      });
+      if (lockBox) lockBox.remove();
+    }
+  }
+
   function patchDom() {
     // 1. Usuń drugi moduł logo (Frusento)
-    const frusentoImg = document.querySelector('img[alt*="Frusento" i]');
+    const frusentoImg = document.querySelector('img[alt*="Frusento" i], img[src*="Frusento" i], img[src*="ced5aa2a"]');
     if (frusentoImg) {
-      const logoModule = frusentoImg.closest('.module[data-module-name="logo"]');
+      const logoModule = frusentoImg.closest('.module[data-module-name="logo"]') || frusentoImg.parentElement;
       if (logoModule) logoModule.remove();
     }
 
@@ -111,10 +174,10 @@
     }
 
     // 4. Copyright podmień na © 2026 PŁYN DO
-    const copyrightEls = document.querySelectorAll('.footer-group, .copyright, footer');
+    const copyrightEls = document.querySelectorAll('.footer-group, .copyright, footer, .footer__copyright');
     copyrightEls.forEach(el => {
-      if (el.innerText && el.innerText.includes('Shoper')) {
-        el.innerHTML = el.innerHTML.replace(/©\s*[0-9]{4}\s*Shoper/gi, '© 2026 PŁYN DO');
+      if (el.innerText && (el.innerText.includes('Shoper') || el.innerText.includes('2025'))) {
+        el.innerHTML = el.innerHTML.replace(/©\s*[0-9]{4}\s*Shoper/gi, '© 2026 PŁYN DO').replace(/2025/g, '2026');
       }
     });
 
@@ -135,127 +198,167 @@
     });
 
     // 6. Ukryj pole kodu rabatowego w koszyku (B20)
-    const promoCodeSecs = document.querySelectorAll('[class*="promo-code"], [data-section="promo-code"]');
+    const promoCodeSecs = document.querySelectorAll('[class*="promo-code"], [data-section="promo-code"], .basket-summary__promo-code, .basket-promocode');
     promoCodeSecs.forEach(sec => {
-      sec.style.display = 'none';
+      sec.style.setProperty('display', 'none', 'important');
+    });
+
+    // 7. Usuń opinie demo Frusento / Liam Johnson
+    const opinionSections = document.querySelectorAll('.module[data-module-name="opinions"], .opinions, .sft-opinions');
+    opinionSections.forEach(sec => {
+      if (sec.innerText && (sec.innerText.includes('Liam Johnson') || sec.innerText.includes('Frusento') || sec.innerText.includes('Jake Parker'))) {
+        sec.remove();
+      }
     });
   }
 
-  if (typeof useStorefront !== 'function') return;
+  /* ── A. FAST DIRECT HANDOFF VIA STOREFRONT REST API ─────── */
+  async function executeDirectHandoff() {
+    console.log('[plyndo-direct] checking handoff URL params...');
+    const cfg = parseHandoff();
+    if (!cfg) {
+      console.log('[plyndo-direct] no handoff params in URL');
+      return;
+    }
+    console.log('[plyndo-direct] handoff params detected:', cfg);
+    if (cfg.error) {
+      console.error('[plyndo-direct] handoff validation error:', cfg.error);
+      showError(cfg.error);
+      return;
+    }
 
-  useStorefront(async ({ eventBus, getApi }) => {
+    const guard = 'pd_done_' + cfg.sid;
+    if (cfg.sid && sessionStorage.getItem(guard)) {
+      console.log('[plyndo-direct] guard already processed');
+      cleanUrl();
+      return;
+    }
 
-    /* ── A. HANDOFF ────────────────────────────────────────── */
-    eventBus.on('basket.initialized', async () => {
-      const cfg = parseHandoff();
-      if (!cfg) return;
-      if (cfg.error) {
-        console.error('[plyndo] błąd handoffu', cfg.error);
-        showError(cfg.error);
-        return;
-      }
-
-      const guard = 'pd_done_' + cfg.sid;
-      if (cfg.sid && sessionStorage.getItem(guard)) {
-        cleanUrl();
-        return;
-      }
-
-      const ui = showOverlay();
+    console.log('[plyndo-direct] displaying overlay and calling /api/basket...');
+    const ui = showOverlay();
+    try {
+      // 1. Pobierz / zainicjuj bieżący stan koszyka i sesję
+      let basketId = null;
+      let data = null;
       try {
-        const [updater, promo, prod, overall, pm] = await Promise.all([
-          getApi('basketUpdaterApi'),
-          getApi('basketPromotionsApi'),
-          getApi('basketProductsApi'),
-          getApi('basketOverallApi'),
-          getApi('pageManagerApi')
-        ]);
-
-        if (cfg.mode === 'replace') {
-          await overall.cleanBasket();
-        }
-
-        for (const it of cfg.items) {
-          await updater.addItem({
-            variantId: it.variantId,
-            quantity: it.quantity,
-            showAddedModal: false,
-            bundleItems: []
-          });
-        }
-
-        await promo.add(PACKS[cfg.pack]);
-
-        let count = await prod.getBasketCount();
-        let ok    = await promo.getHasPromotionCode();
-
-        if (count !== cfg.pack || !ok) {
-          // 1x retry
-          await promo.add(PACKS[cfg.pack]);
-          count = await prod.getBasketCount();
-          ok    = await promo.getHasPromotionCode();
-        }
-
-        if (count !== cfg.pack || !ok) {
-          console.error('[plyndo] weryfikacja handoffu nieudana', { count, expected: cfg.pack, ok });
-          ui.remove();
-          showError('Nie udało się przygotować paczki.');
-          return;
-        }
-
-        if (cfg.label) {
-          await overall.setComment('Paczka z plyndo.pl: ' + cfg.label);
-        }
-
-        if (cfg.sid) {
-          sessionStorage.setItem(guard, '1');
-        }
-
-        cleanUrl();
-        ui.remove();
-        pm.visit('/pl/basket');
-      } catch (e) {
-        console.error('[plyndo] handoff error', e);
-        ui.remove();
-        showError('Wystąpił błąd podczas przygotowywania paczki.');
+        const initRes = await fetch('/api/basket/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({})
+        });
+        data = await initRes.json();
+      } catch (err) {
+        console.warn('[plyndo-direct] init basket attempt failed:', err);
       }
-    });
 
-    /* ── B. AUTO-SYNC KUPONU (zawsze) ──────────────────────── */
-    eventBus.on('basket.updated', async () => {
-      if (syncing) return;
-      syncing = true;
-      try {
-        const [promo, prod, flash] = await Promise.all([
-          getApi('basketPromotionsApi'),
-          getApi('basketProductsApi'),
-          getApi('flashMessengerApi')
-        ]);
-        const count = await prod.getBasketCount();
-        const want  = PACKS[count] || null;
-        const currentObj = await promo.getPromotionCode();
-        const have  = (typeof currentObj === 'string' ? currentObj : currentObj?.code) || null;
-
-        if (want && have !== want) {
-          await promo.add(want);
-        } else if (!want && have) {
-          await promo.remove();
-          flash.addFlashMessage({
-            isError: true,
-            message: 'Rabat obowiązuje dla paczek 4, 8 lub 12 butelek. Uzupełnij koszyk, aby go odzyskać.'
-          });
-        }
-      } catch (e) {
-        console.warn('[plyndo] coupon sync', e);
-      } finally {
-        syncing = false;
+      if (!basketId) {
+        const getRes = await fetch('/api/basket');
+        data = await getRes.json();
+        basketId = data.basket?.id;
       }
-    });
 
-    /* ── C. DOM PATCH (zawsze) ─────────────────────────────── */
-    eventBus.on('PageManager.loaded', () => {
-      try { patchDom(); } catch (e) { console.warn('[plyndo] dom patch', e); }
+      console.log('[plyndo-direct] got basketId:', basketId);
+      if (!basketId) throw new Error('Brak koszyka');
+
+      // 2. Jeśli tryb replace, wyczyść stare pozycje
+      const oldItems = data.basket?.items?.list || (Array.isArray(data.basket?.items) ? data.basket.items : []);
+      if (cfg.mode === 'replace' && oldItems.length) {
+        console.log('[plyndo-direct] cleaning', oldItems.length, 'old items...');
+        for (const it of oldItems) {
+          const itId = it.itemId || it.id;
+          if (itId) {
+            await (await fetch(`/api/basket/${basketId}/item/${itId}`, { method: 'DELETE' })).json().catch(() => {});
+          }
+        }
+      }
+
+      // 3. Dodaj pozycje pakietu
+      for (const it of cfg.items) {
+        console.log('[plyndo-direct] adding variant:', it.variantId, 'qty:', it.quantity);
+        const addRes = await fetch(`/api/basket/${basketId}/item/${it.variantId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ quantity: it.quantity })
+        });
+        await addRes.json().catch(() => {});
+      }
+
+      // 4. Zaaplikuj kod rabatowy
+      console.log('[plyndo-direct] applying promo code:', PACKS[cfg.pack]);
+      const promoRes = await fetch(`/api/basket/${basketId}/promo-code`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: PACKS[cfg.pack] })
+      });
+      await promoRes.json().catch(() => {});
+
+      if (cfg.sid) {
+        sessionStorage.setItem(guard, '1');
+      }
+
+      cleanUrl();
+      console.log('[plyndo-direct] handoff complete, reloading basket view...');
+      window.location.href = '/pl/basket';
+    } catch (e) {
+      console.error('[plyndo] handoff error', e);
+      ui.remove();
+      showError('Wystąpił błąd podczas przygotowywania paczki.');
+    }
+  }
+
+  // Uruchom handoff natychmiast, jeśli w URL są parametry pd_v=2
+  executeDirectHandoff();
+
+  /* ── B. STOREFRONT HOOKS FOR CART SYNC & DOM ─────────────── */
+  if (typeof useStorefront === 'function') {
+    useStorefront(async ({ eventBus, getApi }) => {
+      eventBus.on('basket.updated', async () => {
+        if (syncDebounceTimer) clearTimeout(syncDebounceTimer);
+        syncDebounceTimer = setTimeout(async () => {
+          if (syncing) return;
+          syncing = true;
+          try {
+            const [promo, prod, flash] = await Promise.all([
+              getApi('basketPromotionsApi'),
+              getApi('basketProductsApi'),
+              getApi('flashMessengerApi')
+            ]);
+            const count = await prod.getBasketCount();
+            const want  = PACKS[count] || null;
+            const currentObj = await promo.getPromotionCode();
+            const have  = (typeof currentObj === 'string' ? currentObj : currentObj?.code) || null;
+
+            applyCheckoutGuard(count);
+
+            if (want && have !== want) {
+              await promo.add(want);
+            } else if (!want && have && have.startsWith('PLYNDO-PACK-')) {
+              await promo.remove();
+              if (flash && typeof flash.addFlashMessage === 'function') {
+                flash.addFlashMessage({
+                  isError: true,
+                  message: 'Rabat pakietowy obowiązuje wyłącznie dla paczek 4, 8 lub 12 butelek.'
+                });
+              }
+            }
+          } catch (e) {
+            console.warn('[plyndo] coupon sync', e);
+          } finally {
+            syncing = false;
+          }
+        }, 150);
+      });
+
+      eventBus.on('PageManager.loaded', () => {
+        try {
+          patchDom();
+          getApi('basketProductsApi').then(prod => {
+            if (prod) prod.getBasketCount().then(c => applyCheckoutGuard(c)).catch(() => {});
+          }).catch(() => {});
+        } catch (e) { console.warn('[plyndo] dom patch', e); }
+      });
     });
-    try { patchDom(); } catch (e) { console.warn('[plyndo] dom patch init', e); }
-  });
+  }
+
+  try { patchDom(); } catch (e) { console.warn('[plyndo] dom patch init', e); }
 })();
